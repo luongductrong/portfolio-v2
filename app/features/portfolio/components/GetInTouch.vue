@@ -47,7 +47,7 @@ const handleSubmit = async () => {
   <div
     class="bg-gray-200 dark:bg-gray-800 text-gray-300 p-6 rounded-lg shadow-lg"
   >
-    <form :submit.prevent="handleSubmit" class="space-y-4">
+    <form class="space-y-4" @submit.prevent="handleSubmit">
       <div>
         <label
           for="name"

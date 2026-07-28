@@ -44,8 +44,8 @@ const socialActivities = [
         class="flex items-center space-x-4 bg-gray-200 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700 ark:hover:bg-gray-700 transition duration-300"
       >
         <component
-          v-if="activity.icon"
           :is="activity.icon"
+          v-if="activity.icon"
           class="w-6 h-6 fill-gray-800 dark:fill-gray-50"
         />
         <img v-else :src="activity.imgIcon" class="w-6 h-6" />

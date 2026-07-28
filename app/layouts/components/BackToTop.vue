@@ -1,34 +1,20 @@
 <script setup lang="ts">
 import { ArrowUp } from "@lucide/vue";
 
-const isVisible = ref<boolean>(false);
-
-const handleScroll = () => {
-  isVisible.value = window.scrollY > 200;
-};
-
-const scrollToTop = () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-};
-
-onMounted(() => {
-  window.addEventListener("scroll", handleScroll);
+const { y } = useWindowScroll({
+  behavior: "smooth",
 });
 
-onUnmounted(() => {
-  window.removeEventListener("scroll", handleScroll);
-});
+const isVisible = computed(() => y.value > 200);
 </script>
 
 <template>
-  <div>
-    <button
-      v-if="isVisible"
-      @click="scrollToTop"
-      class="fixed bottom-5 right-5 bg-green-500 text-white px-2 py-2 rounded-full shadow-lg hover:bg-green-600 focus:outline-none transition"
-      aria-label="Back to top"
-    >
-      <ArrowUp />
-    </button>
-  </div>
+  <button
+    v-if="isVisible"
+    class="fixed bottom-5 right-5 bg-green-500 text-white px-2 py-2 rounded-full shadow-lg hover:bg-green-600 focus:outline-none transition"
+    aria-label="Back to top"
+    @click="y = 0"
+  >
+    <ArrowUp />
+  </button>
 </template>
