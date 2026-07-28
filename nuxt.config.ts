@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  modules: ["shadcn-nuxt"],
+  modules: ["shadcn-nuxt", "@nuxtjs/color-mode"],
   shadcn: {
     /**
      * Prefix for all the imported component.
@@ -40,5 +40,10 @@ export default defineNuxtConfig({
         lang: "vi",
       },
     },
+  },
+  colorMode: {
+    preference: "system",
+    fallback: "light",
+    classSuffix: "",
   },
 });

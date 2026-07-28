@@ -2,7 +2,7 @@
 import { InBlack } from "@/assets/images";
 import { GitHubIcon, GitLabIcon, FacebookIcon } from "vue3-simple-icons";
 
-const socialActivities = readonly([
+const socialActivities = [
   {
     platform: "GitHub",
     username: "@luongductrong",
@@ -28,7 +28,7 @@ const socialActivities = readonly([
     url: "https://facebook.com/ltr.dtrly/",
     icon: FacebookIcon,
   },
-]);
+];
 </script>
 
 <template>
