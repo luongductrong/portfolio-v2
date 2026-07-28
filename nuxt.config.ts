@@ -4,15 +4,11 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
-
   css: ["@/assets/css/tailwind.css"],
-
   vite: {
     plugins: [tailwindcss()],
   },
-
-  modules: ["shadcn-nuxt", "@nuxt/fonts"],
-
+  modules: ["shadcn-nuxt"],
   shadcn: {
     /**
      * Prefix for all the imported component.
@@ -27,7 +23,6 @@ export default defineNuxtConfig({
      */
     componentDir: "@/components/ui",
   },
-
   components: [
     "@/components",
     {
@@ -39,4 +34,11 @@ export default defineNuxtConfig({
       prefix: "Layout",
     },
   ],
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: "vi",
+      },
+    },
+  },
 });

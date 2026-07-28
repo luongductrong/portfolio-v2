@@ -1,3 +1,10 @@
+<script setup lang="ts">
+useHead({
+  title: "Duc Trong Luong",
+  meta: [{ name: "description", content: "Duc Trong Luong's portfolio." }],
+});
+</script>
+
 <template>
   <main>
     <PortfolioFrame id="about" title="About">

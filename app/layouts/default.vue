@@ -11,5 +11,3 @@
     <LayoutBackToTop />
   </div>
 </template>
-
-<!-- font-montserrat -->
