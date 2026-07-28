@@ -4,13 +4,15 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
-  css: ["~/assets/css/tailwind.css"],
+
+  css: ["@/assets/css/tailwind.css"],
 
   vite: {
     plugins: [tailwindcss()],
   },
 
   modules: ["shadcn-nuxt", "@nuxt/fonts"],
+
   shadcn: {
     /**
      * Prefix for all the imported component.
@@ -25,4 +27,16 @@ export default defineNuxtConfig({
      */
     componentDir: "@/components/ui",
   },
+
+  components: [
+    "@/components",
+    {
+      path: "@/features/portfolio/components",
+      prefix: "Portfolio",
+    },
+    {
+      path: "@/layouts/components",
+      prefix: "Layout",
+    },
+  ],
 });

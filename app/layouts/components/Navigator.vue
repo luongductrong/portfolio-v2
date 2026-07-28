@@ -1,0 +1,18 @@
+<script setup lang="ts">
+const sections = ["About", "Projects", "Skills", "Social", "Blog"];
+</script>
+
+<template>
+  <nav class="mb-8">
+    <ul class="flex space-x-4">
+      <li v-for="section in sections" :key="section">
+        <NuxtLink
+          :to="{ hash: `#${section.toLowerCase()}` }"
+          class="text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition duration-300"
+        >
+          {{ section }}
+        </NuxtLink>
+      </li>
+    </ul>
+  </nav>
+</template>
