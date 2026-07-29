@@ -4,6 +4,8 @@ import { UserIcon, MailIcon, MessageSquareIcon } from "@lucide/vue";
 
 type SubmitStatus = { type: string; message: string } | null;
 
+const formId = useId();
+
 const form = reactive({
   name: "",
   email: "",
@@ -47,7 +49,11 @@ const handleSubmit = async () => {
   <div
     class="bg-gray-200 dark:bg-gray-800 text-gray-300 p-6 rounded-lg shadow-lg"
   >
-    <form class="space-y-4" @submit.prevent="handleSubmit">
+    <form
+      :id="`form-${formId}`"
+      class="space-y-4"
+      @submit.prevent="handleSubmit"
+    >
       <div>
         <label
           for="name"
@@ -56,9 +62,10 @@ const handleSubmit = async () => {
         >
         <div class="relative">
           <input
-            id="name"
+            :id="`name-${formId}`"
             v-model="form.name"
             type="text"
+            autocomplete="name"
             required
             class="w-full px-4 py-2 bg-gray-300 dark:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-800 dark:text-white placeholder-gray-500"
             placeholder="Your Name"
@@ -75,9 +82,10 @@ const handleSubmit = async () => {
         >
         <div class="relative">
           <input
-            id="email"
+            :id="`email-${formId}`"
             v-model="form.email"
             type="email"
+            autocomplete="email"
             required
             class="w-full px-4 py-2 bg-gray-300 dark:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-800 dark:text-white placeholder-gray-500"
             placeholder="your.email@example.com"
@@ -94,7 +102,7 @@ const handleSubmit = async () => {
         >
         <div class="relative">
           <textarea
-            id="message"
+            :id="`message-${formId}`"
             v-model="form.message"
             required
             rows="4"
