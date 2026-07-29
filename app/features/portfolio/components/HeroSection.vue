@@ -1,8 +1,10 @@
 <template>
-  <div class="min-h-dvh w-full bg-background relative grid-bg">
-    <div class="grid-overlay-left" />
-    <div class="grid-overlay-right" />
-  </div>
+  <section class="min-h-dvh w-full bg-background relative grid-bg">
+    <LayoutContainer>
+      <div class="grid-overlay-left" />
+      <div class="grid-overlay-right" />
+    </LayoutContainer>
+  </section>
 </template>
 
 <style scoped>
@@ -25,6 +27,7 @@
     100% 100%;
   z-index: 1;
 }
+
 .grid-bg::before {
   content: "";
   height: 30%;

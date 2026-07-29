@@ -4,6 +4,11 @@ import GitHub from "@/components/icons/GitHub.vue";
 import GitLab from "@/components/icons/GitLab.vue";
 import LinkedIn from "@/components/icons/LinkedIn.vue";
 
+const gmail = {
+  url: "mailto:luongductrong2004@gmail.com",
+  value: "luongductrong2004@gmail.com",
+};
+
 const socials = [
   {
     platform: "GitHub",
@@ -22,7 +27,7 @@ const socials = [
   },
   {
     platform: "Gmail",
-    url: "mailto:luongductrong2004@gmail.com",
+    url: gmail.url,
     icon: Mail,
   },
 ];
@@ -30,16 +35,16 @@ const socials = [
 
 <template>
   <LayoutContainer
-    class="w-full absolute top-0 inset-x-0 z-20 flex justify-between items-center gap-8 py-2 h-20"
+    class="flex flex-col items-center justify-center gap-6"
     as-child
   >
-    <header>
-      <IconSignature class="h-12" aria-label="Logo" />
+    <footer>
+      <IconSignature class="w-37.5" />
       <ul class="flex items-center justify-between gap-3">
         <li
           v-for="social in socials"
           :key="social.platform"
-          class="size-8 rounded-full bg-main-50 inline-flex items-center justify-center"
+          class="size-10 rounded-full bg-main-50 inline-flex items-center justify-center"
         >
           <a
             :href="social.url"
@@ -51,6 +56,12 @@ const socials = [
           </a>
         </li>
       </ul>
-    </header>
+      <p class="text-base">
+        {{ gmail.value }}
+      </p>
+      <p class="text-sm text-muted-foreground">
+        &copy; {{ new Date().getFullYear() }} Made with ❤️ by Duc Trong Luong
+      </p>
+    </footer>
   </LayoutContainer>
 </template>

@@ -16,9 +16,10 @@ const attrs = useAttrs();
     :width="size"
     :height="size"
     viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
     v-bind="attrs"
   >
-    <title>GitLab</title>
     <path
       fill="none"
       stroke="currentColor"

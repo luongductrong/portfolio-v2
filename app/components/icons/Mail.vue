@@ -20,15 +20,17 @@ const attrs = useAttrs();
     focusable="false"
     v-bind="attrs"
   >
-    <path
-      fill="none"
-      stroke="currentColor"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="1.5"
-      d="M17 2h-3a5 5 0 0 0-5 5v3H6v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
-    />
+    <g fill="none" stroke="currentColor" stroke-width="1.5">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="m7 9l5 3.5L17 9"
+      />
+      <path
+        d="M2 17V7a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2Z"
+      />
+    </g>
   </svg>
 </template>
 
-<!-- iconoir:facebook - https://allsvgicons.com/ -->
+<!-- iconoir:mail - https://allsvgicons.com/ -->
