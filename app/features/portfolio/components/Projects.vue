@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { GitHubIcon } from "vue3-simple-icons";
-
 const projects = ref([
   {
     name: "Project 01 Name",
@@ -48,7 +46,7 @@ const projects = ref([
           rel="noopener noreferrer"
           class="pl-2 pb-2"
         >
-          <GitHubIcon
+          <IconGitHub
             class="w-5 h-5 fill-gray-800 dark:fill-gray-50 hover:fill-blue-500 dark:hover:fill-blue-400"
           />
         </a>

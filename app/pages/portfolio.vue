@@ -5,5 +5,10 @@ definePageMeta({
 </script>
 
 <template>
-  <PortfolioHeader />
+  <div class="text-main-900">
+    <PortfolioHeader />
+    <main>
+      <PortfolioHeroSection />
+    </main>
+  </div>
 </template>

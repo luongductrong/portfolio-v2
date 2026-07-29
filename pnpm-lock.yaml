@@ -41,9 +41,6 @@ importers:
       vue:
         specifier: ^3.5.40
         version: 3.5.40(typescript@6.0.3)
-      vue3-simple-icons:
-        specifier: ^16.10.0
-        version: 16.10.0(typescript@6.0.3)
     devDependencies:
       '@nuxt/eslint':
         specifier: ^1.16.0
@@ -4552,9 +4549,6 @@ packages:
     hasBin: true
     peerDependencies:
       typescript: '>=5.0.0'
-
-  vue3-simple-icons@16.10.0:
-    resolution: {integrity: sha512-i5i4K3R+ZLFLsb+Gjw7jHxOQW5hhH4NcB0U2Xe1v3FKnqFJow8A5sgRglAwFtFDHLw1peDIRRRe8dCxs9yhVdQ==}
 
   vue@3.5.40:
     resolution: {integrity: sha512-+8PJ4SJXdn/cHGImF4CKdxlWHIN5Dkt7DoufRREM6h6uVCx2m7QxgcEQmmzyOK8A9mcafg7sFbJFYsdFVubTig==}
@@ -9512,12 +9506,6 @@ snapshots:
       '@volar/typescript': 2.4.28
       '@vue/language-core': 3.3.8
       typescript: 6.0.3
-
-  vue3-simple-icons@16.10.0(typescript@6.0.3):
-    dependencies:
-      vue: 3.5.40(typescript@6.0.3)
-    transitivePeerDependencies:
-      - typescript
 
   vue@3.5.40(typescript@6.0.3):
     dependencies:

@@ -1,45 +1,43 @@
 <script setup lang="ts">
 import { clsx } from "clsx";
-import { GitHubIcon, GitLabIcon, FacebookIcon } from "vue3-simple-icons";
+import GitHub from "@/components/icons/GitHub.vue";
+import GitLab from "@/components/icons/GitLab.vue";
+import LinkedIn from "@/components/icons/LinkedIn.vue";
+import Facebook from "@/components/icons/Facebook.vue";
+
 const socials = [
   {
     platform: "GitHub",
     username: "@luongductrong",
     url: "https://github.com/luongductrong",
-    icon: GitHubIcon,
+    icon: GitHub,
   },
   {
     platform: "GitLab",
     username: "@luongductrong",
     url: "https://gitlab.com/luongductrong",
-    icon: GitLabIcon,
+    icon: GitLab,
   },
-  // {
-  //   platform: "LinkedIn",
-  //   username: "@luongductrong2004",
-  //   url: "https://linkedin.com/in/luongductrong2004/",
-  //   icon: null,
-  // },
+  {
+    platform: "LinkedIn",
+    username: "@luongductrong2004",
+    url: "https://linkedin.com/in/luongductrong2004/",
+    icon: LinkedIn,
+  },
   {
     platform: "Facebook",
     username: "@ltr.dtrly",
     url: "https://facebook.com/ltr.dtrly/",
-    icon: FacebookIcon,
+    icon: Facebook,
   },
 ];
 </script>
 
 <template>
-  <LayoutContainer
-    as-child
-    :class="
-      clsx(
-        'flex justify-between items-center gap-8 py-2 h-20',
-        'sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60',
-      )
-    "
-  >
-    <header>
+  <header class="w-full absolute top-0 inset-x-0 px-4 z-20">
+    <LayoutContainer
+      :class="clsx('flex justify-between items-center gap-8 py-2 h-20')"
+    >
       <IconSignature title="Duc Trong Luong" class="h-12" />
       <div class="flex items-center justify-between gap-3">
         <a
@@ -48,10 +46,11 @@ const socials = [
           :href="social.url"
           target="_blank"
           rel="noopener noreferrer"
+          class="size-8 rounded-full bg-main-50 inline-flex items-center justify-center"
         >
-          <component :is="social.icon" class="size-6 fill-foreground/80" />
+          <component :is="social.icon" class="size-5" />
         </a>
       </div>
-    </header>
-  </LayoutContainer>
+    </LayoutContainer>
+  </header>
 </template>

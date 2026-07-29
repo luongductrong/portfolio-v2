@@ -1,32 +1,33 @@
 <script setup lang="ts">
-import { InBlack } from "@/assets/images";
-import { GitHubIcon, GitLabIcon, FacebookIcon } from "vue3-simple-icons";
+import GitHub from "@/components/icons/GitHub.vue";
+import GitLab from "@/components/icons/GitLab.vue";
+import LinkedIn from "@/components/icons/LinkedIn.vue";
+import Facebook from "@/components/icons/Facebook.vue";
 
 const socialActivities = [
   {
     platform: "GitHub",
     username: "@luongductrong",
     url: "https://github.com/luongductrong",
-    icon: GitHubIcon,
+    icon: GitHub,
   },
   {
     platform: "GitLab",
     username: "@luongductrong",
     url: "https://gitlab.com/luongductrong",
-    icon: GitLabIcon,
+    icon: GitLab,
   },
   {
     platform: "LinkedIn",
     username: "@luongductrong2004",
     url: "https://linkedin.com/in/luongductrong2004/",
-    icon: null,
-    imgIcon: InBlack,
+    icon: LinkedIn,
   },
   {
     platform: "Facebook",
     username: "@ltr.dtrly",
     url: "https://facebook.com/ltr.dtrly/",
-    icon: FacebookIcon,
+    icon: Facebook,
   },
 ];
 </script>
@@ -45,10 +46,8 @@ const socialActivities = [
       >
         <component
           :is="activity.icon"
-          v-if="activity.icon"
           class="w-6 h-6 fill-gray-800 dark:fill-gray-50"
         />
-        <img v-else :src="activity.imgIcon" class="w-6 h-6" />
         <div>
           <h3 class="font-semibold">{{ activity.platform }}</h3>
           <p class="text-sm text-gray-500 dark:text-gray-400">
