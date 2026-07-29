@@ -5,7 +5,7 @@ definePageMeta({
 </script>
 
 <template>
-  <div class="text-main-900 font-mono">
+  <div class="text-foreground font-mono bg-background">
     <PortfolioHeader />
     <main>
       <PortfolioHeroSection />

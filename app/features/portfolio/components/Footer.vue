@@ -44,7 +44,7 @@ const socials = [
         <li
           v-for="social in socials"
           :key="social.platform"
-          class="size-10 rounded-full bg-main-50 inline-flex items-center justify-center"
+          class="size-10 rounded-full bg-muted inline-flex items-center justify-center"
         >
           <a
             :href="social.url"

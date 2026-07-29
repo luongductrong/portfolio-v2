@@ -35,22 +35,25 @@ const socials = [
   >
     <header>
       <IconSignature class="h-12" aria-label="Logo" />
-      <ul class="flex items-center justify-between gap-3">
-        <li
-          v-for="social in socials"
-          :key="social.platform"
-          class="size-8 rounded-full bg-main-50 inline-flex items-center justify-center"
-        >
-          <a
-            :href="social.url"
-            target="_blank"
-            rel="noopener noreferrer"
-            :aria-label="social.platform"
+      <div class="flex items-center justify-between gap-3">
+        <ul class="flex items-center justify-between gap-3">
+          <li
+            v-for="social in socials"
+            :key="social.platform"
+            class="size-8 rounded-full bg-muted inline-flex items-center justify-center"
           >
-            <component :is="social.icon" class="size-5" />
-          </a>
-        </li>
-      </ul>
+            <a
+              :href="social.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              :aria-label="social.platform"
+            >
+              <component :is="social.icon" class="size-5" />
+            </a>
+          </li>
+        </ul>
+        <PortfolioThemeDropdown />
+      </div>
     </header>
   </LayoutContainer>
 </template>
