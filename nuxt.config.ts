@@ -31,6 +31,10 @@ export default defineNuxtConfig({
   components: [
     "@/components",
     {
+      path: "@/components/icons",
+      prefix: "Icon",
+    },
+    {
       path: "@/features/portfolio/components",
       prefix: "Portfolio",
     },
