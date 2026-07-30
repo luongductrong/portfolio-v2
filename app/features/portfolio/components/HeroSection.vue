@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { FileUser } from "@lucide/vue";
+</script>
+
 <template>
   <section
     class="min-h-dvh w-full py-20 flex items-center justify-center bg-background relative grid-bg"
@@ -5,16 +9,37 @@
     <LayoutContainer>
       <div class="grid-overlay-left" />
       <div class="grid-overlay-right" />
-      <div class="flex flex-col items-center justify-center gap-3 text-lg">
-        <p class="uppercase font-semibold">Hi...</p>
+      <UiBlurReveal
+        :duration="0.7"
+        :delay="0.2"
+        blur="20px"
+        :y-offset="20"
+        class="flex flex-col items-center justify-center gap-3 text-lg"
+      >
+        <p class="uppercase font-bold">Hi 👋</p>
         <h1 class="text-6xl font-extrabold">
           I am <span class="text-primary">Duc Trong Luong</span>
         </h1>
-        <p class="font-medium">
-          Frontend Developer specializing in modern web and cross-platform
-          mobile applications.
-        </p>
-      </div>
+        <UiTextGenerateEffect
+          :words="'Frontend Developer specializing in modern web and cross-platform mobile applications.'"
+          :filter="true"
+          :duration="0.5"
+          :delay="0"
+          class="font-medium italic text-center"
+        />
+        <div class="mt-4 flex gap-3">
+          <UiShineButton
+            class="bg-background/40"
+            variant="outline"
+            size="default"
+          >
+            View my work
+          </UiShineButton>
+          <UiButton variant="ghost" size="default"
+            ><FileUser class="text-primary" />My CV</UiButton
+          >
+        </div>
+      </UiBlurReveal>
     </LayoutContainer>
   </section>
 </template>

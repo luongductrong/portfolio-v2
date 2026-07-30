@@ -30,7 +30,7 @@ const socials = [
 
 <template>
   <LayoutContainer
-    class="w-full absolute top-0 inset-x-0 z-20 flex justify-between items-center gap-8 py-2 h-20"
+    class="w-full absolute top-0 inset-x-0 z-20 flex justify-between items-center gap-8 py-2 h-20 animate-in fade-in slide-in-from-bottom-15 duration-1000"
     as-child
   >
     <header>
