@@ -34,8 +34,8 @@ const socials = [
     as-child
   >
     <header>
-      <IconSignature class="h-12" aria-label="Logo" />
-      <div class="flex items-center justify-between gap-3">
+      <IconSignature class="w-22" aria-label="Logo" />
+      <div class="flex items-start justify-between gap-3 h-full py-1">
         <ul class="flex items-center justify-between gap-3">
           <li
             v-for="social in socials"

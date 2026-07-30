@@ -1,8 +1,20 @@
 <template>
-  <section class="min-h-dvh w-full bg-background relative grid-bg">
+  <section
+    class="min-h-dvh w-full py-20 flex items-center justify-center bg-background relative grid-bg"
+  >
     <LayoutContainer>
       <div class="grid-overlay-left" />
       <div class="grid-overlay-right" />
+      <div class="flex flex-col items-center justify-center gap-3 text-lg">
+        <p class="uppercase font-semibold">Hi...</p>
+        <h1 class="text-6xl font-extrabold">
+          I am <span class="text-primary">Duc Trong Luong</span>
+        </h1>
+        <p class="font-medium">
+          Frontend Developer specializing in modern web and cross-platform
+          mobile applications.
+        </p>
+      </div>
     </LayoutContainer>
   </section>
 </template>

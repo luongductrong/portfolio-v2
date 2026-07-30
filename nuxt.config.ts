@@ -10,10 +10,24 @@ export default defineNuxtConfig({
   },
   modules: [
     "shadcn-nuxt",
+    "@nuxt/fonts",
     "@nuxtjs/color-mode",
     "@vueuse/nuxt",
     "@nuxt/eslint",
   ],
+  fonts: {
+    families: [
+      {
+        name: "JetBrains Mono",
+        provider: "google",
+        weights: ["400", "500", "600", "700", "800"],
+        styles: ["normal"],
+      },
+    ],
+    defaults: {
+      subsets: ["latin", "vietnamese"],
+    },
+  },
   shadcn: {
     /**
      * Prefix for all the imported component.
