@@ -1,13 +1,16 @@
+<script setup lang="ts">
+useHead({
+  title: "Duc Trong Luong",
+  meta: [{ name: "description", content: "Duc Trong Luong's portfolio." }],
+});
+</script>
+
 <template>
-  <div
-    class="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 p-6 font-mono"
-  >
-    <div class="max-w-7xl mx-auto">
-      <LayoutHeader />
-      <LayoutNavigator />
+  <div class="text-foreground font-mono bg-background">
+    <LayoutHeader />
+    <main>
       <slot />
-      <LayoutFooter />
-    </div>
-    <LayoutBackToTop />
+    </main>
+    <LayoutFooter />
   </div>
 </template>
