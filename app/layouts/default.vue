@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import 'vue-sonner/style.css';
+
 useHead({
   title: 'Duc Trong Luong',
   meta: [{ name: 'description', content: "Duc Trong Luong's portfolio." }],
@@ -15,5 +17,6 @@ useHead({
       <slot />
     </main>
     <LayoutFooter />
+    <UiToaster position="bottom-right" close-button :duration="5000" />
   </div>
 </template>

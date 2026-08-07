@@ -33,20 +33,16 @@ const handleFormSubmit = function () {
   if (input.value) handleRunCommand(input.value);
 };
 
-watch(
-  logs,
-  async () => {
-    await nextTick();
-    bottomRef.value?.scrollIntoView({ behavior: 'smooth' });
-  },
-  { deep: true },
-);
+watch(logs, async () => {
+  await nextTick();
+  bottomRef.value?.scrollIntoView({ behavior: 'smooth' });
+});
 </script>
 
 <template>
   <UiDialog>
     <UiDialogTrigger as-child>
-      <UiButton variant="ghost" size="icon-sm" class="bg-muted rounded-full">
+      <UiButton variant="ghost" size="icon-sm" class="rounded-full">
         <Terminal />
       </UiButton>
     </UiDialogTrigger>
@@ -60,10 +56,9 @@ watch(
       <div class="px-4 py-3 border-b flex items-center justify-between">
         <div class="flex items-center gap-2">
           <Terminal :size="16" />
-          <UiDialogTitle class="text-[13px]"> ductrong@terminal:~ </UiDialogTitle>
+          <UiDialogTitle class="text-[13px]">ductrong@terminal:~</UiDialogTitle>
         </div>
       </div>
-
       <div class="flex h-[70vh] flex-col">
         <!-- Quick Command Chips -->
         <div class="px-4 py-2 border-b flex gap-2 overflow-x-auto">

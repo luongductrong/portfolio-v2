@@ -1,30 +1,9 @@
 <script setup lang="ts">
-import Mail from '@/components/icons/Mail.vue';
-import GitHub from '@/components/icons/GitHub.vue';
-import GitLab from '@/components/icons/GitLab.vue';
-import LinkedIn from '@/components/icons/LinkedIn.vue';
-
-const socials = [
-  {
-    platform: 'GitHub',
-    url: 'https://github.com/luongductrong',
-    icon: GitHub,
-  },
-  {
-    platform: 'GitLab',
-    url: 'https://gitlab.com/luongductrong',
-    icon: GitLab,
-  },
-  {
-    platform: 'LinkedIn',
-    url: 'https://linkedin.com/in/luongductrong2004/',
-    icon: LinkedIn,
-  },
-  {
-    platform: 'Gmail',
-    url: 'mailto:luongductrong2004@gmail.com',
-    icon: Mail,
-  },
+const navItems: { id: string; label: string; href: string }[] = [
+  { id: 'about', label: 'About', href: '/' },
+  { id: 'projects', label: 'Projects', href: '/projects' },
+  { id: 'skills', label: 'Skills', href: '/skills' },
+  { id: 'contact', label: 'Contact', href: '/contact' },
 ];
 </script>
 
@@ -38,19 +17,20 @@ const socials = [
       <div>
         <IconSignature class="w-22 absolute inset-y-0 z-41" aria-label="Logo" />
       </div>
-      <div class="flex items-center justify-between gap-3 h-full py-1">
-        <ul class="flex items-center justify-between gap-3">
+      <nav>
+        <ul class="flex items-center justify-between gap-8">
           <li
-            v-for="social in socials"
-            :key="social.platform"
-            class="size-8 rounded-full bg-muted inline-flex items-center justify-center"
+            v-for="item in navItems"
+            :key="item.id"
+            class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground p-1.5"
           >
-            <a :href="social.url" target="_blank" rel="noopener noreferrer" :aria-label="social.platform">
-              <component :is="social.icon" class="size-5" />
-            </a>
+            <NuxtLink :to="item.href">{{ item.label }}</NuxtLink>
           </li>
         </ul>
+      </nav>
+      <div class="flex items-center justify-between gap-2 sm:gap-3">
         <PortfolioTerminalModal />
+        <LayoutLanguageDropdown />
         <LayoutThemeDropdown />
       </div>
     </LayoutContainer>
