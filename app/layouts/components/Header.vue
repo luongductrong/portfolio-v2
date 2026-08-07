@@ -55,6 +55,7 @@ const socials = [
             </a>
           </li>
         </ul>
+        <PortfolioTerminalModal />
         <LayoutThemeDropdown />
       </div>
     </LayoutContainer>
