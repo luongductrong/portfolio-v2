@@ -35,9 +35,9 @@ import { FileUser } from "@lucide/vue";
           >
             View my work
           </UiShineButton>
-          <UiButton variant="ghost" size="default"
-            ><FileUser class="text-primary" />My CV</UiButton
-          >
+          <UiButton variant="ghost" size="default">
+            <FileUser class="text-primary" />My CV
+          </UiButton>
         </div>
       </UiBlurReveal>
     </LayoutContainer>
