@@ -1,27 +1,23 @@
 <script setup lang="ts">
-import { cn } from "@/lib/utils";
-import { Primitive } from "reka-ui";
-import type { HTMLAttributes } from "vue";
-import { reactiveOmit } from "@vueuse/core";
-import type { PrimitiveProps } from "reka-ui";
-import { badgeVariants, type BadgeVariants } from "./variants";
+import { cn } from '@/lib/utils';
+import { Primitive } from 'reka-ui';
+import type { HTMLAttributes } from 'vue';
+import { reactiveOmit } from '@vueuse/core';
+import type { PrimitiveProps } from 'reka-ui';
+import { badgeVariants, type BadgeVariants } from './variants';
 
 const props = defineProps<
   PrimitiveProps & {
-    variant?: BadgeVariants["variant"];
-    class?: HTMLAttributes["class"];
+    variant?: BadgeVariants['variant'];
+    class?: HTMLAttributes['class'];
   }
 >();
 
-const delegatedProps = reactiveOmit(props, "class");
+const delegatedProps = reactiveOmit(props, 'class');
 </script>
 
 <template>
-  <Primitive
-    data-slot="badge"
-    :class="cn(badgeVariants({ variant }), props.class)"
-    v-bind="delegatedProps"
-  >
+  <Primitive data-slot="badge" :class="cn(badgeVariants({ variant }), props.class)" v-bind="delegatedProps">
     <slot />
   </Primitive>
 </template>

@@ -1,1 +1,1 @@
-export { default as ShineButton } from "./ShineButton.vue";
+export { default as ShineButton } from './ShineButton.vue';

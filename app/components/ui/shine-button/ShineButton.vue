@@ -1,23 +1,23 @@
 <script setup lang="ts">
-import { cn } from "@/lib/utils";
-import type { HTMLAttributes } from "vue";
-import type { PrimitiveProps } from "reka-ui";
-import type { ButtonVariants } from "@/components/ui/button";
+import { cn } from '@/lib/utils';
+import type { HTMLAttributes } from 'vue';
+import type { PrimitiveProps } from 'reka-ui';
+import type { ButtonVariants } from '@/components/ui/button';
 
 defineOptions({
   inheritAttrs: false,
 });
 
 interface Props extends PrimitiveProps {
-  variant?: ButtonVariants["variant"];
-  size?: ButtonVariants["size"];
-  class?: HTMLAttributes["class"];
+  variant?: ButtonVariants['variant'];
+  size?: ButtonVariants['size'];
+  class?: HTMLAttributes['class'];
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  as: "button",
-  variant: "default",
-  size: "lg",
+  as: 'button',
+  variant: 'default',
+  size: 'lg',
 });
 </script>
 
@@ -42,18 +42,13 @@ const props = withDefaults(defineProps<Props>(), {
 }
 
 .shine-button::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 28%;
   inset-block: -65%;
   left: -45%;
   pointer-events: none;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    color-mix(in oklab, var(--foreground) 10%, white 85%),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--foreground) 10%, white 85%), transparent);
   filter: blur(0.5px);
   opacity: 0;
   transform: translateX(-120%) skewX(-18deg);

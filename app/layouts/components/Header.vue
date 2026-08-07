@@ -1,28 +1,28 @@
 <script setup lang="ts">
-import Mail from "@/components/icons/Mail.vue";
-import GitHub from "@/components/icons/GitHub.vue";
-import GitLab from "@/components/icons/GitLab.vue";
-import LinkedIn from "@/components/icons/LinkedIn.vue";
+import Mail from '@/components/icons/Mail.vue';
+import GitHub from '@/components/icons/GitHub.vue';
+import GitLab from '@/components/icons/GitLab.vue';
+import LinkedIn from '@/components/icons/LinkedIn.vue';
 
 const socials = [
   {
-    platform: "GitHub",
-    url: "https://github.com/luongductrong",
+    platform: 'GitHub',
+    url: 'https://github.com/luongductrong',
     icon: GitHub,
   },
   {
-    platform: "GitLab",
-    url: "https://gitlab.com/luongductrong",
+    platform: 'GitLab',
+    url: 'https://gitlab.com/luongductrong',
     icon: GitLab,
   },
   {
-    platform: "LinkedIn",
-    url: "https://linkedin.com/in/luongductrong2004/",
+    platform: 'LinkedIn',
+    url: 'https://linkedin.com/in/luongductrong2004/',
     icon: LinkedIn,
   },
   {
-    platform: "Gmail",
-    url: "mailto:luongductrong2004@gmail.com",
+    platform: 'Gmail',
+    url: 'mailto:luongductrong2004@gmail.com',
     icon: Mail,
   },
 ];
@@ -45,12 +45,7 @@ const socials = [
             :key="social.platform"
             class="size-8 rounded-full bg-muted inline-flex items-center justify-center"
           >
-            <a
-              :href="social.url"
-              target="_blank"
-              rel="noopener noreferrer"
-              :aria-label="social.platform"
-            >
+            <a :href="social.url" target="_blank" rel="noopener noreferrer" :aria-label="social.platform">
               <component :is="social.icon" class="size-5" />
             </a>
           </li>

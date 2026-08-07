@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useSlots } from "vue";
-import { Motion } from "motion-v";
+import { useSlots } from 'vue';
+import { Motion } from 'motion-v';
 
 interface Props {
   duration?: number;
@@ -13,7 +13,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   duration: 1,
   delay: 2,
-  blur: "20px",
+  blur: '20px',
   yOffset: 20,
 });
 
