@@ -13,9 +13,7 @@ useHead({
 <template>
   <div class="text-foreground font-mono bg-background">
     <LayoutHeader />
-    <main>
-      <slot />
-    </main>
+    <slot />
     <LayoutFooter />
     <UiToaster position="bottom-right" close-button :duration="5000" />
   </div>

@@ -45,6 +45,7 @@ import { FileUser, ArrowRight } from '@lucide/vue';
         as="div"
         :initial="{ opacity: 0, y: 20 }"
         :while-in-view="{ opacity: 1, y: 0 }"
+        :in-view-options="{ once: true }"
         :transition="{ duration: 0.7, delay: 0.2 }"
         class="lg:col-span-4 relative flex justify-center items-center"
       >

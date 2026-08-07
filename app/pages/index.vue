@@ -1,3 +1,6 @@
 <template>
-  <PortfolioHeroSection />
+  <main>
+    <PortfolioHeroSection />
+    <PortfolioMilestoneSection />
+  </main>
 </template>
