@@ -29,13 +29,16 @@ const socials = [
 </script>
 
 <template>
-  <LayoutContainer
-    class="w-full absolute top-0 inset-x-0 z-20 flex justify-between items-center gap-8 py-2 h-20 animate-in fade-in slide-in-from-bottom-15 duration-1000"
-    as-child
+  <header
+    class="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60"
   >
-    <header>
-      <IconSignature class="w-22" aria-label="Logo" />
-      <div class="flex items-start justify-between gap-3 h-full py-1">
+    <LayoutContainer
+      class="flex justify-between items-center gap-8 py-2 h-15 animate-in fade-in slide-in-from-bottom-15 duration-1000"
+    >
+      <div>
+        <IconSignature class="w-22 absolute inset-y-0 z-41" aria-label="Logo" />
+      </div>
+      <div class="flex items-center justify-between gap-3 h-full py-1">
         <ul class="flex items-center justify-between gap-3">
           <li
             v-for="social in socials"
@@ -54,6 +57,6 @@ const socials = [
         </ul>
         <LayoutThemeDropdown />
       </div>
-    </header>
-  </LayoutContainer>
+    </LayoutContainer>
+  </header>
 </template>

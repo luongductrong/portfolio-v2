@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { EllipsisVertical } from "@lucide/vue";
+import { Moon, Sun, SunMoon } from "@lucide/vue";
 
 const colorMode = useColorMode();
 
@@ -17,6 +17,9 @@ const themes = [
     label: "Dark",
   },
 ] as const;
+
+const themeIcon = computed(() => (colorMode.value === "dark" ? Moon : Sun));
+// TODO: Use motion icons
 </script>
 
 <template>
@@ -24,11 +27,16 @@ const themes = [
     <UiDropdownMenuTrigger as-child>
       <UiButton
         variant="ghost"
-        size="sm"
+        size="icon-sm"
         aria-label="Change theme"
-        class="bg-muted rounded-full has-[>svg]:px-1"
+        class="bg-muted rounded-full"
       >
-        <EllipsisVertical aria-hidden="true" />
+        <ClientOnly>
+          <component :is="themeIcon" aria-hidden="true" />
+          <template #fallback>
+            <SunMoon aria-hidden="true" />
+          </template>
+        </ClientOnly>
       </UiButton>
     </UiDropdownMenuTrigger>
     <UiDropdownMenuContent align="end">
