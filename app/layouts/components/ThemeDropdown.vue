@@ -1,13 +1,9 @@
 <script setup lang="ts">
-import { Moon, Sun, SunMoon } from '@lucide/vue';
+import { Moon, Sun, SunMoon, Monitor } from '@lucide/vue';
 
 const colorMode = useColorMode();
 
 const themes = [
-  {
-    value: 'system',
-    label: 'System',
-  },
   {
     value: 'light',
     label: 'Light',
@@ -15,6 +11,10 @@ const themes = [
   {
     value: 'dark',
     label: 'Dark',
+  },
+  {
+    value: 'system',
+    label: 'System',
   },
 ] as const;
 
@@ -40,6 +40,11 @@ const themeIcon = computed(() => (colorMode.value === 'dark' ? Moon : Sun));
         <UiDropdownMenuRadioGroup v-model="colorMode.preference">
           <UiDropdownMenuRadioItem v-for="theme in themes" :key="theme.value" :value="theme.value">
             {{ theme.label }}
+            <UiDropdownMenuShortcut>
+              <Sun v-if="theme.value === 'light'" aria-hidden="true" />
+              <Moon v-else-if="theme.value === 'dark'" aria-hidden="true" />
+              <Monitor v-else-if="theme.value === 'system'" aria-hidden="true" />
+            </UiDropdownMenuShortcut>
           </UiDropdownMenuRadioItem>
         </UiDropdownMenuRadioGroup>
       </UiDropdownMenuGroup>
