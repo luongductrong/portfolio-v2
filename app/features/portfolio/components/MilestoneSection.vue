@@ -55,11 +55,7 @@ const milestones: Milestone[] = [
 </script>
 
 <template>
-  <section class="relative overflow-hidden border-y bg-background py-20 sm:py-24">
-    <div
-      class="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-primary/50 to-transparent"
-    />
-
+  <section class="relative overflow-hidden py-10 sm:py-12">
     <LayoutContainer class="relative z-10 grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
       <Motion
         as="div"

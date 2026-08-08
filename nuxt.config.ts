@@ -47,6 +47,10 @@ export default defineNuxtConfig({
       prefix: 'Portfolio',
     },
     {
+      path: '@/features/projects/components',
+      prefix: 'Project',
+    },
+    {
       path: '@/layouts/components',
       prefix: 'Layout',
     },
