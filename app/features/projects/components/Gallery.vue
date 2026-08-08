@@ -1,60 +1,7 @@
 <script setup lang="ts">
 import { Motion } from 'motion-v';
 import { ArrowDownRight } from '@lucide/vue';
-
-interface Project {
-  title: string;
-  description: string;
-  image: string;
-  imageAlt: string;
-  category: string;
-  year: string;
-  technologies: string[];
-  demoUrl: string;
-  sourceUrl: string;
-}
-
-const projects: Project[] = [
-  {
-    title: 'Web Project 1',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. A dark analytics dashboard with emerald data visualizations and a focus on clean interfaces.',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuAMsxMEPx0KXIB87e2XRdUaO41vZxii6v_DVDf_1gh2w3OtJWrifFZpRPRBb4BpsPVTl5v5OzbM_XudXQGSIt7Hv6DX8kC7i7ZxsX0QSbk6MZO-GAhTSKcU1RJmyHJn0FQXc6Smenr93IpXuZ7GpYqQEO7FdsRhKkCNKB55Ik6FWpALDXm7cAsS_rmEjEyEjksBTokzPDAAEVs-dY8XRUMAEwK2YHO00rYil7bZx9xp_UXDTPvA5EAg',
-    imageAlt: 'Dark analytics dashboard with emerald data visualizations',
-    category: 'Web application',
-    year: '2026',
-    technologies: ['Vue', 'Nuxt', 'TypeScript'],
-    demoUrl: 'https://example.com',
-    sourceUrl: 'https://github.com/luongductrong',
-  },
-  {
-    title: 'Web Project 2',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. A cloud platform with a focus on scalable architecture and reliable user experiences.',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuAQHkr3EaS8fRzr7w8sJ-tZ_vEz_79_2guLDVZwoD9W4VJrEqyYq10IP-tJN2ZLemylFGJxsjXzAW2W1BTAQJLVyDPa1I4202GzgyR4OGhIeblgJRNejrh1MJAHYCw88bs9MhSIDZS_bj-D6ytHnSsyysug4xE6JpIYpvLcDsIjL62KRp-hLng3L61k0NFIzzXOa1FWfIOGABn2guUVKyNKgaEwcXh0WkSMJBeasMiurpYLl3G0JREC',
-    imageAlt: 'Abstract cloud infrastructure connected by glowing network lines',
-    category: 'Cloud platform',
-    year: '2025',
-    technologies: ['Node.js', 'AWS', 'Redis'],
-    demoUrl: 'https://example.com',
-    sourceUrl: 'https://github.com/luongductrong',
-  },
-  {
-    title: 'Web Project 3',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. A cross-platform finance application with offline-first state management and carefully tuned interface animations.',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuC4RSoedUNj27oehUmLrUJ9lfQcsSwzF_8fNldfCgRzYMr9YMzNxSBS5fAyynjNzpWEnRlPI7miwOt6AllkHe6uwHPBp5RLhLA9MAdzPJ3lyeQi0suTCQYqtRGv0mB2_gu8tXJF1_uQoJRy2JSXdz37iC_zXh7k2O6rczDWqIsPuYJVmkQQfoG2uJF7PFkNOLawBKyyLE7rr9iMd8QC5CDExJweMmvf03D2ahR092n_YVyJcXVuBfJG',
-    imageAlt: 'Dark mobile finance interface displayed on a black surface',
-    category: 'Mobile application',
-    year: '2025',
-    technologies: ['React Native', 'TypeScript', 'GraphQL'],
-    demoUrl: 'https://example.com',
-    sourceUrl: 'https://github.com/luongductrong',
-  },
-];
+import { projects } from '../constants';
 </script>
 
 <template>
@@ -95,7 +42,19 @@ const projects: Project[] = [
       </div>
 
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-        <ProjectCard v-for="(project, index) in projects" :key="project.title" v-bind="project" :index="index" />
+        <ProjectCard
+          v-for="(project, index) in projects"
+          :key="project.slug"
+          :slug="project.slug"
+          :title="project.title"
+          :summary="project.summary"
+          :cover-image="project.coverImage"
+          :image-alt="project.imageAlt"
+          :category="project.category"
+          :year="project.year"
+          :technologies="project.technologies"
+          :index="index"
+        />
       </div>
     </LayoutContainer>
   </section>
