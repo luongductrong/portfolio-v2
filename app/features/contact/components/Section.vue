@@ -33,7 +33,7 @@ async function copyEmail() {
 
       <div class="mt-14 grid items-start gap-8 lg:mt-18 lg:grid-cols-12 lg:gap-12">
         <div class="rounded-lg border bg-card p-5 sm:p-7 lg:col-span-7">
-          <ContactForm :recipient="emailAddress" />
+          <ContactForm />
         </div>
 
         <aside class="flex flex-col gap-6 lg:sticky lg:top-24 lg:col-span-5" aria-label="Direct contact options">

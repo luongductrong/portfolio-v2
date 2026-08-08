@@ -1,30 +1,63 @@
 <script setup lang="ts">
-import { Send } from '@lucide/vue';
+import { toast } from '@/lib/toast';
+import { FORM_ENDPOINT } from '../constants';
+import { LoaderCircle, Send } from '@lucide/vue';
 
-interface ContactFormProps {
-  recipient: string;
+interface FormspreeResponse {
+  error?: string;
+  errors?: Array<{ message: string }>;
 }
-
-const props = defineProps<ContactFormProps>();
 const form = reactive({
   name: '',
   email: '',
   message: '',
 });
+const isSubmitting = ref(false);
 
 const fieldClass =
   'w-full rounded-md border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/55 transition-colors focus-visible:border-primary focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/30';
 
-function submitMessage() {
-  const subject = encodeURIComponent(`Portfolio inquiry from ${form.name}`);
-  const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
+async function submitMessage(event: Event) {
+  if (isSubmitting.value) return;
 
-  window.location.href = `mailto:${props.recipient}?subject=${subject}&body=${body}`;
+  isSubmitting.value = true;
+
+  const formElement = event.currentTarget as HTMLFormElement;
+  const formData = new FormData(formElement);
+  formData.append('_subject', `Portfolio inquiry from ${form.name}`);
+
+  try {
+    const response = await fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+      },
+      body: formData,
+    });
+
+    const result = (await response.json().catch(() => null)) as FormspreeResponse | null;
+
+    if (!response.ok) {
+      const message = result?.errors?.map((error) => error.message).join(' ') || result?.error;
+      throw new Error(message || 'Your message could not be sent. Please try again.');
+    }
+
+    form.name = '';
+    form.email = '';
+    form.message = '';
+    toast.success('Message sent successfully.', {
+      description: 'I will get back to you soon.',
+    });
+  } catch (error) {
+    toast.error(error instanceof Error ? error.message : 'Your message could not be sent. Please try again.');
+  } finally {
+    isSubmitting.value = false;
+  }
 }
 </script>
 
 <template>
-  <form class="flex flex-col gap-6" aria-label="Contact form" @submit.prevent="submitMessage">
+  <form class="flex flex-col gap-6" aria-label="Contact form" :aria-busy="isSubmitting" @submit.prevent="submitMessage">
     <div class="flex flex-col gap-2">
       <label class="text-xs font-semibold uppercase text-muted-foreground" for="contact-name"> var fullName </label>
       <input
@@ -70,9 +103,10 @@ function submitMessage() {
 
     <div class="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
       <span class="text-xs text-muted-foreground">// Expect a response within 24 hours</span>
-      <UiButton type="submit" class="uppercase">
-        Send message
-        <Send aria-hidden="true" />
+      <UiButton type="submit" class="uppercase" :disabled="isSubmitting">
+        {{ isSubmitting ? 'Sending...' : 'Send message' }}
+        <LoaderCircle v-if="isSubmitting" class="animate-spin" aria-hidden="true" />
+        <Send v-else aria-hidden="true" />
       </UiButton>
     </div>
   </form>
