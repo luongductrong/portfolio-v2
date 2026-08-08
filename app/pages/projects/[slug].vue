@@ -2,17 +2,16 @@
 import { getProjectBySlug } from '@/features/projects/helpers';
 
 const route = useRoute();
+
+definePageMeta({
+  validate(route) {
+    const project = getProjectBySlug(String(route.params.slug));
+    return project ? true : { status: 404, statusText: 'Project not found' };
+  },
+});
+
 const project = computed(() => {
-  const match = getProjectBySlug(String(route.params.slug));
-
-  if (!match) {
-    throw createError({
-      status: 404,
-      statusText: 'Project not found',
-    });
-  }
-
-  return match;
+  return getProjectBySlug(String(route.params.slug))!;
 });
 
 useSeoMeta({

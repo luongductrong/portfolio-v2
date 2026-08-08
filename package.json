@@ -8,7 +8,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "lint:inspect": "eslint --inspect-config",
-    "generate": "nuxt generate",
+    "generate": "nuxt generate --preset github_pages",
     "typecheck": "nuxt typecheck",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
