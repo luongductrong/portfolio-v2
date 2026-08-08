@@ -55,6 +55,10 @@ export default defineNuxtConfig({
       prefix: 'Contact',
     },
     {
+      path: '@/features/skills/components',
+      prefix: 'Skill',
+    },
+    {
       path: '@/layouts/components',
       prefix: 'Layout',
     },
