@@ -20,16 +20,14 @@ async function copyEmail() {
 <template>
   <section class="py-16 sm:py-20 lg:py-24" aria-labelledby="contact-heading">
     <LayoutContainer class="py-0">
-      <header class="max-w-3xl animate-in fade-in slide-in-from-bottom-4 duration-700">
-        <h1 id="contact-heading" class="text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl">
-          Initialize<br />
-          <span class="text-muted-foreground">Connection.</span>
-        </h1>
-        <p class="mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
-          Whether you have a technical challenge, a collaborative project in mind, or simply want to discuss clean
-          interfaces, I am ready to connect.
-        </p>
-      </header>
+      <PageHeader
+        heading-id="contact-heading"
+        eyebrow="Open for collaboration"
+        first-line="Initialize"
+        second-line="Connection."
+        description="Whether you have a technical challenge, a collaborative project in mind, or simply want to discuss clean interfaces, I am ready to connect."
+        note="Send a message or connect directly through the channels below."
+      />
 
       <div class="mt-14 grid items-start gap-8 lg:mt-18 lg:grid-cols-12 lg:gap-12">
         <div class="rounded-lg border bg-card p-5 sm:p-7 lg:col-span-7">
