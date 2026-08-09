@@ -34,6 +34,7 @@ import { FileUser, ArrowRight } from '@lucide/vue';
         :filter="true"
         :duration="0.5"
         :delay="0"
+        :once="true"
         class="font-medium italic text-start"
       />
       <div class="mt-4 flex gap-3">

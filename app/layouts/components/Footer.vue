@@ -34,7 +34,7 @@ const socials = [
 </script>
 
 <template>
-  <LayoutContainer class="flex flex-col items-center justify-center gap-6 pt-8 border-t" as-child>
+  <LayoutContainer class="flex flex-col items-center justify-center gap-6 border-t" as-child>
     <footer>
       <ul class="flex items-center justify-between gap-3">
         <li
