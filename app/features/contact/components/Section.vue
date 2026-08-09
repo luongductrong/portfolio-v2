@@ -92,6 +92,24 @@ async function copyEmail() {
               </a>
 
               <a
+                href="https://gitlab.com/luongductrong"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex min-h-12 items-center justify-between rounded-md border border-transparent px-3 transition-colors hover:border-border hover:bg-muted focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+              >
+                <span class="flex items-center gap-3 font-medium">
+                  <span class="inline-flex size-8 items-center justify-center rounded border bg-background">
+                    <IconGitLab class="size-4" aria-hidden="true" />
+                  </span>
+                  GitLab
+                </span>
+                <ArrowRight
+                  class="size-4 text-muted-foreground transition-transform group-hover:translate-x-1"
+                  aria-hidden="true"
+                />
+              </a>
+
+              <a
                 href="https://linkedin.com/in/luongductrong2004/"
                 target="_blank"
                 rel="noopener noreferrer"
