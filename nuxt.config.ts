@@ -64,6 +64,7 @@ export default defineNuxtConfig({
     },
   ],
   app: {
+    // baseURL: Defaults to `/`; Nuxt overrides it with NUXT_APP_BASE_URL when provided.
     head: {
       htmlAttrs: {
         lang: 'vi',
