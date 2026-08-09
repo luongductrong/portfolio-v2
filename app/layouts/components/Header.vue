@@ -12,7 +12,7 @@ const navItems: { id: string; label: string; href: string }[] = [
     class="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60"
   >
     <LayoutContainer
-      class="flex justify-between items-center gap-8 py-2 h-15 animate-in fade-in slide-in-from-bottom-15 duration-1000"
+      class="flex justify-between items-center gap-8 py-2 h-15 animate-in fade-in slide-in-from-bottom-15 duration-1000 motion-reduce:slide-in-from-bottom-0 motion-reduce:duration-500"
     >
       <div>
         <IconSignature class="w-22 absolute inset-y-0 z-41" aria-label="Logo" />

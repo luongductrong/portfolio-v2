@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Motion } from 'motion-v';
 import { ArrowDownRight } from '@lucide/vue';
 
 interface PageHeaderProps {
@@ -15,13 +14,8 @@ defineProps<PageHeaderProps>();
 </script>
 
 <template>
-  <Motion
-    as="header"
-    :initial="{ opacity: 0, y: 20 }"
-    :while-in-view="{ opacity: 1, y: 0 }"
-    :in-view-options="{ once: true }"
-    :transition="{ duration: 0.55 }"
-    class="max-w-3xl"
+  <header
+    class="max-w-3xl animate-in fade-in slide-in-from-bottom-5 duration-550 motion-reduce:slide-in-from-bottom-0 motion-reduce:duration-300"
   >
     <p class="mb-4 flex items-center gap-2 text-sm font-semibold uppercase text-primary">
       <span class="h-px w-8 bg-primary" aria-hidden="true" />
@@ -38,5 +32,5 @@ defineProps<PageHeaderProps>();
       <ArrowDownRight class="mt-1 size-4 shrink-0" aria-hidden="true" />
       {{ note }}
     </p>
-  </Motion>
+  </header>
 </template>

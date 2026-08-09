@@ -1,4 +1,6 @@
 <script setup>
+import { MotionConfig } from 'motion-v';
+
 useHead({
   title: 'Duc Trong Luong',
   link: [
@@ -41,7 +43,9 @@ useHead({
 
 <template>
   <NuxtRouteAnnouncer />
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+  <MotionConfig reduced-motion="user">
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </MotionConfig>
 </template>

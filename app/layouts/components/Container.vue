@@ -9,6 +9,10 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   asChild: false,
 });
+
+defineOptions({
+  inheritAttrs: false,
+});
 </script>
 
 <template>
