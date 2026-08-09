@@ -19,12 +19,13 @@ const navItems: { id: string; label: string; href: string }[] = [
       </div>
       <nav>
         <ul class="flex items-center justify-between gap-8">
-          <li
-            v-for="item in navItems"
-            :key="item.id"
-            class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground p-1.5"
-          >
-            <NuxtLink :to="item.href">{{ item.label }}</NuxtLink>
+          <li v-for="item in navItems" :key="item.id" class="group font-medium text-muted-foreground">
+            <NuxtLink
+              :to="item.href"
+              class="text-sm transition-colors duration-300 group-hover:text-foreground group-hover:font-bold p-1.5 pb-px rounded"
+              active-class="font-bold border-b-3 border-muted-foreground group-hover:border-foreground"
+              >{{ item.label }}</NuxtLink
+            >
           </li>
         </ul>
       </nav>

@@ -14,6 +14,7 @@ import { FileUser, ArrowRight } from '@lucide/vue';
     <UiBlurReveal
       :duration="0.7"
       :delay="0.2"
+      :once="true"
       blur="20px"
       :y-offset="20"
       class="relative z-10 lg:col-span-8 flex flex-col items-start justify-center gap-3 text-lg"

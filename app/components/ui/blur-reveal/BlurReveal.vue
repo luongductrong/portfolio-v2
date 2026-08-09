@@ -8,6 +8,7 @@ interface Props {
   blur?: string;
   yOffset?: number;
   class?: string;
+  once?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -15,6 +16,7 @@ const props = withDefaults(defineProps<Props>(), {
   delay: 2,
   blur: '20px',
   yOffset: 20,
+  once: true,
 });
 
 const slots = useSlots();
@@ -49,6 +51,7 @@ function getAnimate() {
       as="div"
       :initial="getInitial()"
       :while-in-view="getAnimate()"
+      :in-view-options="{ once: props.once }"
       :transition="{
         duration: props.duration,
         ease: 'easeInOut',

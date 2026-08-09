@@ -11,7 +11,6 @@ interface Milestone {
   status: string;
   description: string;
   highlights: string[];
-  accent: string;
   icon: Component;
 }
 
@@ -25,7 +24,6 @@ const milestones: Milestone[] = [
     description:
       'Focused on Software Engineering fundamentals, product thinking, and building reliable application workflows from idea to delivery.',
     highlights: ['Software Engineering', 'Very Good Degree Classification', 'GPA 8.11/10'],
-    accent: 'from-primary/25 via-primary/10 to-transparent',
     icon: GraduationCap,
   },
   {
@@ -37,7 +35,6 @@ const milestones: Milestone[] = [
     description:
       'Joined enterprise delivery work, learned SAP project practices, and sharpened collaboration habits inside a production-focused team.',
     highlights: ['ABAP', 'SAP ecosystem', 'Enterprise workflow'],
-    accent: 'from-sky-400/25 via-sky-400/10 to-transparent',
     icon: BriefcaseBusiness,
   },
   {
@@ -48,7 +45,6 @@ const milestones: Milestone[] = [
     status: 'Current',
     description: 'Building responsive interfaces, reusable UI pieces, and polished user flows for modern web products.',
     highlights: ['React & Next.js', 'Design systems', 'Frontend architecture'],
-    accent: 'from-indigo-400/25 via-indigo-400/10 to-transparent',
     icon: Code2,
   },
 ];
@@ -79,9 +75,7 @@ const milestones: Milestone[] = [
 
     <div class="relative">
       <div class="absolute left-4 top-6 h-[calc(100%-3rem)] w-px bg-border sm:left-6" />
-      <div
-        class="absolute left-4 top-6 h-[calc(100%-3rem)] w-px bg-linear-to-b from-primary via-sky-400 to-indigo-400 sm:left-6"
-      />
+      <div class="absolute left-4 top-6 h-[calc(100%-3rem)] w-px bg-linear-to-b from-primary to-main-100 sm:left-6" />
 
       <ol class="space-y-6">
         <Motion
@@ -102,7 +96,7 @@ const milestones: Milestone[] = [
           <article
             class="group relative overflow-hidden rounded-lg border bg-card/70 p-5 transition duration-300 hover:-translate-y-1 hover:border-primary/45 hover:shadow-[0_18px_60px_rgba(16,185,129,0.12)] sm:p-6"
           >
-            <div class="absolute inset-0 bg-linear-to-br opacity-80" :class="milestone.accent" />
+            <div class="absolute inset-0 bg-linear-to-br opacity-80 from-primary/25 via-primary/10 to-transparent" />
             <div class="relative space-y-5">
               <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <div class="space-y-2">

@@ -24,5 +24,5 @@ useSeoMeta({
 </script>
 
 <template>
-  <ProjectDetail :project="project" />
+  <ProjectDetailSection :project="project" />
 </template>
