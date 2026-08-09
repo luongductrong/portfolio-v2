@@ -6,7 +6,5 @@ useSeoMeta({
 </script>
 
 <template>
-  <main class="min-h-dvh">
-    <SkillSection />
-  </main>
+  <SkillSection />
 </template>

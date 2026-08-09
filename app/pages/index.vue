@@ -1,6 +1,12 @@
+<script setup lang="ts">
+definePageMeta({
+  layout: 'home',
+});
+</script>
+
 <template>
-  <main class="min-h-dvh">
+  <div>
     <PortfolioHeroSection />
     <PortfolioMilestoneSection />
-  </main>
+  </div>
 </template>

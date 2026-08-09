@@ -24,7 +24,5 @@ useSeoMeta({
 </script>
 
 <template>
-  <main class="min-h-dvh">
-    <ProjectDetail :project="project" />
-  </main>
+  <ProjectDetail :project="project" />
 </template>

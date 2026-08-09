@@ -19,7 +19,8 @@ defineOptions({
   <Primitive
     :as-child="props.asChild"
     as="div"
-    :class="cn('mx-auto max-w-7xl px-4 py-5 sm:px-6 md:px-8 lg:px-10 duration-500', $attrs.class)"
+    data-container
+    :class="cn('mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-10 py-10', $attrs.class)"
   >
     <slot />
   </Primitive>

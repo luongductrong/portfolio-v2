@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Component } from 'vue';
-import { Code2, Database, MonitorSmartphone, PanelsTopLeft, Rocket } from '@lucide/vue';
 import type { SkillGroupIcon } from '../constants';
+import { Code2, Database, MonitorSmartphone, PanelsTopLeft, Rocket } from '@lucide/vue';
 
 interface SkillCardProps {
   title: string;

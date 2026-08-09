@@ -20,31 +20,30 @@ function redirectTo(path: string) {
 
 <template>
   <NuxtLayout>
-    <LayoutContainer as-child>
-      <main class="flex min-h-[calc(100dvh-20rem)] items-center justify-center py-16 sm:py-20 border-b">
-        <section aria-labelledby="error-title" class="max-w-2xl flex flex-col items-center justify-between gap-6">
-          <p class="flex items-center gap-2 text-xl font-bold uppercase text-primary">
-            <TriangleAlert class="size-4" aria-hidden="true" />
-            {{ statusCode }}
-          </p>
-          <h1 id="error-title" class="text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
-            {{ title }}
-          </h1>
-          <p class="max-w-xl text-base leading-7 text-muted-foreground text-center">
-            {{ description }}
-          </p>
-          <div class="flex flex-col gap-3 sm:flex-row">
-            <UiButton class="uppercase" @click="redirectTo('/')">
-              <Home aria-hidden="true" />
-              Go back home
-            </UiButton>
-            <UiButton variant="outline" class="uppercase" @click="redirectTo('/projects')">
-              <FolderKanban aria-hidden="true" />
-              View projects
-            </UiButton>
-          </div>
-        </section>
-      </main>
-    </LayoutContainer>
+    <section
+      aria-labelledby="error-title"
+      class="flex flex-col min-h-[calc(100dvh-8.75rem)] items-center justify-center gap-6"
+    >
+      <p class="flex items-center gap-2 text-xl font-bold uppercase text-primary">
+        <TriangleAlert class="size-4" aria-hidden="true" />
+        {{ statusCode }}
+      </p>
+      <h1 id="error-title" class="text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
+        {{ title }}
+      </h1>
+      <p class="max-w-xl text-base leading-7 text-muted-foreground text-center">
+        {{ description }}
+      </p>
+      <div class="flex flex-col gap-3 sm:flex-row">
+        <UiButton class="uppercase" @click="redirectTo('/')">
+          <Home aria-hidden="true" />
+          Go back home
+        </UiButton>
+        <UiButton variant="outline" class="uppercase" @click="redirectTo('/projects')">
+          <FolderKanban aria-hidden="true" />
+          View projects
+        </UiButton>
+      </div>
+    </section>
   </NuxtLayout>
 </template>
