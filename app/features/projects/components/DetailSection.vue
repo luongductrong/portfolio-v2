@@ -1,170 +1,251 @@
 <script setup lang="ts">
-import { Motion } from 'motion-v';
-import type { Component } from 'vue';
-import { AlignLeft, ArrowUpRight, BrainCircuit, Code2, Gauge, Network, ShieldCheck, Target, Wrench } from '@lucide/vue';
-import type { Project, ProjectGoalIcon } from '../types';
+import {
+  ArrowLeft,
+  ArrowUpRight,
+  BookOpen,
+  BriefcaseBusiness,
+  CalendarDays,
+  Check,
+  Code2,
+  ExternalLink,
+  Flag,
+  Layers3,
+  Lightbulb,
+  Monitor,
+  Target,
+  Users,
+  Wrench,
+} from '@lucide/vue';
+import { projectStatusLabels } from '../helpers';
+import type { Project } from '../types';
 
 const props = defineProps<{
   project: Project;
 }>();
-
-const goalIcons: Record<ProjectGoalIcon, Component> = {
-  performance: Gauge,
-  scalability: Network,
-  reliability: ShieldCheck,
-};
 </script>
 
 <template>
-  <section :aria-labelledby="`project-${props.project.slug}-title`">
-    <Motion as="div" :initial="{ opacity: 0, y: 20 }" :animate="{ opacity: 1, y: 0 }" :transition="{ duration: 0.6 }">
-      <div class="relative aspect-4/3 overflow-hidden rounded-lg border bg-muted sm:aspect-16/7">
-        <img
-          :src="props.project.heroImage ?? props.project.coverImage"
-          :alt="props.project.imageAlt"
-          class="size-full object-cover"
-        />
-        <div
-          class="absolute inset-0 bg-linear-to-t from-background/80 via-transparent to-transparent"
-          aria-hidden="true"
-        />
+  <section :aria-labelledby="`project-${props.project.slug}-title`" class="pb-20 sm:pb-28">
+    <header class="border-b pb-10 sm:pb-14">
+      <NuxtLink
+        to="/projects"
+        class="mb-10 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary sm:mb-14"
+      >
+        <ArrowLeft class="size-4" aria-hidden="true" />
+        All projects
+      </NuxtLink>
+
+      <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+        <div class="max-w-4xl">
+          <div class="mb-5 flex flex-wrap items-center gap-3 text-sm">
+            <UiBadge variant="secondary">{{ props.project.category }}</UiBadge>
+            <span class="text-muted-foreground">{{ props.project.year }}</span>
+            <span class="text-border" aria-hidden="true">/</span>
+            <span class="inline-flex items-center gap-2 font-medium text-primary">
+              <span class="size-2 rounded-full bg-primary" aria-hidden="true" />
+              {{ projectStatusLabels[props.project.metadata.status] }}
+            </span>
+          </div>
+
+          <h1
+            :id="`project-${props.project.slug}-title`"
+            class="max-w-4xl text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl"
+          >
+            {{ props.project.title }}
+          </h1>
+          <p class="mt-6 max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
+            {{ props.project.summary }}
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-3 lg:justify-end">
+          <UiButton v-if="props.project.links.demo" as-child size="lg">
+            <a :href="props.project.links.demo" target="_blank" rel="noopener noreferrer">
+              Live demo
+              <ArrowUpRight data-icon="inline-end" />
+            </a>
+          </UiButton>
+          <UiButton v-if="props.project.links.source" as-child size="lg" variant="outline">
+            <a :href="props.project.links.source" target="_blank" rel="noopener noreferrer">
+              <Code2 data-icon="inline-start" />
+              Source code
+            </a>
+          </UiButton>
+        </div>
+      </div>
+    </header>
+
+    <div class="mt-10 sm:mt-14">
+      <ProjectMediaGallery :images="props.project.media.images" />
+    </div>
+
+    <section v-if="props.project.outcomes.length" aria-labelledby="project-outcomes" class="mt-14 sm:mt-18">
+      <div class="mb-5 flex items-end justify-between gap-4 border-b pb-4">
+        <h2 id="project-outcomes" class="mt-1 text-xl font-bold text-primary uppercase">Quick Highlights</h2>
+        <Flag class="size-5 text-muted-foreground" aria-hidden="true" />
       </div>
 
-      <header class="relative z-10 mx-3 -mt-12 rounded-lg border bg-card p-6 shadow-xl sm:mx-8 sm:p-8 lg:mx-14 lg:p-10">
-        <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <div class="max-w-3xl">
-            <p class="mb-3 text-sm font-semibold uppercase text-primary">{{ props.project.category }}</p>
-            <h1
-              :id="`project-${props.project.slug}-title`"
-              class="text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl"
-            >
-              {{ props.project.title }}
-            </h1>
-            <p class="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
-              {{ props.project.summary }}
-            </p>
-          </div>
-
-          <div class="flex flex-col gap-3 sm:flex-row lg:shrink-0">
-            <UiButton as-child size="lg" class="uppercase">
-              <a :href="props.project.demoUrl" target="_blank" rel="noopener noreferrer">
-                Live demo
-                <ArrowUpRight />
-              </a>
-            </UiButton>
-            <UiButton as-child size="lg" variant="outline" class="uppercase">
-              <a :href="props.project.sourceUrl" target="_blank" rel="noopener noreferrer">
-                <Code2 />
-                GitHub repo
-              </a>
-            </UiButton>
-          </div>
+      <dl class="grid gap-px overflow-hidden rounded-lg border bg-border sm:grid-cols-3">
+        <div v-for="outcome in props.project.outcomes" :key="outcome.label" class="bg-card p-6 sm:p-7">
+          <dt class="text-sm font-medium text-muted-foreground">{{ outcome.label }}</dt>
+          <dd class="mt-2 text-3xl font-extrabold text-primary">{{ outcome.value }}</dd>
+          <p v-if="outcome.description" class="mt-3 text-sm leading-6 text-muted-foreground">
+            {{ outcome.description }}
+          </p>
         </div>
-      </header>
-    </Motion>
+      </dl>
+    </section>
 
-    <div class="mt-16 grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(17rem,1fr)] lg:gap-14">
-      <div class="space-y-14">
-        <Motion
-          as="article"
-          :initial="{ opacity: 0, y: 20 }"
-          :while-in-view="{ opacity: 1, y: 0 }"
-          :in-view-options="{ once: true, amount: 0.2 }"
-          :transition="{ duration: 0.5 }"
-        >
-          <h2 class="mb-6 flex items-center gap-3 text-2xl font-bold">
-            <AlignLeft class="text-primary" aria-hidden="true" />
-            Project overview
-          </h2>
-          <div class="space-y-4 leading-7 text-muted-foreground">
+    <div class="mt-16 grid gap-14 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-16">
+      <div class="flex min-w-0 flex-col gap-16">
+        <article aria-labelledby="project-overview" class="flex flex-col gap-6">
+          <div class="flex items-center gap-3">
+            <BookOpen class="size-5 text-primary" aria-hidden="true" />
+            <h2 id="project-overview" class="text-2xl font-bold">Project overview</h2>
+          </div>
+          <div class="flex max-w-3xl flex-col gap-4 text-base leading-8 text-muted-foreground">
             <p v-for="paragraph in props.project.overview" :key="paragraph">
               {{ paragraph }}
             </p>
           </div>
-        </Motion>
+        </article>
 
-        <Motion
-          as="article"
-          :initial="{ opacity: 0, y: 20 }"
-          :while-in-view="{ opacity: 1, y: 0 }"
-          :in-view-options="{ once: true, amount: 0.2 }"
-          :transition="{ duration: 0.5 }"
-        >
-          <h2 class="mb-6 flex items-center gap-3 text-2xl font-bold">
-            <Target class="text-primary" aria-hidden="true" />
-            Project goals
-          </h2>
-          <ul class="grid gap-4">
+        <section aria-labelledby="project-objectives" class="flex flex-col gap-6">
+          <div class="flex items-center gap-3">
+            <Target class="size-5 text-primary" aria-hidden="true" />
+            <h2 id="project-objectives" class="text-2xl font-bold">Objectives</h2>
+          </div>
+          <ol class="grid gap-4 sm:grid-cols-3">
             <li
-              v-for="goal in props.project.goals"
-              :key="goal.title"
-              class="flex items-start gap-4 rounded-lg border bg-card p-5 transition-colors hover:border-primary/40"
+              v-for="(objective, index) in props.project.objectives"
+              :key="objective.title"
+              class="rounded-lg border bg-card p-5"
             >
-              <component :is="goalIcons[goal.icon]" class="mt-0.5 size-5 shrink-0 text-primary" aria-hidden="true" />
-              <div>
-                <h3 class="font-semibold">{{ goal.title }}</h3>
-                <p class="mt-1 text-sm leading-6 text-muted-foreground">{{ goal.description }}</p>
+              <span class="text-xs font-semibold text-primary">0{{ index + 1 }}</span>
+              <h3 class="mt-4 font-bold">{{ objective.title }}</h3>
+              <p class="mt-2 text-sm leading-6 text-muted-foreground">{{ objective.description }}</p>
+            </li>
+          </ol>
+        </section>
+
+        <section aria-labelledby="project-features" class="flex flex-col gap-6">
+          <div class="flex items-center gap-3">
+            <Layers3 class="size-5 text-primary" aria-hidden="true" />
+            <h2 id="project-features" class="text-2xl font-bold">Key features</h2>
+          </div>
+          <div class="grid gap-x-8 gap-y-7 sm:grid-cols-2">
+            <article
+              v-for="feature in props.project.features"
+              :key="feature.title"
+              class="border-t pt-5 transition-colors hover:border-primary"
+            >
+              <h3 class="font-bold">{{ feature.title }}</h3>
+              <p class="mt-2 text-sm leading-6 text-muted-foreground">{{ feature.description }}</p>
+            </article>
+          </div>
+        </section>
+
+        <section aria-labelledby="project-challenges" class="flex flex-col gap-6">
+          <div class="flex items-center gap-3">
+            <Lightbulb class="size-5 text-primary" aria-hidden="true" />
+            <h2 id="project-challenges" class="text-2xl font-bold">Challenges and decisions</h2>
+          </div>
+          <div class="flex flex-col divide-y rounded-lg border bg-card">
+            <article v-for="challenge in props.project.challenges" :key="challenge.title" class="p-6 sm:p-7">
+              <h3 class="font-bold">{{ challenge.title }}</h3>
+              <div class="mt-5 grid gap-5 sm:grid-cols-2 sm:gap-8">
+                <div>
+                  <p class="text-xs font-semibold uppercase text-muted-foreground">Challenge</p>
+                  <p class="mt-2 text-sm leading-6 text-muted-foreground">{{ challenge.problem }}</p>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold uppercase text-primary">Decision</p>
+                  <p class="mt-2 text-sm leading-6 text-foreground/80">{{ challenge.solution }}</p>
+                </div>
               </div>
+            </article>
+          </div>
+        </section>
+
+        <section aria-labelledby="project-responsibilities" class="flex flex-col gap-6">
+          <div class="flex items-center gap-3">
+            <BriefcaseBusiness class="size-5 text-primary" aria-hidden="true" />
+            <h2 id="project-responsibilities" class="text-2xl font-bold">My contribution</h2>
+          </div>
+          <ul class="grid gap-3">
+            <li
+              v-for="responsibility in props.project.responsibilities"
+              :key="responsibility"
+              class="flex items-start gap-3 border-b pb-3 text-sm leading-6 text-muted-foreground"
+            >
+              <Check class="mt-1 size-4 shrink-0 text-primary" aria-hidden="true" />
+              {{ responsibility }}
             </li>
           </ul>
-        </Motion>
-
-        <Motion
-          as="article"
-          :initial="{ opacity: 0, y: 20 }"
-          :while-in-view="{ opacity: 1, y: 0 }"
-          :in-view-options="{ once: true, amount: 0.2 }"
-          :transition="{ duration: 0.5 }"
-        >
-          <h2 class="mb-6 flex items-center gap-3 text-2xl font-bold">
-            <BrainCircuit class="text-primary" aria-hidden="true" />
-            Challenge overcome
-          </h2>
-          <div class="rounded-r-lg border-y border-r border-l-2 border-l-primary bg-muted/60 p-6 sm:p-7">
-            <h3 class="font-semibold">{{ props.project.challenge.title }}</h3>
-            <p class="mt-3 text-sm leading-6 text-muted-foreground">
-              {{ props.project.challenge.problem }}
-            </p>
-            <h3 class="mt-6 font-semibold">The solution</h3>
-            <p class="mt-3 text-sm leading-6 text-muted-foreground">
-              {{ props.project.challenge.solution }}
-            </p>
-          </div>
-        </Motion>
+        </section>
       </div>
 
-      <aside class="space-y-6 lg:sticky lg:top-24 lg:self-start" aria-label="Project information">
-        <div class="rounded-lg border bg-card p-6 sm:p-7">
-          <h2 class="flex items-center gap-3 text-xl font-bold">
-            <Wrench class="text-primary" aria-hidden="true" />
-            Tech stack
-          </h2>
-          <ul class="mt-6 flex flex-wrap gap-2">
-            <li v-for="technology in props.project.technologies" :key="technology">
-              <UiBadge variant="secondary" class="px-3 py-1.5 font-normal">
-                {{ technology }}
-              </UiBadge>
-            </li>
-          </ul>
-        </div>
+      <aside class="flex flex-col gap-6 lg:sticky lg:top-24 lg:self-start" aria-label="Project information">
+        <section class="rounded-lg border bg-card p-6" aria-labelledby="project-facts">
+          <h2 id="project-facts" class="text-lg font-bold">Project facts</h2>
+          <dl class="mt-6 flex flex-col gap-5 text-sm">
+            <div class="flex items-start gap-3">
+              <BriefcaseBusiness class="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
+              <div>
+                <dt class="text-muted-foreground">Role</dt>
+                <dd class="mt-1 font-medium">{{ props.project.metadata.role }}</dd>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <CalendarDays class="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
+              <div>
+                <dt class="text-muted-foreground">Timeline</dt>
+                <dd class="mt-1 font-medium">{{ props.project.metadata.timeline }}</dd>
+              </div>
+            </div>
+            <div v-if="props.project.metadata.teamSize" class="flex items-start gap-3">
+              <Users class="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
+              <div>
+                <dt class="text-muted-foreground">Team</dt>
+                <dd class="mt-1 font-medium">{{ props.project.metadata.teamSize }}</dd>
+              </div>
+            </div>
+            <div v-if="props.project.metadata.platform" class="flex items-start gap-3">
+              <Monitor class="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
+              <div>
+                <dt class="text-muted-foreground">Platform</dt>
+                <dd class="mt-1 font-medium">{{ props.project.metadata.platform }}</dd>
+              </div>
+            </div>
+          </dl>
+        </section>
 
-        <dl class="rounded-lg border bg-muted/50 p-6 sm:p-7">
-          <div class="border-b pb-5">
-            <dt class="text-xs font-semibold uppercase text-muted-foreground">Role</dt>
-            <dd class="mt-2 font-medium">{{ props.project.role }}</dd>
+        <section class="rounded-lg border bg-muted/40 p-6" aria-labelledby="project-stack">
+          <div class="flex items-center gap-3">
+            <Wrench class="size-4 text-primary" aria-hidden="true" />
+            <h2 id="project-stack" class="font-bold">Technology stack</h2>
           </div>
-          <div class="border-b py-5">
-            <dt class="text-xs font-semibold uppercase text-muted-foreground">Timeline</dt>
-            <dd class="mt-2 font-medium">{{ props.project.timeline }}</dd>
+          <div class="mt-6 flex flex-col gap-5">
+            <div v-for="group in props.project.stack" :key="group.label">
+              <h3 class="text-xs font-semibold uppercase text-muted-foreground">{{ group.label }}</h3>
+              <ul class="mt-2 flex flex-wrap gap-2">
+                <li v-for="technology in group.items" :key="technology">
+                  <UiBadge variant="secondary" class="font-normal">{{ technology }}</UiBadge>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="pt-5">
-            <dt class="text-xs font-semibold uppercase text-muted-foreground">Status</dt>
-            <dd class="mt-2 inline-flex items-center gap-2 font-medium text-primary">
-              <span class="size-2 rounded-full bg-primary motion-safe:animate-pulse" aria-hidden="true" />
-              {{ props.project.status }}
-            </dd>
-          </div>
-        </dl>
+        </section>
+
+        <nav v-if="props.project.links.documentation" aria-label="Project resources">
+          <UiButton as-child variant="ghost" class="w-full justify-between">
+            <a :href="props.project.links.documentation" target="_blank" rel="noopener noreferrer">
+              <ExternalLink data-icon="inline-start" />
+              Read documentation
+              <ArrowUpRight data-icon="inline-end" />
+            </a>
+          </UiButton>
+        </nav>
       </aside>
     </div>
   </section>

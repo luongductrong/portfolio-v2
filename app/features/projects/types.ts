@@ -1,9 +1,40 @@
-export type ProjectGoalIcon = 'performance' | 'scalability' | 'reliability';
+export type ProjectStatus = 'completed' | 'in-development' | 'maintained' | 'archived';
 
-export interface ProjectGoal {
+export interface ProjectImage {
+  id: string;
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+export type ProjectImages = [ProjectImage, ProjectImage, ProjectImage, ProjectImage];
+
+export interface ProjectMedia {
+  images: ProjectImages;
+}
+
+export interface ProjectLinks {
+  demo?: string;
+  source?: string;
+  documentation?: string;
+}
+
+export interface ProjectMetadata {
+  role: string;
+  timeline: string;
+  status: ProjectStatus;
+  teamSize?: string;
+  platform?: string;
+}
+
+export interface ProjectStackGroup {
+  label: string;
+  items: string[];
+}
+
+export interface ProjectContentItem {
   title: string;
   description: string;
-  icon: ProjectGoalIcon;
 }
 
 export interface ProjectChallenge {
@@ -12,22 +43,26 @@ export interface ProjectChallenge {
   solution: string;
 }
 
+export interface ProjectOutcome {
+  value: string;
+  label: string;
+  description?: string;
+}
+
 export interface Project {
   slug: string;
   title: string;
   summary: string;
   category: string;
   year: string;
-  coverImage: string;
-  heroImage?: string;
-  imageAlt: string;
-  technologies: string[];
-  demoUrl: string;
-  sourceUrl: string;
+  media: ProjectMedia;
+  links: ProjectLinks;
+  metadata: ProjectMetadata;
+  stack: ProjectStackGroup[];
   overview: string[];
-  goals: ProjectGoal[];
-  challenge: ProjectChallenge;
-  role: string;
-  timeline: string;
-  status: string;
+  objectives: ProjectContentItem[];
+  features: ProjectContentItem[];
+  responsibilities: string[];
+  challenges: ProjectChallenge[];
+  outcomes: ProjectOutcome[];
 }

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { projects } from '../constants';
+import { getProjectTechnologies } from '../helpers';
 </script>
 
 <template>
@@ -28,11 +29,11 @@ import { projects } from '../constants';
         :slug="project.slug"
         :title="project.title"
         :summary="project.summary"
-        :cover-image="project.coverImage"
-        :image-alt="project.imageAlt"
+        :cover-image="project.media.images[0].src"
+        :image-alt="project.media.images[0].alt"
         :category="project.category"
         :year="project.year"
-        :technologies="project.technologies"
+        :technologies="getProjectTechnologies(project)"
         :index="index"
       />
     </div>

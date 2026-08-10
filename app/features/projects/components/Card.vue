@@ -3,7 +3,10 @@ import { ArrowRight } from '@lucide/vue';
 import { Motion } from 'motion-v';
 import type { Project } from '../types';
 
-type Props = Pick<Project, 'slug' | 'title' | 'summary' | 'coverImage' | 'imageAlt' | 'category' | 'year' | 'technologies'> & {
+type Props = Pick<Project, 'slug' | 'title' | 'summary' | 'category' | 'year'> & {
+  coverImage: string;
+  imageAlt: string;
+  technologies: string[];
   index?: number;
 };
 
