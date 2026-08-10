@@ -17,6 +17,9 @@ jobs:
   deploy:
     name: Build and push gh-pages
     runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://${{ github.repository_owner }}.github.io
 
     steps:
       - name: Check out source
@@ -42,6 +45,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           personal_token: ${{ secrets.GH_PAGES_PAT }}
-          external_repository: ${{ vars.GH_PAGES_REPO }}
+          external_repository: ${{ github.repository_owner }}/${{ github.repository_owner }}.github.io
           publish_branch: gh-pages
           publish_dir: ./.output/public
