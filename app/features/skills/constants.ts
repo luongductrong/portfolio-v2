@@ -32,12 +32,12 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'Databases',
     icon: 'database',
-    skills: ['SQL Server', 'PostgreSQL', 'SQLite'],
+    skills: ['PostgreSQL', 'SQLite'],
   },
   {
     title: 'DevOps & Tools',
     icon: 'tools',
-    skills: ['Vercel', 'GitHub Actions', 'Ubuntu', 'Cloudflare'],
+    skills: ['Vercel', 'Netlify', 'GitHub Actions', 'Cloudflare'],
   },
 ];
 

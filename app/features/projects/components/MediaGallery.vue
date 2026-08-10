@@ -63,19 +63,19 @@ onBeforeUnmount(() => {
 
 <template>
   <div>
-    <div class="grid gap-3 lg:grid-cols-[minmax(0,1fr)_11rem]">
+    <div class="grid gap-3 lg:grid-cols-[minmax(0,1fr)_11rem] xl:grid-cols-[minmax(0,1fr)_12.25rem]">
       <div class="min-w-0">
         <UiCarousel class="relative w-full" :opts="{ loop: true }" @init-api="setCarouselApi">
           <UiCarouselContent>
             <UiCarouselItem v-for="(image, index) in props.images" :key="image.id">
               <button
                 type="button"
-                class="group relative flex h-64 w-full items-center justify-center overflow-hidden text-left sm:h-96 lg:h-104"
+                class="group relative flex h-64 w-full items-center justify-center overflow-hidden text-left sm:h-96 lg:h-104 xl:h-[28.938rem]"
                 :aria-label="`Preview image ${index + 1}: ${image.alt}`"
                 @click="openPreview(index)"
               >
                 <span
-                  class="aspect-video w-full max-w-[28.444rem] overflow-hidden rounded-lg sm:max-w-[42.667rem] lg:max-w-[46.222rem]"
+                  class="aspect-video w-full max-w-[28.444rem] overflow-hidden rounded-lg sm:max-w-[42.667rem] lg:max-w-[46.222rem] xl:hidden"
                 >
                   <img
                     :src="image.src"
@@ -83,6 +83,11 @@ onBeforeUnmount(() => {
                     class="size-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.015]"
                   />
                 </span>
+                <UiSafariMockup
+                  :src="image.src"
+                  url="example.com"
+                  class="hidden h-auto w-full max-w-[46.222rem] transition-transform duration-500 motion-safe:group-hover:scale-[1.01] xl:block"
+                />
               </button>
             </UiCarouselItem>
           </UiCarouselContent>
@@ -96,10 +101,7 @@ onBeforeUnmount(() => {
         </p>
       </div>
 
-      <aside
-        class="hidden h-104 min-h-0 flex-col lg:flex"
-        aria-label="Project image thumbnails"
-      >
+      <aside class="hidden h-104 min-h-0 flex-col lg:flex xl:h-[28.938rem]" aria-label="Project image thumbnails">
         <div class="flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-primary/40">
           <button
             v-for="(image, index) in props.images"
@@ -123,10 +125,7 @@ onBeforeUnmount(() => {
       </aside>
     </div>
 
-    <div
-      class="mt-3 flex gap-2 overflow-x-auto pb-1 lg:hidden"
-      aria-label="Project image thumbnails"
-    >
+    <div class="mt-3 flex gap-2 overflow-x-auto pb-1 lg:hidden" aria-label="Project image thumbnails">
       <button
         v-for="(image, index) in props.images"
         :key="`${image.id}-mobile-thumbnail`"

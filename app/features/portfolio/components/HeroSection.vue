@@ -38,7 +38,9 @@ import { FileUser, ArrowRight } from '@lucide/vue';
         class="font-medium italic text-start"
       />
       <div class="mt-4 flex gap-3">
-        <UiButton size="lg" class="rounded uppercase">View my work <ArrowRight /></UiButton>
+        <UiButton size="lg" class="rounded uppercase" as-child>
+          <NuxtLink to="/projects">View my work <ArrowRight /></NuxtLink>
+        </UiButton>
         <UiShineButton class="bg-background/40 rounded uppercase" variant="outline" size="lg">
           <FileUser />My Resume
         </UiShineButton>
