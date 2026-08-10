@@ -3,6 +3,8 @@ import { toast } from '@/lib/toast';
 import { FORM_ENDPOINT } from '../constants';
 import { LoaderCircle, Send } from '@lucide/vue';
 
+const colorMode = useColorMode();
+
 interface FormspreeResponse {
   error?: string;
   errors?: Array<{ message: string }>;
@@ -11,6 +13,7 @@ const form = reactive({
   name: '',
   email: '',
   message: '',
+  token: '',
 });
 const isSubmitting = ref(false);
 
@@ -18,7 +21,7 @@ const fieldClass =
   'w-full rounded-md border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/55 transition-colors focus-visible:border-primary focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/30';
 
 async function submitMessage(event: Event) {
-  if (isSubmitting.value) return;
+  if (isSubmitting.value || !form.token) return;
 
   isSubmitting.value = true;
 
@@ -101,9 +104,19 @@ async function submitMessage(event: Event) {
       />
     </div>
 
+    <NuxtTurnstile
+      v-model="form.token"
+      class="min-h-16 w-full rounded-md border overflow-clip"
+      :options="{
+        theme: colorMode.value === 'dark' ? 'dark' : 'light',
+        language: 'auto',
+        size: 'flexible',
+      }"
+    />
+
     <div class="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
       <span class="text-xs text-muted-foreground">// Expect a response within 24 hours</span>
-      <UiButton type="submit" class="uppercase" :disabled="isSubmitting">
+      <UiButton type="submit" class="uppercase" :disabled="isSubmitting || !form.token">
         {{ isSubmitting ? 'Sending...' : 'Send message' }}
         <LoaderCircle v-if="isSubmitting" class="animate-spin" aria-hidden="true" />
         <Send v-else aria-hidden="true" />
