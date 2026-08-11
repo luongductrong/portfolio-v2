@@ -145,7 +145,7 @@ onBeforeUnmount(() => {
 
     <UiDialog v-model:open="previewOpen">
       <UiDialogContent
-        class="max-w-[calc(100vw-1.5rem)] gap-3 p-3 sm:max-w-6xl"
+        class="max-w-[calc(100vw-1.5rem)] gap-3 p-3 sm:max-w-6xl lg:max-w-7xl"
         :show-close-button="true"
         @keydown="handlePreviewKeydown"
       >
@@ -158,14 +158,14 @@ onBeforeUnmount(() => {
 
         <div class="flex min-h-0 flex-col gap-3">
           <div class="relative flex min-h-64 items-center justify-center overflow-hidden sm:min-h-96">
-            <div class="aspect-video w-full max-w-[133.333dvh] overflow-hidden rounded-lg">
+            <div class="aspect-video w-full max-h-[90dvh] max-w-[95dvw] overflow-hidden rounded-lg">
               <img :src="previewImage.src" :alt="previewImage.alt" class="size-full object-cover" />
             </div>
 
             <UiButton
               type="button"
               size="icon"
-              variant="outline"
+              variant="default"
               class="absolute left-3 rounded-full"
               aria-label="Previous image"
               @click="changePreview(-1)"
@@ -175,7 +175,7 @@ onBeforeUnmount(() => {
             <UiButton
               type="button"
               size="icon"
-              variant="outline"
+              variant="default"
               class="absolute right-3 rounded-full"
               aria-label="Next image"
               @click="changePreview(1)"
