@@ -76,7 +76,7 @@ const props = defineProps<{
     </header>
 
     <div class="mt-10 sm:mt-14">
-      <ProjectMediaGallery :images="props.project.media.images" />
+      <ProjectMediaGallery :images="props.project.media.images" :live-url="props.project.links.demo" />
     </div>
 
     <section v-if="props.project.outcomes.length" aria-labelledby="project-outcomes" class="mt-14 sm:mt-18">

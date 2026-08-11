@@ -1,13 +1,16 @@
 <script setup lang="ts">
+import { getHost } from '@/lib/helpers/host';
 import type { ProjectImages } from '../types';
 import { ArrowLeft, ArrowRight } from '@lucide/vue';
 import type { CarouselApi } from '@/components/ui/carousel';
 
 const props = defineProps<{
+  liveUrl?: string | null;
   images: ProjectImages;
 }>();
 
 const IMAGE_COUNT = 4;
+const FALLBACK_HOST = 'ldt.is-a.dev';
 type ImageIndex = 0 | 1 | 2 | 3;
 
 const carouselApi = shallowRef<CarouselApi>();
@@ -85,7 +88,7 @@ onBeforeUnmount(() => {
                 </span>
                 <UiSafariMockup
                   :src="image.src"
-                  url="example.com"
+                  :url="getHost(props.liveUrl, FALLBACK_HOST)"
                   class="hidden h-auto w-full max-w-[46.222rem] transition-transform duration-500 motion-safe:group-hover:scale-[1.01] xl:block"
                 />
               </button>

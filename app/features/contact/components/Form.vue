@@ -106,14 +106,13 @@ async function submitMessage(event: Event) {
 
     <NuxtTurnstile
       v-model="form.token"
-      class="min-h-16 w-full rounded-md border overflow-clip"
+      class="min-h-16 w-full"
       :options="{
         theme: colorMode.value === 'dark' ? 'dark' : 'light',
         language: 'auto',
         size: 'flexible',
       }"
     />
-
     <div class="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
       <span class="text-xs text-muted-foreground">// Expect a response within 24 hours</span>
       <UiButton type="submit" class="uppercase" :disabled="isSubmitting || !form.token">

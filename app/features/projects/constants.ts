@@ -71,7 +71,8 @@ export const projects = [
     objectives: [
       {
         title: 'Fast by default',
-        description: 'Keep product discovery responsive through route-level caching, optimized media, and lean client state.',
+        description:
+          'Keep product discovery responsive through route-level caching, optimized media, and lean client state.',
       },
       {
         title: 'Checkout confidence',
@@ -123,7 +124,11 @@ export const projects = [
     ],
     outcomes: [
       { value: '100', label: 'Lighthouse accessibility', description: 'Target score across primary customer routes.' },
-      { value: '< 2.0s', label: 'Largest contentful paint', description: 'Measured on the production preview profile.' },
+      {
+        value: '< 2.0s',
+        label: 'Largest contentful paint',
+        description: 'Measured on the production preview profile.',
+      },
       { value: '4', label: 'Responsive breakpoints', description: 'Validated from compact mobile to wide desktop.' },
     ],
   },
@@ -235,8 +240,16 @@ export const projects = [
       },
     ],
     outcomes: [
-      { value: '10k+', label: 'Virtualized records', description: 'Smooth filtering and scrolling in benchmark datasets.' },
-      { value: '60fps', label: 'Interaction target', description: 'Maintained during board movement and chart updates.' },
+      {
+        value: '10k+',
+        label: 'Virtualized records',
+        description: 'Smooth filtering and scrolling in benchmark datasets.',
+      },
+      {
+        value: '60fps',
+        label: 'Interaction target',
+        description: 'Maintained during board movement and chart updates.',
+      },
       { value: '12', label: 'Reusable modules', description: 'Shared across analytics and operations views.' },
     ],
   },
@@ -349,8 +362,16 @@ export const projects = [
     ],
     outcomes: [
       { value: '95+', label: 'Performance target', description: 'Lighthouse goal across mobile portfolio routes.' },
-      { value: '< 100kb', label: 'Initial JavaScript', description: 'Target budget for the primary landing experience.' },
-      { value: 'AA', label: 'Accessibility baseline', description: 'Contrast, keyboard flow, and reduced-motion support.' },
+      {
+        value: '< 100kb',
+        label: 'Initial JavaScript',
+        description: 'Target budget for the primary landing experience.',
+      },
+      {
+        value: 'AA',
+        label: 'Accessibility baseline',
+        description: 'Contrast, keyboard flow, and reduced-motion support.',
+      },
     ],
   },
 ] satisfies Project[];
