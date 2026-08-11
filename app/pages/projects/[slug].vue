@@ -19,7 +19,7 @@ useSeoMeta({
   description: () => project.value.summary,
   ogTitle: () => project.value.title,
   ogDescription: () => project.value.summary,
-  ogImage: () => project.value.media.images[0].src,
+  ogImage: () => project.value.media.cover.src,
 });
 </script>
 

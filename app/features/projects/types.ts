@@ -10,6 +10,7 @@ export interface ProjectImage {
 export type ProjectImages = [ProjectImage, ProjectImage, ProjectImage, ProjectImage];
 
 export interface ProjectMedia {
+  cover: ProjectImage;
   images: ProjectImages;
 }
 

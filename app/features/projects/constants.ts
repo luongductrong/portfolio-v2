@@ -1,7 +1,9 @@
 import type { Project } from './types';
+import { FioriCover } from '@/assets/images/projects/react-fiori-style';
+import { FunnyCodeCover } from '@/assets/images/projects/re-funnycode-frontend';
+import { Game1, Game2, Game3, Game4, GameCover } from '@/assets/images/projects/game-2048';
 import { FunnyCode1, FunnyCode2, FunnyCode3, FunnyCode4 } from '@/assets/images/projects/re-funnycode-frontend';
 import { FioriStyle1, FioriStyle2, FioriStyle3, FioriStyle4 } from '@/assets/images/projects/react-fiori-style';
-import { Game1, Game2, Game3, Game4 } from '@/assets/images/projects/game-2048';
 
 export const projects = [
   {
@@ -12,6 +14,12 @@ export const projects = [
     category: 'E-Learning Platform',
     year: '2025-2026',
     media: {
+      cover: {
+        id: 'funnycode-cover',
+        src: FunnyCodeCover,
+        alt: 'FunnyCode Learning Platform cover with bold red typography and learning technology keywords',
+        caption: 'Portfolio cover for FunnyCode Learning Platform.',
+      },
       images: [
         {
           id: 'funnycode-course-detail',
@@ -169,6 +177,12 @@ export const projects = [
     category: 'Enterprise Web Application',
     year: '2026',
     media: {
+      cover: {
+        id: 'fiori-cover',
+        src: FioriCover,
+        alt: 'React Fiori Style cover with blue SAP-inspired typography and enterprise workflow keywords',
+        caption: 'Portfolio cover for React Fiori Style.',
+      },
       images: [
         {
           id: 'fiori-attachment-list',
@@ -319,6 +333,12 @@ export const projects = [
     category: 'Web Game',
     year: '2024–2026',
     media: {
+      cover: {
+        id: 'game-2048-cover',
+        src: GameCover,
+        alt: 'Game 2048 cover with playful pink typography, puzzle tiles, and interaction keywords',
+        caption: 'Portfolio cover for Game 2048.',
+      },
       images: [
         {
           id: 'game-2048-gameplay',
@@ -372,19 +392,23 @@ export const projects = [
     objectives: [
       {
         title: 'Build faithful 2048 mechanics',
-        description: 'Implement sliding, merging, score updates, random tile spawning, win detection, and game-over detection with predictable behavior.',
+        description:
+          'Implement sliding, merging, score updates, random tile spawning, win detection, and game-over detection with predictable behavior.',
       },
       {
         title: 'Keep the engine independent',
-        description: 'Separate board rules and state transitions from React rendering so the gameplay core stays testable and framework-agnostic.',
+        description:
+          'Separate board rules and state transitions from React rendering so the gameplay core stays testable and framework-agnostic.',
       },
       {
         title: 'Make movement feel fluid',
-        description: 'Give tile movement, spawning, and merging enough visual feedback without turning animation logic into application logic.',
+        description:
+          'Give tile movement, spawning, and merging enough visual feedback without turning animation logic into application logic.',
       },
       {
         title: 'Support different play styles',
-        description: 'Offer a responsive board with keyboard controls for desktop and swipe gestures for touch devices.',
+        description:
+          'Offer a responsive board with keyboard controls for desktop and swipe gestures for touch devices.',
       },
     ],
     features: [
@@ -398,7 +422,8 @@ export const projects = [
       },
       {
         title: 'Undo and new game controls',
-        description: 'Restore the immediately previous board state or start a fresh game through focused action controls.',
+        description:
+          'Restore the immediately previous board state or start a fresh game through focused action controls.',
       },
       {
         title: 'Keyboard and touch input',
@@ -423,18 +448,24 @@ export const projects = [
     challenges: [
       {
         title: 'Animating a changing 2D board',
-        problem: 'Tiles move and merge inside a matrix, but React animations need stable elements and predictable identity across renders.',
-        solution: 'Flattened the board into uniquely identified tile objects and used Framer Motion layout animations to follow position changes without manual transform choreography.',
+        problem:
+          'Tiles move and merge inside a matrix, but React animations need stable elements and predictable identity across renders.',
+        solution:
+          'Flattened the board into uniquely identified tile objects and used Framer Motion layout animations to follow position changes without manual transform choreography.',
       },
       {
         title: 'Keeping game rules outside React',
-        problem: 'Putting board logic directly inside components or hooks would couple gameplay behavior to rendering and create unnecessary re-renders.',
-        solution: 'Built an independent GameStore with an observer-style update flow and connected it to React through useSyncExternalStore and immutable snapshots.',
+        problem:
+          'Putting board logic directly inside components or hooks would couple gameplay behavior to rendering and create unnecessary re-renders.',
+        solution:
+          'Built an independent GameStore with an observer-style update flow and connected it to React through useSyncExternalStore and immutable snapshots.',
       },
       {
         title: 'Making desktop and mobile input consistent',
-        problem: 'Keyboard events and touch gestures have different interaction models but must produce the same deterministic move behavior.',
-        solution: 'Normalized both input paths into the same store actions so the engine remains unaware of the device or control method.',
+        problem:
+          'Keyboard events and touch gestures have different interaction models but must produce the same deterministic move behavior.',
+        solution:
+          'Normalized both input paths into the same store actions so the engine remains unaware of the device or control method.',
       },
     ],
     outcomes: [],
