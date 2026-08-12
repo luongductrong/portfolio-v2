@@ -3,6 +3,7 @@ export type ProjectStatus = 'completed' | 'in-development' | 'maintained' | 'arc
 export interface ProjectImage {
   id: string;
   src: string;
+  thumbnail?: string;
   alt: string;
   caption?: string;
 }
@@ -10,6 +11,7 @@ export interface ProjectImage {
 export type ProjectImages = [ProjectImage, ProjectImage, ProjectImage, ProjectImage];
 
 export interface ProjectMedia {
+  cover: ProjectImage;
   images: ProjectImages;
 }
 

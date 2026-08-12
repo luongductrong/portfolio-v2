@@ -1,13 +1,16 @@
 <script setup lang="ts">
+import { getHost } from '@/lib/helpers/host';
 import type { ProjectImages } from '../types';
 import { ArrowLeft, ArrowRight } from '@lucide/vue';
 import type { CarouselApi } from '@/components/ui/carousel';
 
 const props = defineProps<{
+  liveUrl?: string | null;
   images: ProjectImages;
 }>();
 
 const IMAGE_COUNT = 4;
+const FALLBACK_HOST = 'ldt.is-a.dev';
 type ImageIndex = 0 | 1 | 2 | 3;
 
 const carouselApi = shallowRef<CarouselApi>();
@@ -85,7 +88,7 @@ onBeforeUnmount(() => {
                 </span>
                 <UiSafariMockup
                   :src="image.src"
-                  url="example.com"
+                  :url="getHost(props.liveUrl, FALLBACK_HOST)"
                   class="hidden h-auto w-full max-w-[46.222rem] transition-transform duration-500 motion-safe:group-hover:scale-[1.01] xl:block"
                 />
               </button>
@@ -113,7 +116,7 @@ onBeforeUnmount(() => {
             :aria-current="selectedIndex === index ? 'true' : undefined"
             @click="selectImage(index)"
           >
-            <img :src="image.src" alt="" class="size-full object-cover" />
+            <img :src="image.thumbnail ?? image.src" alt="" class="size-full object-cover" />
             <span
               class="absolute right-1.5 bottom-1.5 rounded-sm bg-background/85 px-1.5 py-0.5 text-[0.625rem] font-semibold text-foreground tabular-nums"
               aria-hidden="true"
@@ -136,13 +139,13 @@ onBeforeUnmount(() => {
         :aria-current="selectedIndex === index ? 'true' : undefined"
         @click="selectImage(index)"
       >
-        <img :src="image.src" alt="" class="size-full object-cover" />
+        <img :src="image.thumbnail ?? image.src" alt="" class="size-full object-cover" />
       </button>
     </div>
 
     <UiDialog v-model:open="previewOpen">
       <UiDialogContent
-        class="max-w-[calc(100vw-1.5rem)] gap-3 p-3 sm:max-w-6xl"
+        class="max-w-[calc(100vw-1.5rem)] gap-3 p-3 sm:max-w-6xl lg:max-w-7xl"
         :show-close-button="true"
         @keydown="handlePreviewKeydown"
       >
@@ -155,14 +158,14 @@ onBeforeUnmount(() => {
 
         <div class="flex min-h-0 flex-col gap-3">
           <div class="relative flex min-h-64 items-center justify-center overflow-hidden sm:min-h-96">
-            <div class="aspect-video w-full max-w-[133.333dvh] overflow-hidden rounded-lg">
+            <div class="aspect-video w-full max-h-[90dvh] max-w-[95dvw] overflow-hidden rounded-lg">
               <img :src="previewImage.src" :alt="previewImage.alt" class="size-full object-cover" />
             </div>
 
             <UiButton
               type="button"
               size="icon"
-              variant="outline"
+              variant="default"
               class="absolute left-3 rounded-full"
               aria-label="Previous image"
               @click="changePreview(-1)"
@@ -172,7 +175,7 @@ onBeforeUnmount(() => {
             <UiButton
               type="button"
               size="icon"
-              variant="outline"
+              variant="default"
               class="absolute right-3 rounded-full"
               aria-label="Next image"
               @click="changePreview(1)"

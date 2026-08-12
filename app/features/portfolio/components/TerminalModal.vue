@@ -42,7 +42,11 @@ watch(logs, async () => {
 <template>
   <UiDialog>
     <UiDialogTrigger as-child>
-      <UiButton variant="ghost" size="icon-sm" class="rounded-full">
+      <UiButton
+        variant="ghost"
+        size="icon-sm"
+        class="rounded-full transition-[background-color,border-color,box-shadow,transform]"
+      >
         <Terminal />
       </UiButton>
     </UiDialogTrigger>
