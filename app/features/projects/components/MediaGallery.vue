@@ -116,7 +116,7 @@ onBeforeUnmount(() => {
             :aria-current="selectedIndex === index ? 'true' : undefined"
             @click="selectImage(index)"
           >
-            <img :src="image.src" alt="" class="size-full object-cover" />
+            <img :src="image.thumbnail ?? image.src" alt="" class="size-full object-cover" />
             <span
               class="absolute right-1.5 bottom-1.5 rounded-sm bg-background/85 px-1.5 py-0.5 text-[0.625rem] font-semibold text-foreground tabular-nums"
               aria-hidden="true"
@@ -139,7 +139,7 @@ onBeforeUnmount(() => {
         :aria-current="selectedIndex === index ? 'true' : undefined"
         @click="selectImage(index)"
       >
-        <img :src="image.src" alt="" class="size-full object-cover" />
+        <img :src="image.thumbnail ?? image.src" alt="" class="size-full object-cover" />
       </button>
     </div>
 

@@ -1,9 +1,37 @@
 import type { Project } from './types';
 import { FioriCover } from '@/assets/images/projects/react-fiori-style';
 import { FunnyCodeCover } from '@/assets/images/projects/re-funnycode-frontend';
-import { Game1, Game2, Game3, Game4, GameCover } from '@/assets/images/projects/game-2048';
-import { FunnyCode1, FunnyCode2, FunnyCode3, FunnyCode4 } from '@/assets/images/projects/re-funnycode-frontend';
-import { FioriStyle1, FioriStyle2, FioriStyle3, FioriStyle4 } from '@/assets/images/projects/react-fiori-style';
+import {
+  Game1,
+  Game2,
+  Game3,
+  Game4,
+  GameCover,
+  GameThumbnail1,
+  GameThumbnail2,
+  GameThumbnail3,
+  GameThumbnail4,
+} from '@/assets/images/projects/game-2048';
+import {
+  FunnyCode1,
+  FunnyCode2,
+  FunnyCode3,
+  FunnyCode4,
+  FunnyCodeThumbnail1,
+  FunnyCodeThumbnail2,
+  FunnyCodeThumbnail3,
+  FunnyCodeThumbnail4,
+} from '@/assets/images/projects/re-funnycode-frontend';
+import {
+  FioriStyle1,
+  FioriStyle2,
+  FioriStyle3,
+  FioriStyle4,
+  FioriThumbnail1,
+  FioriThumbnail2,
+  FioriThumbnail3,
+  FioriThumbnail4,
+} from '@/assets/images/projects/react-fiori-style';
 
 export const projects = [
   {
@@ -24,24 +52,28 @@ export const projects = [
         {
           id: 'funnycode-course-detail',
           src: FunnyCode4,
+          thumbnail: FunnyCodeThumbnail4,
           alt: 'FunnyCode course detail page with a video preview, lesson sections, and enrollment information',
           caption: 'Course detail and learning content organized into lessons and sections.',
         },
         {
           id: 'funnycode-course-catalog',
           src: FunnyCode2,
+          thumbnail: FunnyCodeThumbnail2,
           alt: 'FunnyCode course catalog with search, filters, ratings, and pricing',
           caption: 'Course discovery with category filters, ratings, and pricing.',
         },
         {
           id: 'funnycode-ai-roadmap',
           src: FunnyCode3,
+          thumbnail: FunnyCodeThumbnail3,
           alt: 'FunnyCode AI roadmap form for generating a personalized learning path',
           caption: 'AI-assisted roadmap generation based on a learner’s goals and existing skills.',
         },
         {
           id: 'funnycode-login',
           src: FunnyCode1,
+          thumbnail: FunnyCodeThumbnail1,
           alt: 'FunnyCode login screen with email and third-party sign-in options',
           caption: 'Authentication entry point for the learning platform.',
         },
@@ -187,24 +219,28 @@ export const projects = [
         {
           id: 'fiori-attachment-list',
           src: FioriStyle2,
+          thumbnail: FioriThumbnail2,
           alt: 'SAP Fiori-style attachment list with search filters, file metadata, and version information',
           caption: 'Attachment discovery with filters, metadata, versioning, and familiar Fiori actions.',
         },
         {
           id: 'fiori-attachment-detail',
           src: FioriStyle3,
+          thumbnail: FioriThumbnail3,
           alt: 'Attachment detail screen showing metadata, audit information, preview, and version history',
           caption: 'Attachment details with preview, audit information, linked objects, and version history.',
         },
         {
           id: 'fiori-launchpad',
           src: FioriStyle1,
+          thumbnail: FioriThumbnail1,
           alt: 'SAP Fiori-style launchpad with business and administration tiles',
           caption: 'Role-aware launchpad connecting business and system administration workflows.',
         },
         {
           id: 'fiori-admin-dashboard',
           src: FioriStyle4,
+          thumbnail: FioriThumbnail4,
           alt: 'SAP Fiori-style administration dashboard with attachment, object, user, and configuration metrics',
           caption: 'Administrative overview of attachments, business objects, users, and configuration health.',
         },
@@ -343,24 +379,28 @@ export const projects = [
         {
           id: 'game-2048-gameplay',
           src: Game2,
+          thumbnail: GameThumbnail2,
           alt: 'Game 2048 mid-game board showing animated numbered tiles and the current score',
           caption: 'The core 4x4 gameplay experience with responsive tile movement and score tracking.',
         },
         {
           id: 'game-2048-start',
           src: Game1,
+          thumbnail: GameThumbnail1,
           alt: 'Game 2048 starting board with two tiles, score controls, and a saved high score',
           caption: 'A clean starting state with new game, undo, and high score controls.',
         },
         {
           id: 'game-2048-new-game',
           src: Game3,
+          thumbnail: GameThumbnail3,
           alt: 'Game 2048 confirmation dialog for starting a new game',
           caption: 'A focused confirmation flow for restarting the current game.',
         },
         {
           id: 'game-2048-game-over',
           src: Game4,
+          thumbnail: GameThumbnail4,
           alt: 'Game 2048 game over dialog displayed over a full board',
           caption: 'The game over state when no valid moves remain.',
         },
