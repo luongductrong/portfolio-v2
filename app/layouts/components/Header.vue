@@ -1,10 +1,28 @@
 <script setup lang="ts">
+import { Menu, X } from '@lucide/vue';
+
 const navItems: { id: string; label: string; href: string }[] = [
   { id: 'about', label: 'About', href: '/' },
   { id: 'projects', label: 'Projects', href: '/projects' },
   { id: 'skills', label: 'Skills', href: '/skills' },
   { id: 'contact', label: 'Contact', href: '/contact' },
 ];
+
+const route = useRoute();
+const mobileMenuOpen = ref(false);
+
+const isActive = (href: string) => {
+  if (href === '/') return route.path === href;
+
+  return route.path === href || route.path.startsWith(`${href}/`);
+};
+
+watch(
+  () => route.fullPath,
+  () => {
+    mobileMenuOpen.value = false;
+  },
+);
 </script>
 
 <template>
@@ -17,22 +35,71 @@ const navItems: { id: string; label: string; href: string }[] = [
       <div>
         <IconSignature class="w-22 absolute inset-y-0 z-41" aria-label="Logo" />
       </div>
-      <nav>
+      <nav class="hidden md:block" aria-label="Primary navigation">
         <ul class="flex items-center justify-between gap-8">
           <li v-for="item in navItems" :key="item.id" class="group font-medium text-muted-foreground">
             <NuxtLink
               :to="item.href"
               class="text-sm transition-colors duration-300 group-hover:text-foreground group-hover:font-bold p-1.5 pb-px rounded"
-              active-class="font-bold border-b-3 border-muted-foreground group-hover:border-foreground"
-              >{{ item.label }}</NuxtLink
+              :class="isActive(item.href) ? 'font-bold border-b-3 border-muted-foreground group-hover:border-foreground' : ''"
+              :aria-current="isActive(item.href) ? 'page' : undefined"
             >
+              {{ item.label }}
+            </NuxtLink>
           </li>
         </ul>
       </nav>
       <div class="flex items-center justify-between gap-2 sm:gap-3">
-        <PortfolioTerminalModal />
+        <div class="hidden md:block">
+          <PortfolioTerminalModal />
+        </div>
         <LayoutLanguageDropdown />
         <LayoutThemeDropdown />
+
+        <UiDrawer v-model:open="mobileMenuOpen" swipe-direction="up">
+          <UiDrawerTrigger as-child>
+            <UiButton variant="ghost" size="icon-sm" class="rounded-full md:hidden" aria-label="Open navigation menu">
+              <Menu aria-hidden="true" />
+            </UiButton>
+          </UiDrawerTrigger>
+
+          <UiDrawerContent class="md:hidden">
+            <UiDrawerHeader class="sr-only">
+              <UiDrawerTitle>Navigation</UiDrawerTitle>
+              <UiDrawerDescription>Explore my work, skills, and ways to get in touch.</UiDrawerDescription>
+            </UiDrawerHeader>
+
+            <div class="relative flex h-15 items-center justify-between border-b px-4">
+              <IconSignature class="w-22 absolute inset-y-0" aria-label="Logo" />
+              <UiDrawerClose as-child>
+                <UiButton
+                  variant="ghost"
+                  size="icon-sm"
+                  class="rounded-full absolute right-4"
+                  aria-label="Close navigation menu"
+                >
+                  <X aria-hidden="true" />
+                </UiButton>
+              </UiDrawerClose>
+            </div>
+
+            <nav class="mx-auto w-full max-w-lg p-4" aria-label="Mobile navigation">
+              <ul class="flex flex-col">
+                <li v-for="item in navItems" :key="item.id" class="border-b last:border-b-0">
+                  <NuxtLink
+                    :to="item.href"
+                    class="block rounded-md px-2 py-3 text-base font-semibold transition-colors hover:bg-accent hover:text-accent-foreground"
+                    :class="isActive(item.href) ? 'text-primary' : 'text-foreground'"
+                    :aria-current="isActive(item.href) ? 'page' : undefined"
+                    @click="mobileMenuOpen = false"
+                  >
+                    {{ item.label }}
+                  </NuxtLink>
+                </li>
+              </ul>
+            </nav>
+          </UiDrawerContent>
+        </UiDrawer>
       </div>
     </LayoutContainer>
   </header>
