@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: production
-      url: https://${{ github.repository_owner }}.github.io
+      url: https://ldt.is-a.dev
 
     steps:
       - name: Check out source
@@ -50,3 +50,4 @@ jobs:
           external_repository: ${{ github.repository_owner }}/${{ github.repository_owner }}.github.io
           publish_branch: gh-pages
           publish_dir: ./.output/public
+          cname: ldt.is-a.dev

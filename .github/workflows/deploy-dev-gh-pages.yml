@@ -47,9 +47,6 @@ jobs:
           NUXT_APP_BASE_URL: ${{ steps.pages.outputs.base_path }}/
           NUXT_PUBLIC_TURNSTILE_SITE_KEY: ${{ vars.NUXT_PUBLIC_TURNSTILE_SITE_KEY }}
 
-      - name: Remove external deployment CNAME
-        run: rm -f .output/public/CNAME
-
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v5
         with:
