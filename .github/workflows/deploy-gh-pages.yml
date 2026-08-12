@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: production
-      url: https://ldt.is-a.dev/
+      url: ${{ vars.NUXT_PUBLIC_SITE_URL }}
 
     steps:
       - name: Check out source
@@ -41,6 +41,7 @@ jobs:
       - name: Generate static site
         run: pnpm generate
         env:
+          NUXT_PUBLIC_SITE_URL: ${{ vars.NUXT_PUBLIC_SITE_URL }}
           NUXT_PUBLIC_TURNSTILE_SITE_KEY: ${{ vars.NUXT_PUBLIC_TURNSTILE_SITE_KEY }}
 
       - name: Deploy
@@ -50,4 +51,4 @@ jobs:
           external_repository: ${{ github.repository_owner }}/${{ github.repository_owner }}.github.io
           publish_branch: gh-pages
           publish_dir: ./.output/public
-          cname: ldt.is-a.dev
+          cname: ${{ vars.CNAME }}
