@@ -40,9 +40,9 @@ const props = withDefaults(defineProps<Props>(), {
           <UiBadge class="border-background/15 bg-background/85 text-foreground backdrop-blur-sm" variant="outline">
             {{ props.category }}
           </UiBadge>
-          <span class="rounded bg-background/85 px-2 py-1 text-xs font-medium text-foreground backdrop-blur-sm">
+          <UiBadge class="border-background/15 bg-background/85 text-foreground backdrop-blur-sm" variant="outline">
             {{ props.year }}
-          </span>
+          </UiBadge>
         </div>
       </div>
 

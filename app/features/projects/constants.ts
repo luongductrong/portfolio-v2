@@ -79,7 +79,7 @@ export const projects = [
       'FunnyCode is an online learning platform for programming that helps learners move from course discovery to structured study and practical application in one responsive web experience.',
       'The product brings together searchable courses, detailed lesson delivery, video and document-based materials, account access, purchase flows, learner progress, and an AI-assisted roadmap workflow.',
       'Its feature-oriented frontend supports a broad learning product with server-rendered content, cached client data, rich educational content, and realtime platform integrations.',
-      'A recent owner-provided seven-day production snapshot recorded approximately 400 visitors, 2.8K page views, and 56K edge requests. These figures describe traffic, not performance benchmarks.',
+      'A recent 7-day production snapshot recorded approximately 400 visitors, 2.8K page views, and 56K edge requests. Note: These figures represent traffic volume, not performance benchmarks.',
     ],
     objectives: [
       {
@@ -303,7 +303,7 @@ export const projects = [
       },
     ],
     responsibilities: [
-      'Acted as the primary maintainer for the frontend repository and owned the technical direction, architecture, and core technology choices.',
+      'Led frontend development as the primary maintainer, owning the technical direction, architecture, and core technology choices.',
       'Designed the initial interface direction and brought the business and administration screens to their final UI and interaction form.',
       'Built the React and Vite application around SAP UI5 Web Components, Tailwind CSS, React Router, React Query, and Zustand.',
       'Worked with the backend team to define the OData v4 contracts and implemented the shared Axios integration layer, including SAP client context and CSRF token handling.',
