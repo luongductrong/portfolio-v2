@@ -1,0 +1,9 @@
+export { default as Portfolio1 } from './portfolio-1.png';
+export { default as Portfolio2 } from './portfolio-2.png';
+export { default as Portfolio3 } from './portfolio-3.png';
+export { default as Portfolio4 } from './portfolio-4.png';
+export { default as PortfolioCover } from './portfolio-cover.png';
+export { default as PortfolioThumbnail1 } from './thumbnail-1.png';
+export { default as PortfolioThumbnail2 } from './thumbnail-2.png';
+export { default as PortfolioThumbnail3 } from './thumbnail-3.png';
+export { default as PortfolioThumbnail4 } from './thumbnail-4.png';

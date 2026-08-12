@@ -1,37 +1,17 @@
 import type { Project } from './types';
 import { FioriCover } from '@/assets/images/projects/react-fiori-style';
 import { FunnyCodeCover } from '@/assets/images/projects/re-funnycode-frontend';
-import {
-  Game1,
-  Game2,
-  Game3,
-  Game4,
-  GameCover,
-  GameThumbnail1,
-  GameThumbnail2,
-  GameThumbnail3,
-  GameThumbnail4,
-} from '@/assets/images/projects/game-2048';
-import {
-  FunnyCode1,
-  FunnyCode2,
-  FunnyCode3,
-  FunnyCode4,
-  FunnyCodeThumbnail1,
-  FunnyCodeThumbnail2,
-  FunnyCodeThumbnail3,
-  FunnyCodeThumbnail4,
-} from '@/assets/images/projects/re-funnycode-frontend';
-import {
-  FioriStyle1,
-  FioriStyle2,
-  FioriStyle3,
-  FioriStyle4,
-  FioriThumbnail1,
-  FioriThumbnail2,
-  FioriThumbnail3,
-  FioriThumbnail4,
-} from '@/assets/images/projects/react-fiori-style';
+import { FioriThumbnail1, FioriThumbnail2 } from '@/assets/images/projects/react-fiori-style';
+import { FioriThumbnail3, FioriThumbnail4 } from '@/assets/images/projects/react-fiori-style';
+import { PortfolioThumbnail1, PortfolioThumbnail2 } from '@/assets/images/projects/portfolio-v2';
+import { PortfolioThumbnail3, PortfolioThumbnail4 } from '@/assets/images/projects/portfolio-v2';
+import { GameThumbnail2, GameThumbnail3, GameThumbnail4 } from '@/assets/images/projects/game-2048';
+import { FunnyCodeThumbnail1, FunnyCodeThumbnail2 } from '@/assets/images/projects/re-funnycode-frontend';
+import { FunnyCodeThumbnail3, FunnyCodeThumbnail4 } from '@/assets/images/projects/re-funnycode-frontend';
+import { Game1, Game2, Game3, Game4, GameCover, GameThumbnail1 } from '@/assets/images/projects/game-2048';
+import { FunnyCode1, FunnyCode2, FunnyCode3, FunnyCode4 } from '@/assets/images/projects/re-funnycode-frontend';
+import { FioriStyle1, FioriStyle2, FioriStyle3, FioriStyle4 } from '@/assets/images/projects/react-fiori-style';
+import { Portfolio1, Portfolio2, Portfolio3, Portfolio4, PortfolioCover } from '@/assets/images/projects/portfolio-v2';
 
 export const projects = [
   {
@@ -367,7 +347,7 @@ export const projects = [
     summary:
       'A responsive 2048 puzzle game with smooth tile animations, undo support, persistent high scores, and touch-friendly controls.',
     category: 'Web Game',
-    year: '2024–2026',
+    year: '2024-2026',
     media: {
       cover: {
         id: 'game-2048-cover',
@@ -412,7 +392,7 @@ export const projects = [
     },
     metadata: {
       role: 'Solo Developer',
-      timeline: 'Nov 2024 – Aug 2026',
+      timeline: 'Nov 2024 - Aug 2026',
       status: 'maintained',
       teamSize: 'Solo project',
       platform: 'Responsive web game',
@@ -506,6 +486,162 @@ export const projects = [
           'Keyboard events and touch gestures have different interaction models but must produce the same deterministic move behavior.',
         solution:
           'Normalized both input paths into the same store actions so the engine remains unaware of the device or control method.',
+      },
+    ],
+    outcomes: [],
+  },
+  {
+    slug: 'portfolio-v2',
+    title: 'Portfolio v2',
+    summary:
+      'A personal developer portfolio that presents selected projects, technical capabilities, and contact pathways through a fast, responsive static website.',
+    category: 'Portfolio Website',
+    year: '2026',
+    media: {
+      cover: {
+        id: 'portfolio-v2-cover',
+        src: PortfolioCover,
+        alt: 'Portfolio v2 cover featuring green developer typography, technology labels, a terminal prompt, and an orbital web interface motif',
+        caption:
+          'Portfolio v2 visual identity combining monospaced typography, technical grid elements, and the project’s green palette.',
+      },
+      images: [
+        {
+          id: 'portfolio-v2-home',
+          src: Portfolio1,
+          thumbnail: PortfolioThumbnail1,
+          alt: 'Portfolio v2 home page with developer introduction, availability status, and project call to action',
+          caption:
+            'A focused introduction that communicates role, availability, and the primary path into selected work.',
+        },
+        {
+          id: 'portfolio-v2-projects',
+          src: Portfolio2,
+          thumbnail: PortfolioThumbnail2,
+          alt: 'Portfolio v2 projects page showing a responsive archive of project case studies',
+          caption: 'The project archive turns selected work into structured, detailed case studies.',
+        },
+        {
+          id: 'portfolio-v2-skills',
+          src: Portfolio3,
+          thumbnail: PortfolioThumbnail3,
+          alt: 'Portfolio v2 skills page organizing languages, frontend technologies, databases, and delivery tools',
+          caption: 'Technical capabilities grouped by how they contribute to product delivery.',
+        },
+        {
+          id: 'portfolio-v2-contact',
+          src: Portfolio4,
+          thumbnail: PortfolioThumbnail4,
+          alt: 'Portfolio v2 contact page with inquiry form, direct email access, and professional network links',
+          caption: 'A clear contact pathway combining a protected inquiry form with direct professional links.',
+        },
+      ],
+    },
+    links: {
+      demo: 'https://luongductrong.dev',
+      source: 'https://github.com/luongductrong/portfolio-v2',
+    },
+    metadata: {
+      role: 'Creator / Frontend Developer',
+      timeline: 'Jul 2026 - Present',
+      status: 'maintained',
+      teamSize: 'Solo project',
+      platform: 'Responsive static website',
+    },
+    stack: [
+      { label: 'Frontend', items: ['Nuxt 4', 'Vue 3', 'TypeScript'] },
+      { label: 'UI & Motion', items: ['Tailwind CSS 4', 'shadcn-nuxt', 'Reka UI', 'Motion for Vue'] },
+      { label: 'Experience', items: ['VueUse', 'Nuxt Color Mode', 'Nuxt Fonts'] },
+      { label: 'Delivery & Services', items: ['GitHub Actions', 'GitHub Pages', 'Formspree', 'Cloudflare Turnstile'] },
+    ],
+    overview: [
+      'Portfolio v2 is my personal developer portfolio and the primary place where I present selected projects, technical capabilities, and professional context to recruiters and potential collaborators.',
+      'The experience is organized around clear browsing paths: visitors can understand my focus from the home page, explore structured project case studies, review the technologies I work with, and reach me through a dedicated contact flow.',
+      'Nuxt generates the application as a static site, keeping deployment simple and delivery CDN-friendly while still supporting dynamic-feeling interactions, theme preferences, responsive layouts, and animated transitions.',
+      'The current release is an actively maintained MVP. It establishes the content architecture and visual direction first, leaving performance measurement and further optimization for later iterations.',
+    ],
+    objectives: [
+      {
+        title: 'Present work with context',
+        description:
+          'Turn individual projects into structured case studies that explain product goals, engineering decisions, responsibilities, and outcomes.',
+      },
+      {
+        title: 'Create a clear professional identity',
+        description:
+          'Communicate my frontend focus, current technical capabilities, and availability through a cohesive visual system.',
+      },
+      {
+        title: 'Keep delivery lightweight',
+        description:
+          'Use static generation and automated deployment to provide a reliable public site without maintaining an application server.',
+      },
+      {
+        title: 'Make contact straightforward',
+        description:
+          'Give recruiters and collaborators direct ways to start a conversation while protecting the public form from automated spam.',
+      },
+    ],
+    features: [
+      {
+        title: 'Structured project case studies',
+        description:
+          'Present project media, metadata, stack, objectives, features, contributions, engineering challenges, and outcomes in a reusable detail layout.',
+      },
+      {
+        title: 'Responsive project archive',
+        description:
+          'Organize selected work into responsive cards with concise context and direct access to each case study.',
+      },
+      {
+        title: 'Technical capability overview',
+        description:
+          'Group languages, frameworks, platforms, databases, and delivery tools by their role in product development.',
+      },
+      {
+        title: 'System-aware color modes',
+        description:
+          'Support light and dark themes, respect the visitor’s system preference, and persist explicit theme choices.',
+      },
+      {
+        title: 'Animated interface feedback',
+        description:
+          'Use restrained entrance, hover, and route transition motion to reinforce hierarchy without distracting from the content.',
+      },
+      {
+        title: 'Protected contact workflow',
+        description:
+          'Submit inquiries through Formspree with Cloudflare Turnstile verification and clear loading, success, and error feedback.',
+      },
+    ],
+    responsibilities: [
+      'Designed and developed the portfolio as a solo project using Nuxt, Vue, TypeScript, and Tailwind CSS.',
+      'Created the visual system, responsive page layouts, navigation, theme behavior, and interaction patterns.',
+      'Designed the reusable project data model and case study components used to present multiple types of work consistently.',
+      'Implemented the Formspree contact workflow with Cloudflare Turnstile protection and user-facing submission feedback.',
+      'Configured static generation and GitHub Actions workflows for automated GitHub Pages deployment.',
+    ],
+    challenges: [
+      {
+        title: 'Keeping varied case studies consistent',
+        problem:
+          'The portfolio needs to describe products with different domains, stacks, media, responsibilities, and evidence without making each project page a one-off implementation.',
+        solution:
+          'Defined a typed project schema and reusable detail sections so every case study follows a consistent narrative while retaining project-specific content and media.',
+      },
+      {
+        title: 'Protecting a public contact form',
+        problem:
+          'A public contact endpoint needs spam resistance, but an intrusive challenge would add friction for recruiters and collaborators.',
+        solution:
+          'Combined Formspree submission with Cloudflare Turnstile verification and exposed explicit pending, success, and failure states around the request.',
+      },
+      {
+        title: 'Deploying dynamic routes as static pages',
+        problem:
+          'Project detail pages use dynamic slugs, while GitHub Pages serves pre-generated files and cannot resolve application routes on a server.',
+        solution:
+          'Kept project content available at build time and used Nuxt static generation so discoverable project links are emitted as static routes for deployment.',
       },
     ],
     outcomes: [],
