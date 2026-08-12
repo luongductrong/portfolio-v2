@@ -5,7 +5,7 @@ import { FileUser, ArrowRight } from '@lucide/vue';
 
 <template>
   <section
-    class="min-h-[calc(100dvh-8.75rem)] w-full py-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center bg-background relative isolate"
+    class="min-h-[calc(100dvh-8.75rem)] w-full py-20 grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-24 items-center bg-background relative isolate"
   >
     <div aria-hidden="true" class="grid-bg">
       <div class="grid-overlay-left" />

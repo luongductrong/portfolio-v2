@@ -32,16 +32,18 @@ watch(
     <LayoutContainer
       class="flex justify-between items-center gap-8 py-2 h-15 animate-in fade-in slide-in-from-bottom-15 duration-1000 motion-reduce:slide-in-from-bottom-0 motion-reduce:duration-500"
     >
-      <div>
+      <NuxtLink to="/">
         <IconSignature class="w-22 absolute inset-y-0 z-41" aria-label="Logo" />
-      </div>
+      </NuxtLink>
       <nav class="hidden md:block" aria-label="Primary navigation">
         <ul class="flex items-center justify-between gap-8">
           <li v-for="item in navItems" :key="item.id" class="group font-medium text-muted-foreground">
             <NuxtLink
               :to="item.href"
               class="text-sm transition-colors duration-300 group-hover:text-foreground group-hover:font-bold p-1.5 pb-px rounded"
-              :class="isActive(item.href) ? 'font-bold border-b-3 border-muted-foreground group-hover:border-foreground' : ''"
+              :class="
+                isActive(item.href) ? 'font-bold border-b-3 border-muted-foreground group-hover:border-foreground' : ''
+              "
               :aria-current="isActive(item.href) ? 'page' : undefined"
             >
               {{ item.label }}
