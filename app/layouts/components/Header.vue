@@ -23,7 +23,11 @@ const handleMobileNavigation = async function (href: string) {
   await nextTick();
 
   requestAnimationFrame(() => {
-    navigateTo(href);
+    requestAnimationFrame(() => {
+      if (route.path !== href) {
+        void navigateTo(href);
+      }
+    });
   });
 };
 
