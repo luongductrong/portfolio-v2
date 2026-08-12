@@ -25,7 +25,12 @@ const themeIcon = computed(() => (colorMode.value === 'dark' ? Moon : Sun));
 <template>
   <UiDropdownMenu :modal="false">
     <UiDropdownMenuTrigger as-child>
-      <UiButton variant="ghost" size="icon-sm" aria-label="Change theme" class="rounded-full">
+      <UiButton
+        variant="ghost"
+        size="icon-sm"
+        aria-label="Change theme"
+        class="rounded-full transition-[background-color,border-color,box-shadow,transform]"
+      >
         <ClientOnly>
           <component :is="themeIcon" aria-hidden="true" />
           <template #fallback>

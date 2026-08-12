@@ -17,6 +17,16 @@ const isActive = (href: string) => {
   return route.path === href || route.path.startsWith(`${href}/`);
 };
 
+const handleMobileNavigation = async function (href: string) {
+  mobileMenuOpen.value = false;
+
+  await nextTick();
+
+  requestAnimationFrame(() => {
+    navigateTo(href);
+  });
+};
+
 watch(
   () => route.fullPath,
   () => {
@@ -60,7 +70,12 @@ watch(
 
         <UiDrawer v-model:open="mobileMenuOpen" swipe-direction="up">
           <UiDrawerTrigger as-child>
-            <UiButton variant="ghost" size="icon-sm" class="rounded-full md:hidden" aria-label="Open navigation menu">
+            <UiButton
+              variant="ghost"
+              size="icon-sm"
+              class="rounded-full transition-[background-color,border-color,box-shadow,transform] md:hidden"
+              aria-label="Open navigation menu"
+            >
               <Menu aria-hidden="true" />
             </UiButton>
           </UiDrawerTrigger>
@@ -77,7 +92,7 @@ watch(
                 <UiButton
                   variant="ghost"
                   size="icon-sm"
-                  class="rounded-full absolute right-4"
+                  class="absolute right-4 rounded-full transition-[background-color,border-color,box-shadow,transform]"
                   aria-label="Close navigation menu"
                 >
                   <X aria-hidden="true" />
@@ -88,15 +103,15 @@ watch(
             <nav class="mx-auto w-full max-w-lg p-4" aria-label="Mobile navigation">
               <ul class="flex flex-col">
                 <li v-for="item in navItems" :key="item.id" class="border-b last:border-b-0">
-                  <NuxtLink
-                    :to="item.href"
-                    class="block rounded-md px-2 py-3 text-base font-semibold transition-colors hover:bg-accent hover:text-accent-foreground"
+                  <button
+                    type="button"
+                    class="block w-full rounded-md px-2 py-3 text-left text-base font-semibold transition-colors hover:bg-accent hover:text-accent-foreground"
                     :class="isActive(item.href) ? 'text-primary' : 'text-foreground'"
                     :aria-current="isActive(item.href) ? 'page' : undefined"
-                    @click="mobileMenuOpen = false"
+                    @click="handleMobileNavigation(item.href)"
                   >
                     {{ item.label }}
-                  </NuxtLink>
+                  </button>
                 </li>
               </ul>
             </nav>

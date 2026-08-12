@@ -8,7 +8,13 @@ const onClick = function () {
 </script>
 
 <template>
-  <UiButton variant="ghost" size="icon-sm" aria-label="Change language" class="rounded-full" @click="onClick">
+  <UiButton
+    variant="ghost"
+    size="icon-sm"
+    aria-label="Change language"
+    class="rounded-full transition-[background-color,border-color,box-shadow,transform]"
+    @click="onClick"
+  >
     <Languages aria-hidden="true" />
   </UiButton>
 </template>
