@@ -14,7 +14,9 @@ import { getProjectTechnologies } from '../helpers';
       note="From interface to implementation."
     />
 
-    <div class="mb-6 mt-14 flex items-end justify-between gap-6 border-b pb-4 sm:mt-18">
+    <div
+      class="mb-6 mt-14 flex items-end justify-between gap-6 border-b pb-4 sm:mt-18 animate-in fade-in slide-in-from-top-15 duration-550 motion-reduce:slide-in-from-top-0 motion-reduce:duration-300"
+    >
       <div>
         <p class="text-xs font-semibold uppercase text-muted-foreground">Project archive</p>
         <p class="mt-1 text-sm text-foreground">Featured builds and experiments</p>

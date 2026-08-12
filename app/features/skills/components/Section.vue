@@ -14,7 +14,10 @@ import { learningGroups, skillGroups } from '../constants';
       note="Built through production work, sharpened through continuous learning."
     />
 
-    <section class="mt-14 sm:mt-16" aria-labelledby="current-stack-heading">
+    <section
+      class="mt-14 sm:mt-16 animate-in fade-in slide-in-from-bottom-5 duration-550 motion-reduce:slide-in-from-bottom-0 motion-reduce:duration-300"
+      aria-labelledby="current-stack-heading"
+    >
       <div class="mb-7 flex items-center gap-3">
         <Layers3 class="size-7 text-primary" aria-hidden="true" />
         <h2 id="current-stack-heading" class="text-2xl font-bold sm:text-3xl">Current Stack</h2>
@@ -32,7 +35,10 @@ import { learningGroups, skillGroups } from '../constants';
       </div>
     </section>
 
-    <section class="mt-14 sm:mt-16" aria-labelledby="learning-heading">
+    <section
+      class="mt-14 sm:mt-16 animate-in fade-in slide-in-from-bottom-5 duration-550 motion-reduce:slide-in-from-bottom-0 motion-reduce:duration-300"
+      aria-labelledby="learning-heading"
+    >
       <div class="mb-7 flex items-center gap-3">
         <Compass class="size-7 text-primary" aria-hidden="true" />
         <h2 id="learning-heading" class="text-2xl font-bold sm:text-3xl">Expanding Horizons</h2>
