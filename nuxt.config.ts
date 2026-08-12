@@ -7,6 +7,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       siteUrl: 'http://localhost:3000/',
+      turnstileSiteKey: 'xxxx.turnstile.site.key.xxxx',
     },
   },
   css: ['@/assets/css/tailwind.css'],

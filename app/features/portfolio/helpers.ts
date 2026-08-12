@@ -1,9 +1,14 @@
+import { milestones } from './constants';
+import { projects } from '@/features/projects/constants';
+import { gmail, networkSocials } from '@/features/contact/constants';
+import { learningGroups, skillGroups } from '@/features/skills/constants';
+
 // @export
 export const COMMANDS: Record<string, { name: string; description: string; output: string }> = {
   help: {
     name: 'help',
     description: '',
-    output: `Available commands:\n  about      - Display bio & summary\n  projects   - List featured systems & architecture\n  skills     - Display technical stack\n  contact    - Get direct email & connection status\n  resume     - View career experience\n  clear      - Clear terminal screen\n  whoami     - Print current session user`,
+    output: `Available commands:\n  about      - Display bio & summary\n  projects   - List featured systems & architecture\n  skills     - Display technical stack\n  contact    - Get contact information\n  resume     - View career experience\n  clear      - Clear terminal screen\n  whoami     - Print current session user`,
   },
   about: {
     name: 'about',
@@ -13,29 +18,43 @@ export const COMMANDS: Record<string, { name: string; description: string; outpu
   projects: {
     name: 'projects',
     description: 'List featured systems & architecture',
-    output: ['Project 1', 'Project 2', 'Project 3'].map((p) => `• ${p} [Project Category] - Project status`).join('\n'),
+    output: projects
+      .map((project) => `• ${project.title} [${project.category}] - ${project.metadata.status}`)
+      .join('\n'),
   },
   skills: {
     name: 'skills',
     description: 'Display technical stack',
-    output: 'Skill 1, Skill 2, Skill 3, Skill 4, Skill 5',
+    output: [
+      ...skillGroups.map((group) => `${group.title}: ${group.skills.join(', ')}`),
+      '',
+      'Currently learning:',
+      ...learningGroups.map((group) => `${group.title}: ${group.skills.join(', ')}`),
+    ].join('\n'),
   },
   contact: {
     name: 'contact',
-    description: 'Get direct email & connection status',
-    output: `Email: email@example.com`,
+    description: 'Get contact information',
+    output: [`Email: ${gmail.value}`, ...networkSocials.map((social) => `${social.platform}: ${social.url}`)].join(
+      '\n',
+    ),
   },
   resume: {
     name: 'resume',
     description: 'View career experience',
-    output: `Duc Trong Luong | Front-end Developer\nExperience: 2+ Years\nSpecialization: Web Applications, Mobile Applications\nEducation: Bachelor's Degree in Software Engineering\nPortfolio: https://example.com\nLinkedIn: https://linkedin.com/in/example\nGitHub: https://github.com/example`,
+    output: milestones
+      .map(
+        (milestone) =>
+          `${milestone.title} @ ${milestone.organization}\n${milestone.period} · ${milestone.location} · ${milestone.status}\n${milestone.highlights.join(', ')}`,
+      )
+      .join('\n\n'),
   },
   whoami: { name: 'whoami', description: 'Print current session user', output: '' },
   clear: { name: 'clear', description: 'Clear terminal screen', output: '' },
 };
 
 // @export
-export const QUICK_COMMANDS = Object.keys(COMMANDS).filter((name) => name !== 'resume' && name !== 'whoami');
+export const QUICK_COMMANDS = Object.keys(COMMANDS).filter((name) => name !== 'whoami');
 
 type ExecuteCommandParams = {
   cmd: string;

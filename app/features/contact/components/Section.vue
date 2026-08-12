@@ -1,18 +1,18 @@
 <script setup lang="ts">
+import { gmail, networkSocials } from '../constants';
 import { ArrowRight, Check, Copy, Mail, Network, Terminal } from '@lucide/vue';
 
-const emailAddress = 'luongductrong2004@gmail.com';
 const copied = ref(false);
 
 async function copyEmail() {
   try {
-    await navigator.clipboard.writeText(emailAddress);
+    await navigator.clipboard.writeText(gmail.value);
     copied.value = true;
     window.setTimeout(() => {
       copied.value = false;
     }, 2000);
   } catch {
-    window.location.href = `mailto:${emailAddress}`;
+    window.location.href = gmail.url;
   }
 }
 </script>
@@ -46,10 +46,10 @@ async function copyEmail() {
           <div class="mt-5 flex min-w-0 items-center gap-2 rounded-md border bg-background p-2">
             <Mail class="ml-1 size-4 shrink-0 text-muted-foreground" aria-hidden="true" />
             <a
-              :href="`mailto:${emailAddress}`"
+              :href="gmail.url"
               class="min-w-0 flex-1 truncate text-sm transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
             >
-              {{ emailAddress }}
+              {{ gmail.value }}
             </a>
             <button
               type="button"
@@ -73,52 +73,18 @@ async function copyEmail() {
 
           <div class="grid gap-2">
             <a
-              href="https://github.com/luongductrong"
+              v-for="social in networkSocials"
+              :key="social.platform"
+              :href="social.url"
               target="_blank"
               rel="noopener noreferrer"
               class="group flex min-h-12 items-center justify-between rounded-md border border-transparent px-3 transition-colors hover:border-border hover:bg-muted focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
             >
               <span class="flex items-center gap-3 font-medium">
                 <span class="inline-flex size-8 items-center justify-center rounded border bg-background">
-                  <IconGitHub class="size-4" aria-hidden="true" />
+                  <component :is="social.icon" class="size-4" aria-hidden="true" />
                 </span>
-                GitHub
-              </span>
-              <ArrowRight
-                class="size-4 text-muted-foreground transition-transform group-hover:translate-x-1"
-                aria-hidden="true"
-              />
-            </a>
-
-            <a
-              href="https://gitlab.com/luongductrong"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="group flex min-h-12 items-center justify-between rounded-md border border-transparent px-3 transition-colors hover:border-border hover:bg-muted focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
-            >
-              <span class="flex items-center gap-3 font-medium">
-                <span class="inline-flex size-8 items-center justify-center rounded border bg-background">
-                  <IconGitLab class="size-4" aria-hidden="true" />
-                </span>
-                GitLab
-              </span>
-              <ArrowRight
-                class="size-4 text-muted-foreground transition-transform group-hover:translate-x-1"
-                aria-hidden="true"
-              />
-            </a>
-
-            <a
-              href="https://linkedin.com/in/luongductrong2004/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="group flex min-h-12 items-center justify-between rounded-md border border-transparent px-3 transition-colors hover:border-border hover:bg-muted focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
-            >
-              <span class="flex items-center gap-3 font-medium">
-                <span class="inline-flex size-8 items-center justify-center rounded border bg-background">
-                  <IconLinkedIn class="size-4" aria-hidden="true" />
-                </span>
-                LinkedIn
+                {{ social.platform }}
               </span>
               <ArrowRight
                 class="size-4 text-muted-foreground transition-transform group-hover:translate-x-1"
