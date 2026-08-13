@@ -45,6 +45,7 @@ watch(logs, async () => {
       <UiButton
         variant="ghost"
         size="icon-sm"
+        aria-label="Open Terminal"
         class="rounded-full transition-[background-color,border-color,box-shadow,transform]"
       >
         <Terminal />

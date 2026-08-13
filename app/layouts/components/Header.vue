@@ -46,8 +46,8 @@ watch(
     <LayoutContainer
       class="flex justify-between items-center gap-8 py-2 h-15 animate-in fade-in slide-in-from-bottom-15 duration-1000 motion-reduce:slide-in-from-bottom-0 motion-reduce:duration-500"
     >
-      <NuxtLink to="/">
-        <IconSignature class="w-22 absolute inset-y-0 z-41" aria-label="Logo" />
+      <NuxtLink to="/" aria-label="Home">
+        <IconSignature class="w-22 absolute inset-y-0 z-41" aria-hidden="true" />
       </NuxtLink>
       <nav class="hidden md:block" aria-label="Primary navigation">
         <ul class="flex items-center justify-between gap-8">
@@ -91,7 +91,7 @@ watch(
             </UiDrawerHeader>
 
             <div class="relative flex h-15 items-center justify-between border-b px-4">
-              <IconSignature class="w-22 absolute inset-y-0" aria-label="Logo" />
+              <IconSignature class="w-22 absolute inset-y-0" aria-hidden="true" />
               <UiDrawerClose as-child>
                 <UiButton
                   variant="ghost"
