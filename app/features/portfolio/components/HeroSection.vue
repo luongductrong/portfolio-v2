@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { Motion } from 'motion-v';
 import { FileUser, ArrowRight } from '@lucide/vue';
+
+const publicAsset = usePublicAsset();
+const resumeURL = publicAsset('CV_LuongDucTrong_FrontendDeveloper.pdf?v=1');
+// TODO: Request change URL when the resume is updated
 </script>
 
 <template>
@@ -41,8 +45,10 @@ import { FileUser, ArrowRight } from '@lucide/vue';
         <UiButton size="lg" class="rounded uppercase" as-child>
           <NuxtLink to="/projects">View my work <ArrowRight /></NuxtLink>
         </UiButton>
-        <UiShineButton class="bg-background/40 rounded uppercase" variant="outline" size="lg">
-          <FileUser />My Resume
+        <UiShineButton as-child class="bg-background/40 rounded uppercase" variant="outline" size="lg">
+          <NuxtLink :to="resumeURL" external target="_blank" rel="noopener noreferrer">
+            <FileUser />My Resume
+          </NuxtLink>
         </UiShineButton>
       </div>
     </UiBlurReveal>

@@ -3,8 +3,7 @@ import { MotionConfig } from 'motion-v';
 
 const route = useRoute();
 const config = useRuntimeConfig();
-const baseURL = config.app.baseURL;
-const publicAsset = (path) => `${baseURL}${path.replace(/^\/+/, '')}`;
+const publicAsset = usePublicAsset();
 
 const siteName = 'Duc Trong Luong';
 const siteTitle = 'Duc Trong Luong - Front-end Developer';
