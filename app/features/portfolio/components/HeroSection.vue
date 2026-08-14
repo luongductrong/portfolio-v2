@@ -66,9 +66,11 @@ const resumeURL = publicAsset('CV_LuongDucTrong_FrontendDeveloper.pdf?v=1');
 
   position: absolute;
   inset-block: 0;
+  top: 50%;
   left: 50%;
   width: 100dvw;
-  transform: translateX(-50%);
+  height: calc(100dvh - 3.75rem);
+  transform: translate(-50%, -50%);
   background-color: var(--grid-page-bg);
   background-image:
     linear-gradient(to right, var(--grid-line) 1px, transparent 1px),

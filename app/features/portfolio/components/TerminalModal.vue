@@ -52,7 +52,7 @@ watch(logs, async () => {
       </UiButton>
     </UiDialogTrigger>
 
-    <UiDialogContent class="max-w-3xl gap-0 overflow-hidden p-0 shadow-2xl sm:max-w-3xl">
+    <UiDialogContent class="font-mono max-w-3xl gap-0 overflow-hidden p-0 shadow-2xl sm:max-w-3xl">
       <UiDialogHeader class="sr-only">
         <UiDialogTitle>Terminal</UiDialogTitle>
         <UiDialogDescription>Duc Trong Luong terminal app</UiDialogDescription>

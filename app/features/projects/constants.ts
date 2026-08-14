@@ -60,7 +60,7 @@ export const projects = [
       ],
     },
     links: {
-      demo: 'https://funnycode.vn/',
+      demo: 'https://beta.funnycode.vn/',
     },
     metadata: {
       role: 'Frontend Developer / Refactor Owner',
