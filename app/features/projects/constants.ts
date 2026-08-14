@@ -26,7 +26,7 @@ export const projects = [
         id: 'funnycode-cover',
         src: FunnyCodeCover,
         alt: 'FunnyCode Learning Platform cover with bold red typography and learning technology keywords',
-        caption: 'Portfolio cover for FunnyCode Learning Platform.',
+        caption: 'FunnyCode Learning Platform.',
       },
       images: [
         {
@@ -34,28 +34,28 @@ export const projects = [
           src: FunnyCode4,
           thumbnail: FunnyCodeThumbnail4,
           alt: 'FunnyCode course detail page with a video preview, lesson sections, and enrollment information',
-          caption: 'Course detail and learning content organized into lessons and sections.',
+          caption: 'Lessons organized into clear sections.',
         },
         {
           id: 'funnycode-course-catalog',
           src: FunnyCode2,
           thumbnail: FunnyCodeThumbnail2,
           alt: 'FunnyCode course catalog with search, filters, ratings, and pricing',
-          caption: 'Course discovery with category filters, ratings, and pricing.',
+          caption: 'Course search, filters, ratings, and pricing.',
         },
         {
           id: 'funnycode-ai-roadmap',
           src: FunnyCode3,
           thumbnail: FunnyCodeThumbnail3,
           alt: 'FunnyCode AI roadmap form for generating a personalized learning path',
-          caption: 'AI-assisted roadmap generation based on a learner’s goals and existing skills.',
+          caption: 'AI roadmaps shaped by learner goals and skills.',
         },
         {
           id: 'funnycode-login',
           src: FunnyCode1,
           thumbnail: FunnyCodeThumbnail1,
           alt: 'FunnyCode login screen with email and third-party sign-in options',
-          caption: 'Authentication entry point for the learning platform.',
+          caption: 'Email and third-party authentication.',
         },
       ],
     },
@@ -76,108 +76,73 @@ export const projects = [
       { label: 'Learning & Realtime', items: ['Tiptap', 'Video.js', 'StompJS', 'SockJS'] },
     ],
     overview: [
-      'FunnyCode is an online learning platform for programming that helps learners move from course discovery to structured study and practical application in one responsive web experience.',
-      'The product brings together searchable courses, detailed lesson delivery, video and document-based materials, account access, purchase flows, learner progress, and an AI-assisted roadmap workflow.',
-      'Its feature-oriented frontend supports a broad learning product with server-rendered content, cached client data, rich educational content, and realtime platform integrations.',
-      'A recent 7-day production snapshot recorded approximately 400 visitors, 2.8K page views, and 56K edge requests. Note: These figures represent traffic volume, not performance benchmarks.',
+      'FunnyCode guides learners from course discovery to structured, practical study.',
+      'Its feature-oriented frontend combines rich content, commerce, progress tracking, and AI-assisted roadmaps.',
     ],
     objectives: [
       {
-        title: 'Make programming learning structured',
-        description:
-          'Give learners a clear path from discovering a course to working through organized lessons and practical materials.',
+        title: 'Structure the learning journey',
+        description: 'Guide learners from course discovery to practical lessons.',
       },
       {
-        title: 'Support different learning formats',
-        description:
-          'Combine video, documents, slides, rich text, and exercises inside a consistent course experience.',
+        title: 'Support rich content',
+        description: 'Unify video, documents, slides, and exercises.',
       },
       {
-        title: 'Personalize the learning journey',
-        description: 'Use learner context and existing skills to generate a more relevant AI-assisted roadmap.',
-      },
-      {
-        title: 'Connect learning with product workflows',
-        description:
-          'Make authentication, course access, purchasing, progress, and achievements work together across the platform.',
+        title: 'Personalize learning',
+        description: 'Generate roadmaps from each learner’s goals and skills.',
       },
     ],
     features: [
       {
-        title: 'Course discovery and purchase',
-        description:
-          'Browse courses with search, categories, ratings, pricing, cart, orders, packages, and promotions.',
+        title: 'Course marketplace',
+        description: 'Search, compare, and purchase courses.',
       },
       {
         title: 'Multi-format learning content',
-        description: 'Deliver structured courses containing video lessons, documents, slides, and practical exercises.',
+        description: 'Study through video, documents, slides, and exercises.',
       },
       {
         title: 'AI-assisted learning roadmap',
-        description:
-          'Generate a personalized learning path from a learner’s study context, target field, and existing skills.',
+        description: 'Build a learning path from personal goals and skills.',
       },
       {
-        title: 'Authentication and account access',
-        description:
-          'Support JWT-based sessions, device tracking, Google sign-in, and account-specific learning access.',
-      },
-      {
-        title: 'Rich educational content',
-        description:
-          'Support rich text and code-oriented learning content through an editor and lesson content system.',
-      },
-      {
-        title: 'Progress and achievements',
-        description:
-          'Organize learner progress around owned courses, points, certificates, and achievement-oriented experiences.',
+        title: 'Progress and accounts',
+        description: 'Track owned courses, progress, points, and certificates.',
       },
     ],
     responsibilities: [
-      'Owned the frontend-wide refactor across the product feature modules, moving the codebase from Next.js 14 to Next.js 16 with PPR.',
-      'Consolidated a mixed UI library setup into a consistent shadcn/ui and Tailwind CSS 4 system.',
-      'Reworked SSR and rendering boundaries to improve the delivery of content-heavy learning pages.',
-      'Reduced unnecessary client-side JavaScript and improved image loading and optimization across key routes.',
-      'Refined the core course, authentication, roadmap, and commerce experiences while keeping the product ready for continued feature development.',
+      'Led the frontend refactor from Next.js 14 to Next.js 16 with PPR.',
+      'Unified the interface with shadcn/ui and Tailwind CSS 4.',
+      'Improved rendering boundaries, client JavaScript, and image delivery.',
     ],
     challenges: [
       {
-        title: 'Representing complex course structures',
-        problem:
-          'A single course can contain multiple parts and different lesson types, while learners still need a simple and predictable way to navigate the content.',
-        solution:
-          'Organized course and lesson data into reusable domain structures and presented video, document, and slide lessons through a consistent learning surface.',
+        title: 'Complex course structures',
+        problem: 'Courses combine many sections and lesson formats.',
+        solution: 'Modeled reusable course structures behind one learning interface.',
       },
       {
-        title: 'Keeping account, access, and commerce in sync',
-        problem:
-          'Authentication, owned courses, cart activity, and orders all depend on the same user context across a large set of routes.',
-        solution:
-          'Combined centralized authentication state with cached server data and shared API handling so feature modules could respond consistently to session changes.',
-      },
-      {
-        title: 'Keeping content-heavy pages responsive',
-        problem:
-          'Course discovery and learning pages combine dynamic data, rich media, video content, and long lesson structures.',
-        solution:
-          'Used server-rendered content, focused client-side data fetching, bundle optimization, and responsive image delivery to keep the experience fast and usable.',
+        title: 'Content-heavy pages',
+        problem: 'Dynamic data, rich media, and long lessons strained delivery.',
+        solution: 'Combined server rendering, focused fetching, and optimized media.',
       },
     ],
     outcomes: [
       {
-        value: '95 / 95 / 100 / 100',
-        label: 'Lighthouse audit',
-        description: 'Performance / Accessibility / Best Practices / SEO.',
+        value: '95 / 95',
+        label: 'Performance / Accessibility',
+        description: 'Lighthouse audit.',
       },
       {
-        value: '~400 · ~2.8K',
-        label: 'Visitors / page views · 7 days',
-        description: 'Recent owner-provided production traffic snapshot.',
+        value: '100',
+        label: 'Best Practices',
+        description: 'Lighthouse audit.',
       },
       {
-        value: '~56K',
-        label: 'Edge requests · 7 days',
-        description: 'Recent owner-provided production traffic snapshot.',
+        value: '100',
+        label: 'SEO',
+        description: 'Lighthouse audit.',
       },
     ],
   },
@@ -193,7 +158,7 @@ export const projects = [
         id: 'fiori-cover',
         src: FioriCover,
         alt: 'React Fiori Style cover with blue SAP-inspired typography and enterprise workflow keywords',
-        caption: 'Portfolio cover for React Fiori Style.',
+        caption: 'React Fiori Style.',
       },
       images: [
         {
@@ -201,28 +166,28 @@ export const projects = [
           src: FioriStyle2,
           thumbnail: FioriThumbnail2,
           alt: 'SAP Fiori-style attachment list with search filters, file metadata, and version information',
-          caption: 'Attachment discovery with filters, metadata, versioning, and familiar Fiori actions.',
+          caption: 'Attachment search, metadata, and versioning.',
         },
         {
           id: 'fiori-attachment-detail',
           src: FioriStyle3,
           thumbnail: FioriThumbnail3,
           alt: 'Attachment detail screen showing metadata, audit information, preview, and version history',
-          caption: 'Attachment details with preview, audit information, linked objects, and version history.',
+          caption: 'File preview, audit data, and version history.',
         },
         {
           id: 'fiori-launchpad',
           src: FioriStyle1,
           thumbnail: FioriThumbnail1,
           alt: 'SAP Fiori-style launchpad with business and administration tiles',
-          caption: 'Role-aware launchpad connecting business and system administration workflows.',
+          caption: 'Role-aware business and administration launchpad.',
         },
         {
           id: 'fiori-admin-dashboard',
           src: FioriStyle4,
           thumbnail: FioriThumbnail4,
           alt: 'SAP Fiori-style administration dashboard with attachment, object, user, and configuration metrics',
-          caption: 'Administrative overview of attachments, business objects, users, and configuration health.',
+          caption: 'System metrics and administration tools.',
         },
       ],
     },
@@ -244,99 +209,56 @@ export const projects = [
       { label: 'External Integrations', items: ['Google Drive Picker'] },
     ],
     overview: [
-      'React Fiori Style is an enterprise frontend that streamlines file attachment operations inside an SAP environment. It gives business users a focused way to browse, upload, version, preview, and connect files to business records.',
-      'The application is organized as a role-aware portal with separate business workflows and administration tools. Users can move from a launchpad into attachment and business object areas, while administrators can manage users, configuration files, deleted attachments, and system activity.',
-      'Built with React and Vite, the application uses SAP UI5 Web Components to preserve Fiori interaction patterns while React Query, Zustand, and Axios coordinate server data, local state, and API requests across feature modules.',
-      'The frontend integrates with multiple SAP OData v4 services and is packaged for deployment into an SAP ABAP/Fiori environment. GitHub Actions automates the validation and deployment workflow for the SPA.',
+      'React Fiori Style streamlines attachment workflows inside SAP environments.',
+      'The role-aware portal connects business tools, administration, OData services, and automated Fiori deployment.',
     ],
     objectives: [
       {
         title: 'Simplify attachment operations',
-        description:
-          'Make searching, creating, updating, previewing, and versioning SAP attachments clear for everyday business users.',
+        description: 'Make attachment search, preview, and versioning intuitive.',
       },
       {
         title: 'Preserve Fiori usability',
-        description:
-          'Deliver familiar SAP interaction patterns and visual language across business and administrative screens.',
+        description: 'Keep SAP interactions familiar across every workflow.',
       },
       {
         title: 'Connect files to business context',
-        description:
-          'Allow attachments to be linked with business objects and reviewed together with their metadata and audit trail.',
-      },
-      {
-        title: 'Support safe administration',
-        description:
-          'Give authorized users visibility into system metrics, user access, configuration rules, and deleted records.',
+        description: 'Link attachments to business objects and audit data.',
       },
     ],
     features: [
       {
-        title: 'Launchpad and role-based navigation',
-        description:
-          'Start from a centralized launchpad where business and administration tiles are shown according to user access.',
+        title: 'Role-aware launchpad',
+        description: 'Show business and administration tools by access level.',
       },
       {
-        title: 'Attachment search and management',
-        description:
-          'Browse attachments in table or grid views, filter by metadata, create records, and upload new file versions.',
-      },
-      {
-        title: 'Preview, version history, and audit',
-        description:
-          'Inspect file metadata, preview documents, review version history, and follow audit information from one detail view.',
+        title: 'Attachment management',
+        description: 'Find, create, preview, and version attachments.',
       },
       {
         title: 'Business object linking',
-        description:
-          'Connect attachments to SAP business objects and inspect the relationships that give files their business context.',
+        description: 'Connect files to their SAP business context.',
       },
       {
-        title: 'Google Drive uploads',
-        description: 'Import files from Google Workspace alongside standard local file uploads.',
-      },
-      {
-        title: 'Administration dashboard',
-        description:
-          'Review system metrics and manage users, configuration files, deleted attachments, and operational information.',
+        title: 'Administration tools',
+        description: 'Manage users, configuration, deleted files, and metrics.',
       },
     ],
     responsibilities: [
-      'Led frontend development as the primary maintainer, owning the technical direction, architecture, and core technology choices.',
-      'Designed the initial interface direction and brought the business and administration screens to their final UI and interaction form.',
-      'Built the React and Vite application around SAP UI5 Web Components, Tailwind CSS, React Router, React Query, and Zustand.',
-      'Worked with the backend team to define the OData v4 contracts and implemented the shared Axios integration layer, including SAP client context and CSRF token handling.',
-      'Implemented protected administration routes, role-aware navigation, and the automated GitHub Actions workflow for deploying the SPA into the SAP Fiori environment.',
+      'Owned frontend architecture, technology choices, and interface direction.',
+      'Built the React application and shared OData v4 integration layer.',
+      'Implemented access control and automated SAP Fiori deployment.',
     ],
     challenges: [
       {
-        title: 'Recreating the Fiori experience in React',
-        problem:
-          'The application needed to feel native to an SAP environment while being built with a modern React stack and covering both business and administrative workflows.',
-        solution:
-          'Used SAP UI5 Web Components for business controls and Fiori interaction patterns, with Tailwind CSS reserved for layout, spacing, and responsive composition.',
+        title: 'Fiori in React',
+        problem: 'A modern React app still needed to feel native to SAP.',
+        solution: 'Combined UI5 controls with Tailwind-based composition.',
       },
       {
-        title: 'Working with SAP OData v4 services',
-        problem:
-          'SAP requests require client-specific parameters, CSRF protection, and consistent handling across multiple attachment, business object, user, and dashboard services.',
-        solution:
-          'Centralized API behavior in an Axios integration layer that resolves SAP context, manages CSRF token lifecycles, and keeps feature-level data hooks focused on business operations.',
-      },
-      {
-        title: 'Deploying a Vite SPA into SAP Fiori',
-        problem:
-          'The target Fiori environment did not provide a direct deployment path for the Vite application, while deep links still needed to work reliably after deployment.',
-        solution:
-          'Packaged the SPA with UI5 tooling, used HashRouter for deployment-compatible navigation, and automated validation and delivery through GitHub Actions.',
-      },
-      {
-        title: 'Supporting multiple upload sources',
-        problem:
-          'Users needed to upload files from their device or bring them directly from Google Drive without creating separate business flows.',
-        solution:
-          'Integrated the Google Drive Picker alongside local file inputs and normalized both sources into the same attachment upload workflow.',
+        title: 'SAP service integration',
+        problem: 'OData requests required SAP context and CSRF protection.',
+        solution: 'Centralized both concerns in a shared Axios layer.',
       },
     ],
     outcomes: [],
@@ -353,7 +275,7 @@ export const projects = [
         id: 'game-2048-cover',
         src: GameCover,
         alt: 'Game 2048 cover with playful pink typography, puzzle tiles, and interaction keywords',
-        caption: 'Portfolio cover for Game 2048.',
+        caption: 'Game 2048.',
       },
       images: [
         {
@@ -361,28 +283,28 @@ export const projects = [
           src: Game2,
           thumbnail: GameThumbnail2,
           alt: 'Game 2048 mid-game board showing animated numbered tiles and the current score',
-          caption: 'The core 4x4 gameplay experience with responsive tile movement and score tracking.',
+          caption: 'Responsive 4x4 gameplay and score tracking.',
         },
         {
           id: 'game-2048-start',
           src: Game1,
           thumbnail: GameThumbnail1,
           alt: 'Game 2048 starting board with two tiles, score controls, and a saved high score',
-          caption: 'A clean starting state with new game, undo, and high score controls.',
+          caption: 'New game, undo, and high score controls.',
         },
         {
           id: 'game-2048-new-game',
           src: Game3,
           thumbnail: GameThumbnail3,
           alt: 'Game 2048 confirmation dialog for starting a new game',
-          caption: 'A focused confirmation flow for restarting the current game.',
+          caption: 'New game confirmation.',
         },
         {
           id: 'game-2048-game-over',
           src: Game4,
           thumbnail: GameThumbnail4,
           alt: 'Game 2048 game over dialog displayed over a full board',
-          caption: 'The game over state when no valid moves remain.',
+          caption: 'Game over when no moves remain.',
         },
       ],
     },
@@ -404,88 +326,56 @@ export const projects = [
       { label: 'Tooling & Delivery', items: ['pnpm Workspace', 'GitHub Actions', 'GitHub Pages'] },
     ],
     overview: [
-      'Game 2048 is a modern web implementation of the classic sliding tile puzzle. Players combine matching numbers on a 4x4 board and try to reach the 2048 tile through careful moves and planning.',
-      'The experience is designed to feel immediate on both desktop and mobile, with keyboard controls, touch gestures, responsive board sizing, score feedback, and clear win and game-over states.',
-      'Its core gameplay is separated from the React view layer through a framework-agnostic TypeScript engine. A custom store exposes read-only snapshots to React, while stable tile identities allow the interface to animate movement and merges naturally.',
-      'This solo project began as an early TypeScript learning project in November 2024 and was substantially restructured in August 2026 to clarify the game engine and create a smoother animation layer.',
+      'Game 2048 brings the classic puzzle to desktop and mobile with fluid controls and feedback.',
+      'A framework-agnostic TypeScript engine keeps game rules separate from React and animation.',
     ],
     objectives: [
       {
-        title: 'Build faithful 2048 mechanics',
-        description:
-          'Implement sliding, merging, score updates, random tile spawning, win detection, and game-over detection with predictable behavior.',
+        title: 'Preserve classic mechanics',
+        description: 'Keep movement, merging, scoring, and end states predictable.',
       },
       {
         title: 'Keep the engine independent',
-        description:
-          'Separate board rules and state transitions from React rendering so the gameplay core stays testable and framework-agnostic.',
+        description: 'Separate game rules from React rendering.',
       },
       {
-        title: 'Make movement feel fluid',
-        description:
-          'Give tile movement, spawning, and merging enough visual feedback without turning animation logic into application logic.',
-      },
-      {
-        title: 'Support different play styles',
-        description:
-          'Offer a responsive board with keyboard controls for desktop and swipe gestures for touch devices.',
+        title: 'Support every device',
+        description: 'Provide responsive keyboard and touch controls.',
       },
     ],
     features: [
       {
         title: 'Classic 4x4 gameplay',
-        description: 'Slide and merge numbered tiles in four directions while working toward the 2048 tile.',
+        description: 'Slide and merge tiles toward 2048.',
       },
       {
-        title: 'Score and high score tracking',
-        description: 'Update the current score in real time and persist the best score locally in the browser.',
+        title: 'Persistent scoring',
+        description: 'Track the score and save the personal best.',
       },
       {
-        title: 'Undo and new game controls',
-        description:
-          'Restore the immediately previous board state or start a fresh game through focused action controls.',
+        title: 'Undo and restart',
+        description: 'Restore the last board or start again.',
       },
       {
-        title: 'Keyboard and touch input',
-        description: 'Play with desktop arrow keys or mobile swipe gestures using the same game engine.',
-      },
-      {
-        title: 'Win and game-over states',
-        description: 'Use modal feedback to make reaching 2048 and running out of valid moves easy to understand.',
-      },
-      {
-        title: 'Animated tile presentation',
-        description: 'Use stable tile identities and layout animation to make movement and merges feel continuous.',
+        title: 'Fluid tile animation',
+        description: 'Animate movement, spawning, and merges naturally.',
       },
     ],
     responsibilities: [
-      'Architected the framework-agnostic TypeScript game engine around Board, Line, Tile, and GameStore responsibilities.',
-      'Developed the React frontend and custom hooks that synchronize engine snapshots with the rendered board.',
-      'Designed the tile animation layer so movement and merges could remain fluid without duplicating game rules in UI code.',
-      'Configured the pnpm workspace, Vite build process, and GitHub Actions deployment to GitHub Pages.',
-      'Reworked the project in August 2026 to clarify the engine boundaries and improve the overall animation experience.',
+      'Architected the framework-agnostic TypeScript game engine.',
+      'Built the React interface, store synchronization, and tile animations.',
+      'Configured the workspace, build, and GitHub Pages deployment.',
     ],
     challenges: [
       {
-        title: 'Animating a changing 2D board',
-        problem:
-          'Tiles move and merge inside a matrix, but React animations need stable elements and predictable identity across renders.',
-        solution:
-          'Flattened the board into uniquely identified tile objects and used Framer Motion layout animations to follow position changes without manual transform choreography.',
+        title: 'Animating a 2D board',
+        problem: 'Moving and merging tiles needed stable identities.',
+        solution: 'Mapped unique tiles to Framer Motion layout animations.',
       },
       {
         title: 'Keeping game rules outside React',
-        problem:
-          'Putting board logic directly inside components or hooks would couple gameplay behavior to rendering and create unnecessary re-renders.',
-        solution:
-          'Built an independent GameStore with an observer-style update flow and connected it to React through useSyncExternalStore and immutable snapshots.',
-      },
-      {
-        title: 'Making desktop and mobile input consistent',
-        problem:
-          'Keyboard events and touch gestures have different interaction models but must produce the same deterministic move behavior.',
-        solution:
-          'Normalized both input paths into the same store actions so the engine remains unaware of the device or control method.',
+        problem: 'UI-bound logic would couple gameplay to rendering.',
+        solution: 'Connected an independent store through immutable snapshots.',
       },
     ],
     outcomes: [],
@@ -502,8 +392,7 @@ export const projects = [
         id: 'portfolio-v2-cover',
         src: PortfolioCover,
         alt: 'Portfolio v2 cover featuring green developer typography, technology labels, a terminal prompt, and an orbital web interface motif',
-        caption:
-          'Portfolio v2 visual identity combining monospaced typography, technical grid elements, and the project’s green palette.',
+        caption: 'Portfolio v2 visual identity.',
       },
       images: [
         {
@@ -511,29 +400,28 @@ export const projects = [
           src: Portfolio1,
           thumbnail: PortfolioThumbnail1,
           alt: 'Portfolio v2 home page with developer introduction, availability status, and project call to action',
-          caption:
-            'A focused introduction that communicates role, availability, and the primary path into selected work.',
+          caption: 'Role, availability, and selected work.',
         },
         {
           id: 'portfolio-v2-projects',
           src: Portfolio2,
           thumbnail: PortfolioThumbnail2,
           alt: 'Portfolio v2 projects page showing a responsive archive of project case studies',
-          caption: 'The project archive turns selected work into structured, detailed case studies.',
+          caption: 'Selected work as structured case studies.',
         },
         {
           id: 'portfolio-v2-skills',
           src: Portfolio3,
           thumbnail: PortfolioThumbnail3,
           alt: 'Portfolio v2 skills page organizing languages, frontend technologies, databases, and delivery tools',
-          caption: 'Technical capabilities grouped by how they contribute to product delivery.',
+          caption: 'Capabilities grouped by product role.',
         },
         {
           id: 'portfolio-v2-contact',
           src: Portfolio4,
           thumbnail: PortfolioThumbnail4,
           alt: 'Portfolio v2 contact page with inquiry form, direct email access, and professional network links',
-          caption: 'A clear contact pathway combining a protected inquiry form with direct professional links.',
+          caption: 'Protected inquiries and direct contact links.',
         },
       ],
     },
@@ -555,93 +443,56 @@ export const projects = [
       { label: 'Delivery & Services', items: ['GitHub Actions', 'GitHub Pages', 'Formspree', 'Cloudflare Turnstile'] },
     ],
     overview: [
-      'Portfolio v2 is my personal developer portfolio and the primary place where I present selected projects, technical capabilities, and professional context to recruiters and potential collaborators.',
-      'The experience is organized around clear browsing paths: visitors can understand my focus from the home page, explore structured project case studies, review the technologies I work with, and reach me through a dedicated contact flow.',
-      'Nuxt generates the application as a static site, keeping deployment simple and delivery CDN-friendly while still supporting dynamic-feeling interactions, theme preferences, responsive layouts, and animated transitions.',
-      'The current release is an actively maintained MVP. It establishes the content architecture and visual direction first, leaving performance measurement and further optimization for later iterations.',
+      'Portfolio v2 presents my projects, capabilities, and professional context through clear browsing paths.',
+      'Nuxt static generation keeps delivery simple while supporting themes, responsive layouts, and motion.',
     ],
     objectives: [
       {
         title: 'Present work with context',
-        description:
-          'Turn individual projects into structured case studies that explain product goals, engineering decisions, responsibilities, and outcomes.',
+        description: 'Turn projects into concise, structured case studies.',
       },
       {
-        title: 'Create a clear professional identity',
-        description:
-          'Communicate my frontend focus, current technical capabilities, and availability through a cohesive visual system.',
+        title: 'Clarify professional identity',
+        description: 'Communicate my focus, capabilities, and availability.',
       },
       {
         title: 'Keep delivery lightweight',
-        description:
-          'Use static generation and automated deployment to provide a reliable public site without maintaining an application server.',
-      },
-      {
-        title: 'Make contact straightforward',
-        description:
-          'Give recruiters and collaborators direct ways to start a conversation while protecting the public form from automated spam.',
+        description: 'Use static generation and automated deployment.',
       },
     ],
     features: [
       {
-        title: 'Structured project case studies',
-        description:
-          'Present project media, metadata, stack, objectives, features, contributions, engineering challenges, and outcomes in a reusable detail layout.',
+        title: 'Project case studies',
+        description: 'Present project context through a reusable layout.',
       },
       {
-        title: 'Responsive project archive',
-        description:
-          'Organize selected work into responsive cards with concise context and direct access to each case study.',
+        title: 'Responsive archive',
+        description: 'Browse selected work across screen sizes.',
       },
       {
-        title: 'Technical capability overview',
-        description:
-          'Group languages, frameworks, platforms, databases, and delivery tools by their role in product development.',
-      },
-      {
-        title: 'System-aware color modes',
-        description:
-          'Support light and dark themes, respect the visitor’s system preference, and persist explicit theme choices.',
-      },
-      {
-        title: 'Animated interface feedback',
-        description:
-          'Use restrained entrance, hover, and route transition motion to reinforce hierarchy without distracting from the content.',
+        title: 'Adaptive themes and motion',
+        description: 'Combine persistent color modes with restrained feedback.',
       },
       {
         title: 'Protected contact workflow',
-        description:
-          'Submit inquiries through Formspree with Cloudflare Turnstile verification and clear loading, success, and error feedback.',
+        description: 'Protect Formspree inquiries with Cloudflare Turnstile.',
       },
     ],
     responsibilities: [
-      'Designed and developed the portfolio as a solo project using Nuxt, Vue, TypeScript, and Tailwind CSS.',
-      'Created the visual system, responsive page layouts, navigation, theme behavior, and interaction patterns.',
-      'Designed the reusable project data model and case study components used to present multiple types of work consistently.',
-      'Implemented the Formspree contact workflow with Cloudflare Turnstile protection and user-facing submission feedback.',
-      'Configured static generation and GitHub Actions workflows for automated GitHub Pages deployment.',
+      'Designed and built the portfolio with Nuxt, Vue, and Tailwind CSS.',
+      'Created its visual system, project model, and reusable case studies.',
+      'Implemented protected contact and automated static deployment.',
     ],
     challenges: [
       {
-        title: 'Keeping varied case studies consistent',
-        problem:
-          'The portfolio needs to describe products with different domains, stacks, media, responsibilities, and evidence without making each project page a one-off implementation.',
-        solution:
-          'Defined a typed project schema and reusable detail sections so every case study follows a consistent narrative while retaining project-specific content and media.',
+        title: 'Consistent case studies',
+        problem: 'Different projects needed one flexible presentation model.',
+        solution: 'Created a typed schema and reusable detail sections.',
       },
       {
         title: 'Protecting a public contact form',
-        problem:
-          'A public contact endpoint needs spam resistance, but an intrusive challenge would add friction for recruiters and collaborators.',
-        solution:
-          'Combined Formspree submission with Cloudflare Turnstile verification and exposed explicit pending, success, and failure states around the request.',
-      },
-      {
-        title: 'Deploying dynamic routes as static pages',
-        problem:
-          'Project detail pages use dynamic slugs, while GitHub Pages serves pre-generated files and cannot resolve application routes on a server.',
-        solution:
-          'Kept project content available at build time and used Nuxt static generation so discoverable project links are emitted as static routes for deployment.',
+        problem: 'Spam protection needed to remain unobtrusive.',
+        solution: 'Combined Formspree with Cloudflare Turnstile and clear states.',
       },
     ],
     outcomes: [],
