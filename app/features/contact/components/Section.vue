@@ -24,8 +24,7 @@ async function copyEmail() {
       eyebrow="Open for collaboration"
       first-line="Initialize"
       second-line="Connection."
-      description="Whether you have a technical challenge, a collaborative project in mind, or simply want to discuss clean interfaces, I am ready to connect."
-      note="Send a message or connect directly through the channels below."
+      note="Let's connect over a technical challenge or collaborative project."
     />
 
     <div class="mt-14 grid items-start gap-8 lg:mt-18 lg:grid-cols-12 lg:gap-12">
@@ -43,9 +42,7 @@ async function copyEmail() {
           <div class="mb-5 flex items-center gap-3 border-b pb-4">
             <h2 class="text-sm font-semibold uppercase">Direct access</h2>
           </div>
-          <p class="text-sm leading-6 text-muted-foreground">
-            For immediate inquiries, bypass the form and reach out directly through email.
-          </p>
+          <p class="text-sm leading-6 text-muted-foreground">Contact me directly at</p>
 
           <div class="mt-5 flex min-w-0 items-center gap-2 border bg-background p-2">
             <Mail class="ml-1 size-4 shrink-0 text-muted-foreground" aria-hidden="true" />

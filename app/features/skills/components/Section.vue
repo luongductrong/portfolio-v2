@@ -9,8 +9,7 @@ import { learningGroups, skillGroups } from '../constants';
       eyebrow="Engineering capabilities"
       first-line="Technical"
       second-line="Craft."
-      description="A comprehensive overview of my technological stack and the tools I use to turn product ideas into reliable interfaces."
-      note="Built through production work, sharpened through continuous learning."
+      note="A production-tested stack for turning product ideas into reliable interfaces."
     />
 
     <section
