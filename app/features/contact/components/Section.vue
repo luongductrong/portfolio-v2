@@ -30,7 +30,7 @@ async function copyEmail() {
 
     <div class="mt-14 grid items-start gap-8 lg:mt-18 lg:grid-cols-12 lg:gap-12">
       <div
-        class="border bg-card p-5 sm:p-7 lg:col-span-7 animate-in fade-in slide-in-from-bottom-5 duration-550 motion-reduce:slide-in-from-bottom-0 motion-reduce:duration-300"
+        class="border bg-card p-5 sm:p-7 lg:col-span-7 animate-in fade-in slide-in-from-bottom-5 duration-550 motion-reduce:slide-in-from-bottom-0 motion-reduce:duration-300 shadow-brutalism"
       >
         <ContactForm />
       </div>
@@ -39,7 +39,7 @@ async function copyEmail() {
         class="flex flex-col gap-6 lg:sticky lg:top-24 lg:col-span-5 animate-in fade-in slide-in-from-bottom-5 duration-550 motion-reduce:slide-in-from-bottom-0 motion-reduce:duration-300"
         aria-label="Direct contact options"
       >
-        <section class="border bg-card p-5 transition-colors hover:border-primary/40 sm:p-6">
+        <section class="border bg-card p-5 transition-colors hover:border-primary/40 sm:p-6 shadow-brutalism">
           <div class="mb-5 flex items-center gap-3 border-b pb-4">
             <h2 class="text-sm font-semibold uppercase">Direct access</h2>
           </div>
@@ -69,7 +69,7 @@ async function copyEmail() {
           </div>
         </section>
 
-        <section class="border bg-card p-5 sm:p-6">
+        <section class="border bg-card p-5 transition-colors hover:border-primary/40 sm:p-6 shadow-brutalism">
           <div class="mb-4 flex items-center gap-3 border-b pb-4">
             <h2 class="text-sm font-semibold uppercase">Network nodes</h2>
           </div>

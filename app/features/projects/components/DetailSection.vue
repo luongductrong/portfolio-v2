@@ -53,13 +53,22 @@ const props = defineProps<{
         </div>
 
         <div class="flex flex-wrap gap-3 lg:justify-end">
-          <UiButton v-if="props.project.links.demo" as-child size="lg">
+          <UiButton
+            v-if="props.project.links.demo"
+            as-child
+            class="shadow-brutalism hover:translate-1 hover:shadow-none"
+          >
             <a :href="props.project.links.demo" target="_blank" rel="noopener noreferrer">
               Live demo
               <ArrowUpRight data-icon="inline-end" />
             </a>
           </UiButton>
-          <UiButton v-if="props.project.links.source" as-child size="lg" variant="outline">
+          <UiButton
+            v-if="props.project.links.source"
+            as-child
+            variant="outline"
+            class="shadow-brutalism hover:translate-1 hover:shadow-none"
+          >
             <a :href="props.project.links.source" target="_blank" rel="noopener noreferrer">
               <Code2 data-icon="inline-start" />
               Source code
@@ -225,7 +234,11 @@ const props = defineProps<{
         </section>
 
         <nav v-if="props.project.links.documentation" aria-label="Project resources">
-          <UiButton as-child variant="ghost" class="w-full justify-between">
+          <UiButton
+            as-child
+            variant="ghost"
+            class="w-full justify-between shadow-brutalism hover:translate-1 hover:shadow-none"
+          >
             <a :href="props.project.links.documentation" target="_blank" rel="noopener noreferrer">
               <ExternalLink data-icon="inline-start" />
               Read documentation

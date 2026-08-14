@@ -25,7 +25,6 @@ import { milestones } from '../constants';
     </Motion>
 
     <div class="relative">
-      <div class="absolute left-4 top-6 h-[calc(100%-3rem)] w-px bg-border sm:left-6" />
       <div class="absolute left-4 top-6 h-[calc(100%-3rem)] w-px bg-primary sm:left-6" />
 
       <ol class="space-y-6">
@@ -39,13 +38,13 @@ import { milestones } from '../constants';
           class="relative pl-12 sm:pl-16"
         >
           <div
-            class="absolute left-0 top-5 z-10 flex size-8 items-center justify-center border border-primary/40 bg-background shadow-[0_0_24px] shadow-primary/20 sm:size-12"
+            class="absolute left-0 top-5 z-10 flex size-8 items-center justify-center border border-primary/40 bg-background shadow-brutalism sm:size-12"
           >
             <component :is="milestone.icon" class="size-4 text-primary sm:size-5" />
           </div>
 
           <article
-            class="group relative overflow-hidden border bg-card/70 p-5 transition duration-300 hover:-translate-y-1 hover:border-primary/45 hover:shadow-[0_18px_60px] hover:shadow-primary/12 sm:p-6"
+            class="group relative overflow-hidden border bg-card/70 p-5 transition duration-300 shadow-brutalism hover:translate-1 hover:border-primary/45 sm:p-6"
           >
             <div class="absolute inset-0 bg-linear-to-br opacity-80 from-primary/25 via-primary/10 to-transparent" />
             <div class="relative space-y-5">

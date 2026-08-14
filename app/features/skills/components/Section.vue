@@ -44,14 +44,14 @@ import { learningGroups, skillGroups } from '../constants';
         <article
           v-for="group in learningGroups"
           :key="group.title"
-          class="border border-primary/25 bg-card p-5 sm:p-6"
+          class="border border-primary/25 bg-card p-5 sm:p-6 shadow-brutalism"
         >
           <h3 class="text-sm font-semibold uppercase text-muted-foreground">{{ group.title }}</h3>
           <ul class="mt-4 flex flex-wrap gap-3" :aria-label="`${group.title} technologies currently learning`">
             <li
               v-for="skill in group.skills"
               :key="skill"
-              class="border border-primary/40 bg-primary/10 px-4 py-2 text-xs font-semibold uppercase text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+              class="border border-primary/40 bg-primary/10 px-3 py-1.5 text-xs font-semibold uppercase text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
             >
               {{ skill }}
             </li>

@@ -22,7 +22,7 @@ const props = withDefaults(defineProps<Props>(), {
     :while-in-view="{ opacity: 1, y: 0 }"
     :in-view-options="{ once: true, amount: 0.15 }"
     :transition="{ duration: 0.5, delay: props.index * 0.08 }"
-    class="group h-full overflow-hidden border bg-card text-card-foreground transition-[border-color,box-shadow] duration-300 hover:border-primary/45 hover:shadow-lg hover:shadow-primary/5"
+    class="group h-full overflow-hidden border bg-card text-card-foreground transition-[border-color,box-shadow] duration-300 hover:border-primary/40 shadow-brutalism hover:shadow-none"
   >
     <NuxtLink
       :to="`/projects/${props.slug}`"

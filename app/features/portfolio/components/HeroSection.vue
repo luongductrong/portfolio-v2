@@ -36,7 +36,7 @@ const resumeURL = publicAsset('CV_LuongDucTrong_FrontendDeveloper.pdf?v=1');
         :duration="0.5"
         :delay="0"
         :once="true"
-        class="font-medium italic"
+        class="font-medium italic text-center"
       />
       <div class="mt-4 flex gap-3">
         <UiButton size="lg" class="uppercase shadow-brutalism hover:translate-1 hover:shadow-none" as-child>

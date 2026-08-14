@@ -11,10 +11,7 @@ const props = withDefaults(defineProps<SkillCardProps>(), {
 </script>
 
 <template>
-  <article
-    class="border bg-card p-5 transition-[border-color,box-shadow] duration-300 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 sm:p-6"
-    :class="props.featured && 'lg:col-span-2'"
-  >
+  <article class="border bg-card p-5 shadow-brutalism sm:p-6" :class="props.featured && 'lg:col-span-2'">
     <header class="mb-5 flex items-center gap-3">
       <h3 class="text-lg font-bold">{{ props.title }}</h3>
     </header>
@@ -23,7 +20,7 @@ const props = withDefaults(defineProps<SkillCardProps>(), {
       <li
         v-for="skill in props.skills"
         :key="skill"
-        class="border bg-background px-3 py-1.5 text-xs font-medium uppercase text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
+        class="border border-primary/40 bg-primary/10 px-3 py-1.5 text-xs font-semibold uppercase text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
       >
         {{ skill }}
       </li>
