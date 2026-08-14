@@ -10,7 +10,7 @@ import { milestones } from '../constants';
       :initial="{ opacity: 0, y: 20 }"
       :while-in-view="{ opacity: 1, y: 0 }"
       :transition="{ duration: 0.7 }"
-      class="flex flex-col justify-center gap-5"
+      class="flex flex-col justify-start gap-5"
     >
       <UiBadge variant="outline" class="w-fit border-primary/30 bg-primary/5 text-primary"> Career Timeline </UiBadge>
       <div class="space-y-4">
