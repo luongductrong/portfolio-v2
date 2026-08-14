@@ -30,7 +30,7 @@ export const milestones: Milestone[] = [
     location: 'Ho Chi Minh City, Viet Nam',
     description:
       'Contributed to enterprise software delivery, learned SAP project practices, and sharpened collaboration skills within a production-focused team.',
-    highlights: ['ABAP', 'SAP ecosystem', 'Enterprise workflow'],
+    highlights: ['ABAP', 'Fiori applications', 'SAP ecosystem'],
     icon: BriefcaseBusiness,
   },
   {

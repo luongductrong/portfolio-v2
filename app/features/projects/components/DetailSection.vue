@@ -33,6 +33,7 @@ const props = defineProps<{
         <div class="max-w-4xl">
           <div class="mb-5 flex flex-wrap items-center gap-3 text-sm">
             <UiBadge variant="secondary">{{ props.project.category }}</UiBadge>
+            <span class="text-border" aria-hidden="true">/</span>
             <span class="text-muted-foreground">{{ props.project.year }}</span>
             <span class="text-border" aria-hidden="true">/</span>
             <span class="inline-flex items-center gap-2 font-medium text-primary">
