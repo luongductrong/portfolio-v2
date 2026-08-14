@@ -16,7 +16,7 @@ import { milestones } from '../constants';
         Career Timeline
       </UiBadge>
       <div class="space-y-4">
-        <h2 class="font-headline text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+        <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
           Milestones that shaped the way I build.
         </h2>
         <p class="max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
@@ -28,7 +28,7 @@ import { milestones } from '../constants';
 
     <div class="relative">
       <div class="absolute left-4 top-6 h-[calc(100%-3rem)] w-px bg-border sm:left-6" />
-      <div class="absolute left-4 top-6 h-[calc(100%-3rem)] w-px bg-linear-to-b from-primary to-main-100 sm:left-6" />
+      <div class="absolute left-4 top-6 h-[calc(100%-3rem)] w-px bg-primary sm:left-6" />
 
       <ol class="space-y-6">
         <Motion
@@ -53,7 +53,7 @@ import { milestones } from '../constants';
             <div class="relative space-y-5">
               <div class="space-y-2">
                 <div class="flex items-start justify-between gap-3">
-                  <h3 class="font-headline text-lg sm:text-xl font-bold tracking-tight text-foreground">
+                  <h3 class="text-lg sm:text-xl font-bold tracking-tight text-foreground">
                     {{ milestone.title }}
                   </h3>
                   <UiBadge variant="outline" class="rounded border-border/80 bg-background/60 text-xs mt-1">

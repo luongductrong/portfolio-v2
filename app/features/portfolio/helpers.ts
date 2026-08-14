@@ -45,7 +45,7 @@ export const COMMANDS: Record<string, { name: string; description: string; outpu
     output: milestones
       .map(
         (milestone) =>
-          `${milestone.title} @ ${milestone.organization}\n${milestone.period} · ${milestone.location} · ${milestone.status}\n${milestone.highlights.join(', ')}`,
+          `${milestone.title} @ ${milestone.organization}\n${milestone.period} · ${milestone.location}\n${milestone.highlights.join(', ')}`,
       )
       .join('\n\n'),
   },

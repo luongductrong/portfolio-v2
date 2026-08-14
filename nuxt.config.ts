@@ -23,6 +23,12 @@ export default defineNuxtConfig({
         weights: ['400', '500', '600', '700', '800'],
         styles: ['normal'],
       },
+      {
+        name: 'Space Grotesk',
+        provider: 'google',
+        weights: ['400', '500', '600', '700', '800'],
+        styles: ['normal'],
+      },
     ],
     defaults: {
       subsets: ['latin', 'vietnamese'],

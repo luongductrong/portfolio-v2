@@ -24,13 +24,9 @@ const resumeURL = publicAsset('CV_LuongDucTrong_FrontendDeveloper.pdf?v=1');
       class="relative z-10 lg:col-span-8 flex flex-col items-start justify-center gap-3 text-lg"
     >
       <p class="font-bold">Hi, I'm Duc Trong Luong 👋</p>
-      <h1
-        class="font-headline text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight tracking-tighter"
-      >
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight tracking-tighter">
         Crafting
-        <span class="text-transparent bg-clip-text bg-linear-to-r from-primary via-main-300 to-main-200">
-          web & mobile experiences
-        </span>
+        <span class="text-primary"> web & mobile experiences </span>
         that feel effortless.
       </h1>
       <UiTextGenerateEffect

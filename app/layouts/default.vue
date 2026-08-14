@@ -9,7 +9,7 @@ useHead({
 </script>
 
 <template>
-  <div class="text-foreground font-mono bg-background overflow-x-clip">
+  <div class="text-foreground font-sans bg-background overflow-x-clip">
     <LayoutHeader />
     <LayoutContainer as-child>
       <main class="min-h-[calc(100dvh-3.75rem)]">
