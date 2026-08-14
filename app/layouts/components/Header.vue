@@ -70,7 +70,7 @@ watch(
           <PortfolioTerminalModal />
         </div>
         <LayoutLanguageDropdown />
-        <LayoutThemeDropdown />
+        <LayoutThemeToggler />
 
         <UiDrawer v-model:open="mobileMenuOpen" swipe-direction="up">
           <UiDrawerTrigger as-child>
