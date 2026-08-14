@@ -75,7 +75,7 @@ const resumeURL = publicAsset('CV_LuongDucTrong_FrontendDeveloper.pdf?v=1');
         <div
           class="absolute aspect-square w-1/2 rounded-full border border-muted-foreground animate-[spin_20s_linear_infinite] border-t-transparent"
         ></div>
-        <div class="w-1/2 h-1/2 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(16,185,129,0.2)]">
+        <div class="w-1/2 h-1/2 rounded-full flex items-center justify-center shadow-[0_0_30px] shadow-primary/20">
           <IconFrontend class="text-primary animate-pulse" />
         </div>
       </div>
