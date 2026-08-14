@@ -38,10 +38,15 @@ const resumeURL = publicAsset('CV_LuongDucTrong_FrontendDeveloper.pdf?v=1');
         class="font-medium italic text-start"
       />
       <div class="mt-4 flex gap-3">
-        <UiButton size="lg" class="rounded uppercase" as-child>
+        <UiButton size="lg" class="rounded uppercase shadow-brutalism hover:translate-1 hover:shadow-none" as-child>
           <NuxtLink to="/projects">View my work <ArrowRight /></NuxtLink>
         </UiButton>
-        <UiShineButton as-child class="bg-background/40 rounded uppercase" variant="outline" size="lg">
+        <UiShineButton
+          as-child
+          class="bg-background/40 rounded uppercase shadow-brutalism hover:translate-1 hover:shadow-none"
+          variant="outline"
+          size="lg"
+        >
           <NuxtLink :to="resumeURL" external target="_blank" rel="noopener noreferrer">
             <FileUser />My Resume
           </NuxtLink>
