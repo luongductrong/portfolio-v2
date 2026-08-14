@@ -72,7 +72,7 @@ watch(logs, async () => {
             :key="cmd"
             as-child
             variant="outline"
-            class="rounded border cursor-pointer bg-muted hover:bg-accent"
+            class="border cursor-pointer bg-muted hover:bg-accent"
             @click="handleRunCommand(cmd)"
           >
             <button>
@@ -103,7 +103,7 @@ watch(logs, async () => {
             class="flex-1 bg-transparent border-0 text-sm focus:outline-none"
             autofocus
           />
-          <button type="submit" class="p-1.5 rounded border">
+          <button type="submit" class="p-1.5 border">
             <CornerDownLeft :size="16" />
           </button>
         </form>

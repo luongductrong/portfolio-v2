@@ -30,7 +30,7 @@ async function copyEmail() {
 
     <div class="mt-14 grid items-start gap-8 lg:mt-18 lg:grid-cols-12 lg:gap-12">
       <div
-        class="rounded-lg border bg-card p-5 sm:p-7 lg:col-span-7 animate-in fade-in slide-in-from-bottom-5 duration-550 motion-reduce:slide-in-from-bottom-0 motion-reduce:duration-300"
+        class="border bg-card p-5 sm:p-7 lg:col-span-7 animate-in fade-in slide-in-from-bottom-5 duration-550 motion-reduce:slide-in-from-bottom-0 motion-reduce:duration-300"
       >
         <ContactForm />
       </div>
@@ -39,7 +39,7 @@ async function copyEmail() {
         class="flex flex-col gap-6 lg:sticky lg:top-24 lg:col-span-5 animate-in fade-in slide-in-from-bottom-5 duration-550 motion-reduce:slide-in-from-bottom-0 motion-reduce:duration-300"
         aria-label="Direct contact options"
       >
-        <section class="rounded-lg border bg-card p-5 transition-colors hover:border-primary/40 sm:p-6">
+        <section class="border bg-card p-5 transition-colors hover:border-primary/40 sm:p-6">
           <div class="mb-5 flex items-center gap-3 border-b pb-4">
             <h2 class="text-sm font-semibold uppercase">Direct access</h2>
           </div>
@@ -47,7 +47,7 @@ async function copyEmail() {
             For immediate inquiries, bypass the form and reach out directly through email.
           </p>
 
-          <div class="mt-5 flex min-w-0 items-center gap-2 rounded-md border bg-background p-2">
+          <div class="mt-5 flex min-w-0 items-center gap-2 border bg-background p-2">
             <Mail class="ml-1 size-4 shrink-0 text-muted-foreground" aria-hidden="true" />
             <a
               :href="gmail.url"
@@ -57,7 +57,7 @@ async function copyEmail() {
             </a>
             <button
               type="button"
-              class="inline-flex size-10 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-primary focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+              class="inline-flex size-10 shrink-0 items-center justify-center text-muted-foreground transition-colors hover:bg-muted hover:text-primary focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
               :title="copied ? 'Email copied' : 'Copy email address'"
               :aria-label="copied ? 'Email copied' : 'Copy email address'"
               @click="copyEmail"
@@ -69,7 +69,7 @@ async function copyEmail() {
           </div>
         </section>
 
-        <section class="rounded-lg border bg-card p-5 sm:p-6">
+        <section class="border bg-card p-5 sm:p-6">
           <div class="mb-4 flex items-center gap-3 border-b pb-4">
             <h2 class="text-sm font-semibold uppercase">Network nodes</h2>
           </div>
@@ -81,10 +81,10 @@ async function copyEmail() {
               :href="social.url"
               target="_blank"
               rel="noopener noreferrer"
-              class="group flex min-h-12 items-center justify-between rounded-md border border-transparent px-3 transition-colors hover:border-border hover:bg-muted focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+              class="group flex min-h-12 items-center justify-between border border-transparent px-3 transition-colors hover:border-border hover:bg-muted focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
             >
               <span class="flex items-center gap-3 font-medium">
-                <span class="inline-flex size-8 items-center justify-center rounded border bg-background">
+                <span class="inline-flex size-8 items-center justify-center border bg-background">
                   <component :is="social.icon" class="size-4" aria-hidden="true" />
                 </span>
                 {{ social.platform }}
@@ -98,7 +98,7 @@ async function copyEmail() {
         </section>
 
         <div
-          class="hidden min-h-28 items-center justify-center rounded-lg border border-dashed text-xs text-muted-foreground lg:flex"
+          class="hidden min-h-28 items-center justify-center border border-dashed text-xs text-muted-foreground lg:flex"
         >
           // awaiting input...
         </div>

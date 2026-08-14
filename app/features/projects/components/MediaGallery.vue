@@ -78,7 +78,7 @@ onBeforeUnmount(() => {
                 @click="openPreview(index)"
               >
                 <span
-                  class="aspect-video w-full max-w-[28.444rem] overflow-hidden rounded-lg sm:max-w-[42.667rem] lg:max-w-[46.222rem] xl:hidden"
+                  class="aspect-video w-full max-w-[28.444rem] overflow-hidden sm:max-w-[42.667rem] lg:max-w-[46.222rem] xl:hidden"
                 >
                   <img
                     :src="image.src"
@@ -110,7 +110,7 @@ onBeforeUnmount(() => {
             v-for="(image, index) in props.images"
             :key="`${image.id}-desktop-thumbnail`"
             type="button"
-            class="relative aspect-video w-full shrink-0 overflow-hidden rounded-md border bg-muted transition-all"
+            class="relative aspect-video w-full shrink-0 overflow-hidden border bg-muted transition-all"
             :class="selectedIndex === index ? 'border-primary ring-2 ring-primary/20' : 'opacity-60 hover:opacity-100'"
             :aria-label="`Show image ${index + 1}: ${image.alt}`"
             :aria-current="selectedIndex === index ? 'true' : undefined"
@@ -118,7 +118,7 @@ onBeforeUnmount(() => {
           >
             <img :src="image.thumbnail ?? image.src" alt="" class="size-full object-cover" />
             <span
-              class="absolute right-1.5 bottom-1.5 rounded-sm bg-background/85 px-1.5 py-0.5 text-[0.625rem] font-semibold text-foreground tabular-nums"
+              class="absolute right-1.5 bottom-1.5 bg-background/85 px-1.5 py-0.5 text-[0.625rem] font-semibold text-foreground tabular-nums"
               aria-hidden="true"
             >
               {{ String(index + 1).padStart(2, '0') }}
@@ -133,7 +133,7 @@ onBeforeUnmount(() => {
         v-for="(image, index) in props.images"
         :key="`${image.id}-mobile-thumbnail`"
         type="button"
-        class="relative aspect-video w-24 shrink-0 overflow-hidden rounded-md border bg-muted transition-all sm:w-28"
+        class="relative aspect-video w-24 shrink-0 overflow-hidden border bg-muted transition-all sm:w-28"
         :class="selectedIndex === index ? 'border-primary ring-2 ring-primary/20' : 'opacity-60 hover:opacity-100'"
         :aria-label="`Show image ${index + 1}: ${image.alt}`"
         :aria-current="selectedIndex === index ? 'true' : undefined"
@@ -158,7 +158,7 @@ onBeforeUnmount(() => {
 
         <div class="flex min-h-0 flex-col gap-3">
           <div class="relative flex min-h-64 items-center justify-center overflow-hidden sm:min-h-96">
-            <div class="aspect-video w-full max-h-[90dvh] max-w-[95dvw] overflow-hidden rounded-lg">
+            <div class="aspect-video w-full max-h-[90dvh] max-w-[95dvw] overflow-hidden">
               <img :src="previewImage.src" :alt="previewImage.alt" class="size-full object-cover" />
             </div>
 

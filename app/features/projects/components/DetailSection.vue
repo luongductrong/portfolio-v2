@@ -78,7 +78,7 @@ const props = defineProps<{
         <h2 id="project-outcomes" class="mt-1 text-xl font-bold text-primary uppercase">Quick Highlights</h2>
       </div>
 
-      <dl class="grid gap-px overflow-hidden rounded-lg border bg-border sm:grid-cols-3">
+      <dl class="grid gap-px overflow-hidden border bg-border sm:grid-cols-3">
         <div v-for="outcome in props.project.outcomes" :key="outcome.label" class="bg-card p-6 sm:p-7">
           <dt class="text-sm font-medium text-muted-foreground">{{ outcome.label }}</dt>
           <dd class="mt-2 text-3xl font-extrabold text-primary">{{ outcome.value }}</dd>
@@ -110,7 +110,7 @@ const props = defineProps<{
             <li
               v-for="(objective, index) in props.project.objectives"
               :key="objective.title"
-              class="rounded-lg border bg-card p-5"
+              class="border bg-card p-5"
             >
               <span class="text-xs font-semibold text-primary">0{{ index + 1 }}</span>
               <h3 class="mt-4 font-bold">{{ objective.title }}</h3>
@@ -139,7 +139,7 @@ const props = defineProps<{
           <div class="flex items-center gap-3">
             <h2 id="project-challenges" class="text-2xl font-bold">Challenges and decisions</h2>
           </div>
-          <div class="flex flex-col divide-y rounded-lg border bg-card">
+          <div class="flex flex-col divide-y border bg-card">
             <article v-for="challenge in props.project.challenges" :key="challenge.title" class="p-6 sm:p-7">
               <h3 class="font-bold">{{ challenge.title }}</h3>
               <div class="mt-5 grid gap-5 sm:grid-cols-2 sm:gap-8">
@@ -174,7 +174,7 @@ const props = defineProps<{
       </div>
 
       <aside class="flex flex-col gap-6 lg:sticky lg:top-24 lg:self-start" aria-label="Project information">
-        <section class="rounded-lg border bg-card p-6" aria-labelledby="project-facts">
+        <section class="border bg-card p-6" aria-labelledby="project-facts">
           <h2 id="project-facts" class="font-bold">Project facts</h2>
           <dl class="mt-6 flex flex-col gap-5 text-sm">
             <div class="flex items-start gap-3">
@@ -208,7 +208,7 @@ const props = defineProps<{
           </dl>
         </section>
 
-        <section class="rounded-lg border bg-muted/40 p-6" aria-labelledby="project-stack">
+        <section class="border bg-muted/40 p-6" aria-labelledby="project-stack">
           <div class="flex items-center gap-3">
             <h2 id="project-stack" class="font-bold">Technology stack</h2>
           </div>

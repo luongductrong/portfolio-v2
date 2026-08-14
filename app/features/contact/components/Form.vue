@@ -18,7 +18,7 @@ const form = reactive({
 const isSubmitting = ref(false);
 
 const fieldClass =
-  'w-full rounded-md border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/55 transition-colors focus-visible:border-primary focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/30';
+  'w-full border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/55 transition-colors focus-visible:border-primary focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/30';
 
 async function submitMessage(event: Event) {
   if (isSubmitting.value || !form.token) return;
@@ -70,7 +70,7 @@ async function submitMessage(event: Event) {
         name="name"
         type="text"
         autocomplete="name"
-        placeholder="John Doe"
+        placeholder="Enter your name"
         required
       />
     </div>
@@ -87,7 +87,7 @@ async function submitMessage(event: Event) {
         type="email"
         autocomplete="email"
         inputmode="email"
-        placeholder="john@example.com"
+        placeholder="Enter your email"
         required
       />
     </div>
@@ -99,7 +99,7 @@ async function submitMessage(event: Event) {
         v-model.trim="form.message"
         :class="[fieldClass, 'min-h-36 resize-y']"
         name="message"
-        placeholder="Enter your message here..."
+        placeholder="Enter your message..."
         required
       />
     </div>

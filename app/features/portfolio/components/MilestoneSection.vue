@@ -12,7 +12,7 @@ import { milestones } from '../constants';
       :transition="{ duration: 0.7 }"
       class="flex flex-col justify-center gap-5"
     >
-      <UiBadge variant="outline" class="w-fit rounded border-primary/30 bg-primary/5 text-primary">
+      <UiBadge variant="outline" class="w-fit border-primary/30 bg-primary/5 text-primary">
         Career Timeline
       </UiBadge>
       <div class="space-y-4">
@@ -41,13 +41,13 @@ import { milestones } from '../constants';
           class="relative pl-12 sm:pl-16"
         >
           <div
-            class="absolute left-0 top-5 z-10 flex size-8 items-center justify-center rounded border border-primary/40 bg-background shadow-[0_0_24px_rgba(16,185,129,0.18)] sm:size-12"
+            class="absolute left-0 top-5 z-10 flex size-8 items-center justify-center border border-primary/40 bg-background shadow-[0_0_24px_rgba(16,185,129,0.18)] sm:size-12"
           >
             <component :is="milestone.icon" class="size-4 text-primary sm:size-5" />
           </div>
 
           <article
-            class="group relative overflow-hidden rounded-lg border bg-card/70 p-5 transition duration-300 hover:-translate-y-1 hover:border-primary/45 hover:shadow-[0_18px_60px_rgba(16,185,129,0.12)] sm:p-6"
+            class="group relative overflow-hidden border bg-card/70 p-5 transition duration-300 hover:-translate-y-1 hover:border-primary/45 hover:shadow-[0_18px_60px_rgba(16,185,129,0.12)] sm:p-6"
           >
             <div class="absolute inset-0 bg-linear-to-br opacity-80 from-primary/25 via-primary/10 to-transparent" />
             <div class="relative space-y-5">
@@ -56,7 +56,7 @@ import { milestones } from '../constants';
                   <h3 class="text-lg sm:text-xl font-bold tracking-tight text-foreground">
                     {{ milestone.title }}
                   </h3>
-                  <UiBadge variant="outline" class="rounded border-border/80 bg-background/60 text-xs mt-1">
+                  <UiBadge variant="outline" class="border-border/80 bg-background/60 text-xs mt-1">
                     {{ milestone.period }}
                   </UiBadge>
                 </div>
@@ -72,7 +72,7 @@ import { milestones } from '../constants';
                   v-for="item in milestone.highlights"
                   :key="item"
                   variant="secondary"
-                  class="rounded border border-border/70 bg-background/60 text-xs font-medium text-muted-foreground"
+                  class="border border-border/70 bg-background/60 text-xs font-medium text-muted-foreground"
                 >
                   {{ item }}
                 </UiBadge>

@@ -54,7 +54,7 @@ watch(
           <li v-for="item in navItems" :key="item.id" class="group font-medium text-muted-foreground">
             <NuxtLink
               :to="item.href"
-              class="text-sm transition-colors duration-300 group-hover:text-foreground group-hover:font-bold p-1.5 pb-px rounded"
+              class="text-sm transition-colors duration-300 group-hover:text-foreground group-hover:font-bold p-1.5 pb-px"
               :class="
                 isActive(item.href) ? 'font-bold border-b-3 border-muted-foreground group-hover:border-foreground' : ''
               "
@@ -109,7 +109,7 @@ watch(
                 <li v-for="item in navItems" :key="item.id" class="border-b last:border-b-0">
                   <button
                     type="button"
-                    class="block w-full rounded-md px-2 py-3 text-left text-base font-semibold transition-colors hover:bg-accent hover:text-accent-foreground"
+                    class="block w-full px-2 py-3 text-left text-base font-semibold transition-colors hover:bg-accent hover:text-accent-foreground"
                     :class="isActive(item.href) ? 'text-primary' : 'text-foreground'"
                     :aria-current="isActive(item.href) ? 'page' : undefined"
                     @click="handleMobileNavigation(item.href)"
