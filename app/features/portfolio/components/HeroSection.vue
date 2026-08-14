@@ -61,7 +61,7 @@ const resumeURL = publicAsset('CV_LuongDucTrong_FrontendDeveloper.pdf?v=1');
       class="z-10 lg:col-span-4 relative flex justify-center items-center"
     >
       <UiBadge class="absolute -top-10 left-1/2 -translate-x-1/2 text-sm gap-2" variant="outline">
-        <span class="size-2 rounded-full bg-chart-5 animate-pulse"></span>
+        <span class="size-2 rounded-full bg-primary animate-pulse"></span>
         <span class="text-muted-foreground">Available for new opportunities</span>
       </UiBadge>
       <div class="size-64 sm:size-80 relative flex items-center justify-center">

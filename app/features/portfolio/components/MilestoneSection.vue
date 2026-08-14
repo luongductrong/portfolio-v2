@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Motion } from 'motion-v';
 import { milestones } from '../constants';
-import { CalendarDays, MapPin, Trophy } from '@lucide/vue';
 </script>
 
 <template>
@@ -52,25 +51,19 @@ import { CalendarDays, MapPin, Trophy } from '@lucide/vue';
           >
             <div class="absolute inset-0 bg-linear-to-br opacity-80 from-primary/25 via-primary/10 to-transparent" />
             <div class="relative space-y-5">
-              <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                <div class="space-y-2">
-                  <UiBadge variant="outline" class="rounded border-border/80 bg-background/60 text-xs">
-                    <CalendarDays class="size-3.5" />
+              <div class="space-y-2">
+                <div class="flex items-start justify-between gap-3">
+                  <h3 class="font-headline text-lg sm:text-xl font-bold tracking-tight text-foreground">
+                    {{ milestone.title }}
+                  </h3>
+                  <UiBadge variant="outline" class="rounded border-border/80 bg-background/60 text-xs mt-1">
                     {{ milestone.period }}
                   </UiBadge>
-                  <div>
-                    <h3 class="font-headline text-xl font-bold tracking-tight text-foreground sm:text-2xl">
-                      {{ milestone.title }}
-                    </h3>
-                    <p class="mt-1 font-medium text-primary">{{ milestone.organization }}</p>
-                  </div>
                 </div>
-                <UiBadge class="w-fit rounded bg-primary/10 text-primary hover:bg-primary/10">
-                  {{ milestone.status }}
-                </UiBadge>
+                <p class="mt-1 font-medium text-primary">{{ milestone.organization }}</p>
               </div>
 
-              <p class="text-sm leading-7 text-muted-foreground sm:text-base">
+              <p class="text-sm leading-7 text-muted-foreground">
                 {{ milestone.description }}
               </p>
 
@@ -81,15 +74,13 @@ import { CalendarDays, MapPin, Trophy } from '@lucide/vue';
                   variant="secondary"
                   class="rounded border border-border/70 bg-background/60 text-xs font-medium text-muted-foreground"
                 >
-                  <Trophy class="size-3" />
                   {{ item }}
                 </UiBadge>
               </div>
 
-              <div class="flex items-center gap-2 text-xs text-muted-foreground">
-                <MapPin class="size-4 text-primary" />
-                <span>{{ milestone.location }}</span>
-              </div>
+              <p class="text-xs text-muted-foreground">
+                {{ milestone.location }}
+              </p>
             </div>
           </article>
         </Motion>

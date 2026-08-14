@@ -6,7 +6,6 @@ interface Milestone {
   title: string;
   organization: string;
   location: string;
-  status: string;
   description: string;
   highlights: string[];
   icon: Component;
@@ -19,7 +18,6 @@ export const milestones: Milestone[] = [
     title: 'Bachelor of Information Technology',
     organization: 'FPT University',
     location: 'Ho Chi Minh City, Viet Nam',
-    status: 'Graduated',
     description:
       'Focused on Software Engineering fundamentals, product thinking, and building reliable application workflows from idea to delivery.',
     highlights: ['Software Engineering', 'Degree Classification: Very Good', 'GPA 8.11/10'],
@@ -30,7 +28,6 @@ export const milestones: Milestone[] = [
     title: 'SAP Intern',
     organization: 'FPT Software',
     location: 'Ho Chi Minh City, Viet Nam',
-    status: 'Internship',
     description:
       'Contributed to enterprise software delivery, learned SAP project practices, and sharpened collaboration skills within a production-focused team.',
     highlights: ['ABAP', 'SAP ecosystem', 'Enterprise workflow'],
@@ -41,8 +38,8 @@ export const milestones: Milestone[] = [
     title: 'Front-end Developer',
     organization: 'FTES',
     location: 'Remote / Ho Chi Minh City, Viet Nam',
-    status: 'Current',
-    description: 'Building responsive interfaces, reusable UI components, and polished user flows for modern web products.',
+    description:
+      'Building responsive interfaces, reusable UI components, and polished user flows for modern web products.',
     highlights: ['React & Next.js', 'Design systems', 'Frontend architecture'],
     icon: Code2,
   },

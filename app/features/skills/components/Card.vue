@@ -1,11 +1,6 @@
 <script setup lang="ts">
-import type { Component } from 'vue';
-import type { SkillGroupIcon } from '../constants';
-import { Code2, Database, MonitorSmartphone, PanelsTopLeft, Rocket } from '@lucide/vue';
-
 interface SkillCardProps {
   title: string;
-  icon: SkillGroupIcon;
   skills: string[];
   featured?: boolean;
 }
@@ -13,14 +8,6 @@ interface SkillCardProps {
 const props = withDefaults(defineProps<SkillCardProps>(), {
   featured: false,
 });
-
-const icons: Record<SkillGroupIcon, Component> = {
-  code: Code2,
-  frontend: PanelsTopLeft,
-  devices: MonitorSmartphone,
-  database: Database,
-  tools: Rocket,
-};
 </script>
 
 <template>
@@ -29,7 +16,6 @@ const icons: Record<SkillGroupIcon, Component> = {
     :class="props.featured && 'lg:col-span-2'"
   >
     <header class="mb-5 flex items-center gap-3">
-      <component :is="icons[props.icon]" class="size-5 text-muted-foreground" aria-hidden="true" />
       <h3 class="text-lg font-bold">{{ props.title }}</h3>
     </header>
 

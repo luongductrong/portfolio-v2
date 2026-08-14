@@ -115,7 +115,7 @@ async function submitMessage(event: Event) {
     />
     <div class="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
       <span class="text-xs text-muted-foreground">// Expect a response within 24 hours</span>
-      <UiButton type="submit" class="uppercase" :disabled="isSubmitting || !form.token">
+      <UiButton type="submit" size="sm" class="uppercase" :disabled="isSubmitting || !form.token">
         {{ isSubmitting ? 'Sending...' : 'Send message' }}
         <LoaderCircle v-if="isSubmitting" class="animate-spin" aria-hidden="true" />
         <Send v-else aria-hidden="true" />

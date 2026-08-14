@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Compass, Layers3 } from '@lucide/vue';
 import { learningGroups, skillGroups } from '../constants';
 </script>
 
@@ -19,7 +18,6 @@ import { learningGroups, skillGroups } from '../constants';
       aria-labelledby="current-stack-heading"
     >
       <div class="mb-7 flex items-center gap-3">
-        <Layers3 class="size-7 text-primary" aria-hidden="true" />
         <h2 id="current-stack-heading" class="text-2xl font-bold sm:text-3xl">Current Stack</h2>
       </div>
 
@@ -28,7 +26,6 @@ import { learningGroups, skillGroups } from '../constants';
           v-for="group in skillGroups"
           :key="group.title"
           :title="group.title"
-          :icon="group.icon"
           :skills="group.skills"
           :featured="group.featured"
         />
@@ -40,7 +37,6 @@ import { learningGroups, skillGroups } from '../constants';
       aria-labelledby="learning-heading"
     >
       <div class="mb-7 flex items-center gap-3">
-        <Compass class="size-7 text-primary" aria-hidden="true" />
         <h2 id="learning-heading" class="text-2xl font-bold sm:text-3xl">Expanding Horizons</h2>
       </div>
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { gmail, networkSocials } from '../constants';
-import { ArrowRight, Check, Copy, Mail, Network, Terminal } from '@lucide/vue';
+import { ArrowRight, Check, Copy, Mail } from '@lucide/vue';
 
 const copied = ref(false);
 
@@ -41,7 +41,6 @@ async function copyEmail() {
       >
         <section class="rounded-lg border bg-card p-5 transition-colors hover:border-primary/40 sm:p-6">
           <div class="mb-5 flex items-center gap-3 border-b pb-4">
-            <Terminal class="size-5 text-primary" aria-hidden="true" />
             <h2 class="text-sm font-semibold uppercase">Direct access</h2>
           </div>
           <p class="text-sm leading-6 text-muted-foreground">
@@ -72,7 +71,6 @@ async function copyEmail() {
 
         <section class="rounded-lg border bg-card p-5 sm:p-6">
           <div class="mb-4 flex items-center gap-3 border-b pb-4">
-            <Network class="size-5 text-muted-foreground" aria-hidden="true" />
             <h2 class="text-sm font-semibold uppercase">Network nodes</h2>
           </div>
 

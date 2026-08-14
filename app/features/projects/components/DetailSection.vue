@@ -2,22 +2,16 @@
 import {
   ArrowLeft,
   ArrowUpRight,
-  BookOpen,
   BriefcaseBusiness,
   CalendarDays,
   Check,
   Code2,
   ExternalLink,
-  Flag,
-  Layers3,
-  Lightbulb,
   Monitor,
-  Target,
   Users,
-  Wrench,
 } from '@lucide/vue';
-import { projectStatusLabels } from '../helpers';
 import type { Project } from '../types';
+import { projectStatusLabels } from '../helpers';
 
 const props = defineProps<{
   project: Project;
@@ -29,7 +23,7 @@ const props = defineProps<{
     <header class="border-b pb-10 sm:pb-14">
       <NuxtLink
         to="/projects"
-        class="mb-10 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary sm:mb-14"
+        class="mb-10 inline-flex md:hidden items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary sm:mb-14"
       >
         <ArrowLeft class="size-4" aria-hidden="true" />
         All projects
@@ -82,7 +76,6 @@ const props = defineProps<{
     <section v-if="props.project.outcomes.length" aria-labelledby="project-outcomes" class="mt-14 sm:mt-18">
       <div class="mb-5 flex items-end justify-between gap-4 border-b pb-4">
         <h2 id="project-outcomes" class="mt-1 text-xl font-bold text-primary uppercase">Quick Highlights</h2>
-        <Flag class="size-5 text-muted-foreground" aria-hidden="true" />
       </div>
 
       <dl class="grid gap-px overflow-hidden rounded-lg border bg-border sm:grid-cols-3">
@@ -100,7 +93,6 @@ const props = defineProps<{
       <div class="flex min-w-0 flex-col gap-16">
         <article aria-labelledby="project-overview" class="flex flex-col gap-6">
           <div class="flex items-center gap-3">
-            <BookOpen class="size-5 text-primary" aria-hidden="true" />
             <h2 id="project-overview" class="text-2xl font-bold">Project overview</h2>
           </div>
           <div class="flex max-w-3xl flex-col gap-4 text-base leading-8 text-muted-foreground">
@@ -112,7 +104,6 @@ const props = defineProps<{
 
         <section aria-labelledby="project-objectives" class="flex flex-col gap-6">
           <div class="flex items-center gap-3">
-            <Target class="size-5 text-primary" aria-hidden="true" />
             <h2 id="project-objectives" class="text-2xl font-bold">Objectives</h2>
           </div>
           <ol class="grid gap-4 sm:grid-cols-3">
@@ -130,7 +121,6 @@ const props = defineProps<{
 
         <section aria-labelledby="project-features" class="flex flex-col gap-6">
           <div class="flex items-center gap-3">
-            <Layers3 class="size-5 text-primary" aria-hidden="true" />
             <h2 id="project-features" class="text-2xl font-bold">Key features</h2>
           </div>
           <div class="grid gap-x-8 gap-y-7 sm:grid-cols-2">
@@ -147,7 +137,6 @@ const props = defineProps<{
 
         <section aria-labelledby="project-challenges" class="flex flex-col gap-6">
           <div class="flex items-center gap-3">
-            <Lightbulb class="size-5 text-primary" aria-hidden="true" />
             <h2 id="project-challenges" class="text-2xl font-bold">Challenges and decisions</h2>
           </div>
           <div class="flex flex-col divide-y rounded-lg border bg-card">
@@ -169,7 +158,6 @@ const props = defineProps<{
 
         <section aria-labelledby="project-responsibilities" class="flex flex-col gap-6">
           <div class="flex items-center gap-3">
-            <BriefcaseBusiness class="size-5 text-primary" aria-hidden="true" />
             <h2 id="project-responsibilities" class="text-2xl font-bold">My contribution</h2>
           </div>
           <ul class="grid gap-3">
@@ -187,7 +175,7 @@ const props = defineProps<{
 
       <aside class="flex flex-col gap-6 lg:sticky lg:top-24 lg:self-start" aria-label="Project information">
         <section class="rounded-lg border bg-card p-6" aria-labelledby="project-facts">
-          <h2 id="project-facts" class="text-lg font-bold">Project facts</h2>
+          <h2 id="project-facts" class="font-bold">Project facts</h2>
           <dl class="mt-6 flex flex-col gap-5 text-sm">
             <div class="flex items-start gap-3">
               <BriefcaseBusiness class="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
@@ -222,12 +210,11 @@ const props = defineProps<{
 
         <section class="rounded-lg border bg-muted/40 p-6" aria-labelledby="project-stack">
           <div class="flex items-center gap-3">
-            <Wrench class="size-4 text-primary" aria-hidden="true" />
             <h2 id="project-stack" class="font-bold">Technology stack</h2>
           </div>
-          <div class="mt-6 flex flex-col gap-5">
+          <div class="mt-6 flex flex-col gap-5 text-sm">
             <div v-for="group in props.project.stack" :key="group.label">
-              <h3 class="text-xs font-semibold uppercase text-muted-foreground">{{ group.label }}</h3>
+              <h3 class="text-muted-foreground">{{ group.label }}</h3>
               <ul class="mt-2 flex flex-wrap gap-2">
                 <li v-for="technology in group.items" :key="technology">
                   <UiBadge variant="secondary" class="font-normal">{{ technology }}</UiBadge>

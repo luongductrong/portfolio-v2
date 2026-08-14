@@ -1,8 +1,5 @@
-export type SkillGroupIcon = 'code' | 'frontend' | 'devices' | 'database' | 'tools';
-
 export interface SkillGroup {
   title: string;
-  icon: SkillGroupIcon;
   skills: string[];
   featured?: boolean;
 }
@@ -15,28 +12,23 @@ export interface LearningGroup {
 export const skillGroups: SkillGroup[] = [
   {
     title: 'Languages',
-    icon: 'code',
     skills: ['JavaScript', 'TypeScript', 'Java'],
   },
   {
     title: 'Frontend',
-    icon: 'frontend',
     skills: ['React', 'Next.js', 'Vue.js', 'Nuxt'],
     featured: true,
   },
   {
     title: 'Mobile & Desktop',
-    icon: 'devices',
     skills: ['React Native', 'Electron'],
   },
   {
     title: 'Databases',
-    icon: 'database',
     skills: ['PostgreSQL', 'SQLite'],
   },
   {
     title: 'DevOps & Tools',
-    icon: 'tools',
     skills: ['Vercel', 'Netlify', 'GitHub Actions', 'Cloudflare'],
   },
 ];
