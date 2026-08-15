@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import 'vue-sonner/style.css';
-
 useHead({
   htmlAttrs: {
     class: 'scrollbar-thin scrollbar-thumb-primary dark:scrollbar-thumb-primary/60',
