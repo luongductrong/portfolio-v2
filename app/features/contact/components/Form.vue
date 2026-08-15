@@ -4,8 +4,6 @@ import { FORM_ENDPOINT } from '../constants';
 import { LoaderCircle, Send } from '@lucide/vue';
 
 const colorMode = useColorMode();
-const config = useRuntimeConfig();
-const tunrstileSiteKey = config.public.turnstileSiteKey;
 
 interface FormspreeResponse {
   error?: string;
@@ -59,6 +57,13 @@ async function submitMessage(event: Event) {
     isSubmitting.value = false;
   }
 }
+
+watch(
+  () => colorMode.value,
+  () => {
+    form.token = '';
+  },
+);
 </script>
 
 <template>
@@ -107,13 +112,14 @@ async function submitMessage(event: Event) {
     </div>
 
     <NuxtTurnstile
+      :key="colorMode.value"
       v-model="form.token"
-      :site-key="tunrstileSiteKey"
       class="min-h-16 w-full"
       :options="{
         theme: colorMode.value === 'dark' ? 'dark' : 'light',
         language: 'auto',
         size: 'flexible',
+        tabindex: -1,
       }"
     />
     <div class="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
