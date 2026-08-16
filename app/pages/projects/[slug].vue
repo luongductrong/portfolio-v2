@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { getProjectBySlug } from '@/features/projects/helpers';
+import { hasProjectSlug, useProjects } from '@/features/projects/helpers';
 
+const { t } = useI18n();
 const route = useRoute();
 const publicAsset = usePublicAsset();
+const { getProjectBySlug } = useProjects();
 
 definePageMeta({
   validate(route) {
-    const project = getProjectBySlug(String(route.params.slug));
-    return project ? true : { status: 404, statusText: 'Project not found' };
+    return hasProjectSlug(String(route.params.slug)) || { status: 404 };
   },
 });
 
@@ -16,11 +17,14 @@ const project = computed(() => {
 });
 
 useSeoMeta({
-  title: () => `${project.value.title} - Duc Trong Luong`,
+  title: () => t('projects.seo.detailTitle', { project: project.value.title }),
   description: () => project.value.summary,
   ogTitle: () => project.value.title,
   ogDescription: () => project.value.summary,
   ogImage: () => publicAsset(project.value.media.cover.src),
+  twitterTitle: () => project.value.title,
+  twitterDescription: () => project.value.summary,
+  twitterImage: () => publicAsset(project.value.media.cover.src),
 });
 </script>
 

@@ -10,12 +10,19 @@ import {
   Monitor,
   Users,
 } from '@lucide/vue';
-import type { Project } from '../types';
-import { projectStatusLabels } from '../helpers';
+import type { Project, ProjectStatus } from '../types';
 
 const props = defineProps<{
   project: Project;
 }>();
+
+const { t } = useI18n();
+const projectStatusKeys: Record<ProjectStatus, string> = {
+  completed: 'completed',
+  'in-development': 'inDevelopment',
+  maintained: 'maintained',
+  archived: 'archived',
+};
 </script>
 
 <template>
@@ -26,7 +33,7 @@ const props = defineProps<{
         class="mb-10 inline-flex md:hidden items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary sm:mb-14"
       >
         <ArrowLeft class="size-4" aria-hidden="true" />
-        All projects
+        {{ t('projects.detail.allProjects') }}
       </NuxtLink>
 
       <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
@@ -38,7 +45,7 @@ const props = defineProps<{
             <span class="text-border" aria-hidden="true">/</span>
             <span class="inline-flex items-center gap-2 font-medium text-primary">
               <span class="size-2 rounded-full bg-primary" aria-hidden="true" />
-              {{ projectStatusLabels[props.project.metadata.status] }}
+              {{ t(`projects.statuses.${projectStatusKeys[props.project.metadata.status]}`) }}
             </span>
           </div>
 
@@ -60,7 +67,7 @@ const props = defineProps<{
             class="shadow-brutalism hover:translate-1 hover:shadow-none"
           >
             <a :href="props.project.links.demo" target="_blank" rel="noopener noreferrer">
-              Live demo
+              {{ t('projects.detail.liveDemo') }}
               <ArrowUpRight data-icon="inline-end" />
             </a>
           </UiButton>
@@ -72,7 +79,7 @@ const props = defineProps<{
           >
             <a :href="props.project.links.source" target="_blank" rel="noopener noreferrer">
               <Code2 data-icon="inline-start" />
-              Source code
+              {{ t('projects.detail.sourceCode') }}
             </a>
           </UiButton>
         </div>
@@ -85,7 +92,9 @@ const props = defineProps<{
 
     <section v-if="props.project.outcomes.length" aria-labelledby="project-outcomes" class="mt-14 sm:mt-18">
       <div class="mb-5 flex items-end justify-between gap-4 border-b pb-4">
-        <h2 id="project-outcomes" class="mt-1 text-xl font-bold text-primary uppercase">Quick Highlights</h2>
+        <h2 id="project-outcomes" class="mt-1 text-xl font-bold text-primary uppercase">
+          {{ t('projects.detail.quickHighlights') }}
+        </h2>
       </div>
 
       <dl class="grid gap-px overflow-hidden border bg-border sm:grid-cols-3">
@@ -103,7 +112,7 @@ const props = defineProps<{
       <div class="flex min-w-0 flex-col gap-16">
         <article aria-labelledby="project-overview" class="flex flex-col gap-6">
           <div class="flex items-center gap-3">
-            <h2 id="project-overview" class="text-2xl font-bold">Project overview</h2>
+            <h2 id="project-overview" class="text-2xl font-bold">{{ t('projects.detail.overview') }}</h2>
           </div>
           <div class="flex max-w-3xl flex-col gap-4 text-base leading-8 text-muted-foreground">
             <p v-for="paragraph in props.project.overview" :key="paragraph">
@@ -114,7 +123,7 @@ const props = defineProps<{
 
         <section aria-labelledby="project-objectives" class="flex flex-col gap-6">
           <div class="flex items-center gap-3">
-            <h2 id="project-objectives" class="text-2xl font-bold">Objectives</h2>
+            <h2 id="project-objectives" class="text-2xl font-bold">{{ t('projects.detail.objectives') }}</h2>
           </div>
           <ol class="grid gap-4 sm:grid-cols-3">
             <li
@@ -131,7 +140,7 @@ const props = defineProps<{
 
         <section aria-labelledby="project-features" class="flex flex-col gap-6">
           <div class="flex items-center gap-3">
-            <h2 id="project-features" class="text-2xl font-bold">Key features</h2>
+            <h2 id="project-features" class="text-2xl font-bold">{{ t('projects.detail.features') }}</h2>
           </div>
           <div class="grid gap-x-8 gap-y-7 sm:grid-cols-2">
             <article
@@ -147,18 +156,22 @@ const props = defineProps<{
 
         <section aria-labelledby="project-challenges" class="flex flex-col gap-6">
           <div class="flex items-center gap-3">
-            <h2 id="project-challenges" class="text-2xl font-bold">Challenges and decisions</h2>
+            <h2 id="project-challenges" class="text-2xl font-bold">
+              {{ t('projects.detail.challengesAndDecisions') }}
+            </h2>
           </div>
           <div class="flex flex-col divide-y border bg-card">
             <article v-for="challenge in props.project.challenges" :key="challenge.title" class="p-6 sm:p-7">
               <h3 class="font-bold">{{ challenge.title }}</h3>
               <div class="mt-5 grid gap-5 sm:grid-cols-2 sm:gap-8">
                 <div>
-                  <p class="text-xs font-semibold uppercase text-muted-foreground">Challenge</p>
+                  <p class="text-xs font-semibold uppercase text-muted-foreground">
+                    {{ t('projects.detail.challenge') }}
+                  </p>
                   <p class="mt-2 text-sm leading-6 text-muted-foreground">{{ challenge.problem }}</p>
                 </div>
                 <div>
-                  <p class="text-xs font-semibold uppercase text-primary">Decision</p>
+                  <p class="text-xs font-semibold uppercase text-primary">{{ t('projects.detail.decision') }}</p>
                   <p class="mt-2 text-sm leading-6 text-foreground/80">{{ challenge.solution }}</p>
                 </div>
               </div>
@@ -168,7 +181,9 @@ const props = defineProps<{
 
         <section aria-labelledby="project-responsibilities" class="flex flex-col gap-6">
           <div class="flex items-center gap-3">
-            <h2 id="project-responsibilities" class="text-2xl font-bold">My contribution</h2>
+            <h2 id="project-responsibilities" class="text-2xl font-bold">
+              {{ t('projects.detail.contribution') }}
+            </h2>
           </div>
           <ul class="grid gap-3">
             <li
@@ -183,35 +198,38 @@ const props = defineProps<{
         </section>
       </div>
 
-      <aside class="flex flex-col gap-6 lg:sticky lg:top-24 lg:self-start" aria-label="Project information">
+      <aside
+        class="flex flex-col gap-6 lg:sticky lg:top-24 lg:self-start"
+        :aria-label="t('projects.detail.information')"
+      >
         <section class="border bg-card p-6" aria-labelledby="project-facts">
-          <h2 id="project-facts" class="font-bold">Project facts</h2>
+          <h2 id="project-facts" class="font-bold">{{ t('projects.detail.facts') }}</h2>
           <dl class="mt-6 flex flex-col gap-5 text-sm">
             <div class="flex items-start gap-3">
               <BriefcaseBusiness class="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
               <div>
-                <dt class="text-muted-foreground">Role</dt>
+                <dt class="text-muted-foreground">{{ t('projects.detail.role') }}</dt>
                 <dd class="mt-1 font-medium">{{ props.project.metadata.role }}</dd>
               </div>
             </div>
             <div class="flex items-start gap-3">
               <CalendarDays class="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
               <div>
-                <dt class="text-muted-foreground">Timeline</dt>
+                <dt class="text-muted-foreground">{{ t('projects.detail.timeline') }}</dt>
                 <dd class="mt-1 font-medium">{{ props.project.metadata.timeline }}</dd>
               </div>
             </div>
             <div v-if="props.project.metadata.teamSize" class="flex items-start gap-3">
               <Users class="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
               <div>
-                <dt class="text-muted-foreground">Team</dt>
+                <dt class="text-muted-foreground">{{ t('projects.detail.team') }}</dt>
                 <dd class="mt-1 font-medium">{{ props.project.metadata.teamSize }}</dd>
               </div>
             </div>
             <div v-if="props.project.metadata.platform" class="flex items-start gap-3">
               <Monitor class="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
               <div>
-                <dt class="text-muted-foreground">Platform</dt>
+                <dt class="text-muted-foreground">{{ t('projects.detail.platform') }}</dt>
                 <dd class="mt-1 font-medium">{{ props.project.metadata.platform }}</dd>
               </div>
             </div>
@@ -220,7 +238,7 @@ const props = defineProps<{
 
         <section class="border bg-muted/40 p-6" aria-labelledby="project-stack">
           <div class="flex items-center gap-3">
-            <h2 id="project-stack" class="font-bold">Technology stack</h2>
+            <h2 id="project-stack" class="font-bold">{{ t('projects.detail.technologyStack') }}</h2>
           </div>
           <div class="mt-6 flex flex-col gap-5 text-sm">
             <div v-for="group in props.project.stack" :key="group.label">
@@ -234,7 +252,7 @@ const props = defineProps<{
           </div>
         </section>
 
-        <nav v-if="props.project.links.documentation" aria-label="Project resources">
+        <nav v-if="props.project.links.documentation" :aria-label="t('projects.detail.resources')">
           <UiButton
             as-child
             variant="ghost"
@@ -242,7 +260,7 @@ const props = defineProps<{
           >
             <a :href="props.project.links.documentation" target="_blank" rel="noopener noreferrer">
               <ExternalLink data-icon="inline-start" />
-              Read documentation
+              {{ t('projects.detail.readDocumentation') }}
               <ArrowUpRight data-icon="inline-end" />
             </a>
           </UiButton>

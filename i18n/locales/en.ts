@@ -1,3 +1,5 @@
+import projectMessages from '@/features/projects/locales/en';
+
 export default {
   language: {
     label: 'Language',
@@ -148,6 +150,7 @@ export default {
     groupLabel: '{group} skills',
     learningGroupLabel: '{group} technologies currently learning',
   },
+  projects: projectMessages,
   home: {
     seo: {
       title: 'Duc Trong Luong - Front-end Developer',

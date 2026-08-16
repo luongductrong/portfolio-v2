@@ -1,3 +1,5 @@
+import projectMessages from '@/features/projects/locales/vi';
+
 export default {
   language: {
     label: 'Ngôn ngữ',
@@ -22,7 +24,7 @@ export default {
   },
   footer: {
     vietnameseNameTitle: 'Lượng Đức Trọng',
-    copyright: '© {year}. Được xây dựng bằng cả ❤️ bởi Lượng Đức Trọng',
+    copyright: '© {year}. Một sản phẩm của Lượng Đức Trọng ❤️.',
   },
   theme: {
     switchToLight: 'Chuyển sang giao diện sáng',
@@ -148,6 +150,7 @@ export default {
     groupLabel: 'Các kỹ năng thuộc nhóm {group}',
     learningGroupLabel: 'Các công nghệ đang tìm hiểu thuộc nhóm {group}',
   },
+  projects: projectMessages,
   home: {
     seo: {
       title: 'Lượng Đức Trọng - Lập trình viên Front-end',

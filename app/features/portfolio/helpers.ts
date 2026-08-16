@@ -1,6 +1,6 @@
 import type { Composer } from 'vue-i18n';
 import { milestones } from './constants';
-import { projects } from '@/features/projects/constants';
+import { projectDefinitions } from '@/features/projects/constants';
 import { gmail, networkSocials } from '@/features/contact/constants';
 import { learningGroups, skillGroups } from '@/features/skills/constants';
 
@@ -16,13 +16,6 @@ type I18nHelpers = {
 };
 
 const HELP_COMMANDS = ['about', 'projects', 'skills', 'contact', 'resume', 'clear', 'whoami'] as const;
-
-const PROJECT_CATEGORY_KEYS: Record<string, string> = {
-  'funnycode-learning-platform': 'eLearningPlatform',
-  'react-fiori-style': 'enterpriseWebApplication',
-  'game-2048': 'webGame',
-  'portfolio-v2': 'portfolioWebsite',
-};
 
 const PROJECT_STATUS_KEYS = {
   completed: 'completed',
@@ -41,25 +34,20 @@ export function createCommands({ t, translateList }: I18nHelpers): CommandMap {
     ...HELP_COMMANDS.map((name) => `  ${name.padEnd(12)} - ${descriptions[name]}`),
   ].join('\n');
 
-  const projectOutput = projects
+  const projectOutput = projectDefinitions
     .map((project) => {
-      const categoryKey = PROJECT_CATEGORY_KEYS[project.slug];
-      const statusKey = PROJECT_STATUS_KEYS[project.metadata.status];
-      const category = categoryKey ? t(`terminal.output.projects.categories.${categoryKey}`) : project.category;
+      const statusKey = PROJECT_STATUS_KEYS[project.status];
+      const category = t(`projects.items.${project.id}.category`);
       const status = t(`terminal.output.projects.statuses.${statusKey}`);
       return `• ${project.title} [${category}] - ${status}`;
     })
     .join('\n');
 
-  const skillGroupLabels = translateList('terminal.output.skills.groups');
-  const learningGroupLabels = translateList('terminal.output.skills.learningGroups');
   const skillsOutput = [
-    ...skillGroups.map((group, index) => `${skillGroupLabels[index] ?? group.title}: ${group.skills.join(', ')}`),
+    ...skillGroups.map((group) => `${t(`skills.groups.${group.id}`)}: ${group.skills.join(', ')}`),
     '',
     t('terminal.output.skills.currentlyLearning'),
-    ...learningGroups.map(
-      (group, index) => `${learningGroupLabels[index] ?? group.title}: ${group.skills.join(', ')}`,
-    ),
+    ...learningGroups.map((group) => `${t(`skills.learningGroups.${group.id}`)}: ${group.skills.join(', ')}`),
   ].join('\n');
 
   const contactOutput = [

@@ -1,6 +1,6 @@
 import { stat } from 'node:fs/promises';
-import { isAbsolute, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { isAbsolute, relative, resolve } from 'node:path';
 import { publicAssets } from '../app/configs/public-assets.ts';
 
 const red = (text) => `\x1b[31m${text}\x1b[0m`;

@@ -8,6 +8,7 @@ const props = defineProps<{
 }>();
 
 const publicAsset = usePublicAsset();
+const { t } = useI18n();
 
 const IMAGE_COUNT = 4;
 type ImageIndex = 0 | 1 | 2 | 3;
@@ -73,7 +74,7 @@ onBeforeUnmount(() => {
               <button
                 type="button"
                 class="group relative mx-auto block aspect-video w-full overflow-hidden border border-border text-left"
-                :aria-label="`Preview image ${index + 1}: ${image.alt}`"
+                :aria-label="t('projects.media.previewImage', { index: index + 1, description: image.alt })"
                 @click="openPreview(index)"
               >
                 <img
@@ -92,7 +93,7 @@ onBeforeUnmount(() => {
         </p>
       </div>
 
-      <aside class="hidden min-h-0 flex-col lg:flex" aria-label="Project image thumbnails">
+      <aside class="hidden min-h-0 flex-col lg:flex" :aria-label="t('projects.media.thumbnails')">
         <div class="flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-primary/40">
           <button
             v-for="(image, index) in props.images"
@@ -100,7 +101,7 @@ onBeforeUnmount(() => {
             type="button"
             class="relative aspect-video w-full shrink-0 overflow-hidden border bg-muted transition-all"
             :class="selectedIndex === index ? 'border-primary ring-2 ring-primary/20' : 'opacity-60 hover:opacity-100'"
-            :aria-label="`Show image ${index + 1}: ${image.alt}`"
+            :aria-label="t('projects.media.showImage', { index: index + 1, description: image.alt })"
             :aria-current="selectedIndex === index ? 'true' : undefined"
             @click="selectImage(index)"
           >
@@ -116,14 +117,14 @@ onBeforeUnmount(() => {
       </aside>
     </div>
 
-    <div class="mt-3 flex gap-2 overflow-x-auto pb-1 lg:hidden" aria-label="Project image thumbnails">
+    <div class="mt-3 flex gap-2 overflow-x-auto pb-1 lg:hidden" :aria-label="t('projects.media.thumbnails')">
       <button
         v-for="(image, index) in props.images"
         :key="`${image.id}-mobile-thumbnail`"
         type="button"
         class="relative aspect-video w-24 shrink-0 overflow-hidden border bg-muted transition-all sm:w-28"
         :class="selectedIndex === index ? 'border-primary ring-2 ring-primary/20' : 'opacity-60 hover:opacity-100'"
-        :aria-label="`Show image ${index + 1}: ${image.alt}`"
+        :aria-label="t('projects.media.showImage', { index: index + 1, description: image.alt })"
         :aria-current="selectedIndex === index ? 'true' : undefined"
         @click="selectImage(index)"
       >
@@ -138,9 +139,9 @@ onBeforeUnmount(() => {
         @keydown="handlePreviewKeydown"
       >
         <UiDialogHeader class="sr-only">
-          <UiDialogTitle>Project image preview</UiDialogTitle>
+          <UiDialogTitle>{{ t('projects.media.dialogTitle') }}</UiDialogTitle>
           <UiDialogDescription>
-            Use the previous and next buttons or arrow keys to browse project images.
+            {{ t('projects.media.dialogDescription') }}
           </UiDialogDescription>
         </UiDialogHeader>
 
@@ -155,7 +156,7 @@ onBeforeUnmount(() => {
               size="icon"
               variant="default"
               class="absolute left-3 rounded-full"
-              aria-label="Previous image"
+              :aria-label="t('projects.media.previousImage')"
               @click="changePreview(-1)"
             >
               <ArrowLeft data-icon="inline-start" />
@@ -165,7 +166,7 @@ onBeforeUnmount(() => {
               size="icon"
               variant="default"
               class="absolute right-3 rounded-full"
-              aria-label="Next image"
+              :aria-label="t('projects.media.nextImage')"
               @click="changePreview(1)"
             >
               <ArrowRight data-icon="inline-end" />

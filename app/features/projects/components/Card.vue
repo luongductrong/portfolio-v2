@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ArrowRight } from '@lucide/vue';
 import { Motion } from 'motion-v';
+import { ArrowRight } from '@lucide/vue';
 import type { Project } from '../types';
 
 type Props = Pick<Project, 'slug' | 'title' | 'summary' | 'category' | 'year'> & {
@@ -15,6 +15,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const publicAsset = usePublicAsset();
+const { t } = useI18n();
 </script>
 
 <template>
@@ -29,7 +30,7 @@ const publicAsset = usePublicAsset();
     <NuxtLink
       :to="`/projects/${props.slug}`"
       class="flex h-full flex-col focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
-      :aria-label="`View ${props.title} case study`"
+      :aria-label="t('projects.card.viewLabel', { project: props.title })"
     >
       <div class="relative aspect-16/10 overflow-hidden border-b bg-muted">
         <img
@@ -56,7 +57,7 @@ const publicAsset = usePublicAsset();
           {{ props.summary }}
         </p>
 
-        <ul class="mt-6 flex flex-wrap gap-2" aria-label="Technologies used">
+        <ul class="mt-6 flex flex-wrap gap-2" :aria-label="t('projects.card.technologies')">
           <li v-for="technology in props.technologies.slice(0, 3)" :key="technology">
             <UiBadge variant="secondary" class="font-normal">
               {{ technology }}
@@ -65,7 +66,7 @@ const publicAsset = usePublicAsset();
         </ul>
 
         <span class="mt-7 inline-flex items-center gap-2 text-sm font-semibold uppercase text-primary">
-          View case study
+          {{ t('projects.card.viewCaseStudy') }}
           <ArrowRight class="transition-transform group-hover:translate-x-1" aria-hidden="true" />
         </span>
       </div>

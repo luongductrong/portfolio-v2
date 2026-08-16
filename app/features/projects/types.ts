@@ -1,4 +1,5 @@
 export type ProjectStatus = 'completed' | 'in-development' | 'maintained' | 'archived';
+export type ProjectId = 'funnyCode' | 'reactFioriStyle' | 'game2048' | 'portfolioV2';
 
 export interface ProjectImage {
   id: string;
@@ -61,6 +62,44 @@ export interface Project {
   links: ProjectLinks;
   metadata: ProjectMetadata;
   stack: ProjectStackGroup[];
+  overview: string[];
+  objectives: ProjectContentItem[];
+  features: ProjectContentItem[];
+  responsibilities: string[];
+  challenges: ProjectChallenge[];
+  outcomes: ProjectOutcome[];
+}
+
+export type ProjectAssetImage = Omit<ProjectImage, 'alt' | 'caption'>;
+
+export interface ProjectDefinition {
+  id: ProjectId;
+  slug: string;
+  title: string;
+  year: string;
+  media: {
+    cover: ProjectAssetImage;
+    images: [ProjectAssetImage, ProjectAssetImage, ProjectAssetImage, ProjectAssetImage];
+  };
+  links: ProjectLinks;
+  status: ProjectStatus;
+  stack: Array<{ items: string[] }>;
+}
+
+export interface ProjectImageTranslation {
+  alt: string;
+  caption?: string;
+}
+
+export interface ProjectTranslation {
+  summary: string;
+  category: string;
+  media: {
+    cover: ProjectImageTranslation;
+    images: [ProjectImageTranslation, ProjectImageTranslation, ProjectImageTranslation, ProjectImageTranslation];
+  };
+  metadata: Omit<ProjectMetadata, 'status'>;
+  stackLabels: string[];
   overview: string[];
   objectives: ProjectContentItem[];
   features: ProjectContentItem[];
