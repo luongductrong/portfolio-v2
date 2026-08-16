@@ -3,12 +3,12 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "nuxt build",
+    "build": "node scripts/validate-public-assets.js && nuxt build",
     "dev": "nuxt dev",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "lint:inspect": "eslint --inspect-config",
-    "generate": "nuxt generate --preset github_pages",
+    "generate": "node scripts/validate-public-assets.js && nuxt generate --preset github_pages",
     "typecheck": "nuxt typecheck",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"

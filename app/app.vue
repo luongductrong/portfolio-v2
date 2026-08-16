@@ -1,5 +1,6 @@
 <script setup>
 import { MotionConfig } from 'motion-v';
+import { publicAssets } from '@/configs/public-assets';
 
 const route = useRoute();
 const { locale } = useI18n();
@@ -11,7 +12,7 @@ const siteTitle = 'Duc Trong Luong - Front-end Developer';
 const siteURL = new URL(config.public.siteUrl.endsWith('/') ? config.public.siteUrl : `${config.public.siteUrl}/`);
 const description =
   'Duc Trong Luong is a Front-end Developer specializing in modern web applications, cross-platform experiences, and thoughtful user interfaces.';
-const ogImage = new URL('og-image.png', siteURL).toString();
+const ogImage = new URL(publicAssets.site.ogImage, siteURL).toString();
 const canonicalURL = computed(() => new URL(route.path.replace(/^\/+/, ''), siteURL).toString());
 
 useSeoMeta({
@@ -50,34 +51,34 @@ useHead(() => ({
     {
       rel: 'apple-touch-icon',
       sizes: '180x180',
-      href: publicAsset('apple-touch-icon.png'),
+      href: publicAsset(publicAssets.site.appleTouchIcon),
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '32x32',
-      href: publicAsset('favicon-32x32.png'),
+      href: publicAsset(publicAssets.site.favicon32),
       media: '(prefers-color-scheme: light)',
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '16x16',
-      href: publicAsset('favicon-16x16.png'),
+      href: publicAsset(publicAssets.site.favicon16),
       media: '(prefers-color-scheme: light)',
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '32x32',
-      href: publicAsset('favicon-dark-32x32.png'),
+      href: publicAsset(publicAssets.site.faviconDark32),
       media: '(prefers-color-scheme: dark)',
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '16x16',
-      href: publicAsset('favicon-dark-16x16.png'),
+      href: publicAsset(publicAssets.site.faviconDark16),
       media: '(prefers-color-scheme: dark)',
     },
   ],

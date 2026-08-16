@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { FileUser, ArrowRight } from '@lucide/vue';
+import { publicAssets } from '@/configs/public-assets';
 
 const { t } = useI18n();
 const publicAsset = usePublicAsset();
-const resumeURL = publicAsset('CV_LuongDucTrong_FrontendDeveloper.pdf?v=1');
+const resumeURL = publicAsset(publicAssets.site.resume);
 // TODO: Request change URL when the resume is updated
 </script>
 

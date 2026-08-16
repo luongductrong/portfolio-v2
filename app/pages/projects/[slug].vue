@@ -2,6 +2,7 @@
 import { getProjectBySlug } from '@/features/projects/helpers';
 
 const route = useRoute();
+const publicAsset = usePublicAsset();
 
 definePageMeta({
   validate(route) {
@@ -19,7 +20,7 @@ useSeoMeta({
   description: () => project.value.summary,
   ogTitle: () => project.value.title,
   ogDescription: () => project.value.summary,
-  ogImage: () => project.value.media.cover.src,
+  ogImage: () => publicAsset(project.value.media.cover.src),
 });
 </script>
 

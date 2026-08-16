@@ -1,17 +1,5 @@
 import type { Project } from './types';
-import { FioriCover } from '@/assets/images/projects/react-fiori-style';
-import { FunnyCodeCover } from '@/assets/images/projects/re-funnycode-frontend';
-import { FioriThumbnail1, FioriThumbnail2 } from '@/assets/images/projects/react-fiori-style';
-import { FioriThumbnail3, FioriThumbnail4 } from '@/assets/images/projects/react-fiori-style';
-import { PortfolioThumbnail1, PortfolioThumbnail2 } from '@/assets/images/projects/portfolio-v2';
-import { PortfolioThumbnail3, PortfolioThumbnail4 } from '@/assets/images/projects/portfolio-v2';
-import { GameThumbnail2, GameThumbnail3, GameThumbnail4 } from '@/assets/images/projects/game-2048';
-import { FunnyCodeThumbnail1, FunnyCodeThumbnail2 } from '@/assets/images/projects/re-funnycode-frontend';
-import { FunnyCodeThumbnail3, FunnyCodeThumbnail4 } from '@/assets/images/projects/re-funnycode-frontend';
-import { Game1, Game2, Game3, Game4, GameCover, GameThumbnail1 } from '@/assets/images/projects/game-2048';
-import { FunnyCode1, FunnyCode2, FunnyCode3, FunnyCode4 } from '@/assets/images/projects/re-funnycode-frontend';
-import { FioriStyle1, FioriStyle2, FioriStyle3, FioriStyle4 } from '@/assets/images/projects/react-fiori-style';
-import { Portfolio1, Portfolio2, Portfolio3, Portfolio4, PortfolioCover } from '@/assets/images/projects/portfolio-v2';
+import { publicAssets } from '@/configs/public-assets';
 
 export const projects = [
   {
@@ -24,36 +12,36 @@ export const projects = [
     media: {
       cover: {
         id: 'funnycode-cover',
-        src: FunnyCodeCover,
+        src: publicAssets.projects.funnyCode.cover,
         alt: 'FunnyCode Learning Platform cover with bold red typography and learning technology keywords',
         caption: 'FunnyCode Learning Platform.',
       },
       images: [
         {
           id: 'funnycode-course-detail',
-          src: FunnyCode4,
-          thumbnail: FunnyCodeThumbnail4,
+          src: publicAssets.projects.funnyCode.image4,
+          thumbnail: publicAssets.projects.funnyCode.thumbnail4,
           alt: 'FunnyCode course detail page with a video preview, lesson sections, and enrollment information',
           caption: 'Lessons organized into clear sections.',
         },
         {
           id: 'funnycode-course-catalog',
-          src: FunnyCode2,
-          thumbnail: FunnyCodeThumbnail2,
+          src: publicAssets.projects.funnyCode.image2,
+          thumbnail: publicAssets.projects.funnyCode.thumbnail2,
           alt: 'FunnyCode course catalog with search, filters, ratings, and pricing',
           caption: 'Course search, filters, ratings, and pricing.',
         },
         {
           id: 'funnycode-ai-roadmap',
-          src: FunnyCode3,
-          thumbnail: FunnyCodeThumbnail3,
+          src: publicAssets.projects.funnyCode.image3,
+          thumbnail: publicAssets.projects.funnyCode.thumbnail3,
           alt: 'FunnyCode AI roadmap form for generating a personalized learning path',
           caption: 'AI roadmaps shaped by learner goals and skills.',
         },
         {
           id: 'funnycode-login',
-          src: FunnyCode1,
-          thumbnail: FunnyCodeThumbnail1,
+          src: publicAssets.projects.funnyCode.image1,
+          thumbnail: publicAssets.projects.funnyCode.thumbnail1,
           alt: 'FunnyCode login screen with email and third-party sign-in options',
           caption: 'Email and third-party authentication.',
         },
@@ -156,36 +144,36 @@ export const projects = [
     media: {
       cover: {
         id: 'fiori-cover',
-        src: FioriCover,
+        src: publicAssets.projects.reactFioriStyle.cover,
         alt: 'React Fiori Style cover with blue SAP-inspired typography and enterprise workflow keywords',
         caption: 'React Fiori Style.',
       },
       images: [
         {
           id: 'fiori-attachment-list',
-          src: FioriStyle2,
-          thumbnail: FioriThumbnail2,
+          src: publicAssets.projects.reactFioriStyle.image2,
+          thumbnail: publicAssets.projects.reactFioriStyle.thumbnail2,
           alt: 'SAP Fiori-style attachment list with search filters, file metadata, and version information',
           caption: 'Attachment search, metadata, and versioning.',
         },
         {
           id: 'fiori-attachment-detail',
-          src: FioriStyle3,
-          thumbnail: FioriThumbnail3,
+          src: publicAssets.projects.reactFioriStyle.image3,
+          thumbnail: publicAssets.projects.reactFioriStyle.thumbnail3,
           alt: 'Attachment detail screen showing metadata, audit information, preview, and version history',
           caption: 'File preview, audit data, and version history.',
         },
         {
           id: 'fiori-launchpad',
-          src: FioriStyle1,
-          thumbnail: FioriThumbnail1,
+          src: publicAssets.projects.reactFioriStyle.image1,
+          thumbnail: publicAssets.projects.reactFioriStyle.thumbnail1,
           alt: 'SAP Fiori-style launchpad with business and administration tiles',
           caption: 'Role-aware business and administration launchpad.',
         },
         {
           id: 'fiori-admin-dashboard',
-          src: FioriStyle4,
-          thumbnail: FioriThumbnail4,
+          src: publicAssets.projects.reactFioriStyle.image4,
+          thumbnail: publicAssets.projects.reactFioriStyle.thumbnail4,
           alt: 'SAP Fiori-style administration dashboard with attachment, object, user, and configuration metrics',
           caption: 'System metrics and administration tools.',
         },
@@ -273,36 +261,36 @@ export const projects = [
     media: {
       cover: {
         id: 'game-2048-cover',
-        src: GameCover,
+        src: publicAssets.projects.game2048.cover,
         alt: 'Game 2048 cover with playful pink typography, puzzle tiles, and interaction keywords',
         caption: 'Game 2048.',
       },
       images: [
         {
           id: 'game-2048-gameplay',
-          src: Game2,
-          thumbnail: GameThumbnail2,
+          src: publicAssets.projects.game2048.image2,
+          thumbnail: publicAssets.projects.game2048.thumbnail2,
           alt: 'Game 2048 mid-game board showing animated numbered tiles and the current score',
           caption: 'Responsive 4x4 gameplay and score tracking.',
         },
         {
           id: 'game-2048-start',
-          src: Game1,
-          thumbnail: GameThumbnail1,
+          src: publicAssets.projects.game2048.image1,
+          thumbnail: publicAssets.projects.game2048.thumbnail1,
           alt: 'Game 2048 starting board with two tiles, score controls, and a saved high score',
           caption: 'New game, undo, and high score controls.',
         },
         {
           id: 'game-2048-new-game',
-          src: Game3,
-          thumbnail: GameThumbnail3,
+          src: publicAssets.projects.game2048.image3,
+          thumbnail: publicAssets.projects.game2048.thumbnail3,
           alt: 'Game 2048 confirmation dialog for starting a new game',
           caption: 'New game confirmation.',
         },
         {
           id: 'game-2048-game-over',
-          src: Game4,
-          thumbnail: GameThumbnail4,
+          src: publicAssets.projects.game2048.image4,
+          thumbnail: publicAssets.projects.game2048.thumbnail4,
           alt: 'Game 2048 game over dialog displayed over a full board',
           caption: 'Game over when no moves remain.',
         },
@@ -390,36 +378,36 @@ export const projects = [
     media: {
       cover: {
         id: 'portfolio-v2-cover',
-        src: PortfolioCover,
+        src: publicAssets.projects.portfolioV2.cover,
         alt: 'Portfolio v2 cover featuring green developer typography, technology labels, a terminal prompt, and an orbital web interface motif',
         caption: 'Portfolio v2 visual identity.',
       },
       images: [
         {
           id: 'portfolio-v2-home',
-          src: Portfolio1,
-          thumbnail: PortfolioThumbnail1,
+          src: publicAssets.projects.portfolioV2.image1,
+          thumbnail: publicAssets.projects.portfolioV2.thumbnail1,
           alt: 'Portfolio v2 home page with developer introduction, availability status, and project call to action',
           caption: 'Role, availability, and selected work.',
         },
         {
           id: 'portfolio-v2-projects',
-          src: Portfolio2,
-          thumbnail: PortfolioThumbnail2,
+          src: publicAssets.projects.portfolioV2.image2,
+          thumbnail: publicAssets.projects.portfolioV2.thumbnail2,
           alt: 'Portfolio v2 projects page showing a responsive archive of project case studies',
           caption: 'Selected work as structured case studies.',
         },
         {
           id: 'portfolio-v2-skills',
-          src: Portfolio3,
-          thumbnail: PortfolioThumbnail3,
+          src: publicAssets.projects.portfolioV2.image3,
+          thumbnail: publicAssets.projects.portfolioV2.thumbnail3,
           alt: 'Portfolio v2 skills page organizing languages, frontend technologies, databases, and delivery tools',
           caption: 'Capabilities grouped by product role.',
         },
         {
           id: 'portfolio-v2-contact',
-          src: Portfolio4,
-          thumbnail: PortfolioThumbnail4,
+          src: publicAssets.projects.portfolioV2.image4,
+          thumbnail: publicAssets.projects.portfolioV2.thumbnail4,
           alt: 'Portfolio v2 contact page with inquiry form, direct email access, and professional network links',
           caption: 'Protected inquiries and direct contact links.',
         },

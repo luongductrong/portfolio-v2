@@ -13,6 +13,8 @@ type Props = Pick<Project, 'slug' | 'title' | 'summary' | 'category' | 'year'> &
 const props = withDefaults(defineProps<Props>(), {
   index: 0,
 });
+
+const publicAsset = usePublicAsset();
 </script>
 
 <template>
@@ -31,7 +33,7 @@ const props = withDefaults(defineProps<Props>(), {
     >
       <div class="relative aspect-16/10 overflow-hidden border-b bg-muted">
         <img
-          :src="props.coverImage"
+          :src="publicAsset(props.coverImage)"
           :alt="props.imageAlt"
           class="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           loading="lazy"

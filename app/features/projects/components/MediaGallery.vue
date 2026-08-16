@@ -7,6 +7,8 @@ const props = defineProps<{
   images: ProjectImages;
 }>();
 
+const publicAsset = usePublicAsset();
+
 const IMAGE_COUNT = 4;
 type ImageIndex = 0 | 1 | 2 | 3;
 
@@ -75,7 +77,7 @@ onBeforeUnmount(() => {
                 @click="openPreview(index)"
               >
                 <img
-                  :src="image.src"
+                  :src="publicAsset(image.src)"
                   :alt="image.alt"
                   class="size-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.015]"
                 />
@@ -102,7 +104,7 @@ onBeforeUnmount(() => {
             :aria-current="selectedIndex === index ? 'true' : undefined"
             @click="selectImage(index)"
           >
-            <img :src="image.thumbnail ?? image.src" alt="" class="size-full object-cover" />
+            <img :src="publicAsset(image.thumbnail ?? image.src)" alt="" class="size-full object-cover" />
             <span
               class="absolute right-1.5 bottom-1.5 bg-background/85 px-1.5 py-0.5 text-[0.625rem] font-semibold text-foreground tabular-nums"
               aria-hidden="true"
@@ -125,7 +127,7 @@ onBeforeUnmount(() => {
         :aria-current="selectedIndex === index ? 'true' : undefined"
         @click="selectImage(index)"
       >
-        <img :src="image.thumbnail ?? image.src" alt="" class="size-full object-cover" />
+        <img :src="publicAsset(image.thumbnail ?? image.src)" alt="" class="size-full object-cover" />
       </button>
     </div>
 
@@ -145,7 +147,7 @@ onBeforeUnmount(() => {
         <div class="flex min-h-0 flex-col gap-3">
           <div class="relative flex min-h-64 items-center justify-center overflow-hidden sm:min-h-96">
             <div class="aspect-video w-full max-h-[90dvh] max-w-[95dvw] overflow-hidden">
-              <img :src="previewImage.src" :alt="previewImage.alt" class="size-full object-cover" />
+              <img :src="publicAsset(previewImage.src)" :alt="previewImage.alt" class="size-full object-cover" />
             </div>
 
             <UiButton
