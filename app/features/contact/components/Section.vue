@@ -2,6 +2,7 @@
 import { gmail, networkSocials } from '../constants';
 import { ArrowRight, Check, Copy, Mail } from '@lucide/vue';
 
+const { t } = useI18n();
 const copied = ref(false);
 
 async function copyEmail() {
@@ -21,10 +22,10 @@ async function copyEmail() {
   <section aria-labelledby="contact-heading">
     <PageHeader
       heading-id="contact-heading"
-      eyebrow="Open for collaboration"
-      first-line="Initialize"
-      second-line="Connection."
-      note="Let's connect over a technical challenge or collaborative project."
+      :eyebrow="t('contact.header.eyebrow')"
+      :first-line="t('contact.header.firstLine')"
+      :second-line="t('contact.header.secondLine')"
+      :note="t('contact.header.note')"
     />
 
     <div class="mt-14 grid items-start gap-8 lg:mt-18 lg:grid-cols-12 lg:gap-12">
@@ -36,13 +37,13 @@ async function copyEmail() {
 
       <aside
         class="flex flex-col gap-6 lg:sticky lg:top-24 lg:col-span-5 animate-in fade-in slide-in-from-bottom-5 duration-550 motion-reduce:slide-in-from-bottom-0 motion-reduce:duration-300"
-        aria-label="Direct contact options"
+        :aria-label="t('contact.direct.ariaLabel')"
       >
         <section class="border bg-card p-5 transition-colors hover:border-primary/40 sm:p-6 shadow-brutalism">
           <div class="mb-5 flex items-center gap-3 border-b pb-4">
-            <h2 class="text-sm font-semibold uppercase">Direct access</h2>
+            <h2 class="text-sm font-semibold uppercase">{{ t('contact.direct.title') }}</h2>
           </div>
-          <p class="text-sm leading-6 text-muted-foreground">Contact me directly at</p>
+          <p class="text-sm leading-6 text-muted-foreground">{{ t('contact.direct.description') }}</p>
 
           <div class="mt-5 flex min-w-0 items-center gap-2 border bg-background p-2">
             <Mail class="ml-1 size-4 shrink-0 text-muted-foreground" aria-hidden="true" />
@@ -55,20 +56,22 @@ async function copyEmail() {
             <button
               type="button"
               class="inline-flex size-10 shrink-0 items-center justify-center text-muted-foreground transition-colors hover:bg-muted hover:text-primary focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
-              :title="copied ? 'Email copied' : 'Copy email address'"
-              :aria-label="copied ? 'Email copied' : 'Copy email address'"
+              :title="copied ? t('contact.direct.emailCopied') : t('contact.direct.copyEmail')"
+              :aria-label="copied ? t('contact.direct.emailCopied') : t('contact.direct.copyEmail')"
               @click="copyEmail"
             >
               <Check v-if="copied" class="size-4 text-primary" aria-hidden="true" />
               <Copy v-else class="size-4" aria-hidden="true" />
             </button>
-            <span class="sr-only" role="status" aria-live="polite">{{ copied ? 'Email copied' : '' }}</span>
+            <span class="sr-only" role="status" aria-live="polite">
+              {{ copied ? t('contact.direct.emailCopied') : '' }}
+            </span>
           </div>
         </section>
 
         <section class="border bg-card p-5 transition-colors hover:border-primary/40 sm:p-6 shadow-brutalism">
           <div class="mb-4 flex items-center gap-3 border-b pb-4">
-            <h2 class="text-sm font-semibold uppercase">Network nodes</h2>
+            <h2 class="text-sm font-semibold uppercase">{{ t('contact.network.title') }}</h2>
           </div>
 
           <div class="grid gap-2">
@@ -97,7 +100,7 @@ async function copyEmail() {
         <div
           class="hidden min-h-28 items-center justify-center border border-dashed text-xs text-muted-foreground lg:flex"
         >
-          // awaiting input...
+          {{ t('contact.awaitingInput') }}
         </div>
       </aside>
     </div>

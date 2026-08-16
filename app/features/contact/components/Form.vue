@@ -3,12 +3,9 @@ import { toast } from '@/lib/toast';
 import { FORM_ENDPOINT } from '../constants';
 import { LoaderCircle, Send } from '@lucide/vue';
 
+const { t, locale } = useI18n();
 const colorMode = useColorMode();
 
-interface FormspreeResponse {
-  error?: string;
-  errors?: Array<{ message: string }>;
-}
 const form = reactive({
   name: '',
   email: '',
@@ -27,7 +24,7 @@ async function submitMessage(event: Event) {
 
   const formElement = event.currentTarget as HTMLFormElement;
   const formData = new FormData(formElement);
-  formData.append('_subject', `Portfolio inquiry from ${form.name}`);
+  formData.append('_subject', t('contact.form.subject', { name: form.name }));
 
   try {
     const response = await fetch(FORM_ENDPOINT, {
@@ -38,21 +35,16 @@ async function submitMessage(event: Event) {
       body: formData,
     });
 
-    const result = (await response.json().catch(() => null)) as FormspreeResponse | null;
-
-    if (!response.ok) {
-      const message = result?.errors?.map((error) => error.message).join(' ') || result?.error;
-      throw new Error(message || 'Your message could not be sent. Please try again.');
-    }
+    if (!response.ok) throw new Error();
 
     form.name = '';
     form.email = '';
     form.message = '';
-    toast.success('Message sent successfully.', {
-      description: 'I will get back to you soon.',
+    toast.success(t('contact.form.feedback.success'), {
+      description: t('contact.form.feedback.successDescription'),
     });
-  } catch (error) {
-    toast.error(error instanceof Error ? error.message : 'Your message could not be sent. Please try again.');
+  } catch {
+    toast.error(t('contact.form.feedback.error'));
   } finally {
     isSubmitting.value = false;
   }
@@ -67,7 +59,12 @@ watch(
 </script>
 
 <template>
-  <form class="flex flex-col gap-6" aria-label="Contact form" :aria-busy="isSubmitting" @submit.prevent="submitMessage">
+  <form
+    class="flex flex-col gap-6"
+    :aria-label="t('contact.form.ariaLabel')"
+    :aria-busy="isSubmitting"
+    @submit.prevent="submitMessage"
+  >
     <div class="flex flex-col gap-2">
       <label class="text-xs font-semibold uppercase text-muted-foreground" for="contact-name"> var fullName </label>
       <input
@@ -77,7 +74,7 @@ watch(
         name="name"
         type="text"
         autocomplete="name"
-        placeholder="Enter your name"
+        :placeholder="t('contact.form.placeholders.name')"
         required
       />
     </div>
@@ -94,7 +91,7 @@ watch(
         type="email"
         autocomplete="email"
         inputmode="email"
-        placeholder="Enter your email"
+        :placeholder="t('contact.form.placeholders.email')"
         required
       />
     </div>
@@ -106,31 +103,31 @@ watch(
         v-model.trim="form.message"
         :class="[fieldClass, 'min-h-36 resize-y']"
         name="message"
-        placeholder="Enter your message..."
+        :placeholder="t('contact.form.placeholders.message')"
         required
       />
     </div>
 
     <NuxtTurnstile
-      :key="colorMode.value"
+      :key="`turnstile-${colorMode.value}-${locale}`"
       v-model="form.token"
       class="min-h-16 w-full"
       :options="{
         theme: colorMode.value === 'dark' ? 'dark' : 'light',
-        language: 'auto',
+        language: locale,
         size: 'flexible',
         tabindex: -1,
       }"
     />
     <div class="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
-      <span class="text-xs text-muted-foreground">// Expect a response within 24 hours</span>
+      <span class="text-xs text-muted-foreground">{{ t('contact.form.responseTime') }}</span>
       <UiButton
         type="submit"
         size="sm"
         class="uppercase shadow-brutalism hover:translate-1 hover:shadow-none"
         :disabled="isSubmitting || !form.token"
       >
-        {{ isSubmitting ? 'Sending...' : 'Send message' }}
+        {{ isSubmitting ? t('contact.form.sending') : t('contact.form.send') }}
         <LoaderCircle v-if="isSubmitting" class="animate-spin" aria-hidden="true" />
         <Send v-else aria-hidden="true" />
       </UiButton>

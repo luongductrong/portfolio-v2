@@ -1,7 +1,13 @@
 <script setup lang="ts">
+const { t } = useI18n();
+
 useSeoMeta({
-  title: 'Contact - Duc Trong Luong',
-  description: 'Contact Duc Trong Luong about web development, collaboration, and technical projects.',
+  title: () => t('contact.seo.title'),
+  description: () => t('contact.seo.description'),
+  ogTitle: () => t('contact.seo.title'),
+  ogDescription: () => t('contact.seo.description'),
+  twitterTitle: () => t('contact.seo.title'),
+  twitterDescription: () => t('contact.seo.description'),
 });
 </script>
 
