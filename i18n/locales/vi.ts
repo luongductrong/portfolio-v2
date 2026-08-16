@@ -20,6 +20,10 @@ export default {
       },
     },
   },
+  footer: {
+    vietnameseNameTitle: 'Lượng Đức Trọng',
+    copyright: '© {year}. Được xây dựng bằng cả ❤️ bởi Lượng Đức Trọng',
+  },
   theme: {
     switchToLight: 'Chuyển sang giao diện sáng',
     switchToDark: 'Chuyển sang giao diện tối',
@@ -44,8 +48,7 @@ export default {
       },
     },
     output: {
-      welcome:
-        "Duc Trong Luong CLI Terminal v2.0.0.4 (x86_64-pc-linux-gnu)\nNhập 'help' để xem các lệnh khả dụng.",
+      welcome: "Duc Trong Luong CLI Terminal v2.0.0.4 (x86_64-pc-linux-gnu)\nNhập 'help' để xem các lệnh khả dụng.",
       availableCommands: 'Các lệnh khả dụng:',
       commandNotRecognized: "Không nhận diện được lệnh: '{command}'. Nhập 'help' để xem các lệnh khả dụng.",
       about: {

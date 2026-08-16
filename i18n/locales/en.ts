@@ -20,6 +20,10 @@ export default {
       },
     },
   },
+  footer: {
+    vietnameseNameTitle: "Duc Trong Luong's Vietnamese name",
+    copyright: '© {year}. Made with ❤️ by Duc Trong Luong',
+  },
   theme: {
     switchToLight: 'Switch to light theme',
     switchToDark: 'Switch to dark theme',

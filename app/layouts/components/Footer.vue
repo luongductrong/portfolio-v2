@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { socials } from '@/features/contact/constants';
+
+const { t } = useI18n();
 </script>
 
 <template>
@@ -9,6 +11,7 @@ import { socials } from '@/features/contact/constants';
         <li
           v-for="social in socials"
           :key="social.platform"
+          :title="social.platform"
           class="size-10 rounded-full bg-muted inline-flex items-center justify-center"
         >
           <a :href="social.url" target="_blank" rel="noopener noreferrer" :aria-label="social.platform">
@@ -16,8 +19,10 @@ import { socials } from '@/features/contact/constants';
           </a>
         </li>
       </ul>
-      <p class="text-2xl font-bold" title="Duc Trong Luong's Vietnamese name">Lượng Đức Trọng</p>
-      <p class="text-sm text-muted-foreground">&copy; {{ new Date().getFullYear() }} Made with ❤️ by Duc Trong Luong</p>
+      <p class="text-2xl font-bold" :title="t('footer.vietnameseNameTitle')">Lượng Đức Trọng</p>
+      <p class="text-sm text-muted-foreground">
+        {{ t('footer.copyright', { year: new Date().getFullYear() }) }}
+      </p>
     </footer>
   </LayoutContainer>
 </template>
