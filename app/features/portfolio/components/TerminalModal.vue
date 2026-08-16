@@ -1,37 +1,55 @@
 <script setup lang="ts">
 import { Terminal, CornerDownLeft } from '@lucide/vue';
-import { QUICK_COMMANDS, executeCommand } from '../helpers';
+import { QUICK_COMMANDS, createCommands, executeCommand } from '../helpers';
 
 interface CommandLog {
   command: string;
-  output: string;
+  type: 'welcome' | 'command';
 }
 
+const { t, tm, rt } = useI18n();
 const input = ref('');
 const bottomRef = ref<HTMLDivElement | null>(null);
-const logs = ref<CommandLog[]>([
-  {
-    command: 'welcome',
-    output: `Duc Trong Luong CLI Terminal v2.0.0.4 (x86_64-pc-linux-gnu)\nType 'help' to list available commands.`,
-  },
-]);
+const logs = ref<CommandLog[]>([{ command: 'welcome', type: 'welcome' }]);
 
-const handleRunCommand = function (cmd: string) {
-  executeCommand({
+function translateList(key: string): string[] {
+  const messages = tm(key);
+  return Array.isArray(messages) ? messages.map((message) => rt(message)) : [];
+}
+
+const commands = computed(() => createCommands({ t, translateList }));
+
+const renderedLogs = computed(() =>
+  logs.value.map((log) => {
+    if (log.type === 'welcome') return { ...log, output: t('terminal.output.welcome') };
+
+    const execution = executeCommand({
+      cmd: log.command,
+      commands: commands.value,
+      host: import.meta.client ? window.location.host : '',
+      t,
+    });
+    return { ...log, output: execution.output };
+  }),
+);
+
+function handleRunCommand(cmd: string) {
+  const execution = executeCommand({
     cmd,
-    onOutput: (output: string) => {
-      logs.value = [...logs.value, { command: cmd, output }];
-    },
-    onClear: () => {
-      logs.value = [];
-    },
+    commands: commands.value,
+    host: import.meta.client ? window.location.host : '',
+    t,
   });
-  input.value = '';
-};
 
-const handleFormSubmit = function () {
+  if (execution.clear) logs.value = [];
+  else logs.value = [...logs.value, { command: cmd, type: 'command' }];
+
+  input.value = '';
+}
+
+function handleFormSubmit() {
   if (input.value) handleRunCommand(input.value);
-};
+}
 
 watch(logs, async () => {
   await nextTick();
@@ -45,27 +63,28 @@ watch(logs, async () => {
       <UiButton
         variant="ghost"
         size="icon-sm"
-        aria-label="Open Terminal"
+        :aria-label="t('terminal.open')"
+        :title="t('terminal.open')"
         class="rounded-full transition-[background-color,border-color,box-shadow,transform]"
       >
-        <Terminal />
+        <Terminal data-icon="inline-start" aria-hidden="true" />
       </UiButton>
     </UiDialogTrigger>
 
     <UiDialogContent class="font-mono max-w-3xl gap-0 overflow-hidden p-0 shadow-2xl sm:max-w-3xl">
       <UiDialogHeader class="sr-only">
-        <UiDialogTitle>Terminal</UiDialogTitle>
-        <UiDialogDescription>Duc Trong Luong terminal app</UiDialogDescription>
+        <UiDialogTitle>{{ t('terminal.title') }}</UiDialogTitle>
+        <UiDialogDescription>{{ t('terminal.description') }}</UiDialogDescription>
       </UiDialogHeader>
-      <!-- Terminal Title Bar -->
+
       <div class="px-4 py-3 border-b flex items-center justify-between">
         <div class="flex items-center gap-2">
-          <Terminal :size="16" />
-          <UiDialogTitle class="text-[13px]">ductrong@terminal:~</UiDialogTitle>
+          <Terminal :size="16" aria-hidden="true" />
+          <span class="text-[13px]">ductrong@terminal:~</span>
         </div>
       </div>
+
       <div class="flex h-[70vh] flex-col">
-        <!-- Quick Command Chips -->
         <div class="px-4 py-2 border-b flex gap-2 overflow-x-auto">
           <UiBadge
             v-for="cmd in QUICK_COMMANDS"
@@ -75,16 +94,16 @@ watch(logs, async () => {
             class="border cursor-pointer bg-muted hover:bg-accent"
             @click="handleRunCommand(cmd)"
           >
-            <button>
+            <button type="button">
               {{ cmd }}
             </button>
           </UiBadge>
         </div>
-        <!-- Logs Scroll Area -->
+
         <div
-          class="flex-1 p-4 overflow-y-auto text-[13px] space-y-4 scrollbar-thin scrollbar-thumb-primary dark:scrollbar-thumb-primary/60"
+          class="flex flex-1 flex-col gap-4 p-4 overflow-y-auto text-[13px] scrollbar-thin scrollbar-thumb-primary dark:scrollbar-thumb-primary/60"
         >
-          <div v-for="(log, index) in logs" :key="index">
+          <div v-for="(log, index) in renderedLogs" :key="index">
             <div class="flex items-center gap-2">
               <span class="text-primary">ductrong@user:~$</span>
               <span>{{ log.command }}</span>
@@ -93,18 +112,19 @@ watch(logs, async () => {
           </div>
           <div ref="bottomRef" />
         </div>
-        <!-- Input Form -->
+
         <form class="p-3 border-t flex items-center gap-2" @submit.prevent="handleFormSubmit">
-          <span class="text-sm pl-2">$</span>
+          <span class="text-sm pl-2" aria-hidden="true">$</span>
           <input
             v-model="input"
             type="text"
-            placeholder="Type command ('help', 'projects', 'contact')..."
+            :aria-label="t('terminal.inputLabel')"
+            :placeholder="t('terminal.placeholder')"
             class="flex-1 bg-transparent border-0 text-sm focus:outline-none"
             autofocus
           />
-          <button type="submit" class="p-1.5 border">
-            <CornerDownLeft :size="16" />
+          <button type="submit" class="p-1.5 border" :aria-label="t('terminal.runCommand')">
+            <CornerDownLeft :size="16" aria-hidden="true" />
           </button>
         </form>
       </div>

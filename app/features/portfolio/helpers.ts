@@ -1,81 +1,123 @@
+import type { Composer } from 'vue-i18n';
 import { milestones } from './constants';
 import { projects } from '@/features/projects/constants';
 import { gmail, networkSocials } from '@/features/contact/constants';
 import { learningGroups, skillGroups } from '@/features/skills/constants';
 
-// @export
-export const COMMANDS: Record<string, { name: string; description: string; output: string }> = {
-  help: {
-    name: 'help',
-    description: '',
-    output: `Available commands:\n  about      - Display bio & summary\n  projects   - List featured systems & architecture\n  skills     - Display technical stack\n  contact    - Get contact information\n  resume     - View career experience\n  clear      - Clear terminal screen\n  whoami     - Print current session user`,
-  },
-  about: {
-    name: 'about',
-    description: 'Display bio & summary',
-    output: `Duc Trong Luong - Front-end Developer\nFrontend Developer specializing in modern web and cross-platform mobile applications.\nLocation: Ho Chi Minh City, Vietnam`,
-  },
-  projects: {
-    name: 'projects',
-    description: 'List featured systems & architecture',
-    output: projects
-      .map((project) => `• ${project.title} [${project.category}] - ${project.metadata.status}`)
-      .join('\n'),
-  },
-  skills: {
-    name: 'skills',
-    description: 'Display technical stack',
-    output: [
-      ...skillGroups.map((group) => `${group.title}: ${group.skills.join(', ')}`),
-      '',
-      'Currently learning:',
-      ...learningGroups.map((group) => `${group.title}: ${group.skills.join(', ')}`),
-    ].join('\n'),
-  },
-  contact: {
-    name: 'contact',
-    description: 'Get contact information',
-    output: [`Email: ${gmail.value}`, ...networkSocials.map((social) => `${social.platform}: ${social.url}`)].join(
-      '\n',
-    ),
-  },
-  resume: {
-    name: 'resume',
-    description: 'View career experience',
-    output: milestones
-      .map(
-        (milestone) =>
-          `${milestone.title} @ ${milestone.organization}\n${milestone.period} · ${milestone.location}\n${milestone.highlights.join(', ')}`,
-      )
-      .join('\n\n'),
-  },
-  whoami: { name: 'whoami', description: 'Print current session user', output: '' },
-  clear: { name: 'clear', description: 'Clear terminal screen', output: '' },
+export const COMMAND_NAMES = ['help', 'about', 'projects', 'skills', 'contact', 'resume', 'clear', 'whoami'] as const;
+export const QUICK_COMMANDS = COMMAND_NAMES.filter((name) => name !== 'whoami');
+
+type CommandName = (typeof COMMAND_NAMES)[number];
+type Command = { name: CommandName; description: string; output: string };
+export type CommandMap = Record<CommandName, Command>;
+type I18nHelpers = {
+  t: Composer['t'];
+  translateList: (key: string) => string[];
 };
 
-// @export
-export const QUICK_COMMANDS = Object.keys(COMMANDS).filter((name) => name !== 'whoami');
+const HELP_COMMANDS = ['about', 'projects', 'skills', 'contact', 'resume', 'clear', 'whoami'] as const;
+
+const PROJECT_CATEGORY_KEYS: Record<string, string> = {
+  'funnycode-learning-platform': 'eLearningPlatform',
+  'react-fiori-style': 'enterpriseWebApplication',
+  'game-2048': 'webGame',
+  'portfolio-v2': 'portfolioWebsite',
+};
+
+const PROJECT_STATUS_KEYS = {
+  completed: 'completed',
+  'in-development': 'inDevelopment',
+  maintained: 'maintained',
+  archived: 'archived',
+} as const;
+
+export function createCommands({ t, translateList }: I18nHelpers): CommandMap {
+  const descriptions = Object.fromEntries(
+    COMMAND_NAMES.map((name) => [name, t(`terminal.commands.descriptions.${name}`)]),
+  ) as Record<CommandName, string>;
+
+  const helpOutput = [
+    t('terminal.output.availableCommands'),
+    ...HELP_COMMANDS.map((name) => `  ${name.padEnd(12)} - ${descriptions[name]}`),
+  ].join('\n');
+
+  const projectOutput = projects
+    .map((project) => {
+      const categoryKey = PROJECT_CATEGORY_KEYS[project.slug];
+      const statusKey = PROJECT_STATUS_KEYS[project.metadata.status];
+      const category = categoryKey ? t(`terminal.output.projects.categories.${categoryKey}`) : project.category;
+      const status = t(`terminal.output.projects.statuses.${statusKey}`);
+      return `• ${project.title} [${category}] - ${status}`;
+    })
+    .join('\n');
+
+  const skillGroupLabels = translateList('terminal.output.skills.groups');
+  const learningGroupLabels = translateList('terminal.output.skills.learningGroups');
+  const skillsOutput = [
+    ...skillGroups.map((group, index) => `${skillGroupLabels[index] ?? group.title}: ${group.skills.join(', ')}`),
+    '',
+    t('terminal.output.skills.currentlyLearning'),
+    ...learningGroups.map(
+      (group, index) => `${learningGroupLabels[index] ?? group.title}: ${group.skills.join(', ')}`,
+    ),
+  ].join('\n');
+
+  const contactOutput = [
+    `${t('terminal.output.contact.email')}: ${gmail.value}`,
+    ...networkSocials.map((social) => `${social.platform}: ${social.url}`),
+  ].join('\n');
+
+  const resumeOutput = milestones
+    .map((milestone) => {
+      const key = `home.timeline.items.${milestone.id}`;
+      const highlights = translateList(`${key}.highlights`);
+      return `${t(`${key}.title`)} @ ${t(`${key}.organization`)}\n${t(`${key}.period`)} · ${t(`${key}.location`)}\n${highlights.join(', ')}`;
+    })
+    .join('\n\n');
+
+  return {
+    help: { name: 'help', description: descriptions.help, output: helpOutput },
+    about: {
+      name: 'about',
+      description: descriptions.about,
+      output: [
+        t('terminal.output.about.title'),
+        t('terminal.output.about.description'),
+        t('terminal.output.about.location'),
+      ].join('\n'),
+    },
+    projects: { name: 'projects', description: descriptions.projects, output: projectOutput },
+    skills: { name: 'skills', description: descriptions.skills, output: skillsOutput },
+    contact: { name: 'contact', description: descriptions.contact, output: contactOutput },
+    resume: { name: 'resume', description: descriptions.resume, output: resumeOutput },
+    clear: { name: 'clear', description: descriptions.clear, output: '' },
+    whoami: { name: 'whoami', description: descriptions.whoami, output: '' },
+  };
+}
 
 type ExecuteCommandParams = {
   cmd: string;
-  onClear: () => void;
-  onOutput: (output: string) => void;
+  commands: CommandMap;
+  host: string;
+  t: Composer['t'];
 };
 
-// @export
-export function executeCommand({ cmd, onClear, onOutput }: ExecuteCommandParams) {
+export type CommandExecution = {
+  clear: boolean;
+  output: string;
+};
+
+export function executeCommand({ cmd, commands, host, t }: ExecuteCommandParams): CommandExecution {
   const trimmed = cmd.trim().toLowerCase();
-  let output = `Command not recognized: '${trimmed}'. Type 'help' for available commands.`;
 
-  if (trimmed === 'clear') {
-    output = '';
-    onClear();
-  } else if (trimmed === 'whoami') {
-    output = `guest@${window.location.host}`;
-  } else {
-    const command = COMMANDS[trimmed];
-    if (command) output = command.output || '';
-  }
+  if (trimmed === 'clear') return { clear: true, output: '' };
+  if (trimmed === 'whoami') return { clear: false, output: `guest@${host}` };
 
-  if (output) onOutput(output);
+  const command = commands[trimmed as CommandName];
+  if (command) return { clear: false, output: command.output };
+
+  return {
+    clear: false,
+    output: t('terminal.output.commandNotRecognized', { command: trimmed }),
+  };
 }

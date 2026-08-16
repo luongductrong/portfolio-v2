@@ -2,8 +2,13 @@
 import { Motion } from 'motion-v';
 import { milestones } from '../constants';
 
-const { t } = useI18n();
+const { t, tm, rt } = useI18n();
 const messageKey = (id: (typeof milestones)[number]['id'], field: string) => `home.timeline.items.${id}.${field}`;
+
+function translatedHighlights(id: (typeof milestones)[number]['id']): string[] {
+  const messages = tm(messageKey(id, 'highlights'));
+  return Array.isArray(messages) ? messages.map((message) => rt(message)) : [];
+}
 </script>
 
 <template>
@@ -70,12 +75,12 @@ const messageKey = (id: (typeof milestones)[number]['id'], field: string) => `ho
 
               <div class="flex flex-wrap gap-2">
                 <UiBadge
-                  v-for="(_, highlightIndex) in milestone.highlights"
-                  :key="highlightIndex"
+                  v-for="highlight in translatedHighlights(milestone.id)"
+                  :key="highlight"
                   variant="secondary"
                   class="border border-border/70 bg-background/60 text-xs font-medium text-muted-foreground"
                 >
-                  {{ t(messageKey(milestone.id, `highlights[${highlightIndex}]`)) }}
+                  {{ highlight }}
                 </UiBadge>
               </div>
 

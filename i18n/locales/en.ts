@@ -3,6 +3,79 @@ export default {
     label: 'Language',
     change: 'Change language',
   },
+  header: {
+    home: 'Home',
+    navigation: {
+      primary: 'Primary navigation',
+      mobile: 'Mobile navigation',
+      title: 'Navigation',
+      description: 'Explore my work, skills, and ways to get in touch.',
+      open: 'Open navigation menu',
+      close: 'Close navigation menu',
+      items: {
+        about: 'About',
+        projects: 'Projects',
+        skills: 'Skills',
+        contact: 'Contact',
+      },
+    },
+  },
+  theme: {
+    switchToLight: 'Switch to light theme',
+    switchToDark: 'Switch to dark theme',
+  },
+  terminal: {
+    open: 'Open Terminal',
+    title: 'Terminal',
+    description: 'Duc Trong Luong terminal app',
+    inputLabel: 'Terminal command',
+    placeholder: "Type command ('help', 'projects', 'contact')...",
+    runCommand: 'Run command',
+    commands: {
+      descriptions: {
+        help: 'List available commands',
+        about: 'Display bio & summary',
+        projects: 'List featured systems & architecture',
+        skills: 'Display technical stack',
+        contact: 'Get contact information',
+        resume: 'View career experience',
+        clear: 'Clear terminal screen',
+        whoami: 'Print current session user',
+      },
+    },
+    output: {
+      welcome: "Duc Trong Luong CLI Terminal v2.0.0.4 (x86_64-pc-linux-gnu)\nType 'help' to list available commands.",
+      availableCommands: 'Available commands:',
+      commandNotRecognized: "Command not recognized: '{command}'. Type 'help' for available commands.",
+      about: {
+        title: 'Duc Trong Luong - Front-end Developer',
+        description: 'Frontend Developer specializing in modern web and cross-platform mobile applications.',
+        location: 'Location: Ho Chi Minh City, Vietnam',
+      },
+      projects: {
+        categories: {
+          eLearningPlatform: 'E-Learning Platform',
+          enterpriseWebApplication: 'Enterprise Web Application',
+          webGame: 'Web Game',
+          portfolioWebsite: 'Portfolio Website',
+        },
+        statuses: {
+          completed: 'Completed',
+          inDevelopment: 'In development',
+          maintained: 'Actively maintained',
+          archived: 'Archived',
+        },
+      },
+      skills: {
+        groups: ['Languages', 'Frontend', 'Mobile & Desktop', 'Databases', 'DevOps & Tools'],
+        currentlyLearning: 'Currently learning:',
+        learningGroups: ['Web Ecosystem', 'Cross-platform & Native', 'Infrastructure'],
+      },
+      contact: {
+        email: 'Email',
+      },
+    },
+  },
   home: {
     seo: {
       title: 'Duc Trong Luong - Front-end Developer',

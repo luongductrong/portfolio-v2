@@ -2,8 +2,9 @@
 import { SunMoon } from '@lucide/vue';
 
 const colorMode = useColorMode();
+const { t } = useI18n();
 const isDark = computed(() => colorMode.value === 'dark');
-const toggleLabel = computed(() => (isDark.value ? 'Switch to light theme' : 'Switch to dark theme'));
+const toggleLabel = computed(() => t(isDark.value ? 'theme.switchToLight' : 'theme.switchToDark'));
 
 function toggleTheme() {
   colorMode.preference = isDark.value ? 'light' : 'dark';

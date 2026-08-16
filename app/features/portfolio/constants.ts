@@ -1,14 +1,10 @@
 import type { Component } from 'vue';
 import { BriefcaseBusiness, Code2, GraduationCap } from '@lucide/vue';
 
+export type MilestoneId = 'education' | 'internship' | 'developer';
+
 interface Milestone {
-  id: 'education' | 'internship' | 'developer';
-  period: string;
-  title: string;
-  organization: string;
-  location: string;
-  description: string;
-  highlights: string[];
+  id: MilestoneId;
   icon: Component;
 }
 
@@ -16,35 +12,14 @@ interface Milestone {
 export const milestones: Milestone[] = [
   {
     id: 'education',
-    period: 'Oct 2022 - Jun 2026',
-    title: 'Bachelor of Information Technology',
-    organization: 'FPT University',
-    location: 'Ho Chi Minh City, Viet Nam',
-    description:
-      'Focused on Software Engineering fundamentals, product thinking, and building reliable application workflows from idea to delivery.',
-    highlights: ['Software Engineering', 'Degree Classification: Very Good', 'GPA 8.11/10'],
     icon: GraduationCap,
   },
   {
     id: 'internship',
-    period: 'Jan 2025 - Apr 2025',
-    title: 'SAP Intern',
-    organization: 'FPT Software',
-    location: 'Ho Chi Minh City, Viet Nam',
-    description:
-      'Contributed to enterprise software delivery, learned SAP project practices, and sharpened collaboration skills within a production-focused team.',
-    highlights: ['ABAP', 'Fiori applications', 'SAP ecosystem'],
     icon: BriefcaseBusiness,
   },
   {
     id: 'developer',
-    period: 'Apr 2025 - Present',
-    title: 'Front-end Developer',
-    organization: 'FTES',
-    location: 'Remote / Ho Chi Minh City, Viet Nam',
-    description:
-      'Building responsive interfaces, reusable UI components, and polished user flows for modern web products.',
-    highlights: ['React & Next.js', 'Design systems', 'Frontend architecture'],
     icon: Code2,
   },
 ];
