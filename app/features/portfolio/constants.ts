@@ -2,6 +2,7 @@ import type { Component } from 'vue';
 import { BriefcaseBusiness, Code2, GraduationCap } from '@lucide/vue';
 
 interface Milestone {
+  id: 'education' | 'internship' | 'developer';
   period: string;
   title: string;
   organization: string;
@@ -14,6 +15,7 @@ interface Milestone {
 // @export
 export const milestones: Milestone[] = [
   {
+    id: 'education',
     period: 'Oct 2022 - Jun 2026',
     title: 'Bachelor of Information Technology',
     organization: 'FPT University',
@@ -24,6 +26,7 @@ export const milestones: Milestone[] = [
     icon: GraduationCap,
   },
   {
+    id: 'internship',
     period: 'Jan 2025 - Apr 2025',
     title: 'SAP Intern',
     organization: 'FPT Software',
@@ -34,6 +37,7 @@ export const milestones: Milestone[] = [
     icon: BriefcaseBusiness,
   },
   {
+    id: 'developer',
     period: 'Apr 2025 - Present',
     title: 'Front-end Developer',
     organization: 'FTES',

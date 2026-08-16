@@ -2,6 +2,7 @@
 import { MotionConfig } from 'motion-v';
 
 const route = useRoute();
+const { locale } = useI18n();
 const config = useRuntimeConfig();
 const publicAsset = usePublicAsset();
 
@@ -38,6 +39,9 @@ useSeoMeta({
 });
 
 useHead(() => ({
+  htmlAttrs: {
+    lang: locale.value,
+  },
   link: [
     {
       rel: 'canonical',

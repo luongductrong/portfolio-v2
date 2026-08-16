@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { Motion } from 'motion-v';
 import { milestones } from '../constants';
+
+const { t } = useI18n();
+const messageKey = (id: (typeof milestones)[number]['id'], field: string) => `home.timeline.items.${id}.${field}`;
 </script>
 
 <template>
@@ -12,14 +15,15 @@ import { milestones } from '../constants';
       :transition="{ duration: 0.7 }"
       class="flex flex-col justify-start gap-5"
     >
-      <UiBadge variant="outline" class="w-fit border-primary/30 bg-primary/5 text-primary"> Career Timeline </UiBadge>
+      <UiBadge variant="outline" class="w-fit border-primary/30 bg-primary/5 text-primary">
+        {{ t('home.timeline.eyebrow') }}
+      </UiBadge>
       <div class="space-y-4">
         <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-          Milestones that shaped the way I build.
+          {{ t('home.timeline.title') }}
         </h2>
         <p class="max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
-          A focused timeline of my academic foundation, enterprise internship experience, and ongoing front-end
-          development work.
+          {{ t('home.timeline.description') }}
         </p>
       </div>
     </Motion>
@@ -30,7 +34,7 @@ import { milestones } from '../constants';
       <ol class="space-y-6">
         <Motion
           v-for="(milestone, index) in milestones"
-          :key="milestone.title"
+          :key="milestone.id"
           as="li"
           :initial="{ opacity: 0, x: 28 }"
           :while-in-view="{ opacity: 1, x: 0 }"
@@ -40,7 +44,7 @@ import { milestones } from '../constants';
           <div
             class="absolute left-0 top-5 z-10 flex size-8 items-center justify-center border border-primary/40 bg-background shadow-brutalism sm:size-12"
           >
-            <component :is="milestone.icon" class="size-4 text-primary sm:size-5" />
+            <component :is="milestone.icon" class="size-4 text-primary sm:size-5" aria-hidden="true" />
           </div>
 
           <article
@@ -51,32 +55,32 @@ import { milestones } from '../constants';
               <div class="space-y-2">
                 <div class="flex items-start justify-between gap-3">
                   <h3 class="text-lg sm:text-xl font-bold tracking-tight text-foreground">
-                    {{ milestone.title }}
+                    {{ t(messageKey(milestone.id, 'title')) }}
                   </h3>
                   <UiBadge variant="outline" class="border-border/80 bg-background/60 text-xs mt-1">
-                    {{ milestone.period }}
+                    {{ t(messageKey(milestone.id, 'period')) }}
                   </UiBadge>
                 </div>
-                <p class="mt-1 font-medium text-primary">{{ milestone.organization }}</p>
+                <p class="mt-1 font-medium text-primary">{{ t(messageKey(milestone.id, 'organization')) }}</p>
               </div>
 
               <p class="text-sm leading-7 text-muted-foreground">
-                {{ milestone.description }}
+                {{ t(messageKey(milestone.id, 'description')) }}
               </p>
 
               <div class="flex flex-wrap gap-2">
                 <UiBadge
-                  v-for="item in milestone.highlights"
-                  :key="item"
+                  v-for="(_, highlightIndex) in milestone.highlights"
+                  :key="highlightIndex"
                   variant="secondary"
                   class="border border-border/70 bg-background/60 text-xs font-medium text-muted-foreground"
                 >
-                  {{ item }}
+                  {{ t(messageKey(milestone.id, `highlights[${highlightIndex}]`)) }}
                 </UiBadge>
               </div>
 
               <p class="text-xs text-muted-foreground">
-                {{ milestone.location }}
+                {{ t(messageKey(milestone.id, 'location')) }}
               </p>
             </div>
           </article>

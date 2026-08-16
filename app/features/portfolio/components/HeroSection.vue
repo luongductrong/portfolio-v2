@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { FileUser, ArrowRight } from '@lucide/vue';
 
+const { t } = useI18n();
 const publicAsset = usePublicAsset();
 const resumeURL = publicAsset('CV_LuongDucTrong_FrontendDeveloper.pdf?v=1');
 // TODO: Request change URL when the resume is updated
@@ -22,16 +23,16 @@ const resumeURL = publicAsset('CV_LuongDucTrong_FrontendDeveloper.pdf?v=1');
       :y-offset="20"
       class="relative z-10 lg:col-span-8 flex flex-col items-center justify-center gap-3 text-lg"
     >
-      <p class="font-bold">Hi, I'm Duc Trong Luong 👋</p>
+      <p class="font-bold">{{ t('home.hero.greeting') }}</p>
       <h1
         class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight tracking-tighter text-center"
       >
-        Crafting
-        <span class="text-primary"> web & mobile experiences </span>
-        that feel effortless.
+        {{ t('home.hero.headline.start') }}
+        <span class="text-primary"> {{ t('home.hero.headline.highlight') }} </span>
+        {{ t('home.hero.headline.end') }}
       </h1>
       <UiTextGenerateEffect
-        words="Frontend Developer specializing in modern web and cross-platform mobile applications."
+        :words="t('home.hero.description')"
         :filter="true"
         :duration="0.5"
         :delay="0"
@@ -40,7 +41,10 @@ const resumeURL = publicAsset('CV_LuongDucTrong_FrontendDeveloper.pdf?v=1');
       />
       <div class="mt-4 flex gap-3">
         <UiButton size="lg" class="uppercase shadow-brutalism hover:translate-1 hover:shadow-none" as-child>
-          <NuxtLink to="/projects">View my work <ArrowRight /></NuxtLink>
+          <NuxtLink to="/projects">
+            {{ t('home.hero.actions.viewWork') }}
+            <ArrowRight data-icon="inline-end" />
+          </NuxtLink>
         </UiButton>
         <UiShineButton
           as-child
@@ -49,7 +53,8 @@ const resumeURL = publicAsset('CV_LuongDucTrong_FrontendDeveloper.pdf?v=1');
           size="lg"
         >
           <NuxtLink :to="resumeURL" external target="_blank" rel="noopener noreferrer">
-            <FileUser />My Resume
+            <FileUser data-icon="inline-start" />
+            {{ t('home.hero.actions.resume') }}
           </NuxtLink>
         </UiShineButton>
       </div>

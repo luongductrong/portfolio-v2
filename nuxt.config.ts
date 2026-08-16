@@ -13,7 +13,15 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  modules: ['shadcn-nuxt', '@nuxt/fonts', '@nuxtjs/color-mode', '@vueuse/nuxt', '@nuxt/eslint', '@nuxtjs/turnstile'],
+  modules: [
+    'shadcn-nuxt',
+    '@nuxt/fonts',
+    '@nuxtjs/color-mode',
+    '@vueuse/nuxt',
+    '@nuxt/eslint',
+    '@nuxtjs/turnstile',
+    '@nuxtjs/i18n',
+  ],
   fonts: {
     families: [
       {
@@ -76,15 +84,34 @@ export default defineNuxtConfig({
   ],
   app: {
     // baseURL: Defaults to `/`; Nuxt overrides it with NUXT_APP_BASE_URL when provided.
-    head: {
-      htmlAttrs: {
-        lang: 'vi',
-      },
-    },
   },
   colorMode: {
     preference: 'system',
     fallback: 'light',
     classSuffix: '',
+  },
+  i18n: {
+    strategy: 'no_prefix',
+    defaultLocale: 'en',
+    langDir: 'locales',
+    locales: [
+      {
+        code: 'en',
+        name: 'English',
+        language: 'en-US',
+        file: 'en.ts',
+      },
+      {
+        code: 'vi',
+        name: 'Tiếng Việt',
+        language: 'vi-VN',
+        file: 'vi.ts',
+      },
+    ],
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'portfolio_locale',
+      fallbackLocale: 'en',
+    },
   },
 });
