@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import { learningGroups, skillGroups } from '../constants';
+
+const { t } = useI18n();
 </script>
 
 <template>
   <section aria-labelledby="skills-heading">
     <PageHeader
       heading-id="skills-heading"
-      eyebrow="Engineering capabilities"
-      first-line="Technical"
-      second-line="Craft."
-      note="A production-tested stack for turning product ideas into reliable interfaces."
+      :eyebrow="t('skills.header.eyebrow')"
+      :first-line="t('skills.header.firstLine')"
+      :second-line="t('skills.header.secondLine')"
+      :note="t('skills.header.note')"
     />
 
     <section
@@ -17,14 +19,16 @@ import { learningGroups, skillGroups } from '../constants';
       aria-labelledby="current-stack-heading"
     >
       <div class="mb-7 flex items-center gap-3">
-        <h2 id="current-stack-heading" class="text-2xl font-bold sm:text-3xl">Current Stack</h2>
+        <h2 id="current-stack-heading" class="text-2xl font-bold sm:text-3xl">
+          {{ t('skills.currentStack') }}
+        </h2>
       </div>
 
       <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
         <SkillCard
           v-for="group in skillGroups"
-          :key="group.title"
-          :title="group.title"
+          :key="group.id"
+          :title="t(`skills.groups.${group.id}`)"
           :skills="group.skills"
           :featured="group.featured"
         />
@@ -36,17 +40,28 @@ import { learningGroups, skillGroups } from '../constants';
       aria-labelledby="learning-heading"
     >
       <div class="mb-7 flex items-center gap-3">
-        <h2 id="learning-heading" class="text-2xl font-bold sm:text-3xl">Expanding Horizons</h2>
+        <h2 id="learning-heading" class="text-2xl font-bold sm:text-3xl">
+          {{ t('skills.expandingHorizons') }}
+        </h2>
       </div>
 
       <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         <article
           v-for="group in learningGroups"
-          :key="group.title"
+          :key="group.id"
           class="border border-primary/25 bg-card p-5 sm:p-6 shadow-brutalism"
         >
-          <h3 class="text-sm font-semibold uppercase text-muted-foreground">{{ group.title }}</h3>
-          <ul class="mt-4 flex flex-wrap gap-3" :aria-label="`${group.title} technologies currently learning`">
+          <h3 class="text-sm font-semibold uppercase text-muted-foreground">
+            {{ t(`skills.learningGroups.${group.id}`) }}
+          </h3>
+          <ul
+            class="mt-4 flex flex-wrap gap-3"
+            :aria-label="
+              t('skills.learningGroupLabel', {
+                group: t(`skills.learningGroups.${group.id}`),
+              })
+            "
+          >
             <li
               v-for="skill in group.skills"
               :key="skill"

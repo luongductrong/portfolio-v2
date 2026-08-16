@@ -1,49 +1,49 @@
 export interface SkillGroup {
-  title: string;
+  id: 'languages' | 'frontend' | 'mobileDesktop' | 'databases' | 'devopsTools';
   skills: string[];
   featured?: boolean;
 }
 
 export interface LearningGroup {
-  title: string;
+  id: 'webEcosystem' | 'crossPlatformNative' | 'infrastructure';
   skills: string[];
 }
 
 export const skillGroups: SkillGroup[] = [
   {
-    title: 'Languages',
+    id: 'languages',
     skills: ['JavaScript', 'TypeScript', 'Java'],
   },
   {
-    title: 'Frontend',
+    id: 'frontend',
     skills: ['React', 'Next.js', 'Vue.js', 'Nuxt'],
     featured: true,
   },
   {
-    title: 'Mobile & Desktop',
+    id: 'mobileDesktop',
     skills: ['React Native', 'Electron'],
   },
   {
-    title: 'Databases',
+    id: 'databases',
     skills: ['PostgreSQL', 'SQLite'],
   },
   {
-    title: 'DevOps & Tools',
+    id: 'devopsTools',
     skills: ['Vercel', 'Netlify', 'GitHub Actions', 'Cloudflare'],
   },
 ];
 
 export const learningGroups: LearningGroup[] = [
   {
-    title: 'Web Ecosystem',
+    id: 'webEcosystem',
     skills: ['Alpine.js', 'Astro', 'React Router Framework', 'TanStack Start', 'Solid', 'Svelte'],
   },
   {
-    title: 'Cross-platform & Native',
+    id: 'crossPlatformNative',
     skills: ['Flutter', 'Tauri', 'Rust'],
   },
   {
-    title: 'Infrastructure',
+    id: 'infrastructure',
     skills: ['Nginx', 'Caddy', 'Docker'],
   },
 ];

@@ -8,6 +8,8 @@ interface SkillCardProps {
 const props = withDefaults(defineProps<SkillCardProps>(), {
   featured: false,
 });
+
+const { t } = useI18n();
 </script>
 
 <template>
@@ -16,7 +18,7 @@ const props = withDefaults(defineProps<SkillCardProps>(), {
       <h3 class="text-lg font-bold">{{ props.title }}</h3>
     </header>
 
-    <ul class="flex flex-wrap gap-2" :aria-label="`${props.title} skills`">
+    <ul class="flex flex-wrap gap-2" :aria-label="t('skills.groupLabel', { group: props.title })">
       <li
         v-for="skill in props.skills"
         :key="skill"
