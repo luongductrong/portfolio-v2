@@ -200,7 +200,7 @@ export default {
           organization: 'FTES',
           location: 'Làm việc từ xa / Thành phố Hồ Chí Minh, Việt Nam',
           description:
-            'Xây dựng giao diện thích ứng, thành phần giao diện có thể tái sử dụng và luồng trải nghiệm chỉn chu cho các sản phẩm web hiện đại.',
+            'Xây dựng giao diện thích ứng (responsive), thành phần giao diện có thể tái sử dụng và luồng trải nghiệm chỉn chu cho các sản phẩm web hiện đại.',
           highlights: ['React & Next.js', 'Design systems', 'Kiến trúc Front-end'],
         },
       },

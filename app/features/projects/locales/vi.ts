@@ -33,7 +33,7 @@ const items = {
       role: 'Lập trình viên Frontend / Phụ trách tái cấu trúc',
       timeline: '06/2025 - đầu năm 2026',
       teamSize: '5 thành viên frontend',
-      platform: 'Ứng dụng web thích ứng',
+      platform: 'Ứng dụng web thích ứng (responsive)',
     },
     stackLabels: ['Frontend', 'Hệ thống UI', 'Trạng thái & Dữ liệu', 'Học tập & Thời gian thực'],
     overview: [
@@ -218,7 +218,7 @@ const items = {
       role: 'Lập trình viên độc lập',
       timeline: '11/2024 - 08/2026',
       teamSize: 'Dự án cá nhân',
-      platform: 'Trò chơi web thích ứng',
+      platform: 'Trò chơi web thích ứng (responsive)',
     },
     stackLabels: ['Frontend', 'Giao diện & Chuyển động', 'Kiến trúc trò chơi', 'Công cụ & Triển khai'],
     overview: [
@@ -308,12 +308,12 @@ const items = {
       role: 'Người sáng tạo / Lập trình viên Frontend',
       timeline: '07/2026 - Hiện tại',
       teamSize: 'Dự án cá nhân',
-      platform: 'Website tĩnh thích ứng',
+      platform: 'Website tĩnh thích ứng (responsive)',
     },
     stackLabels: ['Frontend', 'Giao diện & Chuyển động', 'Trải nghiệm', 'Triển khai & Dịch vụ'],
     overview: [
       'Portfolio v2 giới thiệu dự án, năng lực và bối cảnh nghề nghiệp của mình qua các luồng khám phá rõ ràng.',
-      'Khả năng tạo website tĩnh (Static Site Generation) của Nuxt giúp quá trình phân phối đơn giản, đồng thời hỗ trợ theme, bố cục thích ứng và hiệu ứng chuyển động.',
+      'Khả năng tạo website tĩnh (Static Site Generation) của Nuxt giúp quá trình phân phối đơn giản, đồng thời hỗ trợ theme, bố cục thích ứng (responsive) và hiệu ứng chuyển động.',
     ],
     objectives: [
       {
