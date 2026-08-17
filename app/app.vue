@@ -21,7 +21,7 @@ useSeoMeta({
   author: siteName,
   keywords: 'Duc Trong Luong, Front-end Developer, Web Developer, Vue, Nuxt, React, TypeScript',
   robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
-  themeColor: '#0d1f17',
+  themeColor: '#262624',
   ogTitle: siteTitle,
   ogDescription: description,
   ogType: 'website',
