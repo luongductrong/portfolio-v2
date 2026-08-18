@@ -8,8 +8,13 @@ export const publicAssets = {
     faviconDark32: 'favicon-dark-32x32.png',
     googleSiteVerification: 'googlebc556dca81677489.html',
     ogImage: 'og-image.png',
-    resume: 'CV_LuongDucTrong_FrontendDeveloper.pdf?v=1',
     robots: 'robots.txt',
+  },
+  documents: {
+    resume: {
+      en: 'documents/resume/CV_LuongDucTrong_FrontendDeveloper.pdf',
+      vi: 'documents/resume/CV_LuongDucTrong_LapTrinhVienFrontend.pdf',
+    },
   },
   projects: {
     funnyCode: {

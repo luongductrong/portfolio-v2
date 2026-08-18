@@ -2,9 +2,9 @@
 import { FileUser, ArrowRight } from '@lucide/vue';
 import { publicAssets } from '@/configs/public-assets';
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 const publicAsset = usePublicAsset();
-const resumeURL = publicAsset(publicAssets.site.resume);
+const resumeURL = computed(() => publicAsset(publicAssets.documents.resume[locale.value === 'vi' ? 'vi' : 'en']));
 // TODO: Request change URL when the resume is updated
 </script>
 
