@@ -1,4 +1,4 @@
-# 🚀 Portfolio v2 - Duc Trong Luong
+# Portfolio v2 - Duc Trong Luong
 
 A personal portfolio website built with **Nuxt 4**, **Vue 3**, **Tailwind CSS v4**, and **shadcn-nuxt** - deployed as a static site to GitHub Pages via GitHub Actions.
 
@@ -6,7 +6,7 @@ A personal portfolio website built with **Nuxt 4**, **Vue 3**, **Tailwind CSS v4
 
 ---
 
-## ✨ Tech Stack
+## Tech Stack
 
 | Category        | Technology                                                                                      |
 | --------------- | ----------------------------------------------------------------------------------------------- |
@@ -24,7 +24,7 @@ A personal portfolio website built with **Nuxt 4**, **Vue 3**, **Tailwind CSS v4
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 portfolio-v2/
@@ -56,7 +56,7 @@ portfolio-v2/
 
 ---
 
-## 🔧 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -105,7 +105,7 @@ pnpm typecheck
 
 ---
 
-## 📦 Building & Deployment
+## Building & Deployment
 
 ### Static Site Generation (GitHub Pages)
 
@@ -125,7 +125,7 @@ pnpm dlx serve .output/public
 
 ---
 
-## 🚀 CI/CD - GitHub Actions
+## CI/CD - GitHub Actions
 
 Two workflows are configured under `.github/workflows/`:
 
@@ -140,17 +140,17 @@ Two workflows are configured under `.github/workflows/`:
 
 ---
 
-## 🎨 Features
+## Features
 
-- 🌗 **Dark / Light mode** - follows system preference, toggleable
-- ⚡ **Static site generation** - fast, CDN-friendly, no server required
-- 🎞️ **Smooth animations** - powered by `motion-v`, respects `prefers-reduced-motion`
-- 🛡️ **Spam-protected contact form** - Cloudflare Turnstile integration
-- 🔤 **Custom monospace font** - JetBrains Mono with Latin & Vietnamese subsets
-- 📱 **Fully responsive** - mobile-first layout
+- **Dark / Light mode** - follows system preference, toggleable
+- **Static site generation** - fast, CDN-friendly, no server required
+- **Smooth animations** - powered by `motion-v`, respects `prefers-reduced-motion`
+- **Spam-protected contact form** - Cloudflare Turnstile integration
+- **Custom monospace font** - JetBrains Mono with Latin & Vietnamese subsets
+- **Fully responsive** - mobile-first layout
 
 ---
 
-## 📄 License
+## License
 
 This project is for personal use. Feel free to take inspiration, but please do not directly copy content or design as your own portfolio.
