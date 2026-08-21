@@ -1,9 +1,0 @@
-export { default as FunnyCode1 } from './funnycode-1.png';
-export { default as FunnyCode2 } from './funnycode-2.png';
-export { default as FunnyCode3 } from './funnycode-3.png';
-export { default as FunnyCode4 } from './funnycode-4.png';
-export { default as FunnyCodeCover } from './funnycode-cover.png';
-export { default as FunnyCodeThumbnail1 } from './thumbnail-1.png';
-export { default as FunnyCodeThumbnail2 } from './thumbnail-2.png';
-export { default as FunnyCodeThumbnail3 } from './thumbnail-3.png';
-export { default as FunnyCodeThumbnail4 } from './thumbnail-4.png';

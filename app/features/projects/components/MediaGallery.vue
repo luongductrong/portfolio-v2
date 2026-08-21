@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { getHost } from '@/lib/helpers/host';
 import type { ProjectImages } from '../types';
 import { ArrowLeft, ArrowRight } from '@lucide/vue';
 import type { CarouselApi } from '@/components/ui/carousel';
 
 const props = defineProps<{
-  liveUrl?: string | null;
   images: ProjectImages;
 }>();
 
+const publicAsset = usePublicAsset();
+const { t } = useI18n();
+
 const IMAGE_COUNT = 4;
-const FALLBACK_HOST = 'ldt.is-a.dev';
 type ImageIndex = 0 | 1 | 2 | 3;
 
 const carouselApi = shallowRef<CarouselApi>();
@@ -66,59 +66,48 @@ onBeforeUnmount(() => {
 
 <template>
   <div>
-    <div class="grid gap-3 lg:grid-cols-[minmax(0,1fr)_11rem] xl:grid-cols-[minmax(0,1fr)_12.25rem]">
-      <div class="min-w-0">
+    <div class="grid gap-3 lg:grid-cols-[minmax(0,1fr)_11rem] lg:pb-14 xl:grid-cols-[minmax(0,1fr)_12.25rem]">
+      <div class="relative min-w-0">
         <UiCarousel class="relative w-full" :opts="{ loop: true }" @init-api="setCarouselApi">
           <UiCarouselContent>
             <UiCarouselItem v-for="(image, index) in props.images" :key="image.id">
               <button
                 type="button"
-                class="group relative flex h-64 w-full items-center justify-center overflow-hidden text-left sm:h-96 lg:h-104 xl:h-[28.938rem]"
-                :aria-label="`Preview image ${index + 1}: ${image.alt}`"
+                class="group relative mx-auto block aspect-video w-full overflow-hidden border border-border text-left"
+                :aria-label="t('projects.media.previewImage', { index: index + 1, description: image.alt })"
                 @click="openPreview(index)"
               >
-                <span
-                  class="aspect-video w-full max-w-[28.444rem] overflow-hidden rounded-lg sm:max-w-[42.667rem] lg:max-w-[46.222rem] xl:hidden"
-                >
-                  <img
-                    :src="image.src"
-                    :alt="image.alt"
-                    class="size-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.015]"
-                  />
-                </span>
-                <UiSafariMockup
-                  :src="image.src"
-                  :url="getHost(props.liveUrl, FALLBACK_HOST)"
-                  class="hidden h-auto w-full max-w-[46.222rem] transition-transform duration-500 motion-safe:group-hover:scale-[1.01] xl:block"
+                <img
+                  :src="publicAsset(image.src)"
+                  :alt="image.alt"
+                  class="size-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.015]"
                 />
               </button>
             </UiCarouselItem>
           </UiCarouselContent>
-
           <UiCarouselPrevious class="left-3" />
           <UiCarouselNext class="right-3" />
         </UiCarousel>
-
-        <p class="mt-3 text-center line-clamp-2 text-sm text-muted-foreground">
+        <p class="mt-3 text-center line-clamp-2 text-sm text-muted-foreground lg:absolute lg:inset-x-0 lg:top-full">
           {{ selectedImage.caption ?? selectedImage.alt }}
         </p>
       </div>
 
-      <aside class="hidden h-104 min-h-0 flex-col lg:flex xl:h-[28.938rem]" aria-label="Project image thumbnails">
+      <aside class="hidden min-h-0 flex-col lg:flex" :aria-label="t('projects.media.thumbnails')">
         <div class="flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-primary/40">
           <button
             v-for="(image, index) in props.images"
             :key="`${image.id}-desktop-thumbnail`"
             type="button"
-            class="relative aspect-video w-full shrink-0 overflow-hidden rounded-md border bg-muted transition-all"
+            class="relative aspect-video w-full shrink-0 overflow-hidden border bg-muted transition-all"
             :class="selectedIndex === index ? 'border-primary ring-2 ring-primary/20' : 'opacity-60 hover:opacity-100'"
-            :aria-label="`Show image ${index + 1}: ${image.alt}`"
+            :aria-label="t('projects.media.showImage', { index: index + 1, description: image.alt })"
             :aria-current="selectedIndex === index ? 'true' : undefined"
             @click="selectImage(index)"
           >
-            <img :src="image.thumbnail ?? image.src" alt="" class="size-full object-cover" />
+            <img :src="publicAsset(image.thumbnail ?? image.src)" alt="" class="size-full object-cover" />
             <span
-              class="absolute right-1.5 bottom-1.5 rounded-sm bg-background/85 px-1.5 py-0.5 text-[0.625rem] font-semibold text-foreground tabular-nums"
+              class="absolute right-1.5 bottom-1.5 bg-background/85 px-1.5 py-0.5 text-[0.625rem] font-semibold text-foreground tabular-nums"
               aria-hidden="true"
             >
               {{ String(index + 1).padStart(2, '0') }}
@@ -128,18 +117,18 @@ onBeforeUnmount(() => {
       </aside>
     </div>
 
-    <div class="mt-3 flex gap-2 overflow-x-auto pb-1 lg:hidden" aria-label="Project image thumbnails">
+    <div class="mt-3 flex gap-2 overflow-x-auto pb-1 lg:hidden" :aria-label="t('projects.media.thumbnails')">
       <button
         v-for="(image, index) in props.images"
         :key="`${image.id}-mobile-thumbnail`"
         type="button"
-        class="relative aspect-video w-24 shrink-0 overflow-hidden rounded-md border bg-muted transition-all sm:w-28"
+        class="relative aspect-video w-24 shrink-0 overflow-hidden border bg-muted transition-all sm:w-28"
         :class="selectedIndex === index ? 'border-primary ring-2 ring-primary/20' : 'opacity-60 hover:opacity-100'"
-        :aria-label="`Show image ${index + 1}: ${image.alt}`"
+        :aria-label="t('projects.media.showImage', { index: index + 1, description: image.alt })"
         :aria-current="selectedIndex === index ? 'true' : undefined"
         @click="selectImage(index)"
       >
-        <img :src="image.thumbnail ?? image.src" alt="" class="size-full object-cover" />
+        <img :src="publicAsset(image.thumbnail ?? image.src)" alt="" class="size-full object-cover" />
       </button>
     </div>
 
@@ -150,16 +139,16 @@ onBeforeUnmount(() => {
         @keydown="handlePreviewKeydown"
       >
         <UiDialogHeader class="sr-only">
-          <UiDialogTitle>Project image preview</UiDialogTitle>
+          <UiDialogTitle>{{ t('projects.media.dialogTitle') }}</UiDialogTitle>
           <UiDialogDescription>
-            Use the previous and next buttons or arrow keys to browse project images.
+            {{ t('projects.media.dialogDescription') }}
           </UiDialogDescription>
         </UiDialogHeader>
 
         <div class="flex min-h-0 flex-col gap-3">
           <div class="relative flex min-h-64 items-center justify-center overflow-hidden sm:min-h-96">
-            <div class="aspect-video w-full max-h-[90dvh] max-w-[95dvw] overflow-hidden rounded-lg">
-              <img :src="previewImage.src" :alt="previewImage.alt" class="size-full object-cover" />
+            <div class="aspect-video w-full max-h-[90dvh] max-w-[95dvw] overflow-hidden">
+              <img :src="publicAsset(previewImage.src)" :alt="previewImage.alt" class="size-full object-cover" />
             </div>
 
             <UiButton
@@ -167,7 +156,7 @@ onBeforeUnmount(() => {
               size="icon"
               variant="default"
               class="absolute left-3 rounded-full"
-              aria-label="Previous image"
+              :aria-label="t('projects.media.previousImage')"
               @click="changePreview(-1)"
             >
               <ArrowLeft data-icon="inline-start" />
@@ -177,7 +166,7 @@ onBeforeUnmount(() => {
               size="icon"
               variant="default"
               class="absolute right-3 rounded-full"
-              aria-label="Next image"
+              :aria-label="t('projects.media.nextImage')"
               @click="changePreview(1)"
             >
               <ArrowRight data-icon="inline-end" />

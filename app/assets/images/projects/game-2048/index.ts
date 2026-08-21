@@ -1,9 +1,0 @@
-export { default as Game1 } from './game-1.png';
-export { default as Game2 } from './game-2.png';
-export { default as Game3 } from './game-3.png';
-export { default as Game4 } from './game-4.png';
-export { default as GameCover } from './game-cover.png';
-export { default as GameThumbnail1 } from './thumbnail-1.png';
-export { default as GameThumbnail2 } from './thumbnail-2.png';
-export { default as GameThumbnail3 } from './thumbnail-3.png';
-export { default as GameThumbnail4 } from './thumbnail-4.png';

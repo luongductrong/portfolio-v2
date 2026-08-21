@@ -6,7 +6,6 @@ interface PageHeaderProps {
   eyebrow: string;
   firstLine: string;
   secondLine: string;
-  description: string;
   note: string;
 }
 
@@ -25,10 +24,7 @@ defineProps<PageHeaderProps>();
       {{ firstLine }}<br />
       <span class="text-primary">{{ secondLine }}</span>
     </h1>
-    <p class="mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
-      {{ description }}
-    </p>
-    <p class="mt-3 flex items-start gap-2 text-sm leading-6 text-primary/80">
+    <p class="mt-5 flex items-start gap-2 text-sm leading-6 text-primary/80">
       <ArrowDownRight class="mt-1 size-4 shrink-0" aria-hidden="true" />
       {{ note }}
     </p>

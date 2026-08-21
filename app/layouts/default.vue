@@ -1,9 +1,5 @@
 <script setup lang="ts">
-import 'vue-sonner/style.css';
-
 useHead({
-  title: 'Duc Trong Luong',
-  meta: [{ name: 'description', content: "Duc Trong Luong's portfolio." }],
   htmlAttrs: {
     class: 'scrollbar-thin scrollbar-thumb-primary dark:scrollbar-thumb-primary/60',
   },
@@ -11,7 +7,7 @@ useHead({
 </script>
 
 <template>
-  <div class="text-foreground font-mono bg-background overflow-x-clip">
+  <div class="text-foreground font-sans bg-background overflow-x-clip">
     <LayoutHeader />
     <LayoutContainer as-child>
       <main class="min-h-[calc(100dvh-3.75rem)]">

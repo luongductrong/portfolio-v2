@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { Home } from '@lucide/vue';
 import type { NuxtError } from '#app';
-import { FolderKanban, Home, TriangleAlert } from '@lucide/vue';
 
 const props = defineProps<{ error: NuxtError }>();
 
@@ -24,8 +24,7 @@ function redirectTo(path: string) {
       aria-labelledby="error-title"
       class="flex flex-col min-h-[calc(100dvh-8.75rem)] items-center justify-center gap-6"
     >
-      <p class="flex items-center gap-2 text-xl font-bold uppercase text-primary">
-        <TriangleAlert class="size-4" aria-hidden="true" />
+      <p class="flex items-center gap-2 text-2xl font-bold uppercase text-primary">
         {{ statusCode }}
       </p>
       <h1 id="error-title" class="text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
@@ -35,12 +34,15 @@ function redirectTo(path: string) {
         {{ description }}
       </p>
       <div class="flex flex-col gap-3 sm:flex-row">
-        <UiButton class="uppercase" @click="redirectTo('/')">
+        <UiButton class="uppercase shadow-brutalism hover:translate-1 hover:shadow-none" @click="redirectTo('/')">
           <Home aria-hidden="true" />
           Go back home
         </UiButton>
-        <UiButton variant="outline" class="uppercase" @click="redirectTo('/projects')">
-          <FolderKanban aria-hidden="true" />
+        <UiButton
+          variant="outline"
+          class="uppercase shadow-brutalism hover:translate-1 hover:shadow-none"
+          @click="redirectTo('/projects')"
+        >
           View projects
         </UiButton>
       </div>

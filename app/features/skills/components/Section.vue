@@ -1,55 +1,71 @@
 <script setup lang="ts">
-import { Compass, Layers3 } from '@lucide/vue';
 import { learningGroups, skillGroups } from '../constants';
+
+const { t } = useI18n();
 </script>
 
 <template>
   <section aria-labelledby="skills-heading">
     <PageHeader
       heading-id="skills-heading"
-      eyebrow="Engineering capabilities"
-      first-line="Technical"
-      second-line="Craft."
-      description="A comprehensive overview of my technological stack and the tools I use to turn product ideas into reliable interfaces."
-      note="Built through production work, sharpened through continuous learning."
+      :eyebrow="t('skills.header.eyebrow')"
+      :first-line="t('skills.header.firstLine')"
+      :second-line="t('skills.header.secondLine')"
+      :note="t('skills.header.note')"
     />
 
-    <section class="mt-14 sm:mt-16" aria-labelledby="current-stack-heading">
+    <section
+      class="mt-14 sm:mt-16 animate-in fade-in slide-in-from-bottom-5 duration-550 motion-reduce:slide-in-from-bottom-0 motion-reduce:duration-300"
+      aria-labelledby="current-stack-heading"
+    >
       <div class="mb-7 flex items-center gap-3">
-        <Layers3 class="size-7 text-primary" aria-hidden="true" />
-        <h2 id="current-stack-heading" class="text-2xl font-bold sm:text-3xl">Current Stack</h2>
+        <h2 id="current-stack-heading" class="text-2xl font-bold sm:text-3xl">
+          {{ t('skills.currentStack') }}
+        </h2>
       </div>
 
       <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
         <SkillCard
           v-for="group in skillGroups"
-          :key="group.title"
-          :title="group.title"
-          :icon="group.icon"
+          :key="group.id"
+          :title="t(`skills.groups.${group.id}`)"
           :skills="group.skills"
           :featured="group.featured"
         />
       </div>
     </section>
 
-    <section class="mt-14 sm:mt-16" aria-labelledby="learning-heading">
+    <section
+      class="mt-14 sm:mt-16 animate-in fade-in slide-in-from-bottom-5 duration-550 motion-reduce:slide-in-from-bottom-0 motion-reduce:duration-300"
+      aria-labelledby="learning-heading"
+    >
       <div class="mb-7 flex items-center gap-3">
-        <Compass class="size-7 text-primary" aria-hidden="true" />
-        <h2 id="learning-heading" class="text-2xl font-bold sm:text-3xl">Expanding Horizons</h2>
+        <h2 id="learning-heading" class="text-2xl font-bold sm:text-3xl">
+          {{ t('skills.expandingHorizons') }}
+        </h2>
       </div>
 
       <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         <article
           v-for="group in learningGroups"
-          :key="group.title"
-          class="rounded-lg border border-primary/25 bg-card p-5 sm:p-6"
+          :key="group.id"
+          class="border border-primary/25 bg-card p-5 sm:p-6 shadow-brutalism"
         >
-          <h3 class="text-sm font-semibold uppercase text-muted-foreground">{{ group.title }}</h3>
-          <ul class="mt-4 flex flex-wrap gap-3" :aria-label="`${group.title} technologies currently learning`">
+          <h3 class="text-sm font-semibold uppercase text-muted-foreground">
+            {{ t(`skills.learningGroups.${group.id}`) }}
+          </h3>
+          <ul
+            class="mt-4 flex flex-wrap gap-3"
+            :aria-label="
+              t('skills.learningGroupLabel', {
+                group: t(`skills.learningGroups.${group.id}`),
+              })
+            "
+          >
             <li
               v-for="skill in group.skills"
               :key="skill"
-              class="rounded border border-primary/40 bg-primary/10 px-4 py-2 text-xs font-semibold uppercase text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+              class="border border-primary/40 bg-primary/10 px-3 py-1.5 text-xs font-semibold uppercase text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
             >
               {{ skill }}
             </li>

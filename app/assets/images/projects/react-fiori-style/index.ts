@@ -1,9 +1,0 @@
-export { default as FioriStyle1 } from './fiori-1.png';
-export { default as FioriStyle2 } from './fiori-2.png';
-export { default as FioriStyle3 } from './fiori-3.png';
-export { default as FioriStyle4 } from './fiori-4.png';
-export { default as FioriCover } from './fiori-cover.png';
-export { default as FioriThumbnail1 } from './thumbnail-1.png';
-export { default as FioriThumbnail2 } from './thumbnail-2.png';
-export { default as FioriThumbnail3 } from './thumbnail-3.png';
-export { default as FioriThumbnail4 } from './thumbnail-4.png';

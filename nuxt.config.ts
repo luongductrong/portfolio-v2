@@ -4,15 +4,37 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  css: ['@/assets/css/tailwind.css'],
+  features: {
+    inlineStyles: false,
+  },
+  runtimeConfig: {
+    public: {
+      siteUrl: 'http://localhost:3000/',
+    },
+  },
+  css: ['@/assets/css/tailwind.css', 'vue-sonner/style.css'],
   vite: {
     plugins: [tailwindcss()],
   },
-  modules: ['shadcn-nuxt', '@nuxt/fonts', '@nuxtjs/color-mode', '@vueuse/nuxt', '@nuxt/eslint', '@nuxtjs/turnstile'],
+  modules: [
+    'shadcn-nuxt',
+    '@nuxt/fonts',
+    '@nuxtjs/color-mode',
+    '@vueuse/nuxt',
+    '@nuxt/eslint',
+    '@nuxtjs/turnstile',
+    '@nuxtjs/i18n',
+  ],
   fonts: {
     families: [
       {
         name: 'JetBrains Mono',
+        provider: 'google',
+        weights: ['400', '500', '600'],
+        styles: ['normal'],
+      },
+      {
+        name: 'Space Grotesk',
         provider: 'google',
         weights: ['400', '500', '600', '700', '800'],
         styles: ['normal'],
@@ -65,15 +87,34 @@ export default defineNuxtConfig({
   ],
   app: {
     // baseURL: Defaults to `/`; Nuxt overrides it with NUXT_APP_BASE_URL when provided.
-    head: {
-      htmlAttrs: {
-        lang: 'vi',
-      },
-    },
   },
   colorMode: {
     preference: 'system',
     fallback: 'light',
     classSuffix: '',
+  },
+  i18n: {
+    strategy: 'no_prefix',
+    defaultLocale: 'en',
+    langDir: 'locales',
+    locales: [
+      {
+        code: 'en',
+        name: 'English',
+        language: 'en-US',
+        file: 'en.ts',
+      },
+      {
+        code: 'vi',
+        name: 'Tiếng Việt',
+        language: 'vi-VN',
+        file: 'vi.ts',
+      },
+    ],
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'portfolio_locale',
+      fallbackLocale: 'en',
+    },
   },
 });
