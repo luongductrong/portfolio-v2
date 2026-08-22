@@ -7,7 +7,7 @@ Ho Chi Minh City, Vietnam | (+84) 867 520 049 | [luongductrong2004@gmail.com](ma
 
 ## PROFESSIONAL SUMMARY
 
-Junior Frontend Developer with hands-on experience building and improving production web applications using React, Next.js, and TypeScript. Skilled in frontend architecture, reusable UI systems, server rendering, API integration, and automated deployment. Comfortable with Vue.js and Nuxt, with foundational React Native experience and currently expanding toward full-stack web and mobile development.
+Junior Frontend Developer with nearly 2 years of hands-on experience building and improving production web applications using React, Next.js, and TypeScript. Skilled in frontend architecture, reusable UI systems, server rendering, API integration, and automated deployment. Comfortable with Vue.js and Nuxt, with foundational React Native experience and currently expanding toward full-stack web and mobile development.
 
 ## TECHNICAL SKILLS
 
