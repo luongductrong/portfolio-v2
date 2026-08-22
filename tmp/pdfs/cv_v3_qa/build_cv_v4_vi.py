@@ -256,7 +256,7 @@ story = [header()]
 story += section("GIỚI THIỆU", 17)
 story += [
     body(
-        "Là Lập trình viên Frontend (Junior) có kinh nghiệm thực tế trong việc xây dựng và cải tiến các "
+        "Là Lập trình viên Frontend (Junior) có gần 2 năm kinh nghiệm thực tế trong việc xây dựng và cải tiến các "
         "ứng dụng web đang vận hành bằng React, Next.js và TypeScript. Có kỹ năng về kiến trúc frontend, "
         "hệ thống UI tái sử dụng, kết xuất phía máy chủ, tích hợp API và triển khai tự động. Có thể làm "
         "việc với Vue.js và Nuxt, có nền tảng React Native cơ bản, đồng thời đang mở rộng theo định hướng "

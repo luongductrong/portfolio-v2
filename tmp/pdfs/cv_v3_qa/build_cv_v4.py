@@ -230,7 +230,7 @@ story = [
 story += section("PROFESSIONAL SUMMARY", 17)
 story += [
     body(
-        "Junior Frontend Developer with hands-on experience building and improving production web "
+        "Junior Frontend Developer with nearly 2 years of hands-on experience building and improving production web "
         "applications using React, Next.js, and TypeScript. Skilled in frontend architecture, reusable "
         "UI systems, server rendering, API integration, and automated deployment. Comfortable with "
         "Vue.js and Nuxt, with foundational React Native experience and currently expanding toward "

@@ -5,7 +5,7 @@
     </td>
     <td valign="top">
       <h1>LƯỢNG ĐỨC TRỌNG</h1>
-      <strong>Lập trình viên Frontend Junior</strong><br>
+      <strong>Lập trình viên Frontend (Junior)</strong><br>
       Thành phố Hồ Chí Minh, Việt Nam | (+84) 867 520 049 | <a href="mailto:luongductrong2004@gmail.com">luongductrong2004@gmail.com</a><br>
       <a href="https://luongductrong.dev">luongductrong.dev</a> | <a href="https://github.com/luongductrong">github.com/luongductrong</a> | <a href="https://linkedin.com/in/luongductrong2004">linkedin.com/in/luongductrong2004</a>
     </td>
@@ -14,7 +14,7 @@
 
 ## TÓM TẮT CHUYÊN MÔN
 
-Là lập trình viên Frontend Junior có kinh nghiệm thực tế trong việc xây dựng và cải tiến các ứng dụng web đang vận hành bằng React, Next.js và TypeScript. Có kỹ năng về kiến trúc frontend, hệ thống UI tái sử dụng, kết xuất phía máy chủ, tích hợp API và triển khai tự động. Có thể làm việc với Vue.js và Nuxt, có nền tảng React Native cơ bản, đồng thời đang mở rộng theo định hướng phát triển full-stack cho web và mobile.
+Là lập trình viên Frontend (Junior) có gần 2 năm kinh nghiệm thực tế trong việc xây dựng và cải tiến các ứng dụng web đang vận hành bằng React, Next.js và TypeScript. Có kỹ năng về kiến trúc frontend, hệ thống UI tái sử dụng, kết xuất phía máy chủ, tích hợp API và triển khai tự động. Có thể làm việc với Vue.js và Nuxt, có nền tảng React Native cơ bản, đồng thời đang mở rộng theo định hướng phát triển full-stack cho web và mobile.
 
 ## KỸ NĂNG CHUYÊN MÔN
 
