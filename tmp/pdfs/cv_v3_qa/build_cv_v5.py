@@ -24,7 +24,7 @@ OUTPUT = (
     / "public"
     / "documents"
     / "archive"
-    / "CV_LuongDucTrong_FrontendDeveloper_web3_v1_en_18082026.pdf"
+    / "CV_LuongDucTrong_FrontendDeveloper_v5_en_23082026.pdf"
 )
 
 NAVY = colors.HexColor("#173A63")
@@ -191,8 +191,7 @@ def decorate_page(canvas, doc) -> None:
     canvas.setTitle("Lượng Đức Trọng - Junior Frontend Developer")
     canvas.setSubject("Curriculum Vitae - Junior Frontend Developer")
     canvas.setKeywords(
-        "Lượng Đức Trọng, Junior Frontend Developer, TypeScript, React, Next.js, React Native, "
-        "Tauri, Web3"
+        "Lượng Đức Trọng, Junior Frontend Developer, React, Next.js, TypeScript, Vue.js, Nuxt"
     )
     canvas.setCreator("Lượng Đức Trọng")
 
@@ -231,20 +230,18 @@ story = [
 story += section("PROFESSIONAL SUMMARY", 17)
 story += [
     body(
-        "Junior Frontend Developer with hands-on experience building and improving production web "
-        "applications using TypeScript, React, and Next.js. Skilled in frontend architecture, reusable "
-        "UI systems, server rendering, API integration, and automated deployment. Has foundational "
-        "experience setting up and building applications with React Native and Tauri, plus "
-        "introductory exposure to blockchain and Web3 concepts through coursework. Proactive in learning "
-        "new technologies and focused on building reliable, maintainable products."
+        "Junior Frontend Developer with nearly 2 years of hands-on experience building and improving "
+        "production web applications using React, Next.js, and TypeScript. Skilled in frontend "
+        "architecture, reusable UI systems, server rendering, API integration, and automated deployment. "
+        "Comfortable with Vue.js and Nuxt, with foundational React Native experience and currently "
+        "expanding toward full-stack web and mobile development."
     )
 ]
 
 story += section("TECHNICAL SKILLS", 16)
 story += [
-    bullet("<b>Frontend:</b> TypeScript, JavaScript, React, Next.js, Vue.js, Nuxt, HTML, CSS"),
+    bullet("<b>Frontend:</b> JavaScript, TypeScript, React, Next.js, Vue.js, Nuxt, HTML, CSS"),
     bullet("<b>Mobile:</b> React Native"),
-    bullet("<b>Desktop:</b> Tauri"),
     bullet(
         "<b>UI and Data:</b> Tailwind CSS, shadcn/ui, TanStack Query, Zustand, REST APIs, Axios"
     ),
@@ -255,27 +252,20 @@ story += [
 
 story += section("PROFESSIONAL EXPERIENCE", 14)
 story += [
-    title_date("Project-based Frontend Developer | FTES Co., Ltd.", "Apr 2025 - Present"),
+    title_date("Project-based Frontend Developer | FTES Co., Ltd.", "Apr 2025 - Aug 2026"),
     Paragraph("Remote", styles["context"]),
     Spacer(1, 3),
-    body(
-        "<b>FunnyCode Learning Platform</b> - A production e-learning and commerce platform for "
-        "programming education."
-    ),
-    body("Live Demo: " + link("https://beta.funnycode.vn", "beta.funnycode.vn")),
-    Spacer(1, 2),
-    bullet("Own the frontend architecture and ongoing development of the production application."),
     bullet(
-        "Develop and maintain core flows for course discovery and learning, authentication, AI-assisted "
-        "roadmaps, learner progress, and course commerce."
+        "Design, develop, and maintain frontend features across web projects using React, Next.js, and "
+        "TypeScript."
     ),
     bullet(
-        "Modernized the frontend with Next.js 16, React 19, Partial Prerendering, and consistent UI and "
-        "data layers built with shadcn/ui, TanStack Query, and Zustand."
+        "Build reusable UI components, integrate REST APIs, manage client-side state and server data with "
+        "Zustand and TanStack Query, and support responsive, maintainable implementations."
     ),
-    body(
-        "<b>Technologies:</b> Next.js, React, TypeScript, Tailwind CSS, shadcn/ui, TanStack Query, "
-        "Zustand, Axios"
+    bullet(
+        "Contribute to mobile application development with Flutter by maintaining and improving existing "
+        "features."
     ),
     Spacer(1, 12),
     title_date("SAP Intern | FPT Software", "Jan 2025 - Apr 2025"),
@@ -303,27 +293,37 @@ story += [
     PageBreak(),
 ]
 
-story += section("ADDITIONAL TRAINING", 0)
+story += section("SELECTED PROJECTS", 0)
 story += [
-    title_date("Build Blockchain Applications with Python", "Aug 2024"),
-    Paragraph("VBI Academy &amp; Algorand Foundation", styles["context"]),
+    title_date("FunnyCode Learning Platform | Frontend Developer", "Apr 2025 - Present"),
     Spacer(1, 3),
+    body("Live Demo: " + link("https://beta.funnycode.vn", "beta.funnycode.vn")),
     body(
-        "Credential: "
+        "Source Code: "
         + link(
-            "https://explorer.perawallet.app/asset/2255667937/",
-            "explorer.perawallet.app/asset/2255667937",
+            "https://github.com/luongductrong/re-funnycode-frontend",
+            "github.com/luongductrong/re-funnycode-frontend",
         )
     ),
+    Spacer(1, 3),
+    body("A production e-learning and commerce platform for programming education."),
     Spacer(1, 2),
     bullet(
-        "Gained introductory exposure to blockchain application development and Web3 concepts through "
-        "coursework."
+        "Independently maintained and extended the frontend after taking over the existing codebase."
     ),
-]
-
-story += section("SELECTED PROJECTS", 16)
-story += [
+    bullet(
+        "Develop and maintain core flows for course discovery and learning, authentication, AI-assisted "
+        "roadmaps, learner progress, and course commerce."
+    ),
+    bullet(
+        "Modernized the frontend with Next.js 16, React 19, Partial Prerendering, and consistent UI and "
+        "data layers built with shadcn/ui, TanStack Query, and Zustand."
+    ),
+    body(
+        "<b>Technologies:</b> Next.js, React, TypeScript, Tailwind CSS, shadcn/ui, TanStack Query, "
+        "Zustand, Axios"
+    ),
+    Spacer(1, 14),
     title_date(
         "File Attachment Management Fiori Application | Frontend Technical Owner",
         "Jan 2026 - May 2026",
@@ -358,30 +358,6 @@ story += [
     body(
         "<b>Technologies:</b> React, TypeScript, SAP UI5 Web Components, React Query, Zustand, SAP OData v4"
     ),
-    Spacer(1, 14),
-    title_date("Game 2048 | Solo Developer", "Nov 2024 - Aug 2026"),
-    Paragraph("Personal Project", styles["context"]),
-    Spacer(1, 3),
-    body("Live Demo: " + link("https://ldt.is-a.dev/game-2048/", "ldt.is-a.dev/game-2048/")),
-    body(
-        "Source Code: "
-        + link(
-            "https://github.com/luongductrong/game-2048",
-            "github.com/luongductrong/game-2048",
-        )
-    ),
-    Spacer(1, 3),
-    body("A responsive browser-based implementation of the classic 2048 game."),
-    Spacer(1, 2),
-    bullet(
-        "Built keyboard and touch controls, undo, persistent high scores, and animated win and game-over "
-        "states."
-    ),
-    bullet(
-        "Designed a framework-independent TypeScript game engine and connected it to React through custom "
-        "hooks and <font name='NotoSans'>useSyncExternalStore</font>."
-    ),
-    body("<b>Technologies:</b> React, TypeScript, Vite, Tailwind CSS, Framer Motion"),
 ]
 
 doc = SimpleDocTemplate(
