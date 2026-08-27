@@ -8,13 +8,14 @@ const { t } = useI18n();
   <LayoutContainer class="flex flex-col items-center justify-center gap-6 border-t" as-child>
     <footer>
       <ul class="flex items-center justify-between gap-3">
-        <li
-          v-for="social in socials"
-          :key="social.platform"
-          :title="social.platform"
-          class="size-10 rounded-full bg-muted inline-flex items-center justify-center"
-        >
-          <a :href="social.url" target="_blank" rel="noopener noreferrer" :aria-label="social.platform">
+        <li v-for="social in socials" :key="social.platform" :title="social.platform">
+          <a
+            :href="social.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            :aria-label="social.platform"
+            class="size-10 border border-r-3 rounded-full bg-muted inline-flex items-center justify-center"
+          >
             <component :is="social.icon" class="size-5" />
           </a>
         </li>

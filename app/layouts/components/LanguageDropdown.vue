@@ -26,7 +26,7 @@ async function changeLanguage(value: unknown) {
         <Languages data-icon="inline-start" aria-hidden="true" />
       </UiButton>
     </UiDropdownMenuTrigger>
-    <UiDropdownMenuContent align="end" class="min-w-40">
+    <UiDropdownMenuContent align="end" class="min-w-40 shadow-brutalism">
       <UiDropdownMenuLabel>{{ t('language.label') }}</UiDropdownMenuLabel>
       <UiDropdownMenuSeparator />
       <UiDropdownMenuRadioGroup :model-value="locale" @update:model-value="changeLanguage">
