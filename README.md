@@ -93,7 +93,7 @@ Start the development server at `http://localhost:3000`:
 pnpm dev
 ```
 
-When `NUXT_PUBLIC_IMAGE_CDN_URL` is empty, images are handled by Nuxt Image's local IPX endpoint (`/_ipx/...`). When it is set, generated image URLs point to the configured Netlify Image CDN.
+When `NUXT_PUBLIC_IMAGE_CDN_URL` is empty, images are handled by Nuxt Image's local IPX endpoint (`/_ipx/...`). When it is set, generated image URLs point to the configured Netlify Image CDN. No output format is forced, so Netlify negotiates WebP or AVIF from the browser's `Accept` header and falls back to the source format for older clients.
 
 ### Quality Checks
 
@@ -177,7 +177,7 @@ The exact public URL for each deployment is controlled by GitHub Pages settings,
 ## Features
 
 - **Dark / Light mode** - follows system preference, toggleable
-- **Responsive image delivery** - resized WebP images through Nuxt Image and Netlify Image CDN
+- **Responsive image delivery** - resized, format-negotiated images through Nuxt Image and Netlify Image CDN
 - **Static site generation** - fast, CDN-friendly, no application server required
 - **Smooth animations** - powered by `motion-v`, respects `prefers-reduced-motion`
 - **Spam-protected contact form** - Cloudflare Turnstile integration

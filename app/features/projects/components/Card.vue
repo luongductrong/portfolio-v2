@@ -39,7 +39,6 @@ const imageAsset = useImageAsset();
           width="1200"
           height="751"
           sizes="sm:100vw md:50vw lg:384px"
-          format="webp"
           quality="75"
           loading="lazy"
           class="absolute inset-0 size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
