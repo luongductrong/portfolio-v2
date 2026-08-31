@@ -1,6 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import tailwindcss from '@tailwindcss/vite';
 
+declare const process: {
+  readonly env: Record<string, string | undefined>;
+};
+
+const imageCdnUrl = process.env.NUXT_PUBLIC_IMAGE_CDN_URL?.replace(/\/+$/, '');
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
@@ -10,6 +16,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       siteUrl: 'http://localhost:3000/',
+      imageCdnUrl: '',
     },
   },
   css: ['@/assets/css/tailwind.css', 'vue-sonner/style.css'],
@@ -24,7 +31,18 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxtjs/turnstile',
     '@nuxtjs/i18n',
+    '@nuxt/image',
   ],
+  image: imageCdnUrl
+    ? {
+        provider: 'netlifyImageCdn',
+        netlifyImageCdn: {
+          baseURL: imageCdnUrl,
+        },
+      }
+    : {
+        provider: 'ipx',
+      },
   fonts: {
     families: [
       {

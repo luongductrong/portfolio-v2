@@ -30,7 +30,7 @@ const wordsArray = computed(() => props.words.split(' '));
 function getTransition(index: number) {
   return {
     duration: props.duration,
-    delay: reducedMotion.value ? 0 : props.delay / 1000 + index * 0.2,
+    delay: reducedMotion.value ? 0 : props.delay / 1000 + index * 0.1,
     ease: [0.25, 0.1, 0.25, 1] as const,
   };
 }

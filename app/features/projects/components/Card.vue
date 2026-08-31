@@ -14,8 +14,8 @@ const props = withDefaults(defineProps<Props>(), {
   index: 0,
 });
 
-const publicAsset = usePublicAsset();
 const { t } = useI18n();
+const imageAsset = useImageAsset();
 </script>
 
 <template>
@@ -33,11 +33,16 @@ const { t } = useI18n();
       :aria-label="t('projects.card.viewLabel', { project: props.title })"
     >
       <div class="relative aspect-16/10 overflow-hidden border-b bg-muted">
-        <img
-          :src="publicAsset(props.coverImage)"
+        <NuxtImg
+          :src="imageAsset(props.coverImage)"
           :alt="props.imageAlt"
-          class="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          width="1200"
+          height="751"
+          sizes="sm:100vw md:50vw lg:384px"
+          format="webp"
+          quality="75"
           loading="lazy"
+          class="absolute inset-0 size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />
         <div class="absolute inset-x-0 top-0 flex items-center justify-between gap-3 p-4">
           <UiBadge class="border-background/15 bg-background/85 text-foreground backdrop-blur-sm" variant="outline">
