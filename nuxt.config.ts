@@ -24,7 +24,11 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxtjs/turnstile',
     '@nuxtjs/i18n',
+    '@nuxt/image',
   ],
+  image: {
+    provider: 'ipx',
+  },
   fonts: {
     families: [
       {

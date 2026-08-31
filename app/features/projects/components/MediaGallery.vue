@@ -77,10 +77,16 @@ onBeforeUnmount(() => {
                 :aria-label="t('projects.media.previewImage', { index: index + 1, description: image.alt })"
                 @click="openPreview(index)"
               >
-                <img
+                <NuxtImg
                   :src="publicAsset(image.src)"
                   :alt="image.alt"
-                  class="size-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.015]"
+                  width="1919"
+                  height="1079"
+                  sizes="sm:100vw md:100vw lg:1024px"
+                  format="webp"
+                  quality="75"
+                  :loading="index === 0 ? 'eager' : 'lazy'"
+                  class="absolute inset-0 size-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.015]"
                 />
               </button>
             </UiCarouselItem>
@@ -105,7 +111,17 @@ onBeforeUnmount(() => {
             :aria-current="selectedIndex === index ? 'true' : undefined"
             @click="selectImage(index)"
           >
-            <img :src="publicAsset(image.thumbnail ?? image.src)" alt="" class="size-full object-cover" />
+            <NuxtImg
+              :src="publicAsset(image.thumbnail ?? image.src)"
+              alt=""
+              width="752"
+              height="424"
+              sizes="176px xl:196px"
+              format="webp"
+              quality="75"
+              loading="lazy"
+              class="absolute inset-0 size-full object-cover"
+            />
             <span
               class="absolute right-1.5 bottom-1.5 bg-background/85 px-1.5 py-0.5 text-[0.625rem] font-semibold text-foreground tabular-nums"
               aria-hidden="true"
@@ -128,7 +144,17 @@ onBeforeUnmount(() => {
         :aria-current="selectedIndex === index ? 'true' : undefined"
         @click="selectImage(index)"
       >
-        <img :src="publicAsset(image.thumbnail ?? image.src)" alt="" class="size-full object-cover" />
+        <NuxtImg
+          :src="publicAsset(image.thumbnail ?? image.src)"
+          alt=""
+          width="752"
+          height="424"
+          sizes="96px sm:112px"
+          format="webp"
+          quality="75"
+          loading="lazy"
+          class="absolute inset-0 size-full object-cover"
+        />
       </button>
     </div>
 
@@ -147,8 +173,18 @@ onBeforeUnmount(() => {
 
         <div class="flex min-h-0 flex-col gap-3">
           <div class="relative flex min-h-64 items-center justify-center overflow-hidden sm:min-h-96">
-            <div class="aspect-video w-full max-h-[90dvh] max-w-[95dvw] overflow-hidden">
-              <img :src="publicAsset(previewImage.src)" :alt="previewImage.alt" class="size-full object-cover" />
+            <div class="relative aspect-video w-full max-h-[90dvh] max-w-[95dvw] overflow-hidden">
+              <NuxtImg
+                :src="publicAsset(previewImage.src)"
+                :alt="previewImage.alt"
+                width="1919"
+                height="1079"
+                sizes="sm:95vw md:95vw lg:95vw xl:1216px"
+                format="webp"
+                quality="75"
+                loading="lazy"
+                class="absolute inset-0 size-full object-cover"
+              />
             </div>
 
             <UiButton
