@@ -7,8 +7,8 @@ const props = defineProps<{
   images: ProjectImages;
 }>();
 
-const publicAsset = usePublicAsset();
 const { t } = useI18n();
+const imageAsset = useImageAsset();
 
 const IMAGE_COUNT = 4;
 type ImageIndex = 0 | 1 | 2 | 3;
@@ -78,7 +78,7 @@ onBeforeUnmount(() => {
                 @click="openPreview(index)"
               >
                 <NuxtImg
-                  :src="publicAsset(image.src)"
+                  :src="imageAsset(image.src)"
                   :alt="image.alt"
                   width="1919"
                   height="1079"
@@ -112,7 +112,7 @@ onBeforeUnmount(() => {
             @click="selectImage(index)"
           >
             <NuxtImg
-              :src="publicAsset(image.thumbnail ?? image.src)"
+              :src="imageAsset(image.thumbnail ?? image.src)"
               alt=""
               width="752"
               height="424"
@@ -145,7 +145,7 @@ onBeforeUnmount(() => {
         @click="selectImage(index)"
       >
         <NuxtImg
-          :src="publicAsset(image.thumbnail ?? image.src)"
+          :src="imageAsset(image.thumbnail ?? image.src)"
           alt=""
           width="752"
           height="424"
@@ -175,7 +175,7 @@ onBeforeUnmount(() => {
           <div class="relative flex min-h-64 items-center justify-center overflow-hidden sm:min-h-96">
             <div class="relative aspect-video w-full max-h-[90dvh] max-w-[95dvw] overflow-hidden">
               <NuxtImg
-                :src="publicAsset(previewImage.src)"
+                :src="imageAsset(previewImage.src)"
                 :alt="previewImage.alt"
                 width="1919"
                 height="1079"

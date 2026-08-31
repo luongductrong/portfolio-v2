@@ -14,8 +14,8 @@ const props = withDefaults(defineProps<Props>(), {
   index: 0,
 });
 
-const publicAsset = usePublicAsset();
 const { t } = useI18n();
+const imageAsset = useImageAsset();
 </script>
 
 <template>
@@ -34,7 +34,7 @@ const { t } = useI18n();
     >
       <div class="relative aspect-16/10 overflow-hidden border-b bg-muted">
         <NuxtImg
-          :src="publicAsset(props.coverImage)"
+          :src="imageAsset(props.coverImage)"
           :alt="props.imageAlt"
           width="1200"
           height="751"

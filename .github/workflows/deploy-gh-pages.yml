@@ -46,6 +46,7 @@ jobs:
         env:
           NUXT_APP_BASE_URL: ${{ steps.pages.outputs.base_path }}/
           NUXT_PUBLIC_SITE_URL: ${{ steps.pages.outputs.base_url }}
+          NUXT_PUBLIC_IMAGE_CDN_URL: ${{ vars.NUXT_PUBLIC_IMAGE_CDN_URL }}
           NUXT_PUBLIC_TURNSTILE_SITE_KEY: ${{ vars.NUXT_PUBLIC_TURNSTILE_SITE_KEY }}
 
       - name: Upload GitHub Pages artifact
