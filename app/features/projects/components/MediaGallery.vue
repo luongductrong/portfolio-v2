@@ -171,14 +171,12 @@ onBeforeUnmount(() => {
         <div class="flex min-h-0 flex-col gap-3">
           <div class="relative flex min-h-64 items-center justify-center overflow-hidden sm:min-h-96">
             <div class="relative aspect-video w-full max-h-[90dvh] max-w-[95dvw] overflow-hidden">
-              <NuxtImg
+              <img
                 :src="imageAsset(previewImage.src)"
                 :alt="previewImage.alt"
                 width="1919"
                 height="1079"
-                sizes="sm:95vw md:95vw lg:95vw xl:1216px"
-                quality="90"
-                loading="lazy"
+                loading="eager"
                 class="absolute inset-0 size-full object-cover"
               />
             </div>

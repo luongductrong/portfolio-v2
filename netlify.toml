@@ -1,0 +1,9 @@
+[build]
+  command = "pnpm build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "24"
+  PNPM_FLAGS = "--shamefully-hoist"
+  NITRO_PRESET = "netlify"
+  NUXT_PUBLIC_IS_NETLIFY = "true"

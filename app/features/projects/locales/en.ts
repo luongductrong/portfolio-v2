@@ -313,7 +313,7 @@ const items = {
       },
       {
         title: 'Protected contact workflow',
-        description: 'Protect Formspree inquiries with Cloudflare Turnstile.',
+        description: 'Use Netlify Forms on the primary deployment and Formspree with Turnstile on the external alias.',
       },
     ],
     responsibilities: [
@@ -330,7 +330,7 @@ const items = {
       {
         title: 'Protecting a public contact form',
         problem: 'Spam protection needed to remain unobtrusive.',
-        solution: 'Combined Formspree with Cloudflare Turnstile and clear states.',
+        solution: 'Selected Netlify Forms with reCAPTCHA 2 or Formspree with Turnstile according to the deployment environment.',
       },
     ],
     outcomes: [],

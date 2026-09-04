@@ -344,7 +344,7 @@ const items = {
       },
       {
         title: 'Luồng liên hệ được bảo vệ',
-        description: 'Bảo vệ biểu mẫu Formspree bằng Cloudflare Turnstile.',
+        description: 'Dùng Netlify Forms ở deployment chính và Formspree với Turnstile ở alias external.',
       },
     ],
     responsibilities: [
@@ -361,7 +361,7 @@ const items = {
       {
         title: 'Bảo vệ biểu mẫu liên hệ công khai',
         problem: 'Cơ chế chống spam cần hoạt động mà không gây gián đoạn.',
-        solution: 'Kết hợp Formspree với Cloudflare Turnstile và các trạng thái rõ ràng.',
+        solution: 'Chọn Netlify Forms với reCAPTCHA 2 hoặc Formspree với Turnstile tùy theo môi trường triển khai.',
       },
     ],
     outcomes: [],

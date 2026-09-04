@@ -43,7 +43,11 @@ jobs:
         env:
           NUXT_PUBLIC_SITE_URL: ${{ vars.NUXT_PUBLIC_SITE_URL }}
           NUXT_PUBLIC_IMAGE_CDN_URL: ${{ vars.NUXT_PUBLIC_IMAGE_CDN_URL }}
+          NUXT_PUBLIC_IS_NETLIFY: 'false'
           NUXT_PUBLIC_TURNSTILE_SITE_KEY: ${{ vars.NUXT_PUBLIC_TURNSTILE_SITE_KEY }}
+
+      - name: Remove Netlify Forms detection stub
+        run: rm -f ./.output/public/__forms.html
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
