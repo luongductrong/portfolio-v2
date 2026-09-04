@@ -118,6 +118,7 @@ export default {
       feedback: {
         success: 'Đã gửi tin nhắn thành công.',
         successDescription: 'Mình sẽ phản hồi bạn sớm.',
+        captchaError: 'Xác minh bảo mật thất bại. Vui lòng thử lại.',
         error: 'Không thể gửi tin nhắn. Vui lòng thử lại.',
       },
     },

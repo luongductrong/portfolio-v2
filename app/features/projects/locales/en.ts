@@ -330,7 +330,7 @@ const items = {
       {
         title: 'Protecting a public contact form',
         problem: 'Spam protection needed to remain unobtrusive.',
-        solution: 'Selected Netlify Forms with reCAPTCHA 2 or Formspree with Turnstile according to the deployment environment.',
+        solution: 'Selected Cloudflare Turnstile verification with Netlify Forms or Formspree according to the deployment environment.',
       },
     ],
     outcomes: [],

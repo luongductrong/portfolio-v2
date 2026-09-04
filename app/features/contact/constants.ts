@@ -7,6 +7,9 @@ import LinkedIn from '@/components/icons/LinkedIn.vue';
 export const FORM_ENDPOINT = 'https://formspree.io/f/xzepdoea';
 
 // @export
+export const TURNSTILE_VERIFY_ENDPOINT = '/api/turnstile/verify';
+
+// @export
 export const gmail = {
   url: 'mailto:luongductrong2004@gmail.com',
   value: 'luongductrong2004@gmail.com',

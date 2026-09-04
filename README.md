@@ -19,7 +19,7 @@ A personal portfolio website built with **Nuxt 4**, **Vue 3**, **Tailwind CSS v4
 | Utilities       | [VueUse](https://vueuse.org)                                                                                              |
 | Fonts           | JetBrains Mono and Space Grotesk (via [`@nuxt/fonts`](https://fonts.nuxt.com))                                            |
 | Images          | [`@nuxt/image`](https://image.nuxt.com) with local IPX fallback and Netlify Image CDN in production                       |
-| Spam Protection | Netlify Forms reCAPTCHA 2 on Netlify; [Cloudflare Turnstile](https://www.cloudflare.com/products/turnstile) for Formspree |
+| Spam Protection | [Cloudflare Turnstile](https://www.cloudflare.com/products/turnstile) for client/server verification on both deployments |
 | Color Mode      | `@nuxtjs/color-mode` (system preference, light/dark)                                                                      |
 | Package Manager | [pnpm](https://pnpm.io)                                                                                                   |
 | Deployment      | Netlify continuous deployment + GitHub Actions → external GitHub Pages                                                    |
@@ -81,10 +81,11 @@ cp .env.example .env
 | `NUXT_PUBLIC_SITE_URL`           | Current public origin of the generated site. The image helper uses it to build absolute source URLs when the external CDN is enabled.               |
 | `NUXT_PUBLIC_IMAGE_CDN_URL`      | Full Netlify Image CDN endpoint, for example `https://your-site.netlify.app/.netlify/images`. Leave empty locally to use Nuxt Image's IPX fallback. |
 | `NUXT_PUBLIC_IS_NETLIFY`         | Selects the Netlify Forms flow when `true`; `false` keeps the Formspree + Turnstile flow.                                                           |
-| `NUXT_PUBLIC_TURNSTILE_SITE_KEY` | Cloudflare Turnstile site key for the contact form.                                                                                                 |
+| `NUXT_PUBLIC_TURNSTILE_SITE_KEY` | Cloudflare Turnstile site key for the contact form on both deployments.                                                                              |
+| `NUXT_TURNSTILE_SECRET_KEY`      | Cloudflare Turnstile secret key used by the Nuxt/Nitro verification endpoint. Keep it server-only; it is required at Netlify Runtime.              |
 | `NUXT_APP_BASE_URL`              | Deployment base path. The external GitHub Pages workflow may supply this when a base path is needed.                                                |
 
-`NUXT_PUBLIC_IS_NETLIFY` is `true` in Netlify's build context and `false` in the external GitHub Pages workflow. `NUXT_PUBLIC_TURNSTILE_SITE_KEY` is only needed by the Formspree deployment. Public site and CDN URLs are not secrets.
+`NUXT_PUBLIC_IS_NETLIFY` is `true` in Netlify's build context and `false` in the external GitHub Pages workflow. `NUXT_PUBLIC_TURNSTILE_SITE_KEY` is public; `NUXT_TURNSTILE_SECRET_KEY` must never be exposed to the client.
 
 ### Development
 
@@ -129,10 +130,10 @@ The allowlist controls source hosts, not which websites may call the endpoint. K
 
 The contact form selects its provider at build time using `NUXT_PUBLIC_IS_NETLIFY`:
 
-- **Netlify:** Netlify Forms with a static detection skeleton in `public/__forms.html`, URL-encoded AJAX submission to `/__forms.html`, and Netlify-provided reCAPTCHA 2.
-- **External GitHub Pages and local fallback:** Formspree with Cloudflare Turnstile.
+- **Netlify:** Cloudflare Turnstile is rendered in the UI and verified by the Nuxt/Nitro `/api/turnstile/verify` endpoint before the URL-encoded Netlify Forms submission to `/__forms.html`. The static detection skeleton lives in `public/__forms.html`.
+- **External GitHub Pages and local fallback:** Formspree with the same client-side Cloudflare Turnstile component.
 
-Netlify's form detection must be enabled in the site dashboard. The external GitHub Pages workflow removes `__forms.html` from the published artifact so that the Netlify-only form definition is not shipped there.
+Netlify's form detection must be enabled in the site dashboard. Configure `NUXT_PUBLIC_TURNSTILE_SITE_KEY` for the build and `NUXT_TURNSTILE_SECRET_KEY` at runtime on Netlify. The external GitHub Pages workflow removes `__forms.html` from the published artifact so that the Netlify-only form definition is not shipped there.
 
 ---
 
@@ -191,7 +192,7 @@ The exact public URL for the Netlify deployment is configured in Netlify Domain 
 - **Responsive image delivery** - resized, format-negotiated images through Nuxt Image and Netlify Image CDN
 - **Hybrid deployment** - Netlify's Nuxt build for the primary site and static generation for the external alias
 - **Smooth animations** - powered by `motion-v`, respects `prefers-reduced-motion`
-- **Spam-protected contact form** - Netlify Forms/reCAPTCHA 2 on Netlify and Formspree/Turnstile elsewhere
+- **Spam-protected contact form** - Cloudflare Turnstile verification with Netlify Forms or Formspree
 - **Custom fonts** - JetBrains Mono and Space Grotesk with Latin & Vietnamese subsets
 - **Fully responsive** - mobile-first layout
 
