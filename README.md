@@ -1,6 +1,6 @@
 # Portfolio v2 - Duc Trong Luong
 
-A personal portfolio website built with **Nuxt 4**, **Vue 3**, **Tailwind CSS v4**, and **shadcn-nuxt**. The site is statically generated and deployed to GitHub Pages through GitHub Actions.
+A personal portfolio website built with **Nuxt 4**, **Vue 3**, **Tailwind CSS v4**, and **shadcn-nuxt**. The primary site is deployed to Netlify, while an external GitHub Pages deployment remains available as a static alias.
 
 **Primary site:** [luongductrong.dev](https://luongductrong.dev)<br>
 **External Pages alias:** [ldt.is-a.dev](https://ldt.is-a.dev)
@@ -9,20 +9,20 @@ A personal portfolio website built with **Nuxt 4**, **Vue 3**, **Tailwind CSS v4
 
 ## Tech Stack
 
-| Category        | Technology                                                                                          |
-| --------------- | --------------------------------------------------------------------------------------------------- |
-| Framework       | [Nuxt 4](https://nuxt.com) + [Vue 3](https://vuejs.org)                                             |
-| Styling         | [Tailwind CSS v4](https://tailwindcss.com)                                                          |
-| UI Components   | [shadcn-nuxt](https://www.shadcn-vue.com) · [reka-ui](https://reka-ui.com)                          |
-| Animation       | [motion-v](https://motion.dev/vue)                                                                  |
-| Icons           | [Lucide Vue](https://lucide.dev)                                                                    |
-| Utilities       | [VueUse](https://vueuse.org)                                                                        |
-| Fonts           | JetBrains Mono and Space Grotesk (via [`@nuxt/fonts`](https://fonts.nuxt.com))                      |
-| Images          | [`@nuxt/image`](https://image.nuxt.com) with local IPX fallback and Netlify Image CDN in production |
-| Spam Protection | [Cloudflare Turnstile](https://www.cloudflare.com/products/turnstile) (via `@nuxtjs/turnstile`)     |
-| Color Mode      | `@nuxtjs/color-mode` (system preference, light/dark)                                                |
-| Package Manager | [pnpm](https://pnpm.io)                                                                             |
-| Deployment      | GitHub Actions → GitHub Pages                                                                       |
+| Category        | Technology                                                                                                                |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Framework       | [Nuxt 4](https://nuxt.com) + [Vue 3](https://vuejs.org)                                                                   |
+| Styling         | [Tailwind CSS v4](https://tailwindcss.com)                                                                                |
+| UI Components   | [shadcn-nuxt](https://www.shadcn-vue.com) · [reka-ui](https://reka-ui.com)                                                |
+| Animation       | [motion-v](https://motion.dev/vue)                                                                                        |
+| Icons           | [Lucide Vue](https://lucide.dev)                                                                                          |
+| Utilities       | [VueUse](https://vueuse.org)                                                                                              |
+| Fonts           | JetBrains Mono and Space Grotesk (via [`@nuxt/fonts`](https://fonts.nuxt.com))                                            |
+| Images          | [`@nuxt/image`](https://image.nuxt.com) with local IPX fallback and Netlify Image CDN in production                       |
+| Spam Protection | Netlify Forms reCAPTCHA 2 on Netlify; [Cloudflare Turnstile](https://www.cloudflare.com/products/turnstile) for Formspree |
+| Color Mode      | `@nuxtjs/color-mode` (system preference, light/dark)                                                                      |
+| Package Manager | [pnpm](https://pnpm.io)                                                                                                   |
+| Deployment      | Netlify continuous deployment + GitHub Actions → external GitHub Pages                                                    |
 
 ---
 
@@ -80,10 +80,11 @@ cp .env.example .env
 | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `NUXT_PUBLIC_SITE_URL`           | Current public origin of the generated site. The image helper uses it to build absolute source URLs when the external CDN is enabled.               |
 | `NUXT_PUBLIC_IMAGE_CDN_URL`      | Full Netlify Image CDN endpoint, for example `https://your-site.netlify.app/.netlify/images`. Leave empty locally to use Nuxt Image's IPX fallback. |
+| `NUXT_PUBLIC_IS_NETLIFY`         | Selects the Netlify Forms flow when `true`; `false` keeps the Formspree + Turnstile flow.                                                           |
 | `NUXT_PUBLIC_TURNSTILE_SITE_KEY` | Cloudflare Turnstile site key for the contact form.                                                                                                 |
-| `NUXT_APP_BASE_URL`              | Deployment base path. `deploy-gh-pages.yml` supplies this automatically from GitHub Pages.                                                          |
+| `NUXT_APP_BASE_URL`              | Deployment base path. The external GitHub Pages workflow may supply this when a base path is needed.                                                |
 
-For GitHub Actions, configure `NUXT_PUBLIC_IMAGE_CDN_URL` as a repository Actions variable. The two workflows already pass it into the build. The CDN URL is public and does not need to be a secret.
+`NUXT_PUBLIC_IS_NETLIFY` is `true` in Netlify's build context and `false` in the external GitHub Pages workflow. `NUXT_PUBLIC_TURNSTILE_SITE_KEY` is only needed by the Formspree deployment. Public site and CDN URLs are not secrets.
 
 ### Development
 
@@ -124,6 +125,15 @@ The shared Netlify optimizer currently allowlists public image paths on these ho
 
 The allowlist controls source hosts, not which websites may call the endpoint. Keep it limited to trusted domains. See [Netlify Image CDN](https://docs.netlify.com/build/image-cdn/overview/) for the endpoint and remote-image rules.
 
+## Contact Forms
+
+The contact form selects its provider at build time using `NUXT_PUBLIC_IS_NETLIFY`:
+
+- **Netlify:** Netlify Forms with a static detection skeleton in `public/__forms.html`, URL-encoded AJAX submission to `/__forms.html`, and Netlify-provided reCAPTCHA 2.
+- **External GitHub Pages and local fallback:** Formspree with Cloudflare Turnstile.
+
+Netlify's form detection must be enabled in the site dashboard. The external GitHub Pages workflow removes `__forms.html` from the published artifact so that the Netlify-only form definition is not shipped there.
+
 ---
 
 ## Building & Deployment
@@ -137,6 +147,8 @@ pnpm build
 ```
 
 This runs the public-asset validator before `nuxt build`.
+
+Netlify uses this command with the `netlify` Nitro preset and publishes `dist/`. The committed `netlify.toml` pins the build command, publish directory, Node major version, and public deployment settings.
 
 ### Static Site Generation
 
@@ -156,13 +168,12 @@ pnpm preview
 
 ---
 
-## CI/CD - GitHub Actions
+## CI/CD
 
-Both workflows run on pushes to `main` and can also be started manually with `workflow_dispatch`.
+Netlify deploys the `main` branch automatically. The external GitHub Pages workflow also runs on pushes to `main` and can be started manually with `workflow_dispatch`.
 
 | Workflow                       | What it does                                                                                                                                 |
 | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `deploy-gh-pages.yml`          | Builds with `actions/configure-pages`, receives the repository Pages base URL/path, uploads `.output/public`, and deploys via Pages.         |
 | `deploy-external-gh-pages.yml` | Builds and pushes `.output/public` to `<owner>/<owner>.github.io` using `GH_PAGES_PAT`; an optional `CNAME` variable sets the custom domain. |
 
 Required GitHub Actions configuration:
@@ -170,7 +181,7 @@ Required GitHub Actions configuration:
 - Repository variables: `NUXT_PUBLIC_IMAGE_CDN_URL`, `NUXT_PUBLIC_TURNSTILE_SITE_KEY`, and (for the external workflow) `NUXT_PUBLIC_SITE_URL` and `CNAME`.
 - Repository secret: `GH_PAGES_PAT` for pushing to the external `*.github.io` repository.
 
-The exact public URL for each deployment is controlled by GitHub Pages settings, `NUXT_PUBLIC_SITE_URL`, and the optional `CNAME` value.
+The exact public URL for the Netlify deployment is configured in Netlify Domain management. The external alias remains controlled by GitHub Pages settings, `NUXT_PUBLIC_SITE_URL`, and `CNAME`.
 
 ---
 
@@ -178,9 +189,9 @@ The exact public URL for each deployment is controlled by GitHub Pages settings,
 
 - **Dark / Light mode** - follows system preference, toggleable
 - **Responsive image delivery** - resized, format-negotiated images through Nuxt Image and Netlify Image CDN
-- **Static site generation** - fast, CDN-friendly, no application server required
+- **Hybrid deployment** - Netlify's Nuxt build for the primary site and static generation for the external alias
 - **Smooth animations** - powered by `motion-v`, respects `prefers-reduced-motion`
-- **Spam-protected contact form** - Cloudflare Turnstile integration
+- **Spam-protected contact form** - Netlify Forms/reCAPTCHA 2 on Netlify and Formspree/Turnstile elsewhere
 - **Custom fonts** - JetBrains Mono and Space Grotesk with Latin & Vietnamese subsets
 - **Fully responsive** - mobile-first layout
 

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Contact form</title>
+  </head>
+  <body>
+    <form
+      name="contact"
+      method="POST"
+      action="/__forms.html"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      data-netlify-recaptcha="true"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="subject" />
+      <input name="name" type="text" />
+      <input name="email" type="email" />
+      <textarea name="message"></textarea>
+      <input name="bot-field" type="text" />
+      <div data-netlify-recaptcha="true"></div>
+    </form>
+  </body>
+</html>
