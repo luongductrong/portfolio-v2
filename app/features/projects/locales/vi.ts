@@ -361,7 +361,7 @@ const items = {
       {
         title: 'Bảo vệ biểu mẫu liên hệ công khai',
         problem: 'Cơ chế chống spam cần hoạt động mà không gây gián đoạn.',
-        solution: 'Chọn Netlify Forms với reCAPTCHA 2 hoặc Formspree với Turnstile tùy theo môi trường triển khai.',
+        solution: 'Chọn xác thực Cloudflare Turnstile với Netlify Forms hoặc Formspree tùy theo môi trường triển khai.',
       },
     ],
     outcomes: [],
