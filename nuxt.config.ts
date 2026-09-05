@@ -44,6 +44,7 @@ export default defineNuxtConfig({
       }
     : {
         provider: 'ipx',
+        domains: ['cdn.jsdelivr.net'],
       },
   fonts: {
     families: [
