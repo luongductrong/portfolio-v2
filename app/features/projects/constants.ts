@@ -192,4 +192,49 @@ export const projectDefinitions = [
       { items: ['Netlify', 'GitHub Actions', 'GitHub Pages', 'Netlify Forms', 'Formspree'] },
     ],
   },
+  {
+    id: 'ghVault',
+    slug: 'gh-vault',
+    title: 'Vault',
+    year: '2026',
+    media: {
+      cover: {
+        id: 'gh-vault-cover',
+        src: 'gh-vault-cover.png',
+      },
+      images: [
+        {
+          id: 'gh-vault-dashboard',
+          src: 'vault-2-vaults.png',
+          thumbnail: 'vault-2-vaults-thumbnail.png',
+        },
+        {
+          id: 'gh-vault-upload-convert',
+          src: 'vault-1-image-upload.png',
+          thumbnail: 'vault-1-image-upload-thumbnail.png',
+        },
+        {
+          id: 'gh-vault-file-browser',
+          src: 'vault-3-vault-detail-image-list.png',
+          thumbnail: 'vault-3-vault-detail-image-list-thumbnail.png',
+        },
+        {
+          id: 'gh-vault-login',
+          src: 'vault-1-login.png',
+          thumbnail: 'vault-1-login-thumbnail.png',
+        },
+      ],
+    },
+    links: {
+      source: 'https://github.com/luongductrong/gh-vault',
+    },
+    status: 'maintained',
+    stack: [
+      { items: ['SvelteKit 2', 'Svelte 5', 'TypeScript 6', 'Vite 8'] },
+      { items: ['Tailwind CSS 4', 'shadcn-svelte', 'Bits UI', 'Lucide Svelte'] },
+      { items: ['TanStack Svelte Query 6', 'Canvas API', 'Zod'] },
+      { items: ['Drizzle ORM', 'Turso', 'LibSQL', 'jose'] },
+      { items: ['GitHub REST API', 'jsDelivr', 'Netlify', 'Netlify Edge Functions'] },
+    ],
+  },
 ] satisfies ProjectDefinition[];

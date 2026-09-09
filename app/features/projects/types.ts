@@ -1,5 +1,5 @@
 export type ProjectStatus = 'completed' | 'in-development' | 'maintained' | 'archived';
-export type ProjectId = 'funnyCode' | 'reactFioriStyle' | 'game2048' | 'portfolioV2';
+export type ProjectId = 'funnyCode' | 'reactFioriStyle' | 'game2048' | 'portfolioV2' | 'ghVault';
 
 export interface ProjectImage {
   id: string;

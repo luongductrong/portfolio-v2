@@ -366,6 +366,139 @@ const items = {
     ],
     outcomes: [],
   },
+  ghVault: {
+    summary:
+      'Công cụ quản lý tài nguyên tự host dành cho cá nhân, tối ưu ảnh ngay trên trình duyệt, lưu tệp vào các repository GitHub và tạo URL jsDelivr bất biến được ghim theo commit SHA.',
+    category: 'Công cụ lập trình / Quản lý tài nguyên',
+    media: {
+      cover: {
+        alt: 'Ảnh bìa Vault thể hiện mô hình lưu trữ tài nguyên bằng GitHub và phân phối qua CDN bất biến',
+        caption: 'Nhận diện hình ảnh của Vault.',
+      },
+      images: [
+        {
+          alt: 'Bảng điều khiển Vault hiển thị hai vault dùng GitHub làm nơi lưu trữ, cùng số lượng tệp, dung lượng, trạng thái và thao tác tạo hoặc mở vault',
+          caption: 'Quản lý các vault GitHub độc lập và theo dõi dung lượng tại một nơi.',
+        },
+        {
+          alt: 'Hộp thoại Preview and Convert của Vault hiển thị ảnh xem trước, kích thước, lựa chọn WebP, thanh chất lượng và thao tác tải lên',
+          caption: 'Thay đổi kích thước, định dạng và chất lượng ảnh ngay trên trình duyệt trước khi tải lên vault.',
+        },
+        {
+          alt: 'Màn hình Personal Images trong Vault hiển thị thông tin repository GitHub, dung lượng, danh sách tệp có tìm kiếm và thao tác xem trước, sao chép hoặc mở tài nguyên CDN',
+          caption: 'Tìm kiếm tệp đã tải lên và truy cập URL jsDelivr bất biến qua các thao tác nhanh.',
+        },
+        {
+          alt: 'Màn hình đăng nhập Vault với trường tên người dùng và mật khẩu dành cho quyền truy cập cá nhân được bảo vệ',
+          caption: 'Màn hình đăng nhập tối giản bảo vệ công cụ quản lý vault riêng tư.',
+        },
+      ],
+    },
+    metadata: {
+      role: 'Lập trình viên Full-stack độc lập',
+      timeline: '09/2026 - Hiện tại',
+      teamSize: 'Dự án cá nhân',
+      platform: 'Ứng dụng web serverless',
+    },
+    stackLabels: [
+      'Ứng dụng',
+      'Giao diện & Tạo kiểu',
+      'Trải nghiệm phía client',
+      'Dữ liệu & Xác thực',
+      'Lưu trữ & Phân phối',
+    ],
+    overview: [
+      'Vault xuất phát từ một nhu cầu lặp lại khi làm các dự án frontend: nền tảng host tĩnh chỉ cache tài nguyên công khai trong thời gian ngắn, tính vào quota triển khai hoặc yêu cầu import qua build để có tên tệp hash không thuận tiện cho URL dùng lại.',
+      'Ứng dụng tạo các vault độc lập dùng repository GitHub làm nơi lưu trữ, tối ưu ảnh trên trình duyệt, commit tệp qua GitHub REST API và trả về URL jsDelivr lâu dài được ghim theo commit SHA.',
+      'Mô hình triển khai riêng tư cho một người dùng giữ thông tin xác thực và GitHub token ở phía server, đồng thời cung cấp giao diện tập trung để quản lý tài nguyên dùng lại cho nhiều dự án.',
+    ],
+    objectives: [
+      {
+        title: 'Giảm chi phí host media',
+        description:
+          'Dùng repository GitHub và jsDelivr thay vì tiêu thụ quota lưu trữ và băng thông của nền tảng triển khai ứng dụng.',
+      },
+      {
+        title: 'Tạo URL tài nguyên an toàn với cache',
+        description:
+          'Ghim mỗi URL CDN vào đúng commit SHA để tệp đã tải lên luôn bất biến và không trả về phiên bản cũ.',
+      },
+      {
+        title: 'Tối ưu trước khi tải lên',
+        description:
+          'Đổi kích thước, định dạng và chất lượng ảnh trên trình duyệt trước khi tải lên, giảm tiêu thụ dung lượng repository hoặc giới hạn payload serverless.',
+      },
+      {
+        title: 'Đơn giản hóa quá trình tự triển khai',
+        description:
+          'Cung cấp ứng dụng serverless cho nhu cầu cá nhân mà không cần hạ tầng object storage chuyên dụng hay cơ sở dữ liệu người dùng.',
+      },
+    ],
+    features: [
+      {
+        title: 'Vault được lưu trữ trên GitHub',
+        description: 'Tạo các vault độc lập gắn với repository cá nhân hoặc tổ chức được cấp tự động.',
+      },
+      {
+        title: 'Tối ưu ảnh phía client',
+        description:
+          'Chuyển đổi PNG và JPEG, WEBP, điều chỉnh chất lượng và đổi kích thước theo tỷ lệ cố định bằng Canvas API.',
+      },
+      {
+        title: 'Phân phối CDN bất biến',
+        description: 'Tạo URL jsDelivr được ghim theo commit SHA trả về sau mỗi lần tải tệp lên GitHub.',
+      },
+      {
+        title: 'Trình duyệt tệp có tìm kiếm',
+        description:
+          'Duyệt tệp bằng phân trang vô hạn, tìm kiếm debounce, sắp xếp, xem trước và sao chép URL CDN bằng một thao tác.',
+      },
+      {
+        title: 'Tải lên không ghi đè tên tệp',
+        description: 'Phát hiện tên tệp trùng và tự thêm hậu tố số thay vì ghi đè tài nguyên hiện có.',
+      },
+      {
+        title: 'Bảo vệ quyền truy cập riêng tư',
+        description:
+          'Kết hợp cookie phiên JWT đã ký với cơ chế giới hạn tần suất đăng nhập (rate limit) theo IP bằng Netlify Edge.',
+      },
+    ],
+    responsibilities: [
+      'Thiết kế và triển khai toàn bộ ứng dụng SvelteKit full-stack cùng giao diện thích ứng.',
+      'Xây dựng kiến trúc mỗi vault tương ứng với một repository và tích hợp GitHub REST API.',
+      'Xây dựng luồng chuyển đổi ảnh, đổi kích thước, điều chỉnh chất lượng và theo dõi tiến trình tải lên bằng Canvas.',
+      'Thiết kế mô hình dữ liệu Drizzle và Turso cho vault cùng metadata tệp bất biến.',
+      'Triển khai bảo vệ phiên JWT, xử lý rate limit của GitHub và cấu hình triển khai Netlify.',
+    ],
+    challenges: [
+      {
+        title: 'Tránh tài nguyên CDN bị lỗi thời',
+        problem: 'Việc dùng lại cùng tên và đường dẫn có thể khiến người dùng nhận phiên bản cũ đã được cache dài hạn.',
+        solution:
+          'Tạo mọi URL jsDelivr bằng đúng commit SHA do GitHub trả về, giúp mỗi phiên bản tải lên trở thành một tài nguyên bất biến.',
+      },
+      {
+        title: 'Payload serverless bị giới hạn dung lượng',
+        problem: 'Mã hóa Base64 làm request lớn hơn trong khi nền tảng serverless giới hạn chặt kích thước body.',
+        solution:
+          'Áp dụng giới hạn 4 MB ở cả client và server, đồng thời cho phép tối ưu ảnh trên trình duyệt trước khi tải lên.',
+      },
+      {
+        title: 'Xử lý khả năng hỗ trợ ảnh của trình duyệt',
+        problem:
+          'Khả năng xuất ảnh từ Canvas khác nhau giữa các trình duyệt và định dạng không hỗ trợ có thể thất bại âm thầm.',
+        solution:
+          'Kiểm tra các định dạng được hỗ trợ khi ứng dụng chạy, đồng thời ẩn/khóa các tùy chọn chuyển đổi không khả dụng trước khi bắt đầu xử lý.',
+      },
+      {
+        title: 'Bảo vệ một công cụ serverless riêng tư',
+        problem: 'Ứng dụng cần kiểm soát truy cập mà không tạo thêm cơ sở dữ liệu người dùng hay phiên có trạng thái.',
+        solution:
+          'Dùng cookie JWT HttpOnly đã ký cho phiên stateless và Netlify Edge Function để giới hạn tần suất đăng nhập (rate limit) theo IP.',
+      },
+    ],
+    outcomes: [],
+  },
 } satisfies Record<ProjectId, ProjectTranslation>;
 
 export default {
