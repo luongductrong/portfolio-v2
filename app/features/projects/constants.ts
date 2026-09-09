@@ -200,28 +200,32 @@ export const projectDefinitions = [
     media: {
       cover: {
         id: 'gh-vault-cover',
-        src: 'gh-vault-cover.png',
+        src: 'https://cdn.jsdelivr.net/gh/ldt-vault/vault-38e16062@4f98cea50168bd820eaf924bbebb25a71fecfb74/images/29aebdd9_1788964182387.png',
       },
       images: [
         {
           id: 'gh-vault-dashboard',
-          src: 'vault-2-vaults.png',
-          thumbnail: 'vault-2-vaults-thumbnail.png',
+          src: 'https://cdn.jsdelivr.net/gh/ldt-vault/vault-38e16062@5367648b8cbcf143f6308aa01b4e48467837790c/images/f790b643_1788964004938.png',
+          thumbnail:
+            'https://cdn.jsdelivr.net/gh/ldt-vault/vault-38e16062@5a11e7819f0f75b44e5aeebf8e83de6a6231a523/images/c0d4d5ba_1788964079683.png',
         },
         {
           id: 'gh-vault-upload-convert',
-          src: 'vault-1-image-upload.png',
-          thumbnail: 'vault-1-image-upload-thumbnail.png',
+          src: 'https://cdn.jsdelivr.net/gh/ldt-vault/vault-38e16062@6803acdf691ae9bb0bdec394e62cfeb991ca08d6/images/41e8a79e_1788964025196.png',
+          thumbnail:
+            'https://cdn.jsdelivr.net/gh/ldt-vault/vault-38e16062@d70f15ce62ec6c8dbbed4d641eabfc072b80eb35/images/2619b192_1788964126340.png',
         },
         {
           id: 'gh-vault-file-browser',
-          src: 'vault-3-vault-detail-image-list.png',
-          thumbnail: 'vault-3-vault-detail-image-list-thumbnail.png',
+          src: 'https://cdn.jsdelivr.net/gh/ldt-vault/vault-38e16062@0ba2dd48797be06d54b59424c7a88cc9a5456340/images/40d02ee1_1788964040153.png',
+          thumbnail:
+            'https://cdn.jsdelivr.net/gh/ldt-vault/vault-38e16062@8259a1e8cd11c4ab7669bc3809a112e893534d42/images/5e169ff9_1788964138700.png',
         },
         {
           id: 'gh-vault-login',
-          src: 'vault-1-login.png',
-          thumbnail: 'vault-1-login-thumbnail.png',
+          src: 'https://cdn.jsdelivr.net/gh/ldt-vault/vault-38e16062@fd3b8f02ec57ebbb6d1ba63428c711c0f2f77353/images/060d36e0_1788964052755.png',
+          thumbnail:
+            'https://cdn.jsdelivr.net/gh/ldt-vault/vault-38e16062@e80ddae9f801c0121be88516c23a9331526f6325/images/68742dfb_1788964151598.png',
         },
       ],
     },
