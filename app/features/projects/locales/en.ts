@@ -1,3 +1,4 @@
+import type { ProjectsI18n } from '../locales/type';
 import type { ProjectId, ProjectTranslation } from '../types';
 
 const items = {
@@ -330,7 +331,8 @@ const items = {
       {
         title: 'Protecting a public contact form',
         problem: 'Spam protection needed to remain unobtrusive.',
-        solution: 'Selected Cloudflare Turnstile verification with Netlify Forms or Formspree according to the deployment environment.',
+        solution:
+          'Selected Cloudflare Turnstile verification with Netlify Forms or Formspree according to the deployment environment.',
       },
     ],
     outcomes: [],
@@ -369,13 +371,7 @@ const items = {
       teamSize: 'Solo project',
       platform: 'Serverless web application',
     },
-    stackLabels: [
-      'Application',
-      'UI & Styling',
-      'Client Experience',
-      'Data & Authentication',
-      'Storage & Delivery',
-    ],
+    stackLabels: ['Application', 'UI & Styling', 'Client Experience', 'Data & Authentication', 'Storage & Delivery'],
     overview: [
       'Vault grew from a recurring need across frontend projects: static hosts either cache public assets briefly, consume deployment bandwidth, or require hashed build imports that are inconvenient for reusable media URLs.',
       'The application creates isolated GitHub-backed vaults, optimizes images in the browser, commits files through the GitHub REST API, and returns permanent jsDelivr URLs pinned to the resulting commit SHA.',
@@ -384,29 +380,35 @@ const items = {
     objectives: [
       {
         title: 'Reduce media hosting costs',
-        description: 'Use GitHub repositories and jsDelivr delivery instead of consuming storage and bandwidth quotas on application hosts.',
+        description:
+          'Use GitHub repositories and jsDelivr delivery instead of consuming storage and bandwidth quotas on application hosts.',
       },
       {
         title: 'Create cache-safe asset URLs',
-        description: 'Pin every CDN URL to an exact commit SHA so uploaded files remain immutable and never serve stale revisions.',
+        description:
+          'Pin every CDN URL to an exact commit SHA so uploaded files remain immutable and never serve stale revisions.',
       },
       {
         title: 'Optimize before upload',
-        description: 'Resize, convert, and compress images in the browser before they consume repository storage or serverless payload capacity.',
+        description:
+          'Resize, convert, and compress images in the browser before they consume repository storage or serverless payload capacity.',
       },
       {
         title: 'Keep self-deployment simple',
-        description: 'Provide a private serverless application without dedicated object-storage infrastructure or a user database.',
+        description:
+          'Provide a private serverless application without dedicated object-storage infrastructure or a user database.',
       },
     ],
     features: [
       {
         title: 'GitHub-backed vaults',
-        description: 'Create isolated vaults backed by automatically provisioned personal or organization repositories.',
+        description:
+          'Create isolated vaults backed by automatically provisioned personal or organization repositories.',
       },
       {
         title: 'Client-side image optimization',
-        description: 'Convert PNG and JPEG images, adjust quality, and resize with a locked aspect ratio through the Canvas API.',
+        description:
+          'Convert PNG and JPEG images, adjust quality, and resize with a locked aspect ratio through the Canvas API.',
       },
       {
         title: 'Immutable CDN delivery',
@@ -414,7 +416,8 @@ const items = {
       },
       {
         title: 'Searchable file browser',
-        description: 'Browse files with infinite pagination, debounced search, sorting, previews, and one-click CDN URL copy.',
+        description:
+          'Browse files with infinite pagination, debounced search, sorting, previews, and one-click CDN URL copy.',
       },
       {
         title: 'Collision-safe uploads',
@@ -436,29 +439,34 @@ const items = {
       {
         title: 'Avoiding stale CDN assets',
         problem: 'Reusing a filename and path can leave consumers receiving an older aggressively cached asset.',
-        solution: 'Build every jsDelivr URL with the exact commit SHA returned by GitHub, making each uploaded revision immutable.',
+        solution:
+          'Build every jsDelivr URL with the exact commit SHA returned by GitHub, making each uploaded revision immutable.',
       },
       {
         title: 'Serverless payload size limits',
         problem: 'Base64 encoding increases request size while serverless platforms impose strict body limits.',
-        solution: 'Enforce a 4 MB ceiling on both client and server, with browser-side optimization available before upload.',
+        solution:
+          'Enforce a 4 MB ceiling on both client and server, with browser-side optimization available before upload.',
       },
       {
         title: 'Handling browser image capabilities',
         problem: 'Canvas export support varies between browsers and unsupported formats can fail silently.',
-        solution: 'Check supported formats at runtime, then hide or disable unavailable conversion options before processing begins.',
+        solution:
+          'Check supported formats at runtime, then hide or disable unavailable conversion options before processing begins.',
       },
       {
         title: 'Protecting a private serverless tool',
         problem: 'The application needed secure access without the overhead of a user database or stateful sessions.',
-        solution: 'Use signed HttpOnly JWT cookies for stateless sessions and a Netlify Edge Function to rate-limit login attempts.',
+        solution:
+          'Use signed HttpOnly JWT cookies for stateless sessions and a Netlify Edge Function to rate-limit login attempts.',
       },
     ],
     outcomes: [],
   },
 } satisfies Record<ProjectId, ProjectTranslation>;
 
-export default {
+// @export
+export const projectsI18n = {
   seo: {
     title: 'Projects - Duc Trong Luong',
     detailTitle: '{project} - Duc Trong Luong',
@@ -515,4 +523,4 @@ export default {
     nextImage: 'Next image',
   },
   items,
-};
+} satisfies ProjectsI18n;

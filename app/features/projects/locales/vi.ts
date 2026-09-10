@@ -1,3 +1,4 @@
+import type { ProjectsI18n } from '../locales/type';
 import type { ProjectId, ProjectTranslation } from '../types';
 
 const items = {
@@ -495,7 +496,8 @@ const items = {
   },
 } satisfies Record<ProjectId, ProjectTranslation>;
 
-export default {
+// @export
+export const projectsI18n = {
   seo: {
     title: 'Dự án - Lượng Đức Trọng',
     detailTitle: '{project} - Lượng Đức Trọng',
@@ -552,4 +554,4 @@ export default {
     nextImage: 'Ảnh tiếp theo',
   },
   items,
-};
+} satisfies ProjectsI18n;

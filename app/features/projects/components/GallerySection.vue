@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { getProjectTechnologies, useProjects } from '../helpers';
+import { getProjectTechnologies } from '../helpers';
+import { useProjects } from '../composables/use-projects';
 
 const { t } = useI18n();
 const { projects } = useProjects();

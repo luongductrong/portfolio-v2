@@ -1,7 +1,7 @@
 import { skillsI18n } from '@/features/skills/locales/en';
+import { projectsI18n } from '@/features/projects/locales/en';
 import { contactI18n } from '@/features/contact/locales/en';
 import { portfolioI18n, terminalI18n } from '@/features/portfolio/locales/en';
-import projectMessages from '@/features/projects/locales/en';
 
 export default {
   language: {
@@ -49,8 +49,8 @@ export default {
     },
   },
   contact: contactI18n,
-  skills: skillsI18n,
-  projects: projectMessages,
   portfolio: portfolioI18n,
+  projects: projectsI18n,
+  skills: skillsI18n,
   terminal: terminalI18n,
 };
