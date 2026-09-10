@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { hasProjectSlug, useProjects } from '@/features/projects/helpers';
+import { hasProjectSlug } from '@/features/projects/helpers';
+import { useProjects } from '@/features/projects/composables/use-projects';
 
 const { t } = useI18n();
 const route = useRoute();

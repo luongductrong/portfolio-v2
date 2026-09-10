@@ -57,7 +57,7 @@ export function createCommands({ t, translateList }: I18nHelpers): CommandMap {
 
   const resumeOutput = milestones
     .map((milestone) => {
-      const key = `home.timeline.items.${milestone.id}`;
+      const key = `portfolio.timeline.items.${milestone.id}`;
       const highlights = translateList(`${key}.highlights`);
       return `${t(`${key}.title`)} @ ${t(`${key}.organization`)}\n${t(`${key}.period`)} · ${t(`${key}.location`)}\n${highlights.join(', ')}`;
     })

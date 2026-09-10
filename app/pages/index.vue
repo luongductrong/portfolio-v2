@@ -2,12 +2,12 @@
 const { t } = useI18n();
 
 useSeoMeta({
-  title: () => t('home.seo.title'),
-  description: () => t('home.seo.description'),
-  ogTitle: () => t('home.seo.title'),
-  ogDescription: () => t('home.seo.description'),
-  twitterTitle: () => t('home.seo.title'),
-  twitterDescription: () => t('home.seo.description'),
+  title: () => t('portfolio.seo.title'),
+  description: () => t('portfolio.seo.description'),
+  ogTitle: () => t('portfolio.seo.title'),
+  ogDescription: () => t('portfolio.seo.description'),
+  twitterTitle: () => t('portfolio.seo.title'),
+  twitterDescription: () => t('portfolio.seo.description'),
 });
 </script>
 

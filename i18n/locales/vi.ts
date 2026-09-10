@@ -1,4 +1,7 @@
-import projectMessages from '@/features/projects/locales/vi';
+import { skillsI18n } from '@/features/skills/locales/vi';
+import { contactI18n } from '@/features/contact/locales/vi';
+import { projectsI18n } from '@/features/projects/locales/vi';
+import { portfolioI18n, terminalI18n } from '@/features/portfolio/locales/vi';
 
 export default {
   language: {
@@ -30,181 +33,24 @@ export default {
     switchToLight: 'Chuyển sang giao diện sáng',
     switchToDark: 'Chuyển sang giao diện tối',
   },
-  terminal: {
-    open: 'Mở Terminal',
-    title: 'Terminal',
-    description: 'Ứng dụng terminal của Lượng Đức Trọng',
-    inputLabel: 'Lệnh terminal',
-    placeholder: "Nhập lệnh ('help', 'projects', 'contact')...",
-    runCommand: 'Chạy lệnh',
-    commands: {
-      descriptions: {
-        help: 'Liệt kê các lệnh khả dụng',
-        about: 'Hiển thị tiểu sử và phần giới thiệu',
-        projects: 'Liệt kê các hệ thống và kiến trúc nổi bật',
-        skills: 'Hiển thị bộ kỹ năng kỹ thuật',
-        contact: 'Hiển thị thông tin liên hệ',
-        resume: 'Xem kinh nghiệm nghề nghiệp',
-        clear: 'Xóa nội dung terminal',
-        whoami: 'Hiển thị người dùng phiên hiện tại',
-      },
-    },
-    output: {
-      welcome: "Duc Trong Luong CLI Terminal v2.0.0.4 (x86_64-pc-linux-gnu)\nNhập 'help' để xem các lệnh khả dụng.",
-      availableCommands: 'Các lệnh khả dụng:',
-      commandNotRecognized: "Không nhận diện được lệnh: '{command}'. Nhập 'help' để xem các lệnh khả dụng.",
-      about: {
-        title: 'Lượng Đức Trọng - Lập trình viên Front-end',
-        description: 'Lập trình viên Front-end chuyên về ứng dụng web hiện đại và ứng dụng di động đa nền tảng.',
-        location: 'Địa điểm: Thành phố Hồ Chí Minh, Việt Nam',
-      },
-      projects: {
-        categories: {
-          eLearningPlatform: 'Nền tảng học trực tuyến',
-          enterpriseWebApplication: 'Ứng dụng web doanh nghiệp',
-          webGame: 'Trò chơi trên web',
-          portfolioWebsite: 'Website portfolio',
-        },
-        statuses: {
-          completed: 'Đã hoàn thành',
-          inDevelopment: 'Đang phát triển',
-          maintained: 'Đang được duy trì',
-          archived: 'Đã lưu trữ',
-        },
-      },
-      skills: {
-        groups: ['Ngôn ngữ lập trình', 'Frontend', 'Di động & Máy tính', 'Cơ sở dữ liệu', 'DevOps & Công cụ'],
-        currentlyLearning: 'Đang tìm hiểu:',
-        learningGroups: ['Hệ sinh thái web', 'Đa nền tảng & Native', 'Hạ tầng'],
-      },
-      contact: {
-        email: 'Email',
-      },
-    },
-  },
-  contact: {
-    seo: {
-      title: 'Liên hệ - Lượng Đức Trọng',
-      description: 'Liên hệ với Lượng Đức Trọng về phát triển web, cơ hội hợp tác và các dự án công nghệ.',
-    },
-    header: {
-      eyebrow: 'Sẵn sàng hợp tác',
-      firstLine: 'Cùng nhau',
-      secondLine: 'Kết nối.',
-      note: 'Hãy cùng trao đổi về một thử thách kỹ thuật hoặc dự án hợp tác.',
-    },
-    direct: {
-      ariaLabel: 'Các phương thức liên hệ trực tiếp',
-      title: 'Liên hệ trực tiếp',
-      description: 'Liên hệ trực tiếp với mình qua',
-      emailCopied: 'Đã sao chép email',
-      copyEmail: 'Sao chép địa chỉ email',
-    },
-    network: {
-      title: 'Hoặc kết nối qua',
-    },
-    awaitingInput: '// đang chờ...',
-    form: {
-      ariaLabel: 'Biểu mẫu liên hệ',
-      subject: 'Liên hệ qua portfolio từ {name}',
-      placeholders: {
-        name: 'Nhập tên của bạn',
-        email: 'Nhập email của bạn',
-        message: 'Nhập nội dung tin nhắn...',
-      },
-      responseTime: '// Phản hồi dự kiến trong vòng 24 giờ',
-      send: 'Gửi tin nhắn',
-      sending: 'Đang gửi...',
-      feedback: {
-        success: 'Đã gửi tin nhắn thành công.',
-        successDescription: 'Mình sẽ phản hồi bạn sớm.',
-        captchaError: 'Xác minh bảo mật thất bại. Vui lòng thử lại.',
-        error: 'Không thể gửi tin nhắn. Vui lòng thử lại.',
-      },
-    },
-  },
-  skills: {
-    seo: {
-      title: 'Kỹ năng - Lượng Đức Trọng',
-      description: 'Các công nghệ, framework, cơ sở dữ liệu và công cụ kỹ thuật được Lượng Đức Trọng sử dụng.',
-    },
-    header: {
-      eyebrow: 'Năng lực kỹ thuật',
-      firstLine: 'Kỹ thuật',
-      secondLine: 'Chuyên sâu.',
-      note: 'Bộ công nghệ đã được kiểm chứng qua thực tế để biến ý tưởng sản phẩm thành những giao diện đáng tin cậy.',
-    },
-    currentStack: 'Công nghệ hiện tại',
-    expandingHorizons: 'Đang khám phá',
-    groups: {
-      languages: 'Ngôn ngữ lập trình',
-      frontend: 'Frontend',
-      mobileDesktop: 'Di động & Máy tính',
-      databases: 'Cơ sở dữ liệu',
-      devopsTools: 'DevOps & Công cụ',
-    },
-    learningGroups: {
-      webEcosystem: 'Hệ sinh thái web',
-      crossPlatformNative: 'Đa nền tảng & Native',
-      infrastructure: 'Hạ tầng',
-    },
-    groupLabel: 'Các kỹ năng thuộc nhóm {group}',
-    learningGroupLabel: 'Các công nghệ đang tìm hiểu thuộc nhóm {group}',
-  },
-  projects: projectMessages,
-  home: {
-    seo: {
-      title: 'Lượng Đức Trọng - Lập trình viên Front-end',
+  error: {
+    notFound: {
+      title: 'Không tìm thấy trang.',
       description:
-        'Lượng Đức Trọng là lập trình viên Front-end chuyên xây dựng ứng dụng web hiện đại, trải nghiệm đa nền tảng và giao diện chỉn chu.',
+        'Trang này có thể đã được di chuyển, đổi tên hoặc chưa từng tồn tại. Bạn có thể về trang chủ hoặc tiếp tục xem các dự án của mình.',
     },
-    hero: {
-      greeting: 'Xin chào, Lượng Đức Trọng đây 👋',
-      headline: {
-        start: 'Mình xây dựng những',
-        highlight: 'trải nghiệm web & di động',
-        end: 'mượt mà và tự nhiên.',
-      },
-      description: 'Là lập trình viên Front-end chuyên về ứng dụng web hiện đại và ứng dụng di động đa nền tảng.',
-      actions: {
-        viewWork: 'Xem dự án',
-        resume: 'Xem hồ sơ',
-      },
+    unexpected: {
+      title: 'Đã xảy ra lỗi.',
+      description: 'Ứng dụng gặp sự cố không mong muốn. Bạn có thể quay về trang an toàn và thử lại.',
     },
-    timeline: {
-      eyebrow: 'Hành trình sự nghiệp',
-      title: 'Những cột mốc định hình cách mình xây dựng sản phẩm.',
-      description:
-        'Hành trình cô đọng từ nền tảng học thuật, kỳ thực tập doanh nghiệp đến công việc phát triển Front-end hiện tại.',
-      items: {
-        education: {
-          period: '10/2022 - 06/2026',
-          title: 'Cử nhân Công nghệ Thông tin',
-          organization: 'Đại học FPT',
-          location: 'Thành phố Hồ Chí Minh, Việt Nam',
-          description:
-            'Tập trung vào nền tảng Kỹ thuật phần mềm, tư duy sản phẩm và xây dựng quy trình ứng dụng đáng tin cậy từ ý tưởng đến triển khai.',
-          highlights: ['Kỹ thuật phần mềm', 'Xếp loại: Giỏi', 'GPA 8.11/10'],
-        },
-        internship: {
-          period: '01/2025 - 04/2025',
-          title: 'Thực tập sinh SAP',
-          organization: 'FPT Software',
-          location: 'Thành phố Hồ Chí Minh, Việt Nam',
-          description:
-            'Tham gia phát triển phần mềm doanh nghiệp, làm quen với quy trình dự án SAP và trau dồi kỹ năng cộng tác trong môi trường sản phẩm thực tế.',
-          highlights: ['ABAP', 'Ứng dụng Fiori', 'Hệ sinh thái SAP'],
-        },
-        developer: {
-          period: '04/2025 - Hiện tại',
-          title: 'Lập trình viên Front-end',
-          organization: 'FTES',
-          location: 'Làm việc từ xa / Thành phố Hồ Chí Minh, Việt Nam',
-          description:
-            'Xây dựng giao diện thích ứng (responsive), thành phần giao diện có thể tái sử dụng và luồng trải nghiệm chỉn chu cho các sản phẩm web hiện đại.',
-          highlights: ['React & Next.js', 'Design systems', 'Kiến trúc Front-end'],
-        },
-      },
+    actions: {
+      home: 'Về trang chủ',
+      projects: 'Xem dự án',
     },
   },
+  contact: contactI18n,
+  portfolio: portfolioI18n,
+  projects: projectsI18n,
+  skills: skillsI18n,
+  terminal: terminalI18n,
 };

@@ -3,7 +3,7 @@ import { Motion } from 'motion-v';
 import { milestones } from '../constants';
 
 const { t, tm, rt } = useI18n();
-const messageKey = (id: (typeof milestones)[number]['id'], field: string) => `home.timeline.items.${id}.${field}`;
+const messageKey = (id: (typeof milestones)[number]['id'], field: string) => `portfolio.timeline.items.${id}.${field}`;
 
 function translatedHighlights(id: (typeof milestones)[number]['id']): string[] {
   const messages = tm(messageKey(id, 'highlights'));
@@ -21,14 +21,14 @@ function translatedHighlights(id: (typeof milestones)[number]['id']): string[] {
       class="flex flex-col justify-start gap-5"
     >
       <UiBadge variant="outline" class="w-fit border-primary/30 bg-primary/5 text-primary">
-        {{ t('home.timeline.eyebrow') }}
+        {{ t('portfolio.timeline.eyebrow') }}
       </UiBadge>
       <div class="space-y-4">
         <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-          {{ t('home.timeline.title') }}
+          {{ t('portfolio.timeline.title') }}
         </h2>
         <p class="max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
-          {{ t('home.timeline.description') }}
+          {{ t('portfolio.timeline.description') }}
         </p>
       </div>
     </Motion>

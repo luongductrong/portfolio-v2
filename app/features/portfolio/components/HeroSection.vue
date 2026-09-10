@@ -24,16 +24,16 @@ const resumeURL = computed(() => publicAsset(publicAssets.documents.resume[local
       :y-offset="20"
       class="relative z-10 lg:col-span-8 flex flex-col items-center justify-center gap-3 text-lg"
     >
-      <p class="font-bold">{{ t('home.hero.greeting') }}</p>
+      <p class="font-bold">{{ t('portfolio.hero.greeting') }}</p>
       <h1
         class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight tracking-tighter text-center"
       >
-        {{ t('home.hero.headline.start') }}
-        <span class="text-primary"> {{ t('home.hero.headline.highlight') }} </span>
-        {{ t('home.hero.headline.end') }}
+        {{ t('portfolio.hero.headline.start') }}
+        <span class="text-primary"> {{ t('portfolio.hero.headline.highlight') }} </span>
+        {{ t('portfolio.hero.headline.end') }}
       </h1>
       <UiTextGenerateEffect
-        :words="t('home.hero.description')"
+        :words="t('portfolio.hero.description')"
         :filter="true"
         :duration="0.5"
         :delay="0"
@@ -43,7 +43,7 @@ const resumeURL = computed(() => publicAsset(publicAssets.documents.resume[local
       <div class="mt-4 flex gap-3">
         <UiButton size="lg" class="uppercase shadow-brutalism hover:translate-1 hover:shadow-none" as-child>
           <NuxtLink to="/projects">
-            {{ t('home.hero.actions.viewWork') }}
+            {{ t('portfolio.hero.actions.viewWork') }}
             <ArrowRight data-icon="inline-end" />
           </NuxtLink>
         </UiButton>
@@ -55,7 +55,7 @@ const resumeURL = computed(() => publicAsset(publicAssets.documents.resume[local
         >
           <NuxtLink :to="resumeURL" external target="_blank" rel="noopener noreferrer">
             <FileUser data-icon="inline-start" />
-            {{ t('home.hero.actions.resume') }}
+            {{ t('portfolio.hero.actions.resume') }}
           </NuxtLink>
         </UiShineButton>
       </div>
