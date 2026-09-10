@@ -3,18 +3,17 @@ import { Home } from '@lucide/vue';
 import type { NuxtError } from '#app';
 
 const props = defineProps<{ error: NuxtError }>();
+const { t } = useI18n();
 
 const statusCode = computed(() => props.error.status ?? 500);
 const isNotFound = computed(() => statusCode.value === 404);
-const title = computed(() => (isNotFound.value ? 'Page not found.' : 'Something went wrong.'));
+const title = computed(() => t(isNotFound.value ? 'error.notFound.title' : 'error.unexpected.title'));
 const description = computed(() =>
-  isNotFound.value
-    ? 'The page may have moved, been renamed, or never existed. You can return home or continue browsing my work.'
-    : 'The application ran into an unexpected problem. Please return to a safe page and try again.',
+  isNotFound.value ? t('error.notFound.description') : t('error.unexpected.description'),
 );
 
-function redirectTo(path: string) {
-  clearError({ redirect: path });
+function redirectTo(path: '/' | '/projects') {
+  return clearError({ redirect: path });
 }
 </script>
 
@@ -36,14 +35,14 @@ function redirectTo(path: string) {
       <div class="flex flex-col gap-3 sm:flex-row">
         <UiButton class="uppercase shadow-brutalism hover:translate-1 hover:shadow-none" @click="redirectTo('/')">
           <Home aria-hidden="true" />
-          Go back home
+          {{ t('error.actions.home') }}
         </UiButton>
         <UiButton
           variant="outline"
           class="uppercase shadow-brutalism hover:translate-1 hover:shadow-none"
           @click="redirectTo('/projects')"
         >
-          View projects
+          {{ t('error.actions.projects') }}
         </UiButton>
       </div>
     </section>

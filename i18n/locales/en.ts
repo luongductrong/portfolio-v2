@@ -30,6 +30,21 @@ export default {
     switchToLight: 'Switch to light theme',
     switchToDark: 'Switch to dark theme',
   },
+  error: {
+    notFound: {
+      title: 'Page not found.',
+      description:
+        'The page may have moved, been renamed, or never existed. You can return home or continue browsing my work.',
+    },
+    unexpected: {
+      title: 'Something went wrong.',
+      description: 'The application ran into an unexpected problem. Please return to a safe page and try again.',
+    },
+    actions: {
+      home: 'Go back home',
+      projects: 'View projects',
+    },
+  },
   terminal: {
     open: 'Open Terminal',
     title: 'Terminal',

@@ -395,18 +395,12 @@ const items = {
       ],
     },
     metadata: {
-      role: 'Lập trình viên Full-stack độc lập',
+      role: 'Lập trình viên Full-stack',
       timeline: '09/2026 - Hiện tại',
       teamSize: 'Dự án cá nhân',
       platform: 'Ứng dụng web serverless',
     },
-    stackLabels: [
-      'Ứng dụng',
-      'Giao diện & Tạo kiểu',
-      'Trải nghiệm phía client',
-      'Dữ liệu & Xác thực',
-      'Lưu trữ & Phân phối',
-    ],
+    stackLabels: ['Ứng dụng', 'Giao diện', 'Trải nghiệm phía máy khách', 'Dữ liệu & Xác thực', 'Lưu trữ & Phân phối'],
     overview: [
       'Vault xuất phát từ một nhu cầu lặp lại khi làm các dự án frontend: nền tảng host tĩnh chỉ cache tài nguyên công khai trong thời gian ngắn, tính vào quota triển khai hoặc yêu cầu import qua build để có tên tệp hash không thuận tiện cho URL dùng lại.',
       'Ứng dụng tạo các vault độc lập dùng repository GitHub làm nơi lưu trữ, tối ưu ảnh trên trình duyệt, commit tệp qua GitHub REST API và trả về URL jsDelivr lâu dài được ghim theo commit SHA.',

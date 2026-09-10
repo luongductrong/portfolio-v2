@@ -30,6 +30,21 @@ export default {
     switchToLight: 'Chuyển sang giao diện sáng',
     switchToDark: 'Chuyển sang giao diện tối',
   },
+  error: {
+    notFound: {
+      title: 'Không tìm thấy trang.',
+      description:
+        'Trang này có thể đã được di chuyển, đổi tên hoặc chưa từng tồn tại. Bạn có thể về trang chủ hoặc tiếp tục xem các dự án của mình.',
+    },
+    unexpected: {
+      title: 'Đã xảy ra lỗi.',
+      description: 'Ứng dụng gặp sự cố không mong muốn. Bạn có thể quay về trang an toàn và thử lại.',
+    },
+    actions: {
+      home: 'Về trang chủ',
+      projects: 'Xem dự án',
+    },
+  },
   terminal: {
     open: 'Mở Terminal',
     title: 'Terminal',
