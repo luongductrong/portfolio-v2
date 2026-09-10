@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ProjectImages } from '../types';
-import { ArrowLeft, ArrowRight } from '@lucide/vue';
 import type { CarouselApi } from '@/components/ui/carousel';
+import { ArrowLeft, ArrowRight, LoaderCircle } from '@lucide/vue';
 
 const props = defineProps<{
   images: ProjectImages;
@@ -15,11 +15,33 @@ type ImageIndex = 0 | 1 | 2 | 3;
 
 const carouselApi = shallowRef<CarouselApi>();
 const selectedIndex = ref<ImageIndex>(0);
-const previewIndex = ref<ImageIndex>(0);
+const displayedPreviewIndex = ref<ImageIndex>(0);
+const displayedPreviewSrc = ref<string>();
+const pendingPreviewIndex = ref<ImageIndex>();
 const previewOpen = ref(false);
+let previewRequestId = 0;
 
 const selectedImage = computed(() => props.images[selectedIndex.value]);
-const previewImage = computed(() => props.images[previewIndex.value]);
+const previewImage = computed(() => props.images[displayedPreviewIndex.value]);
+const previewLoading = computed(() => pendingPreviewIndex.value !== undefined);
+
+watch(
+  () => props.images.map((image) => image.src).join('\n'),
+  () => {
+    previewRequestId += 1;
+    pendingPreviewIndex.value = undefined;
+    displayedPreviewSrc.value = undefined;
+
+    if (previewOpen.value) void loadPreview(displayedPreviewIndex.value, false);
+  },
+);
+
+watch(previewOpen, (open) => {
+  if (open) return;
+
+  previewRequestId += 1;
+  pendingPreviewIndex.value = undefined;
+});
 
 function updateSelectedIndex(api: NonNullable<CarouselApi>) {
   selectedIndex.value = api.selectedScrollSnap() as ImageIndex;
@@ -33,18 +55,53 @@ function setCarouselApi(api: CarouselApi) {
   api.on('select', updateSelectedIndex);
 }
 
-function selectImage(index: number) {
-  carouselApi.value?.scrollTo(index);
+function selectImage(index: number, jump = false) {
+  carouselApi.value?.scrollTo(index, jump);
 }
 
 function openPreview(index: number) {
-  previewIndex.value = index as ImageIndex;
+  const nextIndex = index as ImageIndex;
+
+  displayedPreviewIndex.value = nextIndex;
+  displayedPreviewSrc.value = undefined;
   previewOpen.value = true;
+  void loadPreview(nextIndex, false);
 }
 
 function changePreview(direction: -1 | 1) {
-  previewIndex.value = ((previewIndex.value + direction + IMAGE_COUNT) % IMAGE_COUNT) as ImageIndex;
-  selectImage(previewIndex.value);
+  if (previewLoading.value) return;
+
+  const nextIndex = ((displayedPreviewIndex.value + direction + IMAGE_COUNT) % IMAGE_COUNT) as ImageIndex;
+  void loadPreview(nextIndex, true);
+}
+
+function showPreview(index: ImageIndex, source: string, syncCarousel: boolean) {
+  displayedPreviewIndex.value = index;
+  displayedPreviewSrc.value = source;
+  pendingPreviewIndex.value = undefined;
+
+  if (syncCarousel) selectImage(index, true);
+}
+
+async function loadPreview(index: ImageIndex, syncCarousel: boolean) {
+  const source = imageAsset(props.images[index].src);
+  const requestId = ++previewRequestId;
+
+  pendingPreviewIndex.value = index;
+
+  const image = new Image();
+  image.decoding = 'async';
+  image.src = source;
+
+  try {
+    await image.decode();
+  } catch {
+    // Render the requested source so the browser can expose its native fallback when loading fails.
+  }
+
+  if (requestId !== previewRequestId || !previewOpen.value) return;
+
+  showPreview(index, source, syncCarousel);
 }
 
 function handlePreviewKeydown(event: KeyboardEvent) {
@@ -60,6 +117,7 @@ function handlePreviewKeydown(event: KeyboardEvent) {
 }
 
 onBeforeUnmount(() => {
+  previewRequestId += 1;
   carouselApi.value?.off('select', updateSelectedIndex);
 });
 </script>
@@ -169,17 +227,29 @@ onBeforeUnmount(() => {
         </UiDialogHeader>
 
         <div class="flex min-h-0 flex-col gap-3">
-          <div class="relative flex min-h-64 items-center justify-center overflow-hidden sm:min-h-96">
+          <div
+            class="relative flex min-h-64 items-center justify-center overflow-hidden sm:min-h-96"
+            :aria-busy="previewLoading"
+          >
             <div class="relative aspect-video w-full max-h-[90dvh] max-w-[95dvw] overflow-hidden">
               <img
-                :src="imageAsset(previewImage.src)"
+                v-if="displayedPreviewSrc"
+                :key="displayedPreviewSrc"
+                :src="displayedPreviewSrc"
                 :alt="previewImage.alt"
                 width="1919"
                 height="1079"
                 loading="eager"
+                decoding="async"
                 class="absolute inset-0 size-full object-cover"
               />
             </div>
+
+            <LoaderCircle
+              v-if="previewLoading"
+              class="pointer-events-none absolute size-8 animate-spin text-primary"
+              aria-hidden="true"
+            />
 
             <UiButton
               type="button"
@@ -187,6 +257,7 @@ onBeforeUnmount(() => {
               variant="default"
               class="absolute left-3 rounded-full"
               :aria-label="t('projects.media.previousImage')"
+              :disabled="previewLoading"
               @click="changePreview(-1)"
             >
               <ArrowLeft data-icon="inline-start" />
@@ -197,6 +268,7 @@ onBeforeUnmount(() => {
               variant="default"
               class="absolute right-3 rounded-full"
               :aria-label="t('projects.media.nextImage')"
+              :disabled="previewLoading"
               @click="changePreview(1)"
             >
               <ArrowRight data-icon="inline-end" />
@@ -205,7 +277,7 @@ onBeforeUnmount(() => {
 
           <div class="flex items-start justify-between gap-4 px-1 text-sm">
             <p class="text-muted-foreground">{{ previewImage.caption ?? previewImage.alt }}</p>
-            <p class="shrink-0 font-medium tabular-nums">{{ previewIndex + 1 }} / {{ IMAGE_COUNT }}</p>
+            <p class="shrink-0 font-medium tabular-nums">{{ displayedPreviewIndex + 1 }} / {{ IMAGE_COUNT }}</p>
           </div>
         </div>
       </UiDialogContent>
