@@ -1,6 +1,6 @@
 # Portfolio v2 - Duc Trong Luong
 
-A personal portfolio website built with **Nuxt 4**, **Vue 3**, **Tailwind CSS v4**, and **shadcn-nuxt**. The primary site is deployed to Netlify, while an external GitHub Pages deployment remains available as a static alias.
+A personal portfolio website built with **Nuxt 4**, **Vue 3**, **Tailwind CSS v4**, and **shadcn-nuxt**. The primary site is deployed to Vercel, while an external GitHub Pages deployment remains available as a static alias.
 
 **Primary site:** [luongductrong.dev](https://luongductrong.dev)<br>
 **External Pages alias:** [ldt.is-a.dev](https://ldt.is-a.dev)
@@ -19,10 +19,10 @@ A personal portfolio website built with **Nuxt 4**, **Vue 3**, **Tailwind CSS v4
 | Utilities       | [VueUse](https://vueuse.org)                                                                                              |
 | Fonts           | JetBrains Mono and Space Grotesk (via [`@nuxt/fonts`](https://fonts.nuxt.com))                                            |
 | Images          | [`@nuxt/image`](https://image.nuxt.com) with local IPX fallback and Netlify Image CDN in production                       |
-| Spam Protection | [Cloudflare Turnstile](https://www.cloudflare.com/products/turnstile) for client/server verification on both deployments |
+| Spam Protection | [Cloudflare Turnstile](https://www.cloudflare.com/products/turnstile) with Formspree                                      |
 | Color Mode      | `@nuxtjs/color-mode` (system preference, light/dark)                                                                      |
 | Package Manager | [pnpm](https://pnpm.io)                                                                                                   |
-| Deployment      | Netlify continuous deployment + GitHub Actions → external GitHub Pages                                                    |
+| Deployment      | Vercel continuous deployment + GitHub Actions → external GitHub Pages                                                     |
 
 ---
 
@@ -78,14 +78,10 @@ cp .env.example .env
 
 | Variable                         | Description                                                                                                                                         |
 | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `NUXT_PUBLIC_SITE_URL`           | Current public origin of the generated site. The image helper uses it to build absolute source URLs when the external CDN is enabled.               |
+| `NUXT_PUBLIC_SITE_URL`           | Current public origin. The image helper uses it to build absolute source URLs when the external CDN is enabled.                                      |
 | `NUXT_PUBLIC_IMAGE_CDN_URL`      | Full Netlify Image CDN endpoint, for example `https://your-site.netlify.app/.netlify/images`. Leave empty locally to use Nuxt Image's IPX fallback. |
-| `NUXT_PUBLIC_IS_NETLIFY`         | Selects the Netlify Forms flow when `true`; `false` keeps the Formspree + Turnstile flow.                                                           |
-| `NUXT_PUBLIC_TURNSTILE_SITE_KEY` | Cloudflare Turnstile site key for the contact form on both deployments.                                                                              |
-| `NUXT_TURNSTILE_SECRET_KEY`      | Cloudflare Turnstile secret key used by the Nuxt/Nitro verification endpoint. Keep it server-only; it is required at Netlify Runtime.              |
+| `NUXT_PUBLIC_TURNSTILE_SITE_KEY` | Cloudflare Turnstile site key used by the shared Formspree contact form.                                                                             |
 | `NUXT_APP_BASE_URL`              | Deployment base path. The external GitHub Pages workflow may supply this when a base path is needed.                                                |
-
-`NUXT_PUBLIC_IS_NETLIFY` is `true` in Netlify's build context and `false` in the external GitHub Pages workflow. `NUXT_PUBLIC_TURNSTILE_SITE_KEY` is public; `NUXT_TURNSTILE_SECRET_KEY` must never be exposed to the client.
 
 ### Development
 
@@ -95,7 +91,7 @@ Start the development server at `http://localhost:3000`:
 pnpm dev
 ```
 
-When `NUXT_PUBLIC_IMAGE_CDN_URL` is empty, images are handled by Nuxt Image's local IPX endpoint (`/_ipx/...`). When it is set, generated image URLs point to the configured Netlify Image CDN. No output format is forced, so Netlify negotiates WebP or AVIF from the browser's `Accept` header and falls back to the source format for older clients.
+When `NUXT_PUBLIC_IMAGE_CDN_URL` is empty, images are handled by Nuxt Image's local IPX endpoint (`/_ipx/...`). When it is set, generated image URLs point to the configured Netlify Image CDN. The CDN is used only for image optimization; the portfolio itself is deployed to Vercel and GitHub Pages.
 
 ### Quality Checks
 
@@ -114,26 +110,13 @@ Project covers, gallery images, thumbnails, and dialog previews use `<NuxtImg>` 
 The provider is selected at build time:
 
 - **Local fallback:** `ipx`, served by the Nuxt development server.
-- **Production:** `netlifyImageCdn`, using the external endpoint in `NUXT_PUBLIC_IMAGE_CDN_URL`.
+- **Deployed builds:** `netlifyImageCdn`, using the external endpoint in `NUXT_PUBLIC_IMAGE_CDN_URL` on both Vercel and GitHub Pages.
 
-The [`useImageAsset`](app/composables/useImageAsset.ts) composable keeps component templates simple. It returns normal public paths for local IPX and absolute source URLs based on `NUXT_PUBLIC_SITE_URL` when the external CDN is enabled. This matters because the separate Netlify site must fetch the original image from the deployed portfolio host, not from `localhost` or from the optimizer site itself.
-
-The shared Netlify optimizer currently allowlists public image paths on these hosts:
-
-- `ldt.is-a.dev`
-- `luongductrong.dev`
-- `luongductrong.github.io`
-
-The allowlist controls source hosts, not which websites may call the endpoint. Keep it limited to trusted domains. See [Netlify Image CDN](https://docs.netlify.com/build/image-cdn/overview/) for the endpoint and remote-image rules.
+The [`useImageAsset`](app/composables/useImageAsset.ts) composable returns normal public paths for local IPX and absolute source URLs based on `NUXT_PUBLIC_SITE_URL` when the external CDN is enabled. The Netlify optimizer must allow the portfolio's source hosts, including `luongductrong.dev`, `ldt.is-a.dev`, and `luongductrong.github.io`. See [Netlify Image CDN](https://docs.netlify.com/build/image-cdn/overview/) for endpoint and remote-image rules.
 
 ## Contact Forms
 
-The contact form selects its provider at build time using `NUXT_PUBLIC_IS_NETLIFY`:
-
-- **Netlify:** Cloudflare Turnstile is rendered in the UI and verified by the Nuxt/Nitro `/api/turnstile/verify` endpoint before the URL-encoded Netlify Forms submission to `/__forms.html`. The static detection skeleton lives in `public/__forms.html`.
-- **External GitHub Pages and local fallback:** Formspree with the same client-side Cloudflare Turnstile component.
-
-Netlify's form detection must be enabled in the site dashboard. Configure `NUXT_PUBLIC_TURNSTILE_SITE_KEY` for the build and `NUXT_TURNSTILE_SECRET_KEY` at runtime on Netlify. The external GitHub Pages workflow removes `__forms.html` from the published artifact so that the Netlify-only form definition is not shipped there.
+Both Vercel and GitHub Pages use the same Formspree contact flow with the `NuxtTurnstile` component. Configure `NUXT_PUBLIC_TURNSTILE_SITE_KEY` in both deployment environments; Formspree receives the Turnstile response with the form submission.
 
 ---
 
@@ -147,9 +130,7 @@ Build a Node/Nitro production bundle locally:
 pnpm build
 ```
 
-This runs the public-asset validator before `nuxt build`.
-
-Netlify uses this command with the `netlify` Nitro preset and publishes `dist/`. The committed `netlify.toml` pins the build command, publish directory, Node major version, and public deployment settings.
+This runs the public-asset validator before `nuxt build`. Vercel detects Nuxt/Nitro automatically, so the repository does not require a custom `vercel.json` or output-directory override.
 
 ### Static Site Generation
 
@@ -171,7 +152,7 @@ pnpm preview
 
 ## CI/CD
 
-Netlify deploys the `main` branch automatically. The external GitHub Pages workflow also runs on pushes to `main` and can be started manually with `workflow_dispatch`.
+Vercel deploys the connected production branch automatically. The external GitHub Pages workflow runs on pushes to `main` and can also be started manually with `workflow_dispatch`.
 
 | Workflow                       | What it does                                                                                                                                 |
 | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -179,10 +160,10 @@ Netlify deploys the `main` branch automatically. The external GitHub Pages workf
 
 Required GitHub Actions configuration:
 
-- Repository variables: `NUXT_PUBLIC_IMAGE_CDN_URL`, `NUXT_PUBLIC_TURNSTILE_SITE_KEY`, and (for the external workflow) `NUXT_PUBLIC_SITE_URL` and `CNAME`.
+- Repository variables: `NUXT_PUBLIC_IMAGE_CDN_URL`, `NUXT_PUBLIC_TURNSTILE_SITE_KEY`, `NUXT_PUBLIC_SITE_URL`, and `CNAME`.
 - Repository secret: `GH_PAGES_PAT` for pushing to the external `*.github.io` repository.
 
-The exact public URL for the Netlify deployment is configured in Netlify Domain management. The external alias remains controlled by GitHub Pages settings, `NUXT_PUBLIC_SITE_URL`, and `CNAME`.
+Configure `NUXT_PUBLIC_SITE_URL`, `NUXT_PUBLIC_IMAGE_CDN_URL`, and `NUXT_PUBLIC_TURNSTILE_SITE_KEY` in the Vercel project. The primary domain remains `luongductrong.dev`; the external alias remains controlled by GitHub Pages settings, `NUXT_PUBLIC_SITE_URL`, and `CNAME`.
 
 ---
 
@@ -190,9 +171,9 @@ The exact public URL for the Netlify deployment is configured in Netlify Domain 
 
 - **Dark / Light mode** - follows system preference, toggleable
 - **Responsive image delivery** - resized, format-negotiated images through Nuxt Image and Netlify Image CDN
-- **Hybrid deployment** - Netlify's Nuxt build for the primary site and static generation for the external alias
+- **Hybrid deployment** - Vercel's Nuxt build for the primary site and static generation for the external alias
 - **Smooth animations** - powered by `motion-v`, respects `prefers-reduced-motion`
-- **Spam-protected contact form** - Cloudflare Turnstile verification with Netlify Forms or Formspree
+- **Spam-protected contact form** - one Formspree and Cloudflare Turnstile flow across both deployments
 - **Custom fonts** - JetBrains Mono and Space Grotesk with Latin & Vietnamese subsets
 - **Fully responsive** - mobile-first layout
 

@@ -6,7 +6,6 @@ declare const process: {
 };
 
 const imageCdnUrl = process.env.NUXT_PUBLIC_IMAGE_CDN_URL?.replace(/\/+$/, '');
-const isNetlify = process.env.NUXT_PUBLIC_IS_NETLIFY === 'true';
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -18,7 +17,9 @@ export default defineNuxtConfig({
     public: {
       siteUrl: 'http://localhost:3000/',
       imageCdnUrl: '',
-      isNetlify,
+      turnstile: {
+        siteKey: process.env.NUXT_PUBLIC_TURNSTILE_SITE_KEY || '',
+      },
     },
   },
   css: ['@/assets/css/tailwind.css', 'vue-sonner/style.css'],

@@ -34,7 +34,6 @@ export type ContactI18n = {
     feedback: {
       success: string;
       successDescription: string;
-      captchaError: string;
       error: string;
     };
   };

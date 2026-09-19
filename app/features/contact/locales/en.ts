@@ -36,7 +36,6 @@ export const contactI18n = {
     feedback: {
       success: 'Message sent successfully.',
       successDescription: 'I will get back to you soon.',
-      captchaError: 'Security verification failed. Please try again.',
       error: 'Your message could not be sent. Please try again.',
     },
   },
