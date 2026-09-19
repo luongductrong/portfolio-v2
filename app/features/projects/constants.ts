@@ -38,7 +38,7 @@ export const projectDefinitions = [
         },
       ],
     },
-    links: { demo: 'https://beta.funnycode.vn/' },
+    links: { demo: 'https://beta.funnycode.vn/', source: 'https://github.com/luongductrong/re-funnycode-frontend' },
     status: 'maintained',
     stack: [
       { items: ['Next.js 16', 'React 19', 'TypeScript', 'App Router / PPR'] },
