@@ -189,7 +189,9 @@ export const projectDefinitions = [
       { items: ['Nuxt 4', 'Vue 3', 'TypeScript'] },
       { items: ['Tailwind CSS 4', 'shadcn-nuxt', 'Reka UI', 'Motion for Vue'] },
       { items: ['VueUse', 'Nuxt Color Mode', 'Nuxt Fonts'] },
-      { items: ['Netlify', 'GitHub Actions', 'GitHub Pages', 'Netlify Forms', 'Formspree'] },
+      {
+        items: ['Vercel', 'GitHub Actions', 'GitHub Pages', 'Netlify Image CDN', 'Formspree', 'Cloudflare Turnstile'],
+      },
     ],
   },
   {

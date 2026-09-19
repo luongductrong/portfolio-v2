@@ -284,12 +284,12 @@ const items = {
       role: 'Creator / Frontend Developer',
       timeline: 'Jul 2026 - Present',
       teamSize: 'Solo project',
-      platform: 'Responsive static website',
+      platform: 'Responsive web portfolio',
     },
     stackLabels: ['Frontend', 'UI & Motion', 'Experience', 'Delivery & Services'],
     overview: [
       'Portfolio v2 presents my projects, capabilities, and professional context through clear browsing paths.',
-      'Nuxt static generation keeps delivery simple while supporting themes, responsive layouts, and motion.',
+      'Nuxt supports a Vercel production build and static generation for the external GitHub Pages alias while preserving themes, responsive layouts, and motion.',
     ],
     objectives: [
       {
@@ -302,7 +302,7 @@ const items = {
       },
       {
         title: 'Keep delivery lightweight',
-        description: 'Use static generation and automated deployment.',
+        description: 'Use automated Vercel and GitHub Pages deployments.',
       },
     ],
     features: [
@@ -314,13 +314,13 @@ const items = {
       },
       {
         title: 'Protected contact workflow',
-        description: 'Use Netlify Forms on the primary deployment and Formspree with Turnstile on the external alias.',
+        description: 'Use Formspree with Cloudflare Turnstile consistently across both deployments.',
       },
     ],
     responsibilities: [
       'Designed and built the portfolio with Nuxt, Vue, and Tailwind CSS.',
       'Created its visual system, project model, and reusable case studies.',
-      'Implemented protected contact and automated static deployment.',
+      'Implemented protected contact and automated deployments to Vercel and GitHub Pages.',
     ],
     challenges: [
       {
@@ -331,8 +331,7 @@ const items = {
       {
         title: 'Protecting a public contact form',
         problem: 'Spam protection needed to remain unobtrusive.',
-        solution:
-          'Selected Cloudflare Turnstile verification with Netlify Forms or Formspree according to the deployment environment.',
+        solution: 'Used one Formspree flow with Cloudflare Turnstile across both deployments.',
       },
     ],
     outcomes: [],

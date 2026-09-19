@@ -309,12 +309,12 @@ const items = {
       role: 'Người sáng tạo / Lập trình viên Frontend',
       timeline: '07/2026 - Hiện tại',
       teamSize: 'Dự án cá nhân',
-      platform: 'Website tĩnh thích ứng (responsive)',
+      platform: 'Website portfolio thích ứng (responsive)',
     },
     stackLabels: ['Frontend', 'Giao diện & Chuyển động', 'Trải nghiệm', 'Triển khai & Dịch vụ'],
     overview: [
       'Portfolio v2 giới thiệu dự án, năng lực và bối cảnh nghề nghiệp của mình qua các luồng khám phá rõ ràng.',
-      'Khả năng tạo website tĩnh (Static Site Generation) của Nuxt giúp quá trình phân phối đơn giản, đồng thời hỗ trợ theme, bố cục thích ứng (responsive) và hiệu ứng chuyển động.',
+      'Nuxt hỗ trợ bản build production trên Vercel và tạo website tĩnh cho alias GitHub Pages, đồng thời duy trì theme, bố cục thích ứng và hiệu ứng chuyển động.',
     ],
     objectives: [
       {
@@ -327,7 +327,7 @@ const items = {
       },
       {
         title: 'Giữ quá trình phân phối gọn nhẹ',
-        description: 'Sử dụng tạo website tĩnh và triển khai tự động.',
+        description: 'Sử dụng quy trình triển khai tự động lên Vercel và GitHub Pages.',
       },
     ],
     features: [
@@ -345,13 +345,13 @@ const items = {
       },
       {
         title: 'Luồng liên hệ được bảo vệ',
-        description: 'Dùng Netlify Forms ở deployment chính và Formspree với Turnstile ở alias external.',
+        description: 'Dùng thống nhất Formspree với Cloudflare Turnstile trên cả hai môi trường triển khai.',
       },
     ],
     responsibilities: [
       'Thiết kế và xây dựng portfolio bằng Nuxt, Vue và Tailwind CSS.',
       'Tạo hệ thống hình ảnh, mô hình dữ liệu dự án và các case study có thể tái sử dụng.',
-      'Triển khai luồng liên hệ được bảo vệ và quá trình triển khai website tĩnh tự động.',
+      'Triển khai luồng liên hệ được bảo vệ và tự động deploy lên Vercel cùng GitHub Pages.',
     ],
     challenges: [
       {
@@ -362,7 +362,7 @@ const items = {
       {
         title: 'Bảo vệ biểu mẫu liên hệ công khai',
         problem: 'Cơ chế chống spam cần hoạt động mà không gây gián đoạn.',
-        solution: 'Chọn xác thực Cloudflare Turnstile với Netlify Forms hoặc Formspree tùy theo môi trường triển khai.',
+        solution: 'Dùng chung một luồng Formspree với Cloudflare Turnstile trên cả hai môi trường triển khai.',
       },
     ],
     outcomes: [],
